@@ -33,6 +33,8 @@ program at once,</p></item>
 <item><p>interpreted, which means that you don't have to wait for a
 program to compile and link when you want to run it,</p></item>
 
+<item><p>one of the fastest "scripting" languages available,</p></item>
+
 <item><p>garbage-collected, which makes programming much simpler, and
 also removes the risk for memory leaks and other memory-related
 bugs,</p></item>
@@ -43,13 +45,14 @@ rest of Pike.</p></item>
 </list>
 
 <p>Pike can be used to write small and simple scripts, and also for
-very large programs: the World Wide Web servers <webserver/> and
-<platform/> from <company/> are written in Pike. Pike's advanced data
+very large programs: the World Wide Web servers Roxen WebServer and
+Caudium are both written in Pike. Pike's advanced data
 types and built-in support for sockets makes it ideal for use in
 Internet applications.</p>
 
 <p>Pike is free software, distributed under the GNU General Public
-License. Pike is available for many operating systems, among them
-Linux, Solaris and Windows NT.</p>
+License (GPL), GNU Lesser General Public License (LGPL) and Mozilla
+Public License (MPL). Pike is available for many operating systems,
+among them Linux, Solaris and Microsoft Windows.</p>
 
 </manual>
