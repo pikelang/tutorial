@@ -247,7 +247,7 @@ with any extra elements ignored:</p>
 <p>
 <pi>({ 7, 1, 2, 3, 4, 1, 2 }) / 3</pi>
 gives the result
-<pi>({ ({ 7, 1, 2 }), ({ 3, 4, 1 }), ({ 2 }) })</pi>.
+<pi>({ ({ 7, 1, 2 }), ({ 3, 4, 1 }) })</pi>.
 </p>
 
 <p>If you convert the same integer to a <b>floating-point number</b>,
@@ -255,7 +255,7 @@ the extra elements will not be thrown away:</p>
 
 <p>
 <pi>({ 7, 1, 2, 3, 4, 1, 2 }) / 3.0</pi> gives the result
-<pi>({ ({ 7, 1, 2 }), ({ 3, 4, 1 }) })</pi>.
+<pi>({ ({ 7, 1, 2 }), ({ 3, 4, 1 }), ({ 2 }) })</pi>.
 </p>
 </item>
 
