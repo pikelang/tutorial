@@ -17,14 +17,14 @@ the command <tt>pike</tt>, without any arguments. Then type a
 statement, for example:</p>
 
 <interactive><out># </out><in>pike</in>
-<out>Pike v7.0 release 37 running Hilfe v2.0 (Incremental Pike Frontend)
+<out>Pike v7.3 release 62 running Hilfe v3.5 (Incremental Pike Frontend)
 &gt; </out><in>write("hello!\n");</in></interactive>
 
 <p>Pike will then do what you told it to do, i. e. print "hello!" on a
 line:</p>
 
 <interactive><out># </out><in>pike</in>
-<out>Pike v7.0 release 37 running Hilfe v2.0 (Incremental Pike Frontend)
+<out>Pike v7.3 release 62 running Hilfe v3.5 (Incremental Pike Frontend)
 &gt; </out><in>write("hello!\n");</in>
 <out>hello!</out></interactive>
 
@@ -33,21 +33,24 @@ returns a value, which happens to be the number of characters it has
 written. Interactive Pike will also show you this return value:</p>
 
 <interactive><out># </out><in>pike</in>
-<out>Pike v7.0 release 37 running Hilfe v2.0 (Incremental Pike Frontend)
+<out>Pike v7.3 release 62 running Hilfe v3.5 (Incremental Pike Frontend)
 &gt; </out><in>write("hello!\n");</in>
 <out>hello!
-Result: 7
+(1) Result: 7
 &gt; </out>
 </interactive>
 
-<p>(Seven characters: <tt>h</tt>, <tt>e</tt>, <tt>l</tt>, <tt>l</tt>,
-<tt>o</tt>, the exclamation mark, and the newline character.)</p>
+<p>The return value from write is the number of characters written, which
+in this case is seven characters; <tt>h</tt>, <tt>e</tt>, <tt>l</tt>, <tt>l</tt>,
+<tt>o</tt>, the exclamation mark, and the newline character. The one in
+parenthesis at the beginning of the line tells you that this is the first result,
+if you want to refer to it in subsequent expressions. Try to type <tt>help</tt>
+and press enter for more information about how to use interactive Pike.</p>
 
 <p>Running Pike interactively like this can be very useful when
 testing things, for example when you are following this tutorial. It
 can also be used as a very advanced calculator. <i>But beware! Some
 things don't work the same way in interactive mode as they do when you
-run a Pike program from a file!</i> For example, type checking is
-turned off.</p>
+run a Pike program from a file!</i></p>
 
 </manual>
