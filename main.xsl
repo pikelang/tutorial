@@ -155,16 +155,6 @@ to be in their own templates.
 
 
   <xsl:template mode="online" match="item">
-    <xsl:if test="@type = 'def' and @name">
-      <xsl:call-template name="make-a-name">
-	<!-- this one is defined in common.xsl -->
-	<xsl:with-param name="term" select="@name"/>
-      </xsl:call-template>
-      <xsl:call-template name="define-term">
-	<!-- this one is defined in common.xsl -->
-	<xsl:with-param name="term" select="@name"/>
-      </xsl:call-template>
-    </xsl:if>
     <xsl:choose>
       <xsl:when test="ancestor::list[1]/@type = 'dl'">
 	<xsl:choose>
@@ -173,19 +163,6 @@ to be in their own templates.
 	    <dd><xsl:apply-templates mode="online"/></dd>
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <xsl:call-template name="log-error" log="missing name attribute">
-	      <xsl:attribute name="msg">
-		Definition lists must always have term names!
-		A correct definition list looks like this:
-		<tt>&lt;list type="dl"&gt;<br/>
-		  &lt;item name="my term"&gt;<br/>
-		    &lt;p&gt;description of the term...&lt;/p&gt;<br/>
-		  &lt;/item&gt;<br/>
-		&lt;/list&gt;</tt><br/>
-		Remember that list type markup is a purely semantical
-		concept, not a layout choice as it is in HTML.
-	      </xsl:attribute>
-	    </xsl:call-template>
 	    <!-- erase the following soon as error reporting works: -->
 	    <dd><xsl:apply-templates mode="online"/></dd>
 	  </xsl:otherwise>
@@ -194,7 +171,7 @@ to be in their own templates.
       <xsl:otherwise>
 	<li>
 	  <xsl:if test="@name">
-	    <b><xsl:value-of select="@name"/></b><br/><br/>
+	    <b><xsl:value-of select="@name"/></b><br/>
 	  </xsl:if>
 	  <xsl:choose><!-- Kenneth vill inte ha luft. -->
 	    <xsl:when test="p and (count(node()) = 1)">
