@@ -77,8 +77,7 @@ value is one of several possible datatypes:</p>
 <pi>
 int|string w;
 
-array(int|string|float)
-make_array(int|string|float x)
+array(int|string|float) make_array(int|string|float x)
 {
   return ({ x });
 }
