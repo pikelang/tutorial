@@ -39,7 +39,7 @@ higher chance of being seen by the user, since if you re-direct the
 output from a program, like this:</p>
 
 <interactive>
-<in>webbrowser.pike www.rocksen.com &gt; output.txt</in>
+<in>webbrowser.pike cod.ida.liu.se &gt; output.txt</in>
 </interactive>
 
 <p>then the standard output will be printed to the file
