@@ -59,9 +59,9 @@ electronic mail.</p>
 <p>Support for various calendar and date formats.</p>
 </item>
 
-<item name="Mysql">
-<p>This module lets Pike use SQL database queries, with the mySQL
-database server.</p>
+<item name="Sql">
+<p>This module lets Pike use SQL database queries, with database servers
+such as mySQL, Oracle and Sybase.</p>
 </item>
 
 <item name="Thread">
