@@ -85,7 +85,7 @@ line</p>
 <pi>#pragma strict_types</pi>
 
 <p>to that file. An alternative is to give the command-line argument
-<tt>-rt</tt> to Pike, or <tt>-rT</tt> to turn on warnings for all
+<tt>-rT</tt> to Pike, which turns on warnings for all
 files, even those that are used from your program. An example:</p>
 
 <interactive>
