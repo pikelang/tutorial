@@ -2,8 +2,8 @@
  <datum name=http-content-type value="sitebuilder/menu">
 </metadata>
 <mi>
-  <title></title>
-  <url>examples.xml</url>
+  <title>Some Examples of Modules</title>
+  <url>index.xml</url>
 </mi>
 <mi>
   <title></title>
