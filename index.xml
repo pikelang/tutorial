@@ -16,11 +16,10 @@
 <p>The first version of this tutorial, influenced by an old Pike tutorial by
 Fredrik Hübinette, was completed by Thomas Padron-McCarthy on
 February 29, 2000. Maintenance since then has been in the hands
-of Johan Sundström and the rest of the <a href="/development/team/">pike
-development team</a>, and we would hope that you too would want to
-participate, helping out and contributing updates, pointing out what could be
-improved upon, and how. Send us a mail at <mail>manual@pike.ida.liu.se</mail>
-and join in!</p>
+of the <a href="/development/team/">pike development team</a>,
+and we would hope that you too would want to participate, helping
+out and contributing updates, pointing out what could be improved
+upon, and how. <a href="/development/cvs/policies.xml">Join us!</a></p>
 
 <p>
   <table border="0" cellpadding="10">
