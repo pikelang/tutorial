@@ -31,11 +31,7 @@ and for a single \ followed by an octal (base 8) number.</p>
 worry about the difference. Just use the characters you need. There
 may however be some operations, for example certain methods in certain
 modules, that cannot handle wide strings but that work with 8-bit
-strings. This is seldom intentilnal, and should you stumble upon one,
-please report it to us in
-<a href="http://community.roxen.com/crunch/">Bug Crunch</a>, our bug
-tracking system at Roxen Internet Software, and we'll try to fix it as
-soon as time allows.</p>
+strings.</p>
 
 <p>Here are some functions that can be used to examine wide
 strings:</p>
