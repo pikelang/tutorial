@@ -1,5 +1,5 @@
 <metadata>
- <datum name=__removed valuen=1>
+ <datum name=__create_rev value="1.3">
  <datum name=author value="0">
  <datum name=description value="">
  <datum name=external_use value="">
@@ -12,16 +12,187 @@
 </metadata>
 <manual>
 
-<summary>
-The simplest type of statement in Pike is the <b>empty statement</b>,
-followed by the <b>expression statement</b>. For selection, Pike has
-<b>if</b> and <b>switch</b> statements. You can also make selections
-using the conditional operator, "<tt>? :</tt>". There are four
-different ways of writing loops: using <b>while</b>, <b>for</b>, <b>do
-while</b>, and <b>foreach</b>. <b>foreach</b> loops over a collection.
-Pike also has the statements <b>break</b>, <b>continue</b> and
-<b>return</b>. Statements can be grouped into blocks, who can contain
-local variables.
-</summary>
+<p>A program must sometimes make choices, choosing between different
+instructions to execute. Sometimes it must also execute the same
+instructions several times. All this is done using various <b>control
+structures</b>. We will start by looking at the different ways of
+choosing between alternatives.</p>
+
+<p>Pike has three facilities for choosing between alternatives: the
+<b>if</b> statement, the <b>switch</b> statement, and the <tt>? :</tt>
+operator.</p>
+
+<h1>The <tt>if</tt> statement</h1>
+
+<p>The <tt>if</tt> statement comes in two flavors. The first and
+simplest one follows this pattern or template:</p>
+
+<pi>
+if( <i>expression</i> )
+  <i>statement</i>
+</pi>
+
+<p>As usual in this tutorial, words in a <tt>fixed-width font</tt> are
+supposed to be written verbatim in the program, while words in
+<i>italics</i> are supposed to be replaced by something else. This
+means that the word <pi>if</pi> and the parentheses should be kept,
+but you replace <i>expression</i> with some expression, and
+<i>statement</i> with some statement. An example, which could have
+been part of a control program for a stove, looks like this:</p>
+
+<pi>
+if(temperature &lt; 200.0)
+  burn();
+</pi>
+
+<p>When Pike encounters an <pi>if</pi> statement, it first calculates
+the value of the <i>expression</i>. Pike then checks if this value is
+<b>true</b> or <b>false</b>. The value zero (<b>0</b>) is considered
+to be <b>false</b>, and everything else is <b>true</b>. If the value
+is <b>true</b>, the <i>statement</i> is executed. If the value is
+<b>false</b>, nothing is done, and program execution will continue
+after the <tt>if</tt> statement.</p>
+
+<p>An <tt>if</tt> statement can also follow this template:</p>
+
+<pi>
+if( <i>expression</i> )
+  <i>statement1</i>
+else
+  <i>statement2</i>
+</pi>
+
+<p>Example:</p>
+
+<pi>
+if(this_user == file_owner)
+  allow_access();
+else
+  deny_access();
+</pi>
+
+<p>A statement can be a block, which is several statements enclosed by
+curly brackets. Example:</p>
+
+<pi>
+if(this_user == file_owner)
+  allow_access();
+else
+{
+  deny_access();
+  send_message(file_owner, "Warning: " + this_user +
+               " tried to access your file.");
+}
+</pi>
+
+<p>You can "chain" several <tt>if</tt> statements together,
+like this:</p>
+
+<pi>
+if(temperature &lt; 200.0)
+  burn(10);
+else if(temperature &lt; 300.0)
+  burn(5);
+else if(temperature &lt; 400.0)
+  burn(2);
+else
+  turn_off_heat();
+</pi>
+
+<h1>The <tt>switch</tt> statement</h1>
+
+<p>If your program is choosing between a number of different actions,
+depending on the value of a variable or expression, you can express
+this using a chain of <tt>if</tt> statements:</p>
+
+<pi>
+if(command == "print")
+  print(argument);
+else if(command == "save")
+  save(argument);
+else if(command == "quit" || command == "exit")
+  quit(argument);
+else
+  write("Unknown command.\n");
+</pi>
+
+<p>In such cases a <tt>switch</tt> statement can be a better
+alternative:</p>
+
+<pi>
+switch(command)
+{
+  case "print":
+    print(argument);
+    break;
+  case "save":
+    save(argument);
+    break;
+  case "quit":
+  case "exit":
+    quit(argument);
+    break;
+  default:
+    write("Unknown command.\n");
+    break;
+}
+</pi>
+
+<p>In a <tt>switch</tt> statement, Pike first calculates the value of
+the expression between the parentheses, in this case <tt>command</tt>.
+It then compares this value with all the values given in the
+<tt>case</tt>s in the body (i. e., between the curly brackets) of the
+<tt>switch</tt> statement. If it finds a value that is equal, it jumps
+to that place and continues to execute the program there. If it comes
+to a <tt>break</tt> statement, it will skip the rest of the code in
+the <tt>switch</tt> body, and continue execution after the block.</p>
+
+<p>It is not necessary to have a <tt>default</tt> case, but if one
+exists, Pike will go to that one if it finds no matching <tt>case</tt>
+value. The final <tt>break</tt> statement in this example isn't really
+necessary, since the switch statement block ends there anyway, but it
+won't hurt either.</p>
+
+<p>You can use a range of values in a case:</p>
+
+<pi>case 10..14:</pi>
+
+<p>This case will match if the value is between 10 and 14,
+inclusively: 10, 11, 12, 13 or 14.</p>
+
+<h1>The ugly <tt>? :</tt> operator</h1>
+
+<p>The operator <tt>? :</tt> is similar to the <tt>if</tt> statement,
+but returns a value. Expressions that use the operator <tt>? :</tt>
+follow this template:</p>
+
+<pi><i>condition</i> ? <i>then-expression</i> : <i>else-expression</i></pi>
+
+<p><i>Condition</i>, <i>then-expression</i> and <i>else-expression</i>
+are three expressions. Pike starts by calculating the value of
+<i>condition</i>. If that value is <b>true</b>, it then calculates
+<i>then-expression</i>, and doesn't do anything with
+<i>else-expression</i>. If the value of <i>condition</i> is
+<b>false</b>, it calculates <i>else-expression</i>, and doesn't do
+anything with <i>then-expression</i>. The value of the whole construct
+is the value of the expression that was calculated: either
+<i>then-expression</i> or <i>else-expression</i>.</p>
+
+<p>Using this operator, you can rewrite</p>
+
+<pi>
+if(a &gt; b)
+  max_value = a;
+else
+  max_value = b;
+</pi>
+
+<p>as</p>
+
+<pi>max_value = (a &gt; b) ? a : b;</pi>
+
+<p>We recommend that you don't use the <tt>? :</tt> operator, unless
+you have to. It can be necessary when writing function-like macros,
+but that is beyond the scope of this tutorial.</p>
 
 </manual>
