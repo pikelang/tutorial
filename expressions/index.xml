@@ -1,5 +1,5 @@
 <metadata>
- <datum name=__removed valuen=1>
+ <datum name=__create_rev value="1.3">
  <datum name=author value="0">
  <datum name=description value="">
  <datum name=external_use value="">
@@ -12,14 +12,32 @@
 </metadata>
 <manual>
 
-<summary>
-Expressions are made from operands (such as <tt>47</tt> and
-<tt>x</tt>) and operators (such as <tt>+</tt> and
-<tt>&amp;&amp;</tt>). Simple expressions such as <tt>x + 47</tt>
-usually work just as anyone with some simple maths would expect. More
-advanced expressions, such as <tt>x &lt;= 47 &amp;&amp; f(x, 47)</tt>,
-work as any C or C++ programmer would expect. Other expressions, such
-as those involving mappings or set operations, are specific to Pike.
-</summary>
+<p>First of all, some useful terms:</p>
+
+<list type="ul">
+<item>
+<p>An <b>operation</b> is something Pike does, such as the operation
+"addition".</p>
+</item>
+
+<item>
+<p>An <b>operator</b> is the symbol we use in a program to write the
+operation, such as the operator <tt>+</tt>.</p>
+</item>
+
+<item>
+<p>An <b>operand</b> is a thing that an operation is applied to. For
+example, in the expression <tt>7 + a</tt> there are two operands:
+<tt>7</tt> and <tt>a</tt>.</p>
+</item>
+
+<item>
+<p>An <b>expression</b> is what you get when you combine operators and
+operands according to the grammar rules of the language.</p>
+</item>
+</list>
+
+<p>In this chapter we will examine how we write expressions in Pike.
+We will look at all the operations that have their own operators.</p>
 
 </manual>
