@@ -295,8 +295,12 @@ change the array <i>array</i> itself.</p>
 <item name="Finding an element in an array">
 <p><pi>search(<i>haystack</i>, <i>needle</i>)</pi> returns the index
 of the first occurrence of an element equal to the <i>needle</i> in
-the array <i>haystack</i>. The comparison is done with <tt>==</tt>, so
-the element must be the <b>same</b> as the <i>needle</i>.</p>
+the array <i>haystack</i>. If the needle wasn't found <pi>-1</pi> will
+be returned. The comparison is done with <tt>==</tt>, so the element
+must be the <b>same</b> as the <i>needle</i>.</p>
+<p>If only the existence of an element in an array is needed, the
+<pi>has_value(<i>haystack</i>, <i>needle</i>)</pi> can be used instead.
+It returns <pi>1</pi> on success and <pi>0</pi> on failure.</p>
 </item>
 
 <item name="Replacing elements in an array">
