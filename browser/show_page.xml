@@ -54,7 +54,7 @@ it can't be used by itself. It can only be used as a part of another
 program, as we have done here.</p>
 
 <p>Somewhere on your computer there is a file, called something like
-<tt>/usr/local/pike/0.7.97/lib/modules/Protocols.pmod/HTTP.pmod/Query.pike</tt>
+<tt>/usr/local/pike/7.3.62/lib/modules/Protocols.pmod/HTTP.pmod/Query.pike</tt>
 or
 <tt>C:\Program&nbsp;Files\Pike\lib\pike\modules\Protocols.pmod\HTTP.pmod\Query.pike</tt>.
 This file contains the program <tt>Query</tt> with all its methods and

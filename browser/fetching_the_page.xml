@@ -14,7 +14,7 @@
 <p>Now it's time to start surfing the web! Perhaps you know that web
 pages are written in something called HTML (HyperText Markup
 Language), and that the <tt>http</tt> you see in web addresses like
-<tt>http://www.roxen.com/</tt> means HyperText Transfer Protocol. The
+<tt>http://pike.ida.liu.se/</tt> means HyperText Transfer Protocol. The
 HyperText Transfer Protocol is a description of how web browsers
 communicate with web servers. Netscape and Internet Explorer use it,
 and so will we.</p>
@@ -113,10 +113,10 @@ to terminate the program, we can use the built-in function
 like this. The user's command is shown in <i>italics</i>:</p>
 
 <interactive>
-<in>webbrowser.pike www.roxen.com</in>
+<in>webbrowser.pike pike.ida.liu.se</in>
 <out>
 Welcome to the Very Simple WWW Browser!
-Fetching URL 'www.roxen.com'... Done.
+Fetching URL 'pike.ida.liu.se'... Done.
 </out>
 </interactive>
 
@@ -124,10 +124,10 @@ Fetching URL 'www.roxen.com'... Done.
 browser fails:</p>
 
 <interactive>
-<in>webbrowser.pike www.rocksen.com</in>
+<in>webbrowser.pike cod.ida.liu.se</in>
 <out>
 Welcome to the Very Simple WWW Browser!
-Fetching URL 'www.rocksen.com'... Failed!
+Fetching URL 'cod.ida.liu.se'... Failed!
 </out>
 </interactive>
 

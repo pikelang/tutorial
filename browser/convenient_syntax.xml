@@ -38,7 +38,12 @@ void handle_url(string this_url)
 
 <p>Although you <i>could</i> import lots and lots of modules for the
 ease of lazy typing, this mostly isn't a recommended practice, for
-obvious reasons of clarity and readability.</p>
+obvious reasons of clarity and readability. There are also some non-obvious
+reasons to refrain from doing imports. If someone adds the method
+<tt>write</tt> to the module <tt>Protocols.HTTP</tt> we would call that
+method instead of the one that writes text to the user. It also takes longer
+to start the program, since Pike must search through all imported modules
+to find the methods you use.</p>
 
 <h1>Initial Values for Variables</h1>
 

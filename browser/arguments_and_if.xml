@@ -17,7 +17,7 @@ to it, we will improve the program to let it take the URL as a
 with the command</p>
 
 <interactive>
-<in>webbrowser.pike http://www.roxen.com/</in>
+<in>webbrowser.pike http://pike.ida.liu.se/</in>
 </interactive>
 
 <p>instead of letting the program ask for the URL. We add some code
@@ -58,7 +58,7 @@ Windows NT.</p>
 
 <item>
 <p>We have added <tt>int argc, array(string) argv</tt> as
-<b>parameters</b> to <tt>main</tt>. The parameters are like normal
+<b>parameters</b> to <tt>main</tt>. These parameters are like normal
 variables, except that they will be assigned some values automatically
 when the program starts.</p>
 </item>

@@ -119,8 +119,8 @@ The user's commands and input are shown in <i>italics</i>:</p>
 Welcome to the Very Simple WWW Browser!
 Type the address of the web page:
 </out>
-<in>http://www.roxen.com/</in>
-<out>URL: http://www.roxen.com/</out>
+<in>http://pike.ida.liu.se/</in>
+<out>URL: http://pike.ida.liu.se/</out>
 </interactive>
 
 </manual>
