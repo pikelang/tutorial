@@ -1,4 +1,5 @@
 <metadata>
+ <datum name=__removed valuen=1>
  <datum name=description value="">
  <datum name=external_use value="">
  <datum name=http-content-type value="sitebuilder/xsl-template">
