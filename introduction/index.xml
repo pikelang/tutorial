@@ -13,11 +13,11 @@
 
 <h1>What is Pike?</h1>
 
-<summary>
+<p>
 Pike is an interpreted, object-oriented programming language. It looks
 a bit like C and C++, but it is much easier to learn and use. It can
 be used for small scripts as well as for large programs.
-</summary>
+</p>
 
 <p>Pike is</p>
 
