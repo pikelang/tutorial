@@ -85,14 +85,11 @@ line</p>
 <pi>#pragma strict_types</pi>
 
 <p>to that file. An alternative is to give the command-line argument
-<tt>-rt</tt> to Pike, or <tt>-rt</tt> to turn on warnings for all
-files, even those that are used from your program.</p>
-
-<p>You must also give the argument <tt>-w</tt> to Pike, for Pike to
-actually print the warnings. An example:</p>
+<tt>-rt</tt> to Pike, or <tt>-rT</tt> to turn on warnings for all
+files, even those that are used from your program. An example:</p>
 
 <interactive>
-<in>pike -w -rT myprogram.pike</in>
+<in>pike -rT myprogram.pike</in>
 </interactive>
 
 <p>This will print all warnings that Pike is able to generate for the
