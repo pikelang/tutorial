@@ -127,6 +127,6 @@ the method:</p>
 <pi>return;</pi>
 
 <p>If you reach the end of the body of a method, without having
-returned first, the method will return, with no value.</p>
+returned first, the method will return zero as return value.</p>
 
 </manual>
