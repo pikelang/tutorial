@@ -1,0 +1,164 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Operators on Strings">
+</metadata>
+<manual>
+
+<p>Pike has a large number of operations that you can do with strings.
+Some of them are expressed with operators such as <tt>+</tt> and
+<tt>-</tt>, and some are expressed as functions or methods that you
+call from your program. We will start by looking at the indexing
+operator, <tt>[]</tt>, and then the rest of the operators.</p>
+
+<p>Here is a list of some operators that you can use with strings.</p>
+
+<list type="ul">
+<item name="Comparing strings">
+<p><pi><i>string1</i> == <i>string2</i></pi> returns <b>1</b> if
+<i>string1</i> and <i>string2</i> are the same string, otherwise
+<b>0</b>. Since strings are shared, strings that look exactly the same
+<i>are</i> the same string.</p>
+
+<p>You can also use the operator <tt>!=</tt>, which means "not same".
+The relational operators (<tt>&lt;</tt>, <tt>&gt;</tt>, etc) do work
+with strings. The will use lexical order, i. e. the same order that
+the strings would stand in a dictionary, if that dictionary considered
+all the characters, including blanks etc.</p>
+
+<p>For example, <tt>"foo"</tt> would stand before <tt>"fum"</tt>, and
+is therefore smaller. As another example, <tt>"foo"</tt> would stand
+before <tt>"foobar"</tt>.</p>
+</item>
+
+<item name="Concatenation">
+<p><pi><i>string1</i> + <i>string2</i></pi> returns a new string with
+<i>string1</i> and <i>string2</i> concatenated.</p>
+
+<p>
+<pi>"Foo" + "Bar"</pi> gives the result <pi>"FooBar"</pi>.
+</p>
+</item>
+
+<item name="Remove substrings">
+<p><pi><i>string1</i> - <i>string2</i></pi> returns a new string where
+all occurrences of <i>string2</i> have been remove from
+<i>string1</i>.</p>
+
+<p>
+<pi>"FooBarFoofooFum" - "Foo"</pi> gives the result
+<pi>"BarfooFum"</pi>.
+</p>
+
+<p>Mathematically inclined programmers may want to note that for
+strings, it is not (necessarily) true that a+b-b equals a.</p>
+</item>
+
+<item name="Concatenation of string literals">
+<p><b>String literals</b>, which are strings within double quotes that
+are written in a program, can be concatenated by just putting them
+after each other:</p>
+
+<pi>write("Hello"  " "  "world!" + "\n");</pi>
+</item>
+
+<item name="Indexing a character">
+<p>To accessing individual characters inside a string, you use the
+same indexing operator as for arrays:
+<pi><i>string</i>[<i>position</i>]</pi>.</p>
+
+<p>There is no data type for characters in Pike, so when you extract
+or insert a character in a string, you really work with the
+<b>character code</b> of that character. The character code is an
+integer. But you don't need to look up character codes in a table. You
+can use <b>character literals</b>, such as <tt>'b'</tt>. The character
+literal <tt>'b'</tt> will be translated internally in Pike to
+<b>98</b>, which happens to the character code for the character
+<b>b</b>. (Or something else, if you use a different character set
+than ISO-8859-1 aka ISO Latin 1, but you almost certainly don't.)</p>
+
+<p>You can use negative indices, just as with arrays:
+<pi><i>string</i>[-1]</pi> means the last character in the string
+<i>string</i>, <pi><i>string</i>[-2]</pi> the next-to-last character,
+and so on.</p>
+</item>
+
+<item name="Taking a range">
+<p><pi><i>string</i>[<i>from</i>..<i>to</i>]</pi> returns a new
+string, containing the characters at the index <i>from</i> up to and
+including the index <i>to</i>.</p>
+
+<p>
+<pi>({ 1, 7, 3, 3, 7 }) [ 1..3 ]</pi> gives the result
+<pi>({ 7, 3, 3 })</pi>.
+</p>
+
+<p>The form <pi><i>string</i>[<i>from</i>..]</pi> will give the
+characters starting at index <i>from</i> and to the end of the string.
+The form <pi><i>string</i>[..<i>to</i>]</pi> will give the characters
+from the start of the string, up to and including index <i>to</i>.</p>
+</item>
+
+<item name="Division">
+<pi><i>string</i> / <i>delimiter</i></pi>
+
+<p>This will split the string <i>string</i> into an array of strings,
+using occurrences of the string <i>delimiter</i> as places to cut.</p>
+
+<p>
+<pi>"abcdfoofoo x" / "foo"</pi> gives the result
+<pi>({ "abcd", "", " x" })</pi>
+</p>
+
+<p>An alternative is to divide with an <b>integer</b>, which will
+split the string into strings of the length given by that integer.
+Extra characters are thrown away:</p>
+
+<p>
+<pi>"abcdfoofoo x" / 5</pi> gives the result
+<pi>({ "abcdf", "oofoo" })</pi>.
+</p>
+
+<p>If you divide with the same integer, converted to a
+<b>floating-point number</b>, the extra characters will not be thrown
+away:</p>
+
+<p>
+<pi>"abcdfoofoo x" / 5.0</pi> gives the result
+<pi>({ "abcdf", "oofoo", " x" })</pi>.
+</p>
+</item>
+
+<item name="Modulo">
+<pi><i>string</i> % <i>integer</i></pi>
+
+<p>This gives the extra characters that would be ignored in the
+division operation <pi><i>string</i> / <i>integer</i></pi>:</p>
+
+<p>
+<pi>"abcdfoofoo x" % 5</pi> gives the result
+<pi>" x"</pi>.
+</p>
+</item>
+
+<item name="Multiplication">
+<pi><i>array</i> * <i>delimiter</i></pi>
+
+<p>This will create a new string by concatenating all the strings in
+the array <i>array</i>, with the string <i>delimiter</i> between
+them:</p>
+
+<p>
+<pi>({ "7", "1", "foo" }) * ":"</pi> gives the result
+<pi>"7:1:foo"</pi>.
+</p>
+</item>
+</list>
+
+</manual>

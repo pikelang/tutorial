@@ -1,0 +1,21 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="An Introduction to Data Types">
+</metadata>
+<manual>
+
+<summary>
+Pike has the data types <tt>int</tt>, <tt>float</tt>, <tt>string</tt>,
+<tt>array</tt>, <tt>mapping</tt>, <tt>multiset</tt>, <tt>program</tt>,
+<tt>object</tt> and <tt>function</tt>. The handling of data types in
+Pike is advanced, compared to other similar languages.
+</summary>
+
+</manual>

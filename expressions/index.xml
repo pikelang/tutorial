@@ -1,0 +1,24 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Expressions">
+</metadata>
+<manual>
+
+<summary>
+Expressions are made from operands (such as <tt>47</tt> and
+<tt>x</tt>) and operators (such as <tt>+</tt> and
+<tt>&amp;&amp;</tt>). Simple expressions such as <tt>x + 47</tt>
+usually work just as anyone with some simple maths would expect. More
+advanced expressions, such as <tt>x &lt;= 47 &amp;&amp; f(x, 47)</tt>,
+work as any C or C++ programmer would expect. Other expressions, such
+as those involving mappings or set operations, are specific to Pike.
+</summary>
+
+</manual>

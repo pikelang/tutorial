@@ -1,0 +1,63 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Call and Splice">
+</metadata>
+<manual>
+
+<p>In this section we explain two operators that are used in
+connection with calls to methods: the <b>method-call</b> operator and
+the <b>splice</b> operator.</p>
+
+<p>A method call, which we have seen many examples of, is actually a
+use of the method-call operator. It is written with a pair of
+parentheses according to this template:</p>
+
+<pi><i>method-expression</i> ( <i>argument-list</i> )</pi>
+
+<p>First the <i>method-expression</i> is calculated, to find out which
+method to call. The <i>method-expression</i> is often a single
+identifier, such as <tt>write</tt>, but can be more complicated. Then
+all the expressions in the comma-separated <i>argument-list</i> are
+calculated. Finally, the method is executed, with the argument values
+as parameters.</p>
+
+<p>Some notes about the method-call operator:</p>
+
+<list type="ul">
+<item>
+<p>If the value of the <i>method-expression</i> is an <b>array</b>,
+Pike assumes that each element in the array is a method that can be
+called. Pike will call each method in that array, with the given
+arguments, and the result of all this is an array with the return
+values from the calls.</p>
+</item>
+
+<item>
+<p>If the value of the <i>method-expression</i> is a <b>program</b>
+(that is, a <b>class</b>), Pike will create (or <b>clone</b>) a new
+object from that class, and then call the method <tt>create</tt> in
+that object, with the given arguments.</p>
+</item>
+</list>
+
+<p>The <b>splice</b> operator, written with a commercial-at sign
+(<tt>@</tt>), lets us use an array as an argument list. For
+example,</p>
+
+<pi>
+array a = ({ 17, -0.3, "foo" });
+koogle(@a);
+</pi>
+
+<p>is equivalent to</p>
+
+<pi>koogle(17, -0.3, "foo");</pi>
+
+</manual>

@@ -1,0 +1,69 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="How to Create a Class">
+</metadata>
+<manual>
+
+<p>To create a class, you write a <b>class definition</b>, with all
+the member variables and methods. For the class <tt>animal</tt>, which
+we have used above, the class definition may look like this:</p>
+
+<pi>
+class animal
+{
+  string name;
+  float weight;
+
+  void create(string n, float w)
+  {
+    name = n;
+    weight = w;
+  }
+
+  void eat(string food)
+  {
+    write(name + " eats some " + food + ".\n");
+    weight += 0.5;
+  }
+}
+</pi>
+
+<p>Some explanations about this:</p>
+
+<list type="ul">
+<item>
+<p>A member variable, such as <tt>name</tt>, exists once in each
+cloned object, not in the class itself.</p>
+</item>
+
+<item>
+<p>When a method, such as <tt>eat</tt>, refers to a member variable,
+such as <tt>weight</tt>, it will use that variable in the same object
+that it was called for. For example, when we call
+<tt>my_dog-&gt;eat("quiche")</tt>, it is the <tt>weight</tt> in the
+object <tt>my_dog</tt> that is increased.</p>
+</item>
+
+<item>
+<p>The method <tt>create</tt> is special. This method that handles the
+arguments that you give when you clone an object. (C++ programmers
+would call this a "constructor".)</p>
+</item>
+
+<item>
+<p>You can also have a method called <tt>destroy</tt>. This method is
+what C++ programmers would call the "destructor", i. e. a method that
+is run just before the object disappears. A destructor is sometimes
+needed for cleanup, but much more seldom in Pike than in C++, since
+Pike has automatic garbage collection.</p>
+</item>
+</list>
+
+</manual>

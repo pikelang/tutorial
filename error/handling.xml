@@ -1,0 +1,49 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Handling the Error">
+</metadata>
+<manual>
+
+<p>After an error is detected, it can be handled in different ways.
+The web browser uses two ways: trying again, and terminating the
+program with an error message. If the user gave a zero-length web
+address, the program asks again.</p>
+
+<p>If you want to terminate the program, this is a common code
+snippet:</p>
+
+<pi>
+if(result_of_something == 0)
+{
+  werror("Failed to open the file called '" +
+         file_name + "'\n");
+  exit(1);
+}
+</pi>
+
+<p>The call to <tt>exit</tt> will terminate the program. An argument
+greater than 0 to <tt>exit</tt>, or as a return value from
+<tt>main</tt>, means that the program failed in some way.</p>
+
+<p>The built-in function <tt>werror</tt> prints a string on the
+<b>standard error output</b> (<tt>Stdio.stderr</tt>) instead of the
+normal <b>standard output</b> (<tt>Stdio.stdout</tt>). This has a
+higher chance of being seen by the user, since if you re-direct the
+output from a program, like this:</p>
+
+<interactive>
+<in>webbrowser.pike www.rocksen.com &gt; output.txt</in>
+</interactive>
+
+<p>then the standard output will be printed to the file
+<tt>output.txt</tt>, but the standard error output will still be
+printed on the screen.</p>
+
+</manual>

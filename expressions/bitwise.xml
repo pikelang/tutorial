@@ -1,0 +1,29 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Bitwise Operations">
+</metadata>
+<manual>
+
+<p>In the rare cases where you have to fiddle with the bits inside
+integers, you can use the bitwise operations in Pike. They work just
+like in C and C++, and if you need to use them, you probably already
+know what they mean.</p>
+
+<xtable>
+<row><h>Operation</h>		<h>Syntax</h></row>
+<row><c><p>Shift left</p></c>		<c><p>a &lt;&lt; b</p></c></row>
+<row><c><p>Shift right</p></c>		<c><p>a &gt;&gt; b</p></c></row>
+<row><c><p>Bitwise not</p></c>		<c><p>~ a</p></c></row>
+<row><c><p>Bitwise and</p></c>		<c><p>a &amp; b</p></c></row>
+<row><c><p>Bitwise or</p></c>		<c><p>a | b</p></c></row>
+<row><c><p>Bitwise exclusive or</p></c><c><p>a ^ b</p></c></row>
+</xtable>
+
+</manual>

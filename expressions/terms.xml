@@ -1,0 +1,42 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Some Terminology">
+</metadata>
+<manual>
+
+<p>First of all, some useful terms:</p>
+
+<list type="ul">
+<item>
+<p>An <b>operation</b> is something Pike does, such as the operation
+"addition".</p>
+</item>
+
+<item>
+<p>An <b>operator</b> is the symbol we use in a program to write the
+operation, such as the operator <tt>+</tt>.</p>
+</item>
+
+<item>
+<p>An <b>operand</b> is a thing that an operation is applied to. For
+example, in the expression <tt>7 + a</tt> there are two operands:
+<tt>7</tt> and <tt>a</tt>.</p>
+</item>
+
+<item>
+<p>An <b>expression</b> is what you get when you combine operators and
+operands according to the grammar rules of the language.</p>
+</item>
+</list>
+
+<p>In this chapter we will examine how we write expressions in Pike.
+We will look at all the operations that have their own operators.</p>
+
+</manual>

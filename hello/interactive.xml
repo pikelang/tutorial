@@ -1,0 +1,53 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Interactive Pike">
+</metadata>
+<manual>
+
+<p>You can use Pike interactively, which means that you type a line at
+a time, letting Pike execute it immediately. Just start Pike by giving
+the command <tt>pike</tt>, without any arguments. Then type a
+statement, for example:</p>
+
+<interactive><out># </out><in>pike</in>
+<out>Pike v7.0 release 37 running Hilfe v2.0 (Incremental Pike Frontend)
+&gt; </out><in>write("hello!\n");</in></interactive>
+
+<p>Pike will then do what you told it to do, i. e. print "hello!" on a
+line:</p>
+
+<interactive><out># </out><in>pike</in>
+<out>Pike v7.0 release 37 running Hilfe v2.0 (Incremental Pike Frontend)
+&gt; </out><in>write("hello!\n");</in>
+<out>hello!</out></interactive>
+
+<p>Similar to <tt>main</tt>, the built-in function <tt>write</tt>
+returns a value, which happens to be the number of characters it has
+written. Interactive Pike will also show you this return value:</p>
+
+<interactive><out># </out><in>pike</in>
+<out>Pike v7.0 release 37 running Hilfe v2.0 (Incremental Pike Frontend)
+&gt; </out><in>write("hello!\n");</in>
+<out>hello!
+Result: 7
+&gt; </out>
+</interactive>
+
+<p>(Seven characters: <tt>h</tt>, <tt>e</tt>, <tt>l</tt>, <tt>l</tt>,
+<tt>o</tt>, the exclamation mark, and the newline character.)</p>
+
+<p>Running Pike interactively like this can be very useful when
+testing things, for example when you are following this tutorial. It
+can also be used as a very advanced calculator. <i>But beware! Some
+things don't work the same way in interactive mode as they do when you
+run a Pike program from a file!</i> For example, type checking is
+turned off.</p>
+
+</manual>

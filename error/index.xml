@@ -1,0 +1,24 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Errors and Error Handling">
+</metadata>
+<manual>
+
+<summary>
+If you, as a programmer, want some more help from pike when things go
+wrong, don't invoke your program by typing
+<in>pike&nbsp;myprogram.pike</in>. Instead, type
+<in>pike&nbsp;-w&nbsp;-rT&nbsp;myprogram.pike</in>, to turn on
+stricter error checking and reporting. This chapter digs into the
+realm of error handling, exploring concepts such as return values,
+error codes and exceptions.
+</summary>
+
+</manual>

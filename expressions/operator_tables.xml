@@ -1,0 +1,228 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Operator Precedence and Associativity">
+</metadata>
+<manual>
+
+<p>Operator precedence is why the expression <tt>5 + 3 * 2</tt> is
+calculated as <tt>5 + (3 * 2)</tt>, giving 11, and not as <tt>(5 + 3)
+* 2</tt>, giving 16.</p>
+
+<p>We say that the multiplication operator (<tt>*</tt>) has higher
+"precedence" or "priority" than the addition operator (<tt>+</tt>), so
+the multiplication must be performed first.</p>
+
+<p>Operator associativity is why the expression <tt>8 - 3 - 2</tt> is
+calculated as <tt>(8 - 3) - 2</tt>, giving 3, and and not as <tt>8 -
+(3 - 2)</tt>, giving 7.</p>
+
+<p>We say that the subtraction operator (<tt>-</tt>) is "left
+associative", so the left multiplication must be performed first. When
+we can't decide by operator precedence alone in which order to
+calculate an expression, we must use associativity.</p>
+
+<p>Since the operators <tt>+</tt> and <tt>-</tt> have the same
+precedence, and are left-associative, the following expressions are
+all equivalent:</p>
+
+<pi>
+x + 3 - y + 5
+(x + 3) - y + 5
+((x + 3) - y) + 5
+((x + 3) - y + 5)
+</pi>
+
+<p>Since the operators <tt>=</tt>, <tt>+=</tt> and <tt>-=</tt> have
+the same precedence, and are right-associative, the following
+expressions are all equivalent:</p>
+
+<pi>
+x = y += z -= 4
+x = y += (z -= 4)
+x = (y += (z -= 4))
+(x = y += (z -= 4))
+</pi>
+
+<p>You can use parentheses to tell the compiler in which order to
+evaluate things. If you don't use parentheses, Pike will use the
+precedences and the associativities of the operators to decide in
+which order to perform them. Spaces have no effect.</p>
+
+<p>This table shows the priority and associativity of each operator in
+Pike, with the highest priority at the top:</p>
+
+<xtable>
+
+<row>
+<h>Operators</h>
+<h>Associativity</h>
+</row>
+
+<row>
+<c><p><pi>::a a::b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a() a[b] a-&gt;b a[b..c] ({}) ([]) (&lt;&gt;)</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a++ a--</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>!a ~a (<i>type</i>)a ++a --a</pi><comment>--</comment></p></c>
+<c><p>right to left!</p></c>
+</row>
+
+<row>
+<c><p><pi>a*b a/b a%b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a+b a-b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a&gt;&gt;b a&lt;&lt;b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a&gt;b a&gt;=b a&lt;b a&lt;=b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a==b a!=b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a&amp;b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a^b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a|b</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>&amp;&amp;</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>||</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+<row>
+<c><p><pi>a?b:c</pi></p></c>
+<c><p>right to left!</p></c>
+</row>
+
+<row>
+<c><p><pi>
+=
++=
+-=
+*=
+/=
+%=
+&lt;&lt;=
+&gt;&gt;=
+&amp;=
+|=
+^=
+</pi></p></c>
+<c><p>right to left!</p></c>
+</row>
+
+<row>
+<c><p><pi>@a</pi></p></c>
+<c><p>right to left!</p></c>
+</row>
+
+<row>
+<c><p><pi>,</pi></p></c>
+<c><p>left to right</p></c>
+</row>
+
+</xtable>
+
+<p>Examples:</p>
+
+<xtable>
+
+<row>
+<h>This expression </h>
+<h>is evaluated in this order</h>
+</row>
+
+<row>
+<c><p><pi> 1+2*2 </pi></p></c>
+<c><p><pi> 1+(2*2) </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> 1+2*2*4 </pi></p></c>
+<c><p><pi> 1+((2*2)*4) </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> (1+2)*2*4 </pi></p></c>
+<c><p><pi> ((1+2)*2)*4 </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> 1+4,c=2|3+5 </pi></p></c>
+<c><p><pi> (1+4),(c=(2|(3+5))) </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> 1 + 5&amp;4 == 3 </pi></p></c>
+<c><p><pi> (1 + 5) &amp; (4 == 3) </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> c=1,99 </pi></p></c>
+<c><p><pi> (c=1),99 </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> !a++ + ~f() </pi></p></c>
+<c><p><pi> (!(a++)) + (~(f())) </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> s == "klas" || i &lt; 9 </pi></p></c>
+<c><p><pi> (s == "klas") || (i &lt; 9) </pi></p></c>
+</row>
+
+<row>
+<c><p><pi> r = s == "sten" </pi></p></c>
+<c><p><pi> r = (s == "sten") </pi></p></c>
+</row>
+
+</xtable>
+
+</manual>

@@ -1,0 +1,99 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Some Examples of Modules">
+</metadata>
+<manual>
+
+<p>A module is a sort of "plug-in": a software package that can easily
+be used by other programmers. Modules can contain methods, classes,
+constants, and also other modules. We will use the term <b>members</b>
+for something, such as a method, that a module contains. Some modules
+are written in Pike, but C and C++ can also be used.</p>
+
+<p>Pike is delivered with a number of useful modules.
+Here is a list of a few of the more interesting modules.</p>
+
+<list type="ul">
+<item name="Stdio">
+<p>This module is used for reading and writing files, and also for
+communication over the Internet, and for text-based dialogues with the
+user. We have used the <b>Stdio</b> module in several examples in this
+tutorial.</p>
+</item>
+
+<item name="GTK">
+<p>A toolkit for creating graphical user interfaces, with windows,
+buttons and so on.</p>
+</item>
+
+<item name="Image">
+<p>Processing and manipulation of pictures.</p>
+</item>
+
+<item name="Protocols">
+<p>Various protocols, i. e. ways of communicating. One of these is
+<tt>Protocols.HTTP</tt>, which is used to communicate with World Wide
+Web servers in order to retrieve web pages. Some other supported
+protocols are <b>DNS</b>, <b>IMAP</b>, <b>IRC</b>, <b>LDAP</b>,
+<b>LysKOM</b>, <b>NNTP</b>, <b>SMTP</b>, and <b>TELNET</b>.</p>
+</item>
+
+<item name="MIME">
+<p>Support for coding and encoding using MIME, which is used in
+electronic mail.</p>
+</item>
+
+<item name="Crypto">
+<p>Support for cryptography.</p>
+</item>
+
+<item name="Calendar">
+<p>Support for various calendar and date formats.</p>
+</item>
+
+<item name="Mysql">
+<p>This module lets Pike use SQL database queries, with the mySQL
+database server.</p>
+</item>
+
+<item name="Thread">
+<p>Support for threaded execution of Pike programs.</p>
+</item>
+
+<item name="Process">
+<p>Functions to start and control other processes.</p>
+</item>
+
+<item name="Getopt">
+<p>Routines to interpret and handle command line options.</p>
+</item>
+
+<item name="LR">
+<p>LALR(1) parser generator.</p>
+</item>
+
+<item name="Yp">
+<p>Network Information System support.</p>
+</item>
+
+<item name="Gz">
+<p>Support for unpacking compressed files.</p>
+</item>
+
+<item name="Regexp">
+<p>Support for matching so-called regular expressions.</p>
+</item>
+</list>
+
+<p>Depending on which operating system you are using, and on exactly
+how Pike was installed on your system, some of these modules may not
+be available.</p>
+
+</manual>

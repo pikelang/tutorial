@@ -1,0 +1,198 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Operations on Complex Types">
+</metadata>
+<manual>
+
+<p>The same operators as for the arithmetical operations can also be
+used on some other data types. For example, by "adding" two arrays you
+can concatenate them: <tt>({ 7, 6, 3 }) + ({ 6, 19 })</tt> gives the
+result <tt>({ 7, 6, 3, 6, 19 })</tt>.</p>
+
+<p>Here is a complete table of what happens when you use the
+arithmetic operators with values of the various types in Pike:</p>
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Returned type</h>
+<h>result</h>
+</row>
+
+<row>
+<c><p><tt><i>int</i>&nbsp;+&nbsp;<i>int</i></tt></p></c>
+<c><p>int</p></c>
+<c><p>the sum of the two values</p></c>
+</row>
+
+<row>
+<c><p><tt><i>float</i>&nbsp;+&nbsp;<i>int</i><br/>
+<i>int</i>&nbsp;+&nbsp;<i>float</i><br/>
+<i>float</i>&nbsp;+&nbsp;<i>float</i></tt></p></c>
+<c><p>float</p></c>
+<c><p>the sum of the two values</p></c>
+</row>
+
+<row>
+<c><p><tt><i>string</i>&nbsp;+&nbsp;<i>string</i><br/>
+<i>int</i>&nbsp;+&nbsp;<i>string</i><br/>
+<i>float</i>&nbsp;+&nbsp;<i>string</i><br/>
+<i>string</i>&nbsp;+&nbsp;<i>int</i><br/>
+<i>string</i>&nbsp;+&nbsp;<i>float</i></tt></p></c>
+<c><p>string</p></c>
+<c><p>In this case, any int or float is first converted to a string. Then
+the two strings are concatenated and the resulting string is
+returned.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>array</i>&nbsp;+&nbsp;<i>array</i></tt></p></c>
+<c><p>array</p></c>
+<c><p>The two arrays are concatenated into a new array and that new array
+is returned.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>mapping</i>&nbsp;+&nbsp;<i>mapping</i></tt></p></c>
+<c><p>mapping</p></c>
+<c><p>A mapping with all the index-value pairs from both mappings is
+returned. If an index is present in both mappings the index-value pair
+from the right mapping will be used.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>multiset</i>&nbsp;+&nbsp;<i>multiset</i></tt></p></c>
+<c><p>multiset</p></c>
+<c><p>A multiset with all the members from both multisets is
+returned.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>int</i>&nbsp;-&nbsp;<i>int</i></tt></p></c>
+<c><p>int</p></c>
+<c><p>The right value subtracted from the left.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>float</i>&nbsp;-&nbsp;<i>int</i><br/>
+<i>int</i>&nbsp;-&nbsp;<i>float</i><br/>
+<i>float</i>&nbsp;-&nbsp;<i>float</i></tt></p></c>
+<c><p>float</p></c>
+<c><p>The right value subtracted from the left.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>string</i>&nbsp;-&nbsp;<i>string</i></tt></p></c>
+<c><p>string</p></c>
+<c><p>A copy of the left string with all occurrences of the right string
+removed.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>array</i>&nbsp;-&nbsp;<i>array</i></tt></p></c>
+<c><p>array</p></c>
+<c><p>A copy of the right array with all elements present in the right
+array removed. Example: <tt>({2,1,4,5,3,6,7}) - ({3,5,1})</tt> will
+return <tt>({2,4,6,7})</tt>.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>mapping</i>&nbsp;-&nbsp;<i>mapping</i></tt></p></c>
+<c><p>mapping</p></c>
+<c><p>A new mapping with all index-value pairs from the left mapping,
+except those indexes that are also present in the right mapping.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>multiset</i>&nbsp;-&nbsp;<i>multiset</i></tt></p></c>
+<c><p>multiset</p></c>
+<c><p>A copy of the left multiset without any member present in the left
+multiset.</p></c>
+</row>
+
+<row>
+<c><p><tt>-&nbsp;<i>int</i></tt></p></c>
+<c><p>int</p></c>
+<c><p>Same as 0 - <i>int</i>.</p></c>
+</row>
+
+<row>
+<c><p><tt>-&nbsp;<i>float</i></tt></p></c>
+<c><p>float</p></c>
+<c><p>Same as 0 - <i>float</i>.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>int</i>&nbsp;*&nbsp;<i>int</i></tt></p></c>
+<c><p>int</p></c>
+<c><p>the product of the two values</p></c>
+</row>
+
+<row>
+<c><p><tt><i>float</i>&nbsp;*&nbsp;<i>int</i><br/>
+<i>int</i>&nbsp;*&nbsp;<i>float</i><br/>
+<i>float</i>&nbsp;*&nbsp;<i>float</i></tt></p></c>
+<c><p>float</p></c>
+<c><p>the product of the two values</p></c>
+</row>
+
+<row>
+<c><p><tt><i>array(string)</i>&nbsp;*&nbsp;<i>string</i></tt></p></c>
+<c><p>string</p></c>
+<c><p>All the strings in the array are concatenated with the string on
+the right in between each string. Example: <tt>({"foo,"bar})*"-"</tt>
+will return <tt>"foo-bar".</tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>int</i>&nbsp;/&nbsp;<i>int</i></tt></p></c>
+<c><p>int</p></c>
+<c><p>The right integer divided by the left integer rounded towards minus
+infinity.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>float</i>&nbsp;/&nbsp;<i>int</i><br/>
+<i>int</i>&nbsp;/&nbsp;<i>float</i><br/>
+<i>float</i>&nbsp;/&nbsp;<i>float</i></tt></p></c>
+<c><p>float</p></c>
+<c><p>The right value divided by the left value.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>string</i>&nbsp;/&nbsp;<i>string</i></tt></p></c>
+<c><p>array(string)</p></c>
+<c><p>In symmetry with the multiplication operator, the division operator
+can split a string into pieces. The right string will be split at
+every occurrence of the right string and an array containing the
+results will be returned. Example: <tt>"foo-bar"/"-"</tt> will return
+<tt>({"foo","bar"})</tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>int</i>&nbsp;%&nbsp;<i>int</i></tt></p></c>
+<c><p>int</p></c>
+<c><p>The rest of a division. If <tt>a</tt> and <tt>b</tt> are integers,
+<tt>a%b</tt> is the same as <tt>a-(a/b)*b</tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>float</i>&nbsp;%&nbsp;<i>float</i><br/>
+<i>int</i>&nbsp;%&nbsp;<i>float</i><br/>
+<i>float</i>&nbsp;%&nbsp;<i>int</i></tt></p></c>
+<c><p>float</p></c>
+<c><p>The rest of a division. If <tt>a</tt> and <tt>b</tt> are floats,
+<tt>a%b</tt> is the same as <tt>a-floor(a/b)*b</tt></p></c>
+</row>
+
+</xtable>
+
+</manual>

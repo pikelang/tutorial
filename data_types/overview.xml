@@ -1,0 +1,55 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="What is a data type?">
+</metadata>
+<manual>
+
+<p>Pike works with <b>data items</b>, also called <b>values</b>, such
+as the integers <b>17</b> and <b>-4717</b>, or the string of
+characters <tt>"Hello world!"</tt>. Each data item has, or "is", a
+certain type: <b>17</b> and <b>-4717</b> both have the type
+<b>integer</b>, and <tt>"Hello world!"</tt> has the type
+<b>string</b>. If we want to refer to the data type <b>integer</b> in
+a Pike program, we write <tt>int</tt>. For the type <b>string</b>, we
+write <tt>string</tt>.</p>
+
+<p>Each variable, method, and method parameter also has a type. The
+types of these determines which data items you can put in the
+variable, return from the method, or use as arguments to the method.
+An integer variable, created with</p>
+
+<pi>int i;</pi>
+
+<p>can only contain integer values. If we try to put something else,
+such as a string, in this variable, Pike will try to discover the
+discrepancy and complain about it. This is called <b>type
+checking</b>.</p>
+
+<p><tt>string</tt> and <tt>int</tt> are <b>built-in types</b> in Pike.
+You can also create your own data types, or <b>classes</b>. We have
+already seen some examples of this, for example the class
+<tt>Query</tt>, which is part of the module <tt>Protocols.HTTP</tt>,
+and which is used to contain the data we get when we retrieve a page
+from the World Wide Web.</p>
+
+<p>We will examine each individual data type in some detail in a later
+chapter, but this chapter will give an introduction to data types in
+general.</p>
+
+<h1>Different Kinds of Types</h1>
+
+<p>The data types in Pike can be divided into three categories: the
+<b>basic types</b> (<tt>int</tt>, <tt>float</tt>, and
+<tt>string</tt>), the <b>container types</b> (<tt>array</tt>,
+<tt>mapping</tt>, <tt>multiset</tt>), and then the three types
+<tt>program</tt>, <tt>object</tt> and <tt>function</tt>. We will start
+by looking at the basic types.</p>
+
+</manual>

@@ -1,0 +1,143 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Composing Strings with sprintf">
+</metadata>
+<manual>
+
+<p>C programmers are familiar with the functions <tt>sprintf</tt> and
+<tt>sscanf</tt>, which are used to respectively create and analyze
+strings according to format specifiers. Pike had its own
+<tt>sprintf</tt> and <tt>sscanf</tt>, which are not entirely unlike
+those in C.</p>
+
+<p>If we start with <tt>sprintf</tt>, it builds a string according to
+a string with format specifiers, and a number of arguments. For
+example, if the variables <tt>x</tt> and <tt>y</tt> both contain the
+floating-point number 2.0, the expression</p>
+
+<pi>sprintf("They are %.2f and %10.3f.", x, y);</pi>
+
+<p>would give the result</p>
+
+<out>
+"They are 2.00 and      2.000."
+</out>
+
+<p>The format string consists of characters, that will be copied to
+the result. The format string can also contain "percent specifiers",
+which will be replaced by its arguments. For example, <tt>%d</tt> is
+used to mark an integer.</p>
+
+<p>Here is a list of some of the more common format specifiers:</p>
+
+<xtable>
+
+<row>
+<h>Specifier</h>
+<h>Meaning</h>
+</row>
+
+<row>
+<c><p> %d </p></c>
+<c><p>An integer in normal decimal (that is, base-10) notation</p></c>
+</row>
+
+<row>
+<c><p> %o </p></c>
+<c><p>An integer in octal (base-8) notation</p></c>
+</row>
+
+<row>
+<c><p> %x </p></c>
+<c><p>An integer in lower-case hexadecimal (base-16) notation</p></c>
+</row>
+
+<row>
+<c><p> %X </p></c>
+<c><p>An integer in upper-case hexadecimal notation</p></c>
+</row>
+
+<row>
+<c><p> %c </p></c>
+<c><p>The character corresponding to a certain character code</p></c>
+</row>
+
+<row>
+<c><p> %f </p></c>
+<c><p>A floating-point number</p></c>
+</row>
+
+<row>
+<c><p> %s </p></c>
+<c><p>A string</p></c>
+</row>
+
+</xtable>
+
+<p>There is a large number of <b>modifiers</b> that you can use to
+control the format of the output. You insert these modifiers between
+the percent sign and the format character. Here are some examples of
+the most useful ones:</p>
+
+<xtable>
+
+<row>
+<h>Specifier</h>
+<h>Meaning</h>
+</row>
+
+<row>
+<c><p> %<i>N</i>d </p></c>
+<c><p>An integer right-justified in a field at least <i>N</i> characters
+wide</p></c>
+</row>
+
+<row>
+<c><p> %-<i>N</i>d </p></c>
+<c><p>An integer left-justified in a field at least <i>N</i> characters
+wide</p></c>
+</row>
+
+<row>
+<c><p> %.<i>N</i>f </p></c>
+<c><p>A floating-point number printed with <i>N</i> decimals</p></c>
+</row>
+
+<row>
+<c><p> %<i>N</i>f </p></c>
+<c><p>A floating-point number right-justified in a field at least
+<i>N</i> characters wide</p></c>
+</row>
+
+<row>
+<c><p> %-<i>N</i>.<i>M</i>f </p></c>
+<c><p>A floating-point number with <i>M</i> decimals, left-justified in a
+field at least <i>N</i> characters wide</p></c>
+</row>
+
+<row>
+<c><p> %-<i>N</i>s </p></c>
+<c><p>A string left-justified in a field at least <i>N</i> characters
+wide</p></c>
+</row>
+
+<row>
+<c><p> %<i>.M</i>s </p></c>
+<c><p>A string, but at most <i>M</i> characters of that string are
+printed</p></c>
+</row>
+
+</xtable>
+
+<p>C programmers should note that a difference from the
+<tt>sprintf</tt> you have in C is that Pike's <tt>sprintf</tt> returns
+the string as the value of the call.</p>
+
+</manual>

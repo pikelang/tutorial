@@ -1,0 +1,175 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="catch and throw">
+</metadata>
+<manual>
+
+<p>It is not uncommon that we want to separate the detection and the
+handling of errors. The place where an error can be detected is not
+always the place where it is best to handle the error. Take for
+example the method <tt>Protocols.HTTP.get_url</tt>. It is easy for
+that method to detect when a web page couldn't be retrieved, but how
+should that problem be handled? This depends on the program that
+wanted the web page, so <tt>get_url</tt>, which is in a module that
+will be used by many programs, can't know what to do. Instead, it
+returns the value 0, in order to inform the calling program that it
+failed, and thereby it leaves the responsibility for handling the
+problem to the calling program.</p>
+
+<p>Many methods work this way: you have to check the returned value to
+see if the method succeeded or not. If you don't let your program
+check every return value from every method call, an error may be
+detected and reported by one of those methods, but never handled.
+Depending on what type of error it was, all kinds of unpleasant things
+can happen.</p>
+
+<p>An improvement over this "return-value checking" style of error
+handling is <b>exceptions</b>. When a problem is detected, perhaps
+inside a method somewhere deep inside a module, the code can <b>throw
+an exception</b>:</p>
+
+<pi>
+if(result_of_something == 0)
+  throw("Failed to open the file called '" +
+        file_name + "'\n");
+</pi>
+
+<p>If this is all that is done, the program will be terminated. But
+the thing is that you can't only <b>throw</b> an exception, you can
+<b>catch</b> it too! This is done by enclosing the code that called
+the exception-throwing method in a <b>catch block</b>:</p>
+
+<pi>
+  mixed result = catch {
+    i = klooble() + 2;
+    fnooble();
+    j = 1/i;
+  };
+  if(result == 0)
+    write("Everything was ok.\n");
+  else
+    write("Oops. There was an error.\n");
+</pi>
+
+<p>Note that the catch block is an <b>expression</b>, unlike ordinary
+blocks which are <b>statements</b>, so we have to use a semi-colon to
+end the <b>expression statement</b>.</p>
+
+<p>If no exceptions are thrown during the execution of the catch
+block, it just executes to the end like any normal block. The block
+returns a value, which in our example will be put in the variable
+<tt>result</tt>. If no exceptions are thrown, the return value from
+the catch block is 0.</p>
+
+<p>If an exception <i>was</i> thrown, either in the catch block
+itself, or in one of the methods called from the catch block, or in
+one of the methods called from those methods, and so on, then
+execution of the catch block will terminate, and the return value of
+the catch block will be the argument that was given to <tt>throw</tt>,
+in our case the string <tt>"Failed to open the file called '<i>some
+file-name</i>'\n"</tt>.</p>
+
+<p>A good thing with exceptions is that they can be thrown "through" a
+method. Even if that method doesn't do any error checking at all, the
+exception will be propagated to the caller. An an example, study this
+partial program:</p>
+
+<pi>
+void drink_coffee()
+{
+  if(coffe_pot == 0)
+    throw("No coffe-pot.");
+}
+
+void eat_dinner()
+{
+  eat_main_course();
+  eat_dessert();
+  drink_coffee();
+}
+
+int main()
+{
+  mixed result = catch {
+    eat_dinner();
+  };
+  if(result == 0)
+    write("Everything was ok.\n");
+  else
+    write("There was an error: " + result + "\n");
+
+  return 0;
+}
+</pi>
+
+<p>The method <tt>main</tt> calls <tt>eat_dinner</tt>, which in turn
+calls <tt>drink_coffee</tt>. If <tt>drink_coffee</tt> discovers that
+the coffee-pot is missing, it will throw an exception. This exception
+will pass right through <tt>eat_dinner</tt>, and be caught in
+<tt>main</tt>.</p>
+
+<p>If we hadn't used exceptions, but return codes instead, and if we
+assume that things can go wrong in all the methods, then
+<tt>eat_dinner</tt> would have looked something like this:</p>
+
+<pi>
+int eat_dinner()
+{
+  if(eat_main_course() == 0)
+    return 0;
+  if(eat_dessert() == 0)
+    return 0;
+  if(drink_coffee() == 0)
+    return 0;
+  return 1;
+}
+</pi>
+
+<p>As we can see, the version with exceptions is much simpler and
+easier, both to write and to understand.</p>
+
+<h1>Built-in exceptions</h1>
+
+<p>The Pike interpreter can throw its own exceptions. For example, an
+attempt to divide by zero will throw an exception. Most of these
+"internal" exceptions are objects, with a number of methods and member
+variables that you can use to determine the nature of the problem that
+caused the exception.</p>
+
+<p>If the caught exception is an object, you can use the member
+variable <tt>error_type</tt> for the name of the type of this error,
+for example <tt>"math_error"</tt>. You can also use the method
+<tt>describe</tt> in the exception object, to get a string with a
+short descriptive text, that presents the error in a way suitable for
+presenting to a human: the error message, and the chain of methods
+that were called. Look at this excerpt from a method for an
+example:</p>
+
+<pi>
+mixed result = catch {
+  koogle(0, 3.0, "foo");
+};
+
+if(result == 0)
+  write("Everything was ok.\n");
+else if(objectp(result))
+{
+  write("There was an error.\n");
+  write("Type of error: " + result-&gt;error_type + "\n");
+  write("Description of the error:\n");
+  write(result-&gt;describe());
+  write("Done.\n");
+}
+else {
+  write("There was some other type of error.\n");
+}
+</pi>
+
+</manual>

@@ -1,0 +1,72 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Error Codes">
+</metadata>
+<manual>
+
+<p>The return value 0 from a method may show that there was some
+error, but not what the problem was. It is common to combine return
+values of this kind with a way to find out the nature of the problem.
+This can be done with special <b>error codes</b>, that your program
+can retrieve from somewhere. Lets look at this example, which opens a
+file on disk for reading:</p>
+
+<pi>
+Stdio.File localfile = Stdio.File();
+if(!localfile-&gt;open(file_name, "r"))
+{
+  werror("Couldn't open '" + file_name + "'.\n");
+  werror(strerror(localfile-&gt;errno()) +
+         " (errno = " + localfile-&gt;errno() + ").\n");
+  exit(1);
+}
+</pi>
+
+<p>Some comments about this:</p>
+
+<list type="ul">
+<item>
+<p><pi>Stdio.File</pi> is a stream that can be used to read from a
+file on fisk. It is similar to the data type <tt>FILE</tt> in C, and
+the classes <tt>ifstream</tt> and <tt>ofstream</tt> in C++.</p>
+</item>
+
+<item>
+<p>
+<pi>!localfile-&gt;open(file_name, "r")</pi> means exactly the same
+thing as <pi>localfile-&gt;open(file_name, "r") == 0</pi>.
+</p>
+
+<p>It is common to use the <b>logical not</b> operator (<tt>!</tt>) to
+check if something is 0.</p>
+</item>
+
+<item>
+<p><tt>errno</tt> is a method in the class <tt>Stdio.File</tt>, and
+can be used io check what kind of error has occurred in a particular
+stream. It returns an error code. <tt>errno</tt> is not a global
+variable, as in C.</p>
+</item>
+
+<item>
+<p><tt>strerror</tt> returns a string that describes the error number
+given as an argument.</p>
+</item>
+</list>
+
+<p>If the file couldn't be opened, the program's output will look
+something like this:</p>
+
+<out>
+Couldn't open 'foobar.txt'.
+No such file or directory (errno = 2).
+</out>
+
+</manual>

@@ -1,0 +1,39 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Classes as Record Types">
+</metadata>
+<manual>
+
+<p>Sometimes you just need to group a few values together. This is
+called a "record" in Pascal, and a "struct" in C. You can use Pike's
+<b>class</b> mechanism for this too. Just create a class with the data
+you are interested in:</p>
+
+<pi>
+class customer
+{
+  int number;
+  string name;
+  array(string) phone_numbers;
+}
+</pi>
+
+<p>Then use it:</p>
+
+<pi>
+array(customer) all_customers = ({ });
+customer c = customer();
+c-&gt;number = 18;
+c-&gt;name = "Ellen Ripley";
+c-&gt;phone_numbers = ({ "555-8767", "555-4001" });
+all_customers += ({ c });
+</pi>
+
+</manual>

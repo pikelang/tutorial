@@ -1,0 +1,153 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Methods and Loops">
+</metadata>
+<manual>
+
+<p>We will soon ad the web stuff, and actually download the web page.
+But the method <tt>main</tt> is getting a bit long now, so perhaps it
+is time to divide or program into several methods. Instead of putting
+the web stuff in <tt>main</tt>, we write a method called
+<tt>handle_url</tt>, which will do all the handling of a URL.</p>
+
+<pi>
+void handle_url(string this_url)
+{
+  write("URL: " + this_url + "\n");
+} // handle_url
+</pi>
+
+<p>So far, it only writes the URL on the screen, just like we did in
+<tt>main</tt>.</p>
+
+<p>Some interesting things to note:</p>
+
+<list type="ul">
+<item>
+<p><tt>main</tt> returns an integer, to indicate if the program
+succeeded or not. We don't care if <tt>handle_url</tt> fails, so we
+set the <b>return type</b> to <tt>void</tt>, which means
+"nothing".</p>
+</item>
+
+<item>
+<p><tt>main</tt> had two parameters. <tt>handle_url</tt> only has one,
+<tt>this_url</tt>. <tt>this_url</tt> can contain a string.</p>
+</item>
+</list>
+
+<p>For this method to be executed by Pike, we must <b>call</b> it from
+main. We replace the statement that printed the URL with:</p>
+
+<pi>
+  <changed>handle_url(url);</changed>
+</pi>
+
+<p>This sends the value in the variable <tt>url</tt>, which is a local
+variable in <tt>main</tt>, to <tt>handle_url</tt>, where it will be
+put in the variable <tt>this_url</tt>. The thing that is sent,
+<tt>url</tt>, is usually called an <b>argument</b>, and the variable
+that receives it, <tt>this_url</tt>, is usually called a
+<b>parameter</b>.</p>
+
+<p>A problem with our program is what happens if the user doesn't give
+an argument, and then just hits the return key when the program asks
+for a URL. <tt>Stdio.stdin-&gt;gets()</tt> will return an empty sting,
+just as it should, but that is not a valid web address. If we want the
+program to keep asking until it gets a non-empty answer, we can put
+the two ask-and-read statements inside a <b>loop</b>:</p>
+
+<pi>
+<changed>do
+{</changed>
+  write("Type the address of the web page:\n");
+  url = Stdio.stdin-&gt;gets();
+<changed>} while(sizeof(url) == 0);</changed>
+</pi>
+
+<p>This is a <b>do-while loop</b>, and such a loop follows the
+pattern</p>
+
+<pi>
+do
+  <i>something</i>
+while( <i>condition</i> );
+</pi>
+
+<p>The do-while loop will do the <i>something</i> at least once, and
+then keep doing it as long as the <i>condition</i> is true. First it
+does the <i>something</i>, then it checks the <i>condition</i>, and
+then it either leaves the loop and continues after it, or goes back to
+the start of the loop and does the <i>something</i> again. In our
+case, the <i>condition</i> is that <tt>sizeof(url) == 0</tt>, i. e.
+that the string <tt>url</tt> is empty.</p>
+
+<p>Another problem with our program is that it only checks if
+<tt>argc</tt> is 2. If you give several arguments, the program will
+ignore them. We change the <tt>if</tt> test a bit, so that it prints
+an error message and then terminates the program if we give too many
+arguments. The complete program now looks like this:</p>
+
+<pi>
+#! /usr/local/bin/pike
+
+// The Very Simple World Wide Web Browser
+
+<changed>void handle_url(string this_url)
+{
+  write("URL: " + this_url + "\n");
+} // handle_url</changed>
+
+int main(int argc, array(string) argv)
+{
+  write("Welcome to the Very Simple WWW Browser!\n");
+  string url;
+  <changed>if(argc == 1)
+  {
+    do
+    {</changed>
+      write("Type the address of the web page:\n");
+      url = Stdio.stdin-&gt;gets();
+    <changed>} while(sizeof(url) == 0);
+  }
+  else if(argc == 2)
+  {</changed>
+    url = argv[1];
+  <changed>}
+  else
+  {
+    write("Too many arguments. Goodbye. Sorry.\n");
+    return 1;
+  }
+  handle_url(url);</changed>
+  return 0;
+} // main
+</pi>
+
+<p>Note how we have chained two <tt>if</tt> statements together with
+an <tt>else if</tt>.</p>
+
+<p>Neither the curly brackets around <tt>url = argv[1];</tt> nor those
+around the <tt>do</tt> loop are necessary, since they only encircle a
+single statement each, but some programmers feel that it is to be on
+the safe side having them there either way, in case they would add yet
+another statement later on and forget about adding the braces. Others
+feel that if you have curly brackets around one of the possible cases
+in an <tt>if</tt> statement, you should have curly braces around all
+of them. Uniformity makes it easier to grasp the structure of the
+whole thing at a glance.</p>
+
+<p>Also note how the use of <b>indentation</b>, i. e. the varying
+amount of white space at the beginning of each line, makes it easy to
+follow the "block structure" of the program. For example, you can
+easily see that the <b>do-while</b> loop is inside the first case of
+the <tt>if</tt> statement.</p>
+
+</manual>

@@ -1,0 +1,83 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Logical Expressions">
+</metadata>
+<manual>
+
+<p>We often want to express conditions such as "if this is true,
+<i>and</i> that is true, then we do something". Such calculations with
+truth values are done with the <b>logical operators</b> in Pike:</p>
+
+<xtable>
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c><p>Logical and</p></c>
+<c><p>a &amp;&amp; b</p></c>
+<c><p>If a is false, a is returned and b is not calculated. Otherwise, b
+is returned.</p></c>
+</row>
+
+<row>
+<c><p>Logical or</p></c>
+<c><p>a || b</p></c>
+<c><p>If a is true, a is returned and b is not calculated. Otherwise, b
+is returned.</p></c>
+</row>
+
+<row>
+<c><p>Logical not</p></c>
+<c><p>! a</p></c>
+<c><p>Returns 0 if a is true, 1 otherwise.</p></c>
+</row>
+
+</xtable>
+
+<p>For example, if the temperature is below 100 degrees, and we still
+have some fuel, we want to burn some more:</p>
+
+<pi>
+if(temperature &lt; 100 &amp;&amp; fuel &gt; 0)
+burn();
+</pi>
+
+<p>Both <tt>&amp;&amp;</tt> and <tt>||</tt> always calculate their
+first argument, but the second one is calculated only if it is
+necessary to find the value of the entire expression. In <tt>a
+&amp;&amp; b</tt>, if <tt>a</tt> is false, <tt>a</tt> <i>and</i>
+<tt>b</tt> can never be true, so we don't bother to calculate
+<tt>b</tt>. This is useful in cases like this:</p>
+
+<pi>
+if(i &lt;sizeof(a) &amp;&amp; a[i] != 0)
+smorgle(a);
+</pi>
+
+<p>If <tt>i</tt> is too big to be a valid index in the array
+<tt>a</tt>, which we check in the first part of the condition, we will
+get an error if we try the operation <tt>a[i]</tt>, and our program
+will be interrupted.</p>
+
+<p>Since the <tt>||</tt> operator returns the first argument that is
+non-zero, there is a useful trick that can be used to check a number
+of variables:</p>
+
+<pi>return a || b || "";</pi>
+
+<p>This will return <tt>a</tt>, except in the case when <tt>a</tt> is
+<b>0</b>, in which case it will return <tt>b</tt>. Except in the case
+when <tt>b</tt> also is <b>0</b>, in which case it will return an
+empty string.</p>
+
+</manual>

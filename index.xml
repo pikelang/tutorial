@@ -1,0 +1,53 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="default.xsl">
+ <datum name=title value="Tutorial">
+</metadata>
+<column charwidth="60">
+
+<h1>Pike Tutorial</h1>
+
+<p>Version 1.0 of this tutorial was completed by Thomas Padron-McCarthy on
+February 29, 2000 (with thanks to Fredrik Hübinette, who wrote the original
+tutorial), and covered Pike 7.0. Maintenance since then has been in the hands
+of Johan Sundström and the rest of the <a href="/development/team/">pike
+development team</a>, and we would hope that you too would want to
+participate, helping out and contributing updates, pointing out what could be
+improved upon, and how. Send us a mail at <mail>manual@pike.ida.liu.se</mail>
+and join in!</p>
+
+<p>
+  <table border="0" cellpadding="10">
+    <emit scope="manual" source="dir" menu="top.menu">
+      <tr><td valign="top">
+	<b><a href="&manual.path;">&manual.title;</a></b>
+
+	<br/><br/>
+
+        <font size="-1">
+	  <table border="0" cellpadding="0" cellspacing="2">
+	    <emit scope="chapter" source="dir"
+	     menu="sub.menu" path="&manual.path;">
+              <tr><td align="right" valign="top">
+		    
+		<img width="20" alt="" src="/R" width="1" height="1"/>
+	        <img src="/internal-roxen-dot" alt="" width="12" height="12"/>
+
+	      </td><td>
+	        <a href="&chapter.path;">&chapter.title;</a>
+              </td></tr>
+	    </emit>
+	  </table>
+	</font>
+      </td></tr>
+    </emit>
+  </table>
+</p>
+
+</column>

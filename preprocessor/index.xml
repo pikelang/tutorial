@@ -1,0 +1,22 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="The Preprocessor">
+</metadata>
+<manual>
+
+<summary>
+When a Pike file is executed, the source code is first run through the
+preprocessor, which performs textual transformations on the source
+code. The preprocessor is controlled with preprocessor directives,
+which are program lines that start with the character "#". It is
+usually best not to use preprocessor directives.
+</summary>
+
+</manual>

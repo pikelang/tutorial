@@ -1,0 +1,40 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Error Handling: the Concept">
+</metadata>
+<manual>
+
+<p>When you examine a program that is intended to solve a real problem
+in the real world, a surprisingly large portion of the program will be
+written just to take care of possible errors. Even in the simple web
+browser from the example earlier in this tutorial, which hardly
+qualifies as a real-world program, we had to handle no less than three
+possible errors:</p>
+
+<list type="ul">
+<item>
+<p>An incorrect number of command-line arguments to the program.</p>
+</item>
+
+<item>
+<p>The user didn't write a web address, and just pressed the return
+key instead.</p>
+</item>
+
+<item>
+<p>The browser couldn't download the web page from the given
+address.</p>
+</item>
+</list>
+
+<p>Error handling usually consists of two parts:
+<b>detecting</b> the error, and <b>handling</b> it.</p>
+
+</manual>

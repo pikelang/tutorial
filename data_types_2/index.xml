@@ -1,0 +1,19 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="More About Data Types ">
+</metadata>
+<manual>
+
+<summary>
+This chapter gives a more in-depth treatment of the data types,
+especially of <tt>array</tt>, <tt>mapping</tt>, and <tt>multiset</tt>.
+</summary>
+
+</manual>

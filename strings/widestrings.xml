@@ -1,0 +1,72 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Wide Strings">
+</metadata>
+<manual>
+
+<p>Normal strings contain characters with character codes between 0
+and 255, so-called 8-bit characters. But Pike can also handle strings
+with characters with higher character codes. This is needed for some
+languages, such as Japanese. Such strings are called <b>wide
+strings</b>:</p>
+
+<pi>"The character \x123456 is the same as \d1193046."</pi>
+
+<p>This string contains two occurrences of the character with
+(decimal) character code 1193046. As you may remember, Pike will
+translate \x followed by a hexadecimal (that is, base 16) number in a
+string literal to the character with that character code. The same is
+true for \d followed by a decimal (that is, normal base 10) number,
+and for a single \ followed by an octal (base 8) number.</p>
+
+<p>Internally, Pike will handle wide strings differently from normal
+8-bit strings, but as a Pike programmer, you will usually not need to
+worry about the difference. Just use the characters you need. There
+may however be some operations, for example certain methods in certain
+modules, that cannot handle wide strings but that work with 8-bit
+strings. This is seldom intentilnal, and should you stumble upon one,
+please report it to us in
+<a href="http://community.roxen.com/crunch/">Bug Crunch</a>, our bug
+tracking system at Roxen Internet Software, and we'll try to fix it as
+soon as time allows.</p>
+
+<p>Here are some functions that can be used to examine wide
+strings:</p>
+
+<list type="ul">
+<item name="String.width(string data)">
+
+<p>This gives the width of the string <i>data</i>. This width of a
+string is the number of bits that is used to store each character in
+the string. Normal strings are 8 bits wide, but strings can also be 16
+or 32 bits wide. For each string, Pike will use as few bits as
+possible. For example, <tt>"foo"</tt> will be 8 bits wide,
+<tt>"foo\d255"</tt> is also 8 bits wide, <tt>"foo\d256"</tt> is 16
+bits wide, and <tt>"foo\d70000"</tt> is 32 bits wide.</p>
+</item>
+
+<item name="string_to_utf8(string data)">
+
+<p>This translates the string <i>data</i>, which can be a wide string,
+to a string in the format UTF8. UTF8 is a format that encodes wide
+characters in an 8-bit string.</p>
+</item>
+
+<item name="utf8_to_string(string utf8_encoded_data)">
+
+<p>This translates an UTF8-encoded string <i>utf8_encoded_data</i>
+(which, by implication of the nature of the coding, can not be a wide
+string, since the UTF8 encoding is 8-bit by definition), to a pike
+string.</p>
+</item>
+
+</list>
+
+</manual>

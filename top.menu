@@ -1,0 +1,68 @@
+<metadata>
+ <datum name=description value="">
+ <datum name=http-content-type value="sitebuilder/menu">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=title value="">
+</metadata>
+<mi>
+  <title>Introduction</title>
+  <url>introduction</url>
+</mi>
+<mi>
+  <title>First Steps</title>
+  <url>hello</url>
+</mi>
+<mi>
+  <title>Fundamental Concepts</title>
+  <url>fundamentals</url>
+</mi>
+<mi>
+  <title>Your Second Pike Program</title>
+  <url>browser</url>
+</mi>
+<mi>
+  <title>An Introduction to Data Types</title>
+  <url>data_types</url>
+</mi>
+<mi>
+  <title>Methods</title>
+  <url>methods</url>
+</mi>
+<mi>
+  <title>Object-Oriented Programming</title>
+  <url>oop</url>
+</mi>
+<mi>
+  <title>Statements</title>
+  <url>statements</url>
+</mi>
+<mi>
+  <title>More About Data Types</title>
+  <url>data_types_2</url>
+</mi>
+<mi>
+  <title>Working with Strings</title>
+  <url>strings</url>
+</mi>
+<mi>
+  <title>Expressions</title>
+  <url>expressions</url>
+</mi>
+<mi>
+  <title>The Preprocessor</title>
+  <url>preprocessor</url>
+</mi>
+<mi>
+  <title>Modules</title>
+  <url>modules</url>
+</mi>
+<mi>
+  <title>Errors and Error Handling</title>
+  <url>error</url>
+</mi>
+<mi>
+  <title>Not Covered Here</title>
+  <url>not_covered</url>
+</mi>

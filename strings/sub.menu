@@ -1,0 +1,23 @@
+<metadata>
+ <datum name=http-content-type value="sitebuilder/menu">
+</metadata>
+<mi>
+  <title></title>
+  <url>operators.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>builtins.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>sprintf.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>sscanf.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>widestrings.xml</url>
+</mi>

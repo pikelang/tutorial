@@ -1,0 +1,124 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="The Other Statement Types">
+</metadata>
+<manual>
+
+<h1>The Empty Statement</h1>
+
+<p>Sometimes you may need a statement that does nothing. The <b>empty
+statement</b> can be used for this. It just consists of a single
+semi-colon. For example, sometimes you may want the body of a loop to
+do nothing:</p>
+
+<pi>
+// Keep checking if it is finished, until it is
+while(! finished())
+  ;
+</pi>
+
+<h1>The Block, or Compound Statement</h1>
+
+<p>As we have seen above, you can enclose several statements in curly
+brackets, "{" and "}". The result is called a <b>block</b> or
+<b>compound statement</b>, and can be used as a single statement. Here
+is one example:</p>
+
+<pi>
+{
+  write("Hello ");
+  write("world!\n");
+}
+</pi>
+
+<p>Do not put a semi-colon (";") after the final bracket ("}").</p>
+
+<p>You can define variables inside the block. Such a variable is local
+in that block, and is available only to the program code written
+inside the block:</p>
+
+<pi>
+{
+  write("What is your name?\n");
+  string name;
+  name = Stdio.stdin-&gt;gets();
+  write("Your name is " + name + ".\n");
+}
+</pi>
+
+<p>A block can be empty:</p>
+
+<pi>{ }</pi>
+
+<h1>The Expression Statement</h1>
+
+<p>The <b>expression statement</b> follows this template:</p>
+
+<pi><i>expression</i> ;</pi>
+
+<p>That is, you just take an expression and put a semi-colon
+(<tt>;</tt>) at the end. Typical expression statements are:</p>
+
+<pi>
+write("Hello world!\n");
+i = 7;
+++i;
+</pi>
+
+<p>All of these are expressions with a semi-colon appended. Since the
+expression statement doesn't do anything with the value of the
+expression, it is the so-called "side-effects" of the expressions that
+we are interested in. For example, the expression "<tt>i = 7</tt>" has
+the value <b>7</b>, but what is interesting is of course that it has
+the side-effect of setting the variable <tt>i</tt> to <b>7</b>.</p>
+
+<p>Since you can take any expression and add a semi-colon, these
+strange-looking (and rather useless) statements are also allowed:</p>
+
+<pi>
+2 + 2;
+3;
+</pi>
+
+<h1>Other Statements: <tt>return</tt> and <tt>catch</tt></h1>
+
+<p>The <tt>return</tt> statement is used to leave a method, and
+sometimes also to return a value from that method:</p>
+
+<pi>
+return;
+return x + 3;
+</pi>
+
+<p>You can read more about the <tt>return</tt> statement in the
+chapter about methods.</p>
+
+<p>The <tt>catch</tt> statement is used to try to execute some Pike
+code, letting the programmer control what happens if there is an
+error:</p>
+
+<pi>
+  mixed result = catch
+  {
+    i = klooble() + 2;
+    fnooble();
+    j = 1/i;
+  };
+
+  if(result == 0)
+    write("Everything was ok.\n");
+  else
+    write("Oops. There was an error.\n");
+</pi>
+
+<p>You can read more about the <tt>catch</tt> statement in the chapter
+about error handling.</p>
+
+</manual>

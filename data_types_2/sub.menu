@@ -1,0 +1,15 @@
+<metadata>
+ <datum name=http-content-type value="sitebuilder/menu">
+</metadata>
+<mi>
+  <title></title>
+  <url>basic_types.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>container_types.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>other_types.xml</url>
+</mi>

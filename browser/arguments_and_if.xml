@@ -1,0 +1,117 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Command-line Arguments and if">
+</metadata>
+<manual>
+
+<p>Before we let the program actually do anything with the URL we give
+to it, we will improve the program to let it take the URL as a
+<b>command-line argument</b>. That is, we want to start the program
+with the command</p>
+
+<interactive>
+<in>webbrowser.pike http://www.roxen.com/</in>
+</interactive>
+
+<p>instead of letting the program ask for the URL. We add some code
+for this:</p>
+
+<pi>
+<changed>#! /usr/local/bin/pike</changed>
+
+// The Very Simple World Wide Web Browser
+
+int main(<changed>int argc, array(string) argv</changed>)
+{
+  write("Welcome to the Very Simple WWW Browser!\n");
+  string url;
+  <changed>if(argc == 2)
+    url = argv[1];
+  else
+  {</changed>
+    write("Type the address of the web page:\n");
+    url = Stdio.stdin-&gt;gets();
+  <changed>}</changed>
+  write("URL: " + url + "\n");
+  return 0;
+} // main
+</pi>
+
+<p>This program can handle a command-line argument, but if you don't
+give one, it will ask for an URL just as before.</p>
+
+<p>There are some new things to explain here:</p>
+
+<list type="ul">
+<item>
+<p>The line <tt>#! /usr/local/bin/pike</tt> only works on a Unix
+system, as described earlier. You can remove it if you are using
+Windows NT.</p>
+</item>
+
+<item>
+<p>We have added <tt>int argc, array(string) argv</tt> as
+<b>parameters</b> to <tt>main</tt>. The parameters are like normal
+variables, except that they will be assigned some values automatically
+when the program starts.</p>
+</item>
+
+<item>
+<p>The variable <tt>argc</tt> has the type <tt>int</tt>, which means
+<b>integer</b>. It will contain the number of command-line arguments.
+The program name is counted as an argument, so if you give one
+argument to the program, <tt>argc</tt> will have the value
+<b>2</b></p>
+</item>
+
+<item>
+<p>The variable <tt>argv</tt> will contain the arguments. Its type is
+<tt>array(string)</tt>, which means <b>array of strings</b>. Each
+command-line argument is put in a string, and together they form a
+list or array.</p>
+</item>
+
+<item>
+<p><tt>argc == 2</tt> is a comparison. We check if the value of
+<tt>argc</tt> is <b>2</b>. <tt>==</tt> is an <b>operator</b> that
+checks if two things are the same. Some other comparison operators in
+Pike are <tt>&lt;</tt> (less than), <tt>&gt;=</tt> (greater than or
+equal), and <tt>!=</tt> (not same).</p>
+</item>
+
+<item>
+<p><tt>argv[1]</tt> retrieves an element from position number 1 inside
+an array. The positions are numbered from 0, so position 1 is actually
+the second element in the array. This is the URL given as argument to
+the program. <tt>argv[0]</tt> contains the name of the program, the
+string <tt>"webbrowser.pike"</tt>.</p>
+</item>
+
+<item>
+<p>The <tt>if</tt> statement lets Pike choose between different
+actions. It follows the template or pattern</p>
+
+<pi>
+if( <i>condition</i> )
+  <i>something</i>
+else
+  <i>something-else</i>
+</pi>
+
+<p>If the <i>condition</i> (in our case, that <tt>argc == 2</tt>) is
+<b>true</b>, Pike will do the <i>something</i>. If the
+<i>condition</i> is <b>false</b>, it will do the
+<i>something-else</i>. In our program, there are two <b>statements</b>
+in the <i>something-else</i>, so we must enclose it in curly brackets,
+<tt>{</tt> and <tt>}</tt>.</p>
+</item>
+</list>
+
+</manual>

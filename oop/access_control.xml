@@ -1,0 +1,79 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=language valuen=0>
+ <datum name=multilang_status value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=syntax_error valuen=0>
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Access control">
+ <datum name=xsl-params value64="tmtlMCE=">
+</metadata>
+<manual>
+
+<p>Do you remember about <b>information hiding</b>? In the examples
+above, everyone could access all the methods and member variables in
+all objects. For example, it is very easy to lose weight:</p>
+
+<pi>h-&gt;weight -= 10.0;</pi>
+
+<p>Oh? The hamster only weighed 0.12, and now it weighs <i>minus</i>
+9.88?</p>
+
+<p>We would like to control the access to the member variable
+<tt>weight</tt>, so that other classes cannot touch it. For uses like
+this, there are a number of <b>access modifiers</b>, which are written
+before the data type in the definition of a method or member variable.
+For example, the weight of an animal is represented by the member
+variable <tt>weight</tt>, defined as:</p>
+
+<pi>float weight;</pi>
+
+<p>By changing that to</p>
+
+<pi>private float weight;</pi>
+
+<p>we only allow methods in the same class to access that
+variable.</p>
+
+<p>The following access modifiers exist:</p>
+
+<list type="dl">
+<item name="public">
+<p>This is the default, and means that any method can access the
+member variable, or call the method.</p>
+</item>
+
+<item name="private">
+<p>This means that the member variable or method is only available to
+methods in the same class.</p>
+</item>
+
+<item name="static">
+<p>This means that this member variable or method is only available to
+methods in the same class, and in subclasses (<pi>static</pi> in Pike
+does not at all mean the same thing as <pi>static</pi> in C++.
+Instead, it is similar to <pi>protected</pi> in C++.)</p>
+</item>
+
+<item name="local">
+<p>This means that even if this method is overridden by a method in a
+subclass, methods in this class will still use this method.</p>
+</item>
+
+<item name="final">
+<p>This prevents subclasses from re-defining this method.</p>
+</item>
+</list>
+
+<p>If a class has a constructor (that is, a method called
+<pi>create</pi>) it can be a good idea to declare it <pi>static</pi>.
+It is not supposed to be called except during the construction of the
+object, and if it is not <pi>static</pi> there may be some type
+incompatibilities in connection with inheritance.</p>
+
+</manual>

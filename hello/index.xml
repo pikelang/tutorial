@@ -1,0 +1,20 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="First Steps">
+</metadata>
+<manual>
+
+<summary>
+We show what a "hello world" program looks in Pike. There is also a
+graphical toolkit available for Pike, so you can write a window-based
+"hello world". Pike can also be run interactively.
+</summary>
+
+</manual>

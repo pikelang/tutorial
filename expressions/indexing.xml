@@ -1,0 +1,198 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Indexing">
+</metadata>
+<manual>
+
+<p>The data items of some of the data types in Pike can contain other
+data items. The indexing and range operators are used to retrieve
+information from inside those complex data items.</p>
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c><p>Indexing</p></c>
+<c><p>a [ b ]</p></c>
+<c><p>The value at index or position b in a</p></c>
+</row>
+
+<row>
+<c><p>Assign at index</p></c>
+<c><p>a [ b ] = c</p></c>
+<c><p>Sets the value at index or position b in a to c</p></c>
+</row>
+
+<row>
+<c><p>Range</p></c>
+<c><p>a [ b .. c]</p></c>
+<c><p>Returns a slice of a, i. e. the elements in a starting at the index
+b and ending at c</p></c>
+</row>
+
+<row>
+<c><p>Range</p></c>
+<c><p>a [ .. c]</p></c>
+<c><p>Returns a slice of a, starting at the beginning of a and ending at
+c</p></c>
+</row>
+
+<row>
+<c><p>Range</p></c>
+<c><p>a [ b .. ]</p></c>
+<c><p>Returns a slice of a, from the index b to the end of a</p></c>
+</row>
+
+</xtable>
+
+<p>Note that the indices in an array start with 0, so the last index
+value in an array is equal to the length of the array minus one.</p>
+
+<p>You may remember the syntax for accessing methods and member
+variables in an object, using the operator <tt>-&gt;</tt>. This is
+actually a form of indexing, and the <tt>-&gt;</tt> operator is just a
+different way of writing the indexing operator. If you turn the
+<i>identifier</i> in the expression
+<i>something</i><tt>-&gt;</tt><i>identifier</i> into a string by
+putting double quotes around it, you can use the <tt>[]</tt> indexing
+operators, like this:</p>
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c><p>Indexing</p></c>
+<c><p>a -&gt;<i>identifier</i></p></c>
+<c><p>Equivalent to a["<i>identifier</i>"]</p></c>
+</row>
+
+<row>
+<c><p>Assign at index</p></c>
+<c><p>a -&gt;<i>identifier</i> = c</p></c>
+<c><p>Equivalent to a["<i>identifier</i>"] = c</p></c>
+</row>
+
+</xtable>
+
+<p>You can index strings, arrays, mapping, multisets and objects. Some
+of these can only be indexed with certain types of index values, as
+shown in this list:</p>
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Returns</h>
+</row>
+
+<row>
+<c><p><tt><i>string</i>[<i>int</i>]</tt></p></c>
+<c><p>Returns the numerical value of a character in the string. The
+result is not a character or a string, but just the integer used
+internally to represent the character. Note that the first character
+has index number 0, and so on.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>array</i>[<i>int</i>]</tt></p></c>
+<c><p>Returns an element in the array</p></c>
+</row>
+
+<row>
+<c><p><tt><i>array</i>[<i>int</i>]=<i>mixed</i></tt></p></c>
+<c><p>Sets an element in the array to the <i>mixed</i> value.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>multiset</i>[<i>mixed</i>]<br/>
+<i>multiset</i>-&gt;<i>identifier</i> </tt></p></c>
+<c><p>Returns <b>1</b> if the index (the value between the brackets) is a
+member in the multiset, 0 otherwise.</p></c>
+</row>
+
+<row>
+<c><p><tt>
+<i>multiset</i>[<i>mixed</i>]=<i>mixed</i><br/>
+<i>multiset</i>-&gt;<i>identifier=<i>mixed</i></i>
+</tt></p></c>
+<c><p>If the rightmost <i>mixed</i> value is <b>true</b>, the index value
+is added as a member to the multiset. Otherwise it is removed from the
+multiset.</p></c>
+</row>
+
+<row>
+<c><p><tt>
+<i>mapping</i>[<i>mixed</i>]<br/>
+<i>mapping</i>-&gt;<i>identifier</i>
+</tt></p></c>
+<c><p>Returns the value associated with the index, or 0 if it is not
+found.</p></c>
+</row>
+
+<row>
+<c><p><tt>
+<i>mapping</i>[<i>mixed</i>]=<i>mixed</i><br/>
+<i>mapping</i>-&gt;<i>identifier</i>=<i>mixed</i>
+</tt></p></c>
+<c><p>Associate the second <i>mixed</i> value with the first <i>mixed</i>
+value.</p></c>
+</row>
+
+<row>
+<c><p><tt>
+<i>object</i>[<i>string</i>]<br/>
+<i>object</i>-&gt;<i>identifier</i><br/>
+</tt></p></c>
+<c><p>Returns the value of the variable that is named by the identifier
+in the object.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>object</i>[<i>string</i>]=<i>mixed</i><br/>
+<i>object</i>-&gt;<i>identifier</i>=<i>mixed</i><br/>
+</tt></p></c>
+<c><p>Set the given identifier in the object to the <i>mixed</i> value.
+Only works if the identifier references a variable in the object.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>string</i>[<i>int</i>..<i>int</i>]</tt></p></c>
+<c><p>Returns a piece of the string.</p></c>
+</row>
+
+<row>
+<c><p><tt><i>array</i>[<i>int</i>..<i>int</i>]</tt></p></c>
+<c><p>Returns a slice of the array.</p></c>
+</row>
+
+</xtable>
+
+<p>When indexing an array or string, it is sometimes convenient to
+start counting from the end instead of from the beginning. You can do
+this with negative indices. The last element in the array can be
+accessed with index -1, the second-to-last element with index -2, and
+so on. In general, <tt>arr[-i]</tt> is equivalent to
+<tt>arr[sizeof(arr)-i]</tt>.</p>
+
+<p>Negative indices do not work with the range operator. The range
+operator will try to convert negative or too-large index values to
+something legal.</p>
+
+</manual>

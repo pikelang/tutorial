@@ -1,0 +1,250 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=language valuen=0>
+ <datum name=multilang_status value="">
+ <datum name=original-language value="en">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=syntax_error valuen=0>
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value64="tmtlMAYTUmVwZXRpdGlvbiAob3IgIkxvb3BzIik=">
+ <datum name=xsl-params value64="tmtlMCE=">
+</metadata>
+<manual>
+
+<p>Pike has four different facilities for repetition: the
+<tt>while</tt> statement, the <tt>for</tt> statement, the
+<tt>do while</tt> statement, and the <tt>foreach</tt> statement.</p>
+
+<h1>The <tt>while</tt> Statement</h1>
+
+<p>The <tt>while</tt> statement does something as long as a condition
+is true. It follows this template:</p>
+
+<pi>
+while( <i>expression</i> )
+  <i>statement</i>
+</pi>
+
+<p>Pike calculates the value of <i>expression</i>. If the value is
+<b>false</b>, it leaves the loop. If the value is <b>true</b>, it
+executes <i>statement</i>, and then it goes back to the start and
+calculates the value of <i>expression</i> once again, to see if we
+should run another iteration of the loop.</p>
+
+<p>Example:</p>
+
+<pi>
+while(temperature &lt; 200)
+  heat_some_more();
+</pi>
+
+<p>This will keep calling the method <tt>heat_some_more</tt> until the
+value of <tt>temperature</tt> is at least <b>200</b>. If
+<tt>temperature</tt> was at least <b>200</b> from the start,
+<tt>heat_some_more</tt> is never called.</p>
+
+<p>As always, <i>statement</i> can be a block, so we can have several
+statements that are executed in each iteration of the loop. This
+example will print the first five elements (element number 0, 1, 2, 3,
+and 4) in the array <tt>argv</tt>, each on its own line:</p>
+
+<pi>
+int i = 0;
+while (i &lt; 5)
+{
+  write(argv[i] + "\n");
+  i = i + 1;
+}
+</pi>
+
+<h1>The <tt>for</tt> Statement</h1>
+
+<p>The <tt>for</tt> statement does something as long as a condition is
+<b>true</b>, just like the <tt>while</tt> statement, but the
+<tt>for</tt> statement also has a place to put an expression that is
+calculated before the loop is started, and another place for an
+expression that is run immediately after the statement in the loop.
+The <tt>for</tt> loop follows this template:</p>
+
+<pi>
+for( <i>init-expression</i> ; <i>condition-expression</i> ; <i>change-expression</i> )
+  <i>statement</i>
+</pi>
+
+<p>This is (almost exactly) equivalent to this <b>while</b> loop:</p>
+
+<pi>
+<i>init-expression</i>;
+while( <i>condition-expression</i> )
+{
+  <i>statement</i>
+  <i>change-expression</i>;
+}
+</pi>
+
+<p>The <b>while</b> loop in the example above, the one that writes the
+element in an array, can be re-written as a <b>for</b> loop, like
+this:</p>
+
+<pi>
+int i;
+for (i = 0; i &lt; 5; i = i + 1)
+  write(argv[i] + "\n");
+</pi>
+
+<p>As an extra feature, the definition of the loop variable can be put
+inside the <tt>for</tt> loop:</p>
+
+<pi>
+for(int i = 0; i &lt; 5; i = i + 1)
+  write(argv[i] + "\n");
+</pi>
+
+<p>In that case, the variable <tt>i</tt> is local in the <tt>for</tt>
+loop, and disappears when we leave the loop.</p>
+
+<h1>The <tt>do while</tt> Statement</h1>
+
+<p>Sometimes we don't want to do the test in a loop until after the
+first iteration of the statement in the loop. In those case we can use
+a <b>do while</b> loop. The <b>do while</b> loop statement follows
+this template:</p>
+
+<pi>
+do
+  <i>statement</i>
+while( <i>expression</i> );
+</pi>
+
+<p>Pike starts by executing <i>statement</i>. Then it calculates the
+value of <i>expression</i>. If the value is <b>false</b>, it leaves
+the loop. If the value is <b>true</b>, it goes to the start of the
+loop, executes <i>statement</i> again, and then calculates the value
+of <i>expression</i> once again, to see if we should run another
+iteration of the loop.</p>
+
+<p>If we want the user to answer "yes" or "no" to a question, and we
+want to keep asking until we get either "yes" or "no", we could write
+a loop like this:</p>
+
+<pi>
+string answer;
+write("Have you stopped beating your wife yet?\n");
+do
+{
+  write("Answer yes or no: ");
+  answer = Stdio.stdin-&gt;gets();
+} while(answer != "yes" &amp;&amp; answer != "no");
+</pi>
+
+<h1>The <tt>foreach</tt> Statement</h1>
+
+<p>The <b>foreach</b> loop statement is very useful. It goes through
+all the elements in an array, doing something with each element. It
+follows this template:</p>
+
+<pi>
+foreach( <i>container</i> , <i>loop-variable</i> )
+  <i>statement</i>
+</pi>
+
+<p><i>Container</i> should be an expression with an array as value,
+and <i>loop-variable</i> should be the name of a variable. Pike will
+execute <i>statement</i> once for each element in the array
+<i>container</i>, with that element in the variable
+<i>loop-variable</i>. This example will print all the strings in the
+array <b>argv</b>, each on its own line:</p>
+
+<pi>
+string s;
+foreach (argv, s)
+  write(s + "\n");
+</pi>
+
+<p>The <tt>foreach</tt> statement is similar to the <tt>for</tt>
+statement, in that the definition of the loop variable can be put
+inside the <tt>foreach</tt> loop:</p>
+
+<pi>
+foreach(argv, string s)
+  write(s + "\n");
+</pi>
+
+<p>In that case, the variable <tt>s</tt> is local in the
+<tt>foreach</tt> loop, and disappears when we leave the loop.</p>
+
+<h1><tt>break</tt> and <tt>continue</tt></h1>
+
+<p>Sometimes you want to leave a loop somewhere in the middle, and
+continue executing the program after the end of the loop. You can use
+the <tt>break</tt> statement for this, as in this example:</p>
+
+<pi>
+while(1)
+{
+  string command = Stdio.stdin-&gt;gets();
+  if(command == "quit")
+    break;
+  do_command(command);
+}
+</pi>
+
+<p><tt>break</tt> can be used in loops and in <tt>switch</tt>
+statements. It will cause Pike to "break out" of the loop or
+<tt>switch</tt> statements, and execution will continue after the loop
+or <tt>switch</tt> statement.</p>
+
+<p><tt>continue</tt>, on the other hand, can only be used in loops. A
+<tt>continue</tt> statement will cause Pike to skip the rest of the
+body of the loop, going directly to the next iteration. For example,
+this loop will never call <tt>do_command</tt> with an empty string as
+argument:</p>
+
+<pi>
+while(1)
+{
+  string command = Stdio.stdin-&gt;gets();
+  if(strlen(command) == 0)
+    continue;
+  do_command(command);
+}
+</pi>
+
+<p>Some programmers feel that <tt>continue</tt> is unnecessary and
+makes the code hard to read. A loop that uses <tt>continue</tt> can
+always be re-written without <tt>continue</tt>. Our example would look
+like this:</p>
+
+<pi>
+while(1)
+{
+  string command = Stdio.stdin-&gt;gets();
+  if(strlen(command) != 0)
+    do_command(command);
+}
+</pi>
+
+<p>There are at least three more ways of leaving a loop in the
+middle:</p>
+
+<list type="ul">
+<item>
+<p>You can use the <tt>return</tt> statement to leave the entire
+method.</p>
+</item>
+
+<item>
+<p>You can use <tt>throw</tt> to throw an exception.</p>
+</item>
+
+<item>
+<p>You can call <tt>exit</tt> to terminate the program.</p>
+</item>
+</list>
+
+</manual>

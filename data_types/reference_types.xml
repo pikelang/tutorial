@@ -1,0 +1,178 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Basic Types and Reference Types">
+</metadata>
+<manual>
+
+<summary>
+Values of the <b>basic types</b> (<tt>int</tt>, <tt>float</tt>, and
+<tt>string</tt>) are stored in the variables themselves. For the
+<b>reference types</b> (<tt>array</tt>, <tt>mapping</tt>,
+<tt>multiset</tt>, <tt>program</tt>, <tt>object</tt> and
+<tt>function</tt>), what is stored in the variables are just
+references to the data objects.
+</summary>
+
+<p>We have said before that a variable is a sort of box that can be
+used to store a value. But there is a difference between what we call
+"basic" values, such as integers, and more complex values, such as
+arrays. The basic values are stored in the variables, just as as we
+can expect, but the complex ones are not. They are stored somewhere
+else, and the variable only contains a reference to the actual
+data.</p>
+
+<p>Usually, you don't need to think about this difference, but there
+are cases when it is important.</p>
+
+<p>Here is an example to show exactly what the difference means. We
+start by defining an integer variable called <tt>i1</tt>:</p>
+
+<pi>int i1;</pi>
+
+<p>This variable can now be used to store integer values.
+We put the value <b>5</b> in <tt>i1</tt>:</p>
+
+<pi>i1 = 5;</pi>
+
+<p>If we could look inside the computer, this is what we would see:</p>
+
+<image src="referencesnot1.gif" caption="A non-reference variable"/>
+
+<p><tt>i1</tt> is a box, which contains the value <b>5</b>.
+We now define another integer variable, called <tt>i2</tt>,
+and copy the value in <tt>i1</tt> to <tt>i2</tt>:</p>
+
+<pi>
+int i2;
+i2 = i1;
+</pi>
+
+<p>This is how it looks now:</p>
+
+<image src="referencesnot2.gif" caption="Two non-reference variables, before the change"/>
+
+<p>As we might have expected, there is a <b>5</b> in <tt>i1</tt>, and
+another <b>5</b> in <tt>i2</tt>. What happens if we change the value
+of <tt>i2</tt>?</p>
+
+<pi>i2 = 17;</pi>
+
+<p>Well, again as expected, the value in the variable <tt>i2</tt>
+changes. The value in <tt>i1</tt> of course doesn't:</p>
+
+<image src="referencesnot3.gif" caption="Two non-reference variables, after the change"/>
+
+<p>But with complex types, such as arrays, things are a bit different.
+To illustrate this, we define an array variable, <tt>a1</tt>:</p>
+
+<pi>array(int) a1;</pi>
+
+<p>This variable is of the type "array(int)", so we can use it to
+store arrays of integers. So let's do just that. We create an array,
+and put that array in <tt>a1</tt>:</p>
+
+<pi>a1 = ({ 19, 3, 5 });</pi>
+
+<p>Inside the computer, it now looks like this:</p>
+
+<image src="references1.gif" caption="A reference variable"/>
+
+<p>Note that <tt>a1</tt> doesn't actually contain the array,
+it just contains a "pointer" or "reference" to the array.</p>
+
+<p>What happens if we try to do the same thing as we did with
+the integers above, that is, copy the value to a new variable,
+and then change the value in that new variable?</p>
+
+<p>To show what happens, we define a new array variable, <tt>a2</tt>,
+and try to copy the array <tt>a1</tt> to this new variable:</p>
+
+<pi>
+array(int) a2;
+a2 = a1;
+</pi>
+
+<p>This is where things are different. Remember that the variable
+<tt>a1</tt> doesn't contain the real array, but just a reference to
+it, and that an expression of the type</p>
+
+<pi>a2 = a1;</pi>
+
+<p>means "take whatever there is in <tt>a1</tt>, make a copy of it,
+and put that copy it in <tt>a2</tt>". Because of this, what gets
+stored in <tt>a2</tt> is a copy of the <i>reference</i>, not of the
+array:</p>
+
+<image src="references2.gif" caption="Two reference variables, before the change"/>
+
+<p>Note that both <tt>a1</tt> and <tt>a2</tt> now point to the same
+array. If we now try to change <tt>a2</tt>, for example by changing
+the last element in <tt>a2</tt> from <b>5</b> to <b>17</b>:</p>
+
+<pi>a2[2] = 17;</pi>
+
+<p>what will change is the array pointed to by the reference in <tt>a2</tt>:</p>
+
+<image src="references3.gif" caption="Two reference variables, after the change"/>
+
+<p>If we don't think about the fact that <tt>a1</tt> and <tt>a2</tt>
+just contain references, pointing to the same array, it would seem as
+if our change to the variable <tt>a2</tt> had, in some mysterious way,
+also changed the contents of the variable <tt>a1</tt>!</p>
+
+<p>If we want a real copy, and not just a reference to the same array,
+we must create that copy explicitly. We can use the function
+<tt>copy_value</tt> for this:</p>
+
+<pi>a2 = copy_value(a1);</pi>
+
+<p>This will create a copy of the array, and store a reference to that copy in <tt>a2</tt>:</p>
+
+<image src="references4.gif" caption="Two reference variables, pointing to different things"/>
+
+<p>Note that <tt>copy_value</tt> creates a <i>recursive</i> copy,
+which means that if the array contains other arrays, it will create
+copies of those arrays too, and so on. A trick for creating a
+non-recursive copy of an array is to add an empty array:</p>
+
+<pi>a2 = a1 + ({ });</pi>
+
+<p>The result of the expression <tt>a1 + ({ })</tt>
+is a new array that is a copy of <tt>a1</tt>.</p>
+
+<p>The following data types in Pike are <b>basic types</b>,
+and are stored in the variables themselves:</p>
+
+<list type="ul">
+<item><pi>int</pi></item>
+<item><pi>float</pi></item>
+<item><pi>string</pi></item>
+</list>
+
+<p>The following data types in Pike are <b>reference types</b>, and
+what is stored in the variables are just references to the data
+objects:</p>
+
+<list type="ul">
+<item><pi>array</pi></item>
+<item><pi>mapping</pi></item>
+<item><pi>multiset</pi></item>
+<item><pi>program</pi></item>
+<item><pi>object</pi></item>
+<item><pi>function</pi></item>
+</list>
+
+<p>Note that the same difference applies to method calls. When you
+send data to a method as arguments, and when you return data as the
+value of the method, what is actually sent is either the values
+themselves (for the basic types), or references (for the reference
+types).</p>
+
+</manual>

@@ -1,0 +1,62 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="How Do You Create a Module?">
+</metadata>
+<manual>
+
+<p>A module is a package of Pike code, typically a file. You can also
+write modules in C or C++, but how to do that is outside the scope of
+this tutorial.</p>
+
+<p>The module is a file of Pike code. Lets say that we want to create
+a module called <tt>trig</tt>, which has two members: a method
+<tt>cos2</tt> that calculates the square of the cosine function, and
+the constant <tt>pi</tt>.</p>
+
+<p>We create a file, called <tt>trig.pmod</tt>, with the following
+contents:</p>
+
+<pi>
+float cos2(float f)
+{
+  return pow(cos(f), 2.0);
+}
+
+constant PI = 3.1415926535;
+</pi>
+
+<p>Now that the module file exists, we can use it. If we use it from a
+program that is stored in the same directory as <tt>trig.pmod</tt>, we
+can use the <tt>.<i>module-name</i></tt> notation, so the program will
+look like this:</p>
+
+<pi>
+int main()
+{
+  write("The square of cos(pi/4) is " +
+	.trig.cos2(.trig.PI/4) + ".\n");
+  return 0;
+}
+</pi>
+
+<p>Or, if we prefer to <b>import</b> the module:</p>
+
+<pi>
+import .trig; // Import the module from this directory
+
+int main()
+{
+  write("The square of cos(pi/4) is " +
+	cos2(PI/4) + ".\n");
+  return 0;
+}
+</pi>
+
+</manual>

@@ -1,0 +1,35 @@
+<metadata>
+ <datum name=http-content-type value="sitebuilder/menu">
+</metadata>
+<mi>
+  <title></title>
+  <url>bare_bones.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>invocation.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>arguments_and_if.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>methods_and_loops.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>fetching_the_page.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>convenient_syntax.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>show_page.xml</url>
+</mi>
+<mi>
+  <title></title>
+  <url>about_www.xml</url>
+</mi>

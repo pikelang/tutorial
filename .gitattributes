@@ -1,0 +1,7 @@
+[attr]binary -text -crlf -diff -ident
+* text ident
+*.gif binary
+*.menu binary
+*.xml binary
+*.xsl binary
+__info binary

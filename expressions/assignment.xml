@@ -1,0 +1,158 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Assignment">
+</metadata>
+<manual>
+
+<p>Assignment is used to give a new value to a variable:</p>
+
+<pi>
+i = 16;
+i = i + 15;
+</pi>
+
+<p>"Variable" is used in a general sense here. Assignment can give
+values not only to normal variables, but also to member variables in
+an object, and to positions within an array, a mapping or a
+multiset:</p>
+
+<pi>
+my_cat-&gt;name = "Falkenberg";
+a[7] = 8;
+english2german["four"] = "vier";
+set_of_winners["Tom"] = 0;
+</pi>
+
+<p>An assignment, such as <tt>k = 3</tt>, is an expression, and its
+value is the same value as was assigned to the variable. You can use
+an assignment expression within another expression, for example in a
+"chain" of assignments that assign the same value to several
+variables:</p>
+
+<pi>i = j = k = 3;</pi>
+
+<p>Assignments that follow the pattern</p>
+
+<pi>
+i = i + 3;
+k = k * 4;
+miles_traveled["Anne"] = miles_traveled["Anne"] + 5;
+debt[get_name()] = debt[get_name()] + 500;
+</pi>
+
+<p>are very common in programming. That is, an assignment to a
+variable, where you use the old value of the variable to calculate the
+new one. To simplify such assignments, Pike has a number of extra
+assignment operators, looking like <i>operator</i><tt>=</tt>, for
+example:</p>
+
+<pi>
+i += 3;
+k *= 4;
+miles_traveled["Anne"] += 5;
+debt[get_name()] += 500;
+</pi>
+
+<p>In general, the expression</p>
+
+<pi><i>variable</i> <i>operator</i><tt>=</tt> <i>expression</i></pi>
+
+<p>means the same as</p>
+
+<pi><i>variable</i> <tt>=</tt> <i>variable</i> <i>operator</i>
+<i>expression</i></pi>
+
+<p>But note that the <i>variable</i> part is only calculated once. For
+example, in</p>
+
+<pi>debt[get_name()] += 500;</pi>
+
+<p>the function <tt>get_name</tt> is only called once.</p>
+
+<xtable>
+
+<row>
+<h>Syntax</h>
+<h>Equivalent to</h>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> += <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> + <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> -= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> - <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> *= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> * <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> /= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> / <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> %= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> % <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> &lt;&lt;= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> &lt;&lt; <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> &gt;&gt;= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> &gt;&gt; <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> |= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> | <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> &amp;= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> &amp; <i>expression</i></tt></p></c>
+</row>
+
+<row>
+<c><p><tt><i>variable</i> ^= <i>expression</i></tt></p></c>
+<c><p><tt><i>variable</i> = <i>variable</i> ^ <i>expression</i></tt></p></c>
+</row>
+
+</xtable>
+
+<p>Note that the increment and decrement operators (<tt>i++</tt>,
+<tt>++i</tt>, <tt>i--</tt>, and <tt>--i</tt>)<comment>--</comment>
+also change the value of the variable they are used on.</p>
+
+<h1>Multi-Assignment</h1>
+
+<p>In Pike, you can assign values to several variable at once, taking
+the values from an array:</p>
+
+<pi>
+int i;
+string s;
+float f1, f2;
+
+[ i, s, f1, f2 ] = ({ 3, "hi", 2.2, 3.14 });
+</pi>
+
+<p>This syntax is very convenient when you deal with functions who
+always return a fixed-width array of data.</p>
+
+</manual>

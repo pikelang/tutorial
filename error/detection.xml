@@ -1,0 +1,45 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Detecting an Error">
+</metadata>
+<manual>
+
+<p>In the web browser, we detected the first two possible errors by
+checking the data: the number of command-line arguments, and the
+length of the web address that the user types.</p>
+
+<p>In the third case, when a web page couldn't be downloaded, the
+problem is detected somewhere inside the method <tt>get_url</tt> in
+the module <tt>Protocols.HTTP</tt>. The problem must then be reported
+to the program that called <tt>get_url</tt>, and this is done with the
+<b>return value</b>. The method <tt>get_url</tt> usually returns an
+object with the data from the web page, but if it fails to retrieve
+the web page, it returns zero (<b>0</b>):</p>
+
+<pi>
+web_page = Protocols.HTTP.get_url(this_url);
+if(web_page == 0)
+{
+  write(" Failed.\n");
+  return;
+}
+</pi>
+
+<p>The value <b>zero</b> is just the normal integer 0, but it is used
+in many contexts to mean "no value" or "there was a problem". Many of
+the built-in methods in Pike return 0 if they fail to do what they are
+supposed to do. Most Pike programmers use the same convention.</p>
+
+<p>To work this way, the integer 0 has to be special. It can be stored
+in a variable of any type, and it can be returned from any method.
+Every new variable that you define will contain the value 0, until you
+give it another value.</p>
+
+</manual>

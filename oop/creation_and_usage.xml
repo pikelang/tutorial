@@ -1,0 +1,58 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Creating and Using Objects">
+</metadata>
+<manual>
+
+<p>Assuming that we have the class <tt>animal</tt>, we can define some
+variables that can be used to store animals. Remember that the class
+is also a <b>data type</b>. We can also create some animals to put in
+those variables. To create an animal, we use the syntax
+<tt><i>classname</i>()</tt>, i. e. the name of the class followed by a
+pair of parentheses.</p>
+
+<pi>
+animal some_animal;
+some_animal = animal();
+animal my_dog = animal();
+</pi>
+
+<p>To access a member variable in an object, we use the syntax
+<tt><i>object-expression</i>-&gt;<i>variable-name</i></tt>, i. e. the
+object followed by the operator <tt>-&gt;</tt> followed by the name of
+the variable.</p>
+
+<pi>
+my_dog-&gt;name = "Fido";
+my_dog-&gt;weight = 10.0;
+some_animal-&gt;name = "Glorbie";
+write("My dog is called " + my_dog-&gt;name + ".\n");
+write("Its weight is " + my_dog-&gt;weight + ".\n");
+write("That animal is called " + some_animal-&gt;name + ".\n");
+</pi>
+
+<p>Most objects need some initial values for its member variables. For
+example, every animal needs a name and a weight. One way to handle
+this is to set those variables separately, as we have done above. A
+better way is to design the class in a way that lets it set the
+variables immediately when an object is cloned from the class. You can
+then give the values when cloning:</p>
+
+<pi>animal piglet = animal("Piglet", 6.3);</pi>
+
+<p>We can call a method in an object, with a similar "<tt>-&gt;</tt>"
+syntax:</p>
+
+<pi>
+my_dog-&gt;eat("quiche"); // Real dogs eat quiche.
+write("Its weight is now " + my_dog-&gt;weight + ".\n");
+</pi>
+
+</manual>

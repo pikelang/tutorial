@@ -1,0 +1,20 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Not Covered Here">
+</metadata>
+<manual>
+
+<summary>
+Not everything is covered by this tutorial; after all, it is just a
+tutorial, intended to get to grips with pike and get you started.
+This short addendum mentions some of what was left out.
+</summary>
+
+</manual>

@@ -1,0 +1,20 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Your Second Pike Program">
+</metadata>
+<manual>
+
+<summary>
+Step by step we will create a program that uses more things from Pike:
+comments, variables, command-line arguments, arrays, selection with
+the <tt>if</tt> statement, loops, methods, classes, and modules.
+</summary>
+
+</manual>

@@ -1,0 +1,56 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Multiple Inheritance">
+</metadata>
+<manual>
+
+<p>Sometimes we want to inherit from two or more classes. This works
+in Pike (and in C++, but not in Java). You just write several
+inherits.</p>
+
+<p>Lets say we have a class <tt>friend</tt>, that represents a
+friend:</p>
+
+<pi>
+class friend
+{
+  void cuddle()
+  {
+    write("Cuddle, cuddle, cuddle!\n");
+  }
+}
+</pi>
+
+<p>A hamster, as we all know, is both an animal and a friend, and it
+can also dance:</p>
+
+<pi>
+class hamster
+{
+  inherit animal;
+  inherit friend;
+
+  void dance()
+  {
+    write(name + " dances.\n");
+  }
+}
+</pi>
+
+<p>So, try it out:</p>
+
+<pi>
+hamster h = hamster("Blue Lightning", 0.12);
+h-&gt;cuddle();      // Cuddle as a friend
+h-&gt;eat("grain");  // Eat as an animal
+h-&gt;dance();       // Dance as a hamster
+</pi>
+
+</manual>

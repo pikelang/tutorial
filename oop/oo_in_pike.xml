@@ -1,0 +1,47 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Object Orientation in Pike">
+</metadata>
+<manual>
+
+<summary>
+Just like most other object-oriented languages, Pike has classes,
+objects, inheritance, constructors, and so on. In Pike, a source file
+can be used as a class definition. <b>Class</b> and <b>program</b> are
+synonyms.
+</summary>
+
+<h1>Programs Within Programs: Object-Oriented Pike</h1>
+
+<p>As we have said before, a <b>class</b> is a description of a type
+of thing. You can <b>clone</b> the class to create <b>objects</b>.
+Each object is a <b>clone</b> (sometimes called <b>instance</b>) of
+the class.</p>
+
+<p>A class contains some variables, which are sometimes called
+<b>member variables</b>. The variables are attributes or
+characteristics of the objects, and each object will have its own set
+of the member variables. For example, if the class <tt>animal</tt> has
+the member variables <tt>name</tt> and <tt>weight</tt>, then each
+animal will have those two variables, so each animal can have a name
+and a weight.</p>
+
+<p>A class also contains some methods. (C++ programmers would call
+them "member functions".) The methods describe things that the objects
+can do.</p>
+
+<p>For example, if the class "animal" has the method <tt>eat</tt>,
+then you can call that method in any animal, to make it eat. Well, of
+course it won't really eat, since it's just some data in the computer
+and not a real animal. But the method can change the member variables,
+for example by increasing the value of <tt>weight</tt> for that
+animal.</p>
+
+</manual>

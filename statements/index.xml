@@ -1,0 +1,26 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Statements">
+</metadata>
+<manual>
+
+<summary>
+The simplest type of statement in Pike is the <b>empty statement</b>,
+followed by the <b>expression statement</b>. For selection, Pike has
+<b>if</b> and <b>switch</b> statements. You can also make selections
+using the conditional operator, "<tt>? :</tt>". There are four
+different ways of writing loops: using <b>while</b>, <b>for</b>, <b>do
+while</b>, and <b>foreach</b>. <b>foreach</b> loops over a collection.
+Pike also has the statements <b>break</b>, <b>continue</b> and
+<b>return</b>. Statements can be grouped into blocks, who can contain
+local variables.
+</summary>
+
+</manual>

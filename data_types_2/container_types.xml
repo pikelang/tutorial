@@ -1,0 +1,695 @@
+<metadata>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Container Types">
+</metadata>
+<manual>
+
+<p>These are the <b>container types</b> in Pike:</p>
+
+<list type="ul">
+<item>
+<p>array or "vector" (written <tt>array</tt> in Pike)</p>
+</item>
+
+<item>
+<p>mapping, "dictionary" or "associative array" (written
+<tt>mapping</tt>)</p>
+</item>
+
+<item><p>multiset or "bag" (written <tt>multiset</tt>)</p></item>
+</list>
+
+<p>A data item of a container type can contain other data items. The
+container types are also <b>reference types</b>: When a data item of a
+container type is stored in a variable, it is not the data item itself
+that is stored, but a reference to it.</p>
+
+<h1>The Data Type <tt>array</tt></h1>
+
+<p>As described earlier in this tutorial, an array is a container that
+can contain a sequence of elements. The elements are numbered from 0
+and on.</p>
+
+<pi>
+array(string) b;     // Array of strings
+b = ({ "foo", "bar", "fum" });
+b[1] = "bloo";       // Replaces "bar" with "bloo"
+</pi>
+
+<p>As you can see, array literals are written as comma-separated lists
+inside parenthesis-curly-bracket quotes. The data type of an array
+that can contain elements of the data type <tt><i>datatype</i></tt> is
+<tt>array(<i>datatype</i>)</tt>. The data type <tt>array(mixed)</tt>,
+i. e. an array that can contain any types of values, can also be
+written just <tt>array</tt>.</p>
+
+<p>An array variable that hasn't been given a value contains 0, and
+not an empty array. If you want an empty array, you have to give it
+explicitly:</p>
+
+<pi>
+array(string) a1;       // a1 contains 0
+a1 = ({ });             // Now a1 contains an empty array
+array(int) a2 = ({ });  // a2 contains an empty array
+</pi>
+
+<p>As described earlier, you can access the elements in an array,
+either to just get the value or to replace it. This is usually called
+<b>indexing</b> the array. Indexing is done by writing the position
+number, or index, within square brackets after the array:</p>
+
+<pi>
+write(a[0]);
+b[1] = "bloo";
+c[1] = b[2];
+</pi>
+
+<p>Note that the first position in an array is numbered 0 and not 1,
+and the second one is numbered 1, and so on.</p>
+
+<p>A special feature is that you can use negative indices:
+<tt><i>array</i>[-1]</tt> means the last position in the array
+<i>array</i>, <tt><i>array</i>[-2]</tt> the next-to-last position, and
+so on.</p>
+
+<p>An array can contain any type of values, including other arrays. In
+that case, you may need several indexing operators after each
+other:</p>
+
+<pi>
+array(array(int)) aai = ({
+  ({ 7, 9, 8 }),
+  ({ -4, 9 }),
+  ({ 100, 1, 2, 4, 17 })
+});
+
+write("aai[2][3] is " + aai[2][3] + "\n");
+</pi>
+
+<p>This will print <tt>aai[2][3] is 4</tt>.</p>
+
+<p>It is sometimes important to differentiate between two array
+expressions being <b>equal</b>, and two that also are the <b>same</b>.
+Whenever you write an array literal in your program, you get a new
+array. This array is only the <b>same</b> as itself, but it can be
+<b>equal</b> to other arrays. After executing the following code
+snippet, the variables <tt>a</tt> and <tt>b</tt> will refer to the
+<b>same</b> array, but <tt>c</tt> will refer to an array that is just
+<b>equal</b> to the first one.</p>
+
+<pi>
+array(string) a = ({ "foo", "bar" });
+array(string) b = a;
+array(string) c = ({ "foo", "bar" });
+</pi>
+
+<p>Here are some of the many things that you can do with arrays:</p>
+
+<list type="ul">
+<item name="Check if it is an array">
+<pi>arrayp(<i>something</i>)</pi>
+
+<p>The function <tt>arrayp</tt> returns <b>1</b> if the value
+<i>something</i> is an array, otherwise <b>0</b>.</p>
+</item>
+
+<item name="Extract a range">
+<p><pi><i>array</i>[<i>from</i>..<i>to</i>]</pi> returns a new array,
+containing the elements at the index <i>from</i> up to and including
+the index <i>to</i>.</p>
+
+<p>
+<pi>({ 1, 7, 3, 3, 7 })[ 1..3 ]</pi> gives the result
+<pi>({ 7, 3, 3 })</pi>.
+</p>
+
+<p>The form <tt><i>array</i>[<i>from</i>..]</tt> will give the
+elements starting at index <i>from</i> and to the end of the array.
+The form <tt><i>array</i>[..<i>to</i>]</tt> will give the elements
+from the start of the array, up to and including index <i>to</i>.</p>
+</item>
+
+<item name="Comparing arrays">
+<p><pi><i>array1</i> == <i>array2</i></pi> returns <b>1</b> if
+<i>array1</i> and <i>array2</i> are the same array, otherwise
+<b>0</b>. They have to be the <i>same</i> array, not just equal. Given
+the variable definition</p>
+
+<pi>array(int) a = ({ 7, 1 });</pi>
+
+<p>this will be true:</p>
+
+<pi>a == a</pi>
+
+<p>but this will be false:</p>
+
+<pi>({ 7, 1 }) == ({ 7, 1 })</pi>
+
+<p>You can also use the operator <tt>!=</tt>, which means "not same".
+The relational operators (<tt>&lt;</tt>, <tt>&gt;</tt>, etc) do not
+work with arrays.</p>
+</item>
+
+<item name="Comparing arrays (again)">
+<p><pi>equal(<i>array1</i>, <i>array2)</i></pi> returns <b>1</b> if
+<i>array1</i> and <i>array2</i> look the same, otherwise <b>0</b>. Two
+arrays look the same if they have the same number of elements, and
+each two corresponding elements in the two arrays look the same. For
+example, this will be return 1:</p>
+
+<pi>equal( ({ 7, 1 }), ({ 7, 1 }) );</pi>
+</item>
+
+<item name="Concatenation">
+<p><pi><i>array1</i> + <i>array2</i></pi> returns a new array with the
+elements from both arrays, in the same order. This is a simple
+concatenation of the arrays, so duplicate elements are of course not
+removed.</p>
+
+<p>
+<pi>({ 7, 1, 1 }) + ({ 1, 3 })</pi> gives the result
+<pi>({ 7, 1, 1, 1, 3 })</pi>.
+</p>
+</item>
+
+<item name="Union">
+<p><pi><i>array1</i> | <i>array2</i></pi> returns a new array with the
+elements that are present in <i>array1</i>, or in <i>array2</i>, or in
+both. The elements in the result can come in any order, and duplicates
+may or may not be removed.</p>
+
+<p>
+<pi>({ 7, 1 }) | ({ 3, 1 })</pi> gives the result
+<pi>({ 7, 3, 1 })</pi>.
+</p>
+</item>
+
+<item name="Intersection">
+<p><pi><i>array1</i> &amp; <i>array2</i></pi> returns a new array with
+the elements that are present in both arrays. The elements in the
+result can come in any order, and duplicates may or may not be
+removed.</p>
+
+<p>
+<pi>({ 7, 1 }) &amp; ({ 3, 1 })</pi> gives the result
+<pi>({ 1 })</pi>.
+</p>
+</item>
+
+<item name="Difference">
+<p><pi><i>array1</i> - <i>array2</i></pi> returns a new array with the
+elements in the array <i>array1</i> that are not also present in the
+array <i>array2</i>. The elements in the result can come in any order,
+and duplicates may or may not be removed.</p>
+
+<p>
+<pi>({ 7, 1 }) - ({ 3, 1 })</pi> gives the result
+<pi>({ 7 })</pi>.
+</p>
+</item>
+
+<item name="Exclusive or">
+<p><pi><i>array1</i> ^ <i>array2</i></pi> returns a new array with the
+elements that are present in <i>array1</i> or in <i>array2</i>, but
+not in both. The elements in the result can come in any order, and
+duplicates may or may not be removed.</p>
+
+<p>
+<pi>({ 7, 1 }) ^ ({ 3, 1 })</pi> gives the result
+<pi>({ 7, 3 })</pi>.
+</p>
+</item>
+
+<item name="Division">
+<pi><i>array</i> / <i>delimiter</i></pi>
+
+<p>This will split the array <i>array</i> into an array of arrays. If
+the <i>delimiter</i> is an array, the array <i>array</i> will be split
+at each occurrence of that array:</p>
+
+<p>
+<pi>({ 7, 1, 2, 3, 4, 1, 2, 1, 2, 77 }) / ({ 1, 2 })</pi>
+gives the result
+<pi>({ ({ 7 }), ({ 3, 4 }), ({ }), ({ 77 }) })</pi>.
+</p>
+
+<p>If the <i>delimiter</i> is an <b>integer</b>,
+the array <i>array</i> will be split into arrays of size <i>delimiter</i>,
+with any extra elements ignored:</p>
+
+<p>
+<pi>({ 7, 1, 2, 3, 4, 1, 2 }) / 3</pi>
+gives the result
+<pi>({ ({ 7, 1, 2 }), ({ 3, 4, 1 }), ({ 2 }) })</pi>.
+</p>
+
+<p>If you convert the same integer to a <b>floating-point number</b>,
+the extra elements will not be thrown away:</p>
+
+<p>
+<pi>({ 7, 1, 2, 3, 4, 1, 2 }) / 3.0</pi> gives the result
+<pi>({ ({ 7, 1, 2 }), ({ 3, 4, 1 }) })</pi>.
+</p>
+</item>
+
+<item name="Modulo">
+<pi><i>array</i> % <i>integer</i></pi>
+
+<p>This gives the extra elements that would be ignored in the division
+operation <pi><i>array</i> / <i>integer</i></pi>:</p>
+
+<p>
+<pi>({ 7, 1, 2, 3, 4, 1, 2 }) % 3</pi> gives the result
+<pi>({ 2 })</pi>.
+</p>
+</item>
+
+<item name="Finding the size">
+<p><pi>sizeof(<i>array</i>)</pi> returns the number of elements in the
+array <i>array</i>.</p>
+
+<p><pi>sizeof( ({ }) )</pi> gives the result <pi>0</pi>.</p>
+</item>
+
+<item name="Allocating an empty array">
+<pi>allocate(<i>size</i>)</pi>
+
+<p>This will create an array with <i>size</i> elements. <i>size</i> is
+an integer. All the elements will have the value <b>0</b>.</p>
+</item>
+
+<item name="Reversing an array">
+<p><pi>reverse(<i>array</i>)</pi> returns a new array with the
+elements in the array <i>array</i> in reverse order: with the first
+element last, and so on. This operation creates a copy, and does not
+change the array <i>array</i> itself.</p>
+</item>
+
+<item name="Finding an element in an array">
+<p><pi>search(<i>haystack</i>, <i>needle</i>)</pi> returns the index
+of the first occurrence of an element equal to the <i>needle</i> in
+the array <i>haystack</i>. The comparison is done with <tt>==</tt>, so
+the element must be the <b>same</b> as the <i>needle</i>.</p>
+</item>
+
+<item name="Replacing elements in an array">
+<p><pi>replace(<i>array</i>, <i>old</i>, <i>new</i>)</pi> replaces all
+the elements that are equal (with <tt>==</tt>) to <i>old</i> with
+<i>new</i>. This operation does not create a copy, but changes the
+array <i>array</i> itself.</p>
+</item>
+</list>
+
+<h1>The Data Type <tt>mapping</tt></h1>
+
+<p><b>Mappings</b> are sometimes called dictionaries or associative
+arrays. A mapping lets you translate from one value (such as
+<tt>"beer"</tt>) to another value (<tt>"cerveza"</tt>). This is
+possible since the mapping contains <b>index-value pairs</b>,
+consisting of two data items. If you know the <b>index</b>, Pike can
+quickly find the corresponding <b>value</b> for you.</p>
+
+<p>A mapping literal can be written as a comma-separated list
+of index-value pairs inside parenthesis-square-bracket quotes:</p>
+
+<pi>([ "beer" : "cerveza", "cat" : "gato", "dog" : "perro" ])</pi>
+
+<p>The data type of a mapping with indices of the type
+<tt><i>index-type</i></tt> and values of the type
+<tt><i>value-type</i></tt> is written <tt>mapping(<i>index-type</i> :
+<i>value-type</i>)</tt>. The data type <tt>mapping(mixed:mixed)</tt>,
+i. e. a mapping that can contain any types of indices and values, can
+also be written just <tt>mapping</tt>.</p>
+
+<p>Here are a few variables that can contain mappings:</p>
+
+<pi>
+mapping(string:string) m;
+mapping(int:float) mif = ([ 1:3.6, -19:73.0 ]);
+mapping(string:string) english2spanish = ([
+  "beer" : "cerveza",
+  "cat" : "gato",
+  "dog" : "perro"
+]);
+mapping(mixed:int) m2i = ([ 19.0 : 3, "foo" : 17 ]);
+</pi>
+
+<p>A mapping variable that hasn't been given a value contains
+<b>0</b>, and not an empty mapping. If you want an empty mapping, you
+have to give it explicitly:</p>
+
+<pi>
+mapping(string:float) m1;  // m1 contains 0
+m1 = ([ ]);   // Now m1 contains an empty mapping
+mapping(int:int) m2 = ([ ]);
+              // m2 contains an empty mapping
+</pi>
+
+<p>When you want to <b>look up</b> a value in the mapping, you use the
+same <b>indexing operator</b> as for arrays: write the index within
+square brackets after the mapping. You can use this both to just
+retrieve values, and to change them:</p>
+
+<pi>
+write(english2spanish["cat"]); // Prints "gato"
+english2spanish["dog"] = "gato";
+    // Now, english2spanish["dog"] is "gato" too
+english2spanish["beer"] = english2spanish["cat"];
+    // Now, all values are "gato"
+</pi>
+
+<p>Index-value pairs can be inserted in the mapping either by writing
+them in the mapping literal, or with the indexing operator.</p>
+
+<p>There is no specific order between the index-value pairs in a
+mapping, so there is no difference between the following two mapping
+literals:</p>
+
+<pi>
+([ 1:2, 3:4 ])
+([ 3:4, 1:2 ])
+</pi>
+
+<p>If you try to look up an index that hasn't been inserted
+in the mapping, the indexing operator will return <b>0</b>:</p>
+
+<pi>
+english2spanish["cat"]     // Gives "gato"
+english2spanish["glurble"] // Gives 0
+</pi>
+
+<p>Lookups are done using <tt>==</tt>, so the thing used as index in
+the lookup must be the <b>same</b> as the thing used when inserting
+things in the mapping. Remember that arrays, mappings and multisets
+may look the same, without being the same. Look at this example:</p>
+
+<pi>
+mapping(array(int) : int) m = ([ ]);
+array(int) a = ({ 1, 2 });
+m[a] = 3;
+</pi>
+
+<p>After running this code snippet, the expression <tt>m[a]</tt> will
+give the value <b>3</b>, but the expression <tt>m[ ({ 1, 2 }) ]</tt>
+will give the value <b>0</b>.</p>
+
+<p>Mappings are similar to arrays. If you had a mapping from integers
+(to something), and used the integer values <b>0</b>, <b>1</b>,
+<b>2</b>, and so on, in order, this mapping would work very much like
+an array. But mappings are much more flexible, since you can use any
+type of values as indices. They are also slower and take up more space
+in the computer's memory.</p>
+
+<p>Here are some useful things that you can do with mappings:</p>
+
+<list type="ul">
+<item name="Check if it is a mapping">
+<pi>mappingp(<i>something</i>)</pi>
+
+<p>The function <tt>mappingp</tt> returns <b>1</b> if the value
+<i>something</i> is a mapping, otherwise <b>0</b>.</p>
+</item>
+
+<item name="Comparing mappings">
+<p><pi><i>mapping1</i> == <i>mapping2</i></pi> returns <b>1</b> if
+<i>mapping1</i> and <i>mapping2</i> are the same mapping, otherwise
+<b>0</b>. Just as with arrays, they have to be the <i>same</i>
+mapping, not just equal. You can also use the operator <tt>!=</tt>,
+which means "not same". The relational operators (<tt>&lt;</tt>,
+<tt>&gt;</tt>, etc) do not work with mappings.</p>
+</item>
+
+<item name="Comparing mappings (again)">
+<p><pi>equal(<i>mapping1</i>, <i>mapping2)</i></pi> returns <b>1</b>
+if <i>mapping1</i> and <i>mapping2</i> look the same, otherwise
+<b>0</b>.</p>
+</item>
+
+<item name="Getting just the indices">
+<p><pi>indices(<i>mapping</i>)</pi> returns an array containing all
+the indices from the index-value pairs in the mapping
+<i>mapping</i>.</p>
+</item>
+
+<item name="Getting just the values">
+<p><pi>values(<i>mapping</i>)</pi> returns an array containing all the
+values from the index-value pairs in the mapping <i>mapping</i>. If
+you retrieve the indices (with <tt>indices</tt>) and the values (with
+<tt>values</tt>) from the same mapping, without performing any other
+mapping operations in between, the returned arrays will be in the same
+order. They can be be used as arguments to <tt>mkmapping</tt> to
+create an equivalent copy of the mapping.</p>
+</item>
+
+<item name="Create a mapping">
+<p><pi>mkmapping(<i>index-array</i>, <i>value-array</i>)</pi> builds a
+new mapping with indices from the array <i>index-array</i>, and the
+corresponding values from the array <i>value-array</i>.</p>
+</item>
+
+<item name="Union">
+<pi><i>mapping1</i> | <i>mapping2</i></pi>
+
+<p>You can use <b>set operations</b> such as <b>union</b> (<tt>|</tt>)
+on mappings. All the indices in a mapping are considered as a set, and
+the set operators work with these sets. The values just "tag
+along".</p>
+
+<p>The union operator returns a new mapping with the elements that are
+present in <i>mapping1</i>, or in <i>mapping2</i>, or in both. If an
+index is present in both mappings, the value part of the resulting
+index-value pair will come from the right-hand mapping
+(<i>mapping2</i>). Example:</p>
+
+<p>
+<pi>([ 1:2, 3:4 ]) | ([ 3:5, 6:7 ])</pi> gives the result
+<pi>([ 1:2, 3:5, 6:7 ])</pi>.
+</p>
+
+<p>But note that the elements in a mapping don't have a specified
+order.</p>
+
+<p>The <b>addition operator</b> (<tt>+</tt>) is a synonym for
+<b>union</b> (<tt>|</tt>) on mappings.</p>
+</item>
+
+<item name="Intersection">
+<p><pi><i>mapping1</i> &amp; <i>mapping2</i></pi> returns a new
+mapping with the elements that are present in both mappings. The value
+parts of the resulting index-value pairs will come from the right-hand
+mapping (<i>mapping2</i>).</p>
+
+<p>
+<pi>([ 1:2, 3:4 ]) &amp; ([ 3:5, 6:7 ])</pi> gives the result
+<pi>([ 3:5 ])</pi>.
+</p>
+</item>
+
+<item name="Difference">
+<p><pi><i>mapping1</i> - <i>mapping2</i></pi> returns a new mapping
+with the elements in the mapping <i>mapping1</i> that are not also
+present in the mapping <i>mapping2</i>.</p>
+
+<p>
+<pi>([ 1:2, 3:4 ]) - ([ 3:5, 6:7 ])</pi> gives the result
+<pi>([ 1:2 ])</pi>.
+</p>
+</item>
+
+<item name="Exclusive or">
+<p><pi><i>mapping1</i> ^ <i>mapping2</i></pi> returns a new mapping
+with the elements that are present in <i>mapping1</i> or in
+<i>mapping2</i>, but not in both.</p>
+
+<p>
+<pi>([ 1:2, 3:4 ]) ^ ([ 3:5, 6:7 ])</pi> gives the result
+<pi>([ 1:2, 6:7 ])</pi>.
+</p>
+</item>
+
+<item name="Finding the size">
+<p><pi>sizeof(<i>mapping</i>)</pi> returns the number of index-value
+pairs in the mapping <i>mapping</i>.</p>
+
+<p><pi>sizeof( ([ ]) )</pi> gives the result <pi>0</pi>.</p>
+</item>
+
+<item name="Finding a value in an mapping">
+<pi>search(<i>haystack</i>, <i>needle</i>)</pi>
+
+<p>This is a "reverse lookup" that searches among the values of the
+index-value pairs instead of among the indices. It returns the index
+of the index-value pair that has the value <i>needle</i> in the
+mapping <i>haystack</i>. If there are several index-value pairs that
+have the same <i>needle</i> as value, any of them can be chosen. The
+comparison is done with <tt>==</tt>, so the element must be the same
+as the <i>needle</i>. Example:</p>
+
+<p>
+<pi>search(([ 1:2, 3:4, 4:5, 7:4 ]), 4)</pi> gives either
+<b>3</b> or <b>7</b>.
+</p>
+</item>
+
+<item name="Replacing values in an mapping">
+<p><pi>replace(<i>mapping</i>, <i>old</i>, <i>new</i>)</pi> replaces
+all the values that are equal (with <tt>==</tt>) to <i>old</i> with
+<i>new</i>. This operation does not create a copy, but changes the
+mapping <i>mapping</i> itself. Example:</p>
+
+<p>
+<pi>replace(([ 1:2, 2:3, 3:2 ]), 2, 17)</pi>
+gives the result <pi>([ 1:17, 2:3, 3:17 ])</pi>.
+</p>
+</item>
+
+<item name="Checking if an index is present">
+<p><pi>zero_type(<i>mapping</i>[<i>index</i>])</pi> returns <b>0</b>
+if the index <i>index</i> is present in the mapping <i>mapping</i>,
+otherwise it returns something other than <b>0</b>. This can be useful
+to discriminate between an index that isn't present in the mapping,
+and one that is present but associated with the value <b>0</b>:</p>
+
+<pi>
+if(temp["sauna"] == 0)
+{
+  if(zero_type(temp["sauna"]))
+    write("We don't know the temp in the sauna.\n");
+  else
+    write("It's mighty cold in that sauna.\n");
+}
+</pi>
+</item>
+</list>
+
+<h1>The Data Type <tt>multiset</tt></h1>
+
+<p>A set is something where a value is either a member or not. A
+<b>multiset</b> (sometimes called a "bag") is a set where a value can
+be a member several times. The multiset can contain several copies of
+the same value.</p>
+
+<p>A multiset literal can be written as a comma-separated list
+of the elements, inside <tt>(&lt; &gt;)</tt> like this:</p>
+
+<pi>(&lt; "foo", "bar", "fum", "foo", "foo" &gt;)</pi>
+
+<p>The data type of a set with elements of the type
+<tt><i>element-type</i></tt> is written
+<tt>multiset(<i>element-type</i>)</tt>. The data type
+<tt>multiset(mixed:mixed)</tt>, i. e. a multiset that can contain any
+types of elements, can also be written just <tt>multiset</tt>.</p>
+
+<p>Here are a few variables that can contain multisets:</p>
+
+<pi>
+multiset(string) m;
+multiset(int) mi = (&lt; 1, -19, 0 &gt;);
+multiset(string) dogs = (&lt; "Fido", "Buster" &gt;);
+</pi>
+
+<p>A multiset variable that hasn't been given a value contains
+<b>0</b>, and not an empty multiset. If you want an empty multiset,
+you have to give it explicitly:</p>
+
+<pi>
+multiset(string) m1;  // m1 contains 0
+m1 = (&lt; &gt;);  // Now m1 contains an empty multiset
+multiset(int) m2 = (&lt; &gt;);
+             // m2 contains an empty multiset
+</pi>
+
+<p>Multisets are very similar to <b>mappings</b>, except that:</p>
+
+<list type="ul">
+<item>
+<p>Multisets just have elements, not index-value pairs.</p>
+</item>
+
+<item>
+<p>You can have multiple instances of the same element in a multiset,
+while in a mapping you can only have the same index in one single
+index-value pair.</p>
+</item>
+</list>
+
+<p>Multisets also use the <b>indexing operator</b>,
+to see if an element is present, and to add and remove elements:</p>
+
+<pi>
+if(dogs["Fido"])
+  write("Fido is one of my dogs.\n");
+if(!dogs["Dirk"])
+  write("Dirk is not one of my dogs.\n");
+dogs["Kicker"] = 1; // Add Kicker to the set
+dogs["Buster"] = 0; // Remove Buster
+</pi>
+
+<p>As you can see, you can write</p>
+
+<pi><i>multiset</i>[<i>element</i>] = 1</pi>
+
+<p>to add the element <i>element</i> to the multiset <i>multiset</i>,
+and</p>
+
+<pi><i>multiset</i>[<i>element</i>] = 0</pi>
+
+<p>to remove it. Your program may be easier to understand if you use
+set operations instead:</p>
+
+<pi>
+dogs |= (&lt; "Kicker" &gt;); // Add Kicker to the set
+dogs -= (&lt; "Buster" &gt;); // Remove Buster
+</pi>
+
+<p>There is no specific order between the index-value pairs in a
+multiset, so there is no difference between the following two multiset
+literals:</p>
+
+<pi>
+(&lt; "foo", "bar" &gt;)
+(&lt; "bar", "foo" &gt;)
+</pi>
+
+<p>Here are some useful things that you can do with multisets:</p>
+
+<list type="ul">
+<item name="Check if it is a multiset">
+<pi>multisetp(<i>something</i>)</pi>
+
+<p>The function <tt>multisetp</tt> returns <b>1</b> if the value
+<i>something</i> is a multiset, otherwise <b>0</b>.</p>
+</item>
+
+<item name="Comparing multisets">
+<p><pi><i>multiset1</i> == <i>multiset2</i></pi> returns <b>1</b> if
+<i>multiset1</i> and <i>multiset2</i> are the same multiset, otherwise
+<b>0</b>. Just as with arrays, they have to be the <i>same</i>
+multiset, not just equal. You can also use the operator <tt>!=</tt>,
+which means "not same". The relational operators (<tt>&lt;</tt>,
+<tt>&gt;</tt>, etc) do not work with multisets.</p>
+</item>
+
+<item name="Comparing multisets (again)">
+<p><pi>equal(<i>multiset1</i>, <i>multiset2)</i></pi> returns <b>1</b>
+if <i>multiset1</i> and <i>multiset2</i> look the same, otherwise
+<b>0</b>.</p>
+</item>
+
+<item name="Set operations">
+<p>All the set operations work with multisets:
+<b>union</b> (<tt>|</tt>),
+<b>difference</b> (<tt>-</tt>),
+<b>intersection</b> (<tt>&amp;</tt>), and
+<b>exclusive or</b> (<tt>^</tt>).</p>
+</item>
+</list>
+
+</manual>
