@@ -11,13 +11,6 @@
 </metadata>
 <manual>
 
-<summary>
-Just like most other object-oriented languages, Pike has classes,
-objects, inheritance, constructors, and so on. In Pike, a source file
-can be used as a class definition. <b>Class</b> and <b>program</b> are
-synonyms.
-</summary>
-
 <h1>Programs Within Programs: Object-Oriented Pike</h1>
 
 <p>As we have said before, a <b>class</b> is a description of a type

@@ -2,8 +2,8 @@
  <datum name=http-content-type value="sitebuilder/menu">
 </metadata>
 <mi>
-  <title></title>
-  <url>messages.xml</url>
+  <title>Error Messages from Pike</title>
+  <url>index.xml</url>
 </mi>
 <mi>
   <title></title>

@@ -11,15 +11,6 @@
 </metadata>
 <manual>
 
-<summary>
-Values of the <b>basic types</b> (<tt>int</tt>, <tt>float</tt>, and
-<tt>string</tt>) are stored in the variables themselves. For the
-<b>reference types</b> (<tt>array</tt>, <tt>mapping</tt>,
-<tt>multiset</tt>, <tt>program</tt>, <tt>object</tt> and
-<tt>function</tt>), what is stored in the variables are just
-references to the data objects.
-</summary>
-
 <p>We have said before that a variable is a sort of box that can be
 used to store a value. But there is a difference between what we call
 "basic" values, such as integers, and more complex values, such as
