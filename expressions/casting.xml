@@ -23,9 +23,9 @@ expression <tt>"hello" + 17</tt> the integer <tt>17</tt> will be
 automatically converted to the string <tt>"17"</tt>, before the two
 strings are concatenated, giving the result <tt>"hello17"</tt>. But
 some conversions need to be performed with a special operation, called
-an <b>explicit type conversion</b> or <b>cast</b>. There is a special
-<b>cast operator</b>, which is written as a data type between
-parentheses:</p>
+an <b>explicit type conversion</b>, <b>value cast</b>, or most often simply
+<b>cast</b>. There is a special <b>cast operator</b>, which is
+written as a data type between parentheses:</p>
 
 <pi>
 (float)14	// Gives the float 14.0
@@ -113,7 +113,7 @@ result. The results are cached.</p></c>
 </xtable>
 
 <p>Sometimes you know more than what Pike does about data types, and
-another use of the cast operator is to tell Pike what you know. For
+another use for casts is to tell Pike what you know. For
 example, lets say that you have a variable with the type
 <tt>mixed</tt>, which means that it can contain any type of data. Lets
 also say that you happen to know that that variable contains an
@@ -124,12 +124,12 @@ Pike might complain about it:</p>
 mixed m;
 int i;
 m = 18;
-i = m;	// This might make Pike suspicious
+i = m;	// This makes Pike suspicious if you turn on strict type checking
 </pi>
 
-<p>You can use a cast to tell Pike that <tt>m</tt> is an integer and
-nothing else:</p>
+<p>You can use a <b>type cast</b> (aka <b>soft cast</b>) to tell Pike that
+<tt>m</tt> is an integer and nothing else:</p>
 
-<pi>i = (int)m; // Don't worry. I promise it's an int!</pi>
+<pi>i = [int]m; // Don't worry. I promise it's an int!</pi>
 
 </manual>
