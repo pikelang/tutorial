@@ -58,8 +58,8 @@ same directory as the program that used the module</p>
 
 <item>
 <p>In the directory with builtin modules, for example called
-<tt>/usr/local/pike/0.7.97/lib/modules/</tt> or
-<tt>D:\Program&nbsp;Files\Pike\lib\pike\modules</tt></p>
+<tt>/usr/local/pike/7.4.1/lib/modules/</tt> or
+<tt>C:\Program&nbsp;Files\Pike\lib\pike\modules</tt></p>
 </item>
 </list>
 
@@ -90,12 +90,11 @@ newly-cloned object as a module.</p>
 </item>
 
 <item>
-<p>If we are on a Unix system, and if there is a file called
-<tt><i>module-name</i>.pmod.so</tt>, Pike will load that file with
+<p>If there is a file called
+<tt><i>module-name</i>.so</tt> Pike will load that file with
 <tt>load_module</tt>, clone it, and use the newly-cloned object as a
 module. The file should be a dynamically linkable library of compiled
-C or C++ code. (At the moment, this only works on Unix. For Windows
-NT, modules written in C or C++ have to be statically linked.)</p>
+C or C++ code.</p>
 </item>
 </list>
 
