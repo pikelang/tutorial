@@ -20,6 +20,14 @@ somewhat less rigid programming style than what is necessary in C++.
 Another difference is that there are many different C and C++
 compilers, while there is only one implementation of Pike.</p>
 
+<h1>C#</h1>
+<p>Pike is very similar to C#. In fact, one could easily think that some
+engineers at Microsoft and the other companies behind C# were Pike-users.
+The most noticable difference between the two is probably the fact that
+Pike have better standard types than C# and doesn'r require the use of
+libraries for typeconvertions etc. If you are using C#, you'll find Pike
+very easy to use.</p>
+
 <h1>Java</h1>
 
 <p>Pike looks a bit like Java on the surface. Like Java, Pike is
