@@ -11,6 +11,11 @@
 </metadata>
 <manual>
 
+<p>This tutorial assumes that you are familiar with some fundamental
+concepts that are used in all programming environments. Look through
+the list, and if you don't immediately know what one of the terms
+means, you should read the explanation.</p>
+
 <h1>Program</h1>
 
 <p>A program consists of a set of instructions that tells the computer
