@@ -1,5 +1,5 @@
 <metadata>
- <datum name=__removed valuen=1>
+ <datum name=__create_rev value="1.3">
  <datum name=author value="0">
  <datum name=description value="">
  <datum name=external_use value="">
@@ -12,10 +12,23 @@
 </metadata>
 <manual>
 
-<summary>
-Not everything is covered by this tutorial; after all, it is just a
-tutorial, intended to get to grips with pike and get you started.
-This short addendum mentions some of what was left out.
-</summary>
+<p>Here are some of the things not covered:</p>
+
+<list type="ul">
+<item>
+<p>Many details, for example all the format specifiers to
+<pi>sprintf</pi></p>
+</item>
+<item><p>Unnamed functions, with <pi>lambda</pi></p></item>
+<item><p>Operator functions, such as <pi>'+</pi></p></item>
+<item><p>Operator overloading in classes</p></item>
+<item><pi>void my_function(mixed ... args)</pi></item>
+<item><pi>at_exit()</pi></item>
+<item>
+<p>Type information with <pi>typeof</pi>, <pi>_typeof</pi> and
+<pi>sprintf("%t", ...)</pi></p>
+</item>
+<item><p>Time measurement with <pi>gauge</pi></p></item>
+</list>
 
 </manual>
