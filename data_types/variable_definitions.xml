@@ -94,16 +94,4 @@ slightly longer to write, but it allows Pike to do type checking when
 the program is compiled and executed, thus helping you to ensure that
 your program works as it should.</p>
 
-<p>Note that if one of the types in an "or" expression of this kind is
-a type from inside a module, so that the type contains a dot, the
-simple syntax doesn't work:</p>
-
-<pi>Protocols.HTTP.Query|string q; // Error!</pi>
-
-<p>You have to use the alternative syntax
-<tt>object(<i>class-name</i>)</tt> instead of just
-<tt><i>class-name</i></tt> for the class:</p>
-
-<pi>object(Protocols.HTTP.Query)|string q;</pi>
-
 </manual>
