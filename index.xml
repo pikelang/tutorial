@@ -11,11 +11,11 @@
 </metadata>
 <column charwidth="60">
 
-<h1>Pike Tutorial</h1>
+<h1>Pike Beginner´s Tutorial</h1>
 
-<p>Version 1.0 of this tutorial was completed by Thomas Padron-McCarthy on
-February 29, 2000 (with thanks to Fredrik Hübinette, who wrote the original
-tutorial), and covered Pike 7.0. Maintenance since then has been in the hands
+<p>The first version of this tutorial, influenced by an old Pike tutorial by
+Fredrik Hübinette, was completed by Thomas Padron-McCarthy on
+February 29, 2000. Maintenance since then has been in the hands
 of Johan Sundström and the rest of the <a href="/development/team/">pike
 development team</a>, and we would hope that you too would want to
 participate, helping out and contributing updates, pointing out what could be
