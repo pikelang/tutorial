@@ -55,7 +55,8 @@ actually do anything, but it is there.</p>
 int main()
 {
   GTK.setup_gtk();
-  GTK.Alert("Hello world!") -&gt; signal_connect("destroy", exit, 0);
+  GTK.Alert("Hello world!")
+    -&gt; signal_connect("destroy", lambda(){ exit(0); });
   return -1;
 }
 </pi>
@@ -71,6 +72,6 @@ tell the window that when it is destroyed, it should order the entire
 program to exit. This is what the rest of of the statement does (even
 if we don't explain the exact details here):</p>
 
-<pi>-&gt; signal_connect("destroy", exit, 0);</pi>
+<pi>-&gt; signal_connect("destroy", lambda(){ exit(0); });</pi>
 
 </manual>
