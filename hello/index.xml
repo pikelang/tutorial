@@ -1,5 +1,5 @@
 <metadata>
- <datum name=__removed valuen=1>
+ <datum name=__create_rev value="1.3">
  <datum name=author value="0">
  <datum name=description value="">
  <datum name=external_use value="">
@@ -8,14 +8,126 @@
  <datum name=stationery value="">
  <datum name=stationery_md_flags value="">
  <datum name=template value="tutorial.xsl">
- <datum name=title value="First Steps">
+ <datum name=title value="Hello World">
 </metadata>
 <manual>
 
-<summary>
-We show what a "hello world" program looks in Pike. There is also a
-graphical toolkit available for Pike, so you can write a window-based
-"hello world". Pike can also be run interactively.
-</summary>
+<p>It is traditional to start a book or tutorial about a programming
+language with a very simple example: a program that just writes the
+text "Hello world!" on the screen. Here it is in Pike:</p>
+
+<pi>
+int main()
+{
+  write("Hello world!\n");
+  return 0;
+}
+</pi>
+
+<p>To run this program, you will write it in a text file, for example
+called "<tt>hello.pike</tt>", and then run it. If you are using a
+text-based interface, such as a Unix command shell or the Command
+Prompt Window in Windows NT, you can run the program by typing the
+command "<tt>pike hello.pike</tt>".</p>
+
+<p>If you are using a graphical interface where the file is shown as
+an icon, such as the Windows Explorer or a graphical file manager in
+Unix, you may be able to run the program by dragging its icon and
+dropping it on the Pike interpreter, or by double-clicking on the
+program icon.</p>
+
+<p>All this assumes that Pike has been installed on your computer.</p>
+
+<p>When you run the program, it will (surprise, surprise) print</p>
+
+<out>Hello world!</out>
+
+<p>on the screen. (In a graphical environment, this text may pop up in
+a separate window.)</p>
+
+<h1>Explaining the "hello world" program</h1>
+
+<p>If we start in the middle of this program, the line</p>
+
+<pi>
+  write("Hello world!\n");
+</pi>
+
+<p>is the central part of the program. We are using the built-in
+function <tt>write</tt>, which prints text to the so-called
+<b>standard output</b>. The standard output is usually the computer
+screen.</p>
+
+<p>Between the parentheses after <tt>write</tt> we have put the
+<b>arguments</b> that we send to the function. In this case, there is
+only one argument, the text <tt>"Hello world!\n"</tt>. The double
+quotes (<tt>&quot;</tt>) signify that it is a <b>string</b>, i. e. a
+sequence of characters. The combination <tt>\n</tt> is translated
+to a <b>newline character</b>, so the next thing that is printed on the
+screen after the greeting will come on a different line.</p>
+
+<p>We cannot let a line like this stand by itself in a program. It
+must be contained in a larger construct called a <b>function</b> or
+<b>method</b>. We therefore enclose it in the method
+<tt>main</tt>:</p>
+
+<pi>
+int main()
+{
+  write("Hello world!\n");
+}
+</pi>
+
+<p>This (as yet unfinished) program means that there exists a method
+called <tt>main</tt>, and that this method will print a greeting to
+the standard output as explained before. The <tt>int</tt> before
+<tt>main</tt> means that (besides doing the printing) the method will
+also return a value, an integer, to whatever it is that uses it. But
+we have not specified which value it will return, so we add a line
+that does this, finally yielding the complete program:</p>
+
+<pi>
+int main()
+{
+  write("Hello world!\n");
+  return 0;
+}
+</pi>
+
+<p>When Pike runs (or "executes") a file like this one, it always
+starts by calling <tt>main</tt>. When <tt>main</tt> is finished, the
+program stops executing, and the returned value is used to indicate
+whether the program succeeded to do what it was supposed to do.
+Returning the value 0 from <tt>main</tt> means success.</p>
+
+<p>A semi-colon (<tt>;</tt>) signifies the end of a so-called
+<b>statement</b>. This program contains two statements: the use of
+<tt>write</tt>, and the returning of a value. In the good old days,
+statements would have been called "program lines", since you had to
+have a statement on each line, but nowadays most programming languages
+allow you to write in "free format", dividing your program into lines
+in any way that you feel makes it easy to read. There are still some
+constraints: you can't split words, and you can't start a new line in
+the middle of a quoted string. This is the same program as before, but
+rearranged:</p>
+
+<pi>
+   int
+main (   )    {write    (
+"Hello world!\n"); return
+
+    0;     }
+</pi>
+
+<p>Ok, those changes probably didn't make the program easier to read
+and understand, but there are many quite legitimate variations in how
+programmers choose to write. For example, this is a common style:</p>
+
+<pi>
+int main() {
+  write("Hello world!\n");
+  return 0;
+}
+</pi>
 
 </manual>
