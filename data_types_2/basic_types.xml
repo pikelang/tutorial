@@ -31,19 +31,25 @@ and not just a reference to it, as explained earlier.</p>
 <list type="ul">
 <item>
 <p>In decimal (that is, base 10) format, i. e. the normal way to write
-numbers, such as <tt>78</tt></p>
+numbers, such as <tt>78</tt>.</p>
 </item>
 
 <item>
 <p>In octal (that is, base 8) format, with a leading <tt>0</tt>, such
 as <tt>0116</tt> (which is equal to <tt>78</tt> in decimal
-notation)</p>
+notation).</p>
 </item>
 
 <item>
 <p>In hexadecimal (that is, base 16) format, with a leading
 <tt>0x</tt>, such as <tt>0x4e</tt> (which is also equal to <tt>78</tt>
-in decimal notation)</p>
+in decimal notation).</p>
+</item>
+
+<item>
+<p>In binary (ones and zeroes) format, with aleading <tt>0b</tt>, such
+as <tt>0b1001110</tt> (which again is equal to <tt>78</tt> in decimal
+notation).</p>
 </item>
 
 <item>
