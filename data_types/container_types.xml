@@ -62,7 +62,7 @@ within square brackets after the array:</p>
 <pi>
 write(a[0]);	// Writes 17
 b[1] = "bloo";	// Replaces "bar" with "bloo"
-c[1][0] = b[2];	// Replaces "Holmes" with "foo"
+c[1][0] = b[2];	// Replaces "Holmes" with "fum"
 </pi>
 
 <p>There are many useful operations that can be done with arrays. For
