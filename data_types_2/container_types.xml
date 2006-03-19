@@ -525,7 +525,7 @@ pairs in the mapping <i>mapping</i>.</p>
 <p><pi>sizeof( ([ ]) )</pi> gives the result <pi>0</pi>.</p>
 </item>
 
-<item name="Finding a value in an mapping">
+<item name="Finding a value in a mapping">
 <pi>search(<i>haystack</i>, <i>needle</i>)</pi>
 
 <p>This is a "reverse lookup" that searches among the values of the
@@ -542,7 +542,7 @@ as the <i>needle</i>. Example:</p>
 </p>
 </item>
 
-<item name="Replacing values in an mapping">
+<item name="Replacing values in a mapping">
 <p><pi>replace(<i>mapping</i>, <i>old</i>, <i>new</i>)</pi> replaces
 all the values that are equal (with <tt>==</tt>) to <i>old</i> with
 <i>new</i>. This operation does not create a copy, but changes the
