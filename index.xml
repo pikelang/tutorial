@@ -21,6 +21,10 @@ and we would hope that you too would want to participate, helping
 out and contributing updates, pointing out what could be improved
 upon, and how. <a href="/development/cvs/policies.xml">Join us!</a></p>
 
+<p style="background-color:yellow; layer-background-color:yellow">
+OBSERVE: Some of the examples are showing their age needs to be updated to the latest Pike version. If you are having problems ask for help on the Pike mailing list or read the reference manual if you feel up to it. The tutorial will be updated ASAP.
+</p>
+
 <p>
   <table border="0" cellpadding="10">
     <emit scope="manual" source="dir" menu="top.menu">
