@@ -1,4 +1,5 @@
 <metadata>
+ <datum name=__uuid value="06ac19dc-6999-43e2-9019-1373eab155b5">
  <datum name=description value="">
  <datum name=http-content-type value="sitebuilder/xsl-template">
  <datum name=keywords value="">
