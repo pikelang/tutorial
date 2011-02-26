@@ -1,28 +1,29 @@
 <metadata>
  <datum name=__uuid value="06ac19dc-6999-43e2-9019-1373eab155b5">
+ <datum name=author valuen=0>
+ <datum name=category valuen=0>
  <datum name=description value="">
+ <datum name=external_use valuen=0>
  <datum name=http-content-type value="sitebuilder/xsl-template">
  <datum name=keywords value="">
- <datum name=language valuen=0>
- <datum name=multilang_status value="">
+ <datum name=notify valuen=0>
  <datum name=selectable value="yes">
  <datum name=stationery value="">
- <datum name=stationery_md_flags value="">
  <datum name=title value="Contains all content markup tags except index page tags.">
  <datum name=xsl-params value64="tmtlMCE=">
 </metadata>
-<?xml version="1.0"?>
-
-<rxml:helptext>
-This template should contain rules for <i>all</i> tags
-in both online and print mode. It is inherited from
-/xslt/online.xsl and /xslt/print.xsl, who only contain
-rules that for technical reasons (e g output mode) need
-to be in their own templates.
-				       /jhs, 2001-02-14
-</rxml:helptext>
+<?xml version="1.0" encoding='utf-8'?>
 
 <xsl:stylesheet>
+
+  <rxml:helptext>
+  This template should contain rules for <i>all</i> tags
+  in both online and print mode. It is inherited from
+  /xslt/online.xsl and /xslt/print.xsl, who only contain
+  rules that for technical reasons (e g output mode) need
+  to be in their own templates.
+				       /jhs, 2001-02-14
+  </rxml:helptext>
 
   <!-- UTILITY FUNCTIONS -->
 
@@ -39,7 +40,7 @@ to be in their own templates.
 
   <!-- writes the (context dependent) paragraph type name (of a text body) -->
   <!-- (different names dependent on surrounding tags; lists/items/tables) -->
-  <xsl:template name="brödtext">
+  <xsl:template name="brÃ¶dtext">
     <xsl:choose>
       <!-- a definition list item header -->
       <xsl:when test="(self::item and parent::list/@type = 'dl') or (self::rxmlentity)">
@@ -108,7 +109,7 @@ to be in their own templates.
   <xsl:template mode="print" match="p">
     <Para>
       <xsl:attribute name="name">
-	<xsl:call-template name="brödtext"/>
+	<xsl:call-template name="brÃ¶dtext"/>
       </xsl:attribute>
       <xsl:apply-templates mode="print"/>
     </Para>
@@ -195,7 +196,7 @@ to be in their own templates.
     <xsl:if test="ancestor::list[1]/@type = 'dl'">
       <Para>
 	<xsl:attribute name="name">
-	  <xsl:call-template name="brödtext"/>
+	  <xsl:call-template name="brÃ¶dtext"/>
 	</xsl:attribute>
 	<xsl:value-of select="@name"/>
       </Para><xsl:value-of select="'&#10;'"/>
@@ -261,7 +262,7 @@ to be in their own templates.
   <xsl:template mode="print" match="image">
     <Para>
       <xsl:attribute name="name">
-	<xsl:call-template name="brödtext"/>
+	<xsl:call-template name="brÃ¶dtext"/>
       </xsl:attribute>
       <Frame>
   	<Image file="{@src}"/>
@@ -329,7 +330,7 @@ to be in their own templates.
       <xsl:when test="name(..) = 'manual' or name(..) = 'item'">
 	<Para>
 	  <xsl:attribute name="name">
-	    <xsl:call-template name="brödtext"/>
+	    <xsl:call-template name="brÃ¶dtext"/>
 	  </xsl:attribute>
 	  <Font name="TT"><nbsp>
 	    <xsl:apply-templates mode="print"/>
@@ -346,9 +347,9 @@ to be in their own templates.
   </xsl:template>
 
 
-  <!-- pi (och för den delen övriga taggar i regeln inunder) implementeras av modulen
+  <!-- pi (och fÃ¶r den delen Ã¶vriga taggar i regeln inunder) implementeras av modulen
   manualtags.pike
-  (radbrutna <pi>-taggar blir <tt><pre>...</pre></tt>, övriga bara <tt>..</tt>) -->
+  (radbrutna <pi>-taggar blir <tt><pre>...</pre></tt>, Ã¶vriga bara <tt>..</tt>) -->
 
   <xsl:template mode="online" match="interactive|in|out|pi">
     <xsl:copy-of select="."/>
@@ -368,7 +369,7 @@ to be in their own templates.
   <xsl:template mode="print" match="manual/in | manual/out">
     <Para>
       <xsl:attribute name="name">
-	<xsl:call-template name="brödtext"/>
+	<xsl:call-template name="brÃ¶dtext"/>
       </xsl:attribute>
       <nbsp>
 	<xsl:value-of select="concat(name(), 'put: ')"/>
@@ -391,7 +392,7 @@ to be in their own templates.
   <xsl:template mode="print" match="xtable">
     <Para>
       <xsl:attribute name="name">
-	<xsl:call-template name="brödtext"/>
+	<xsl:call-template name="brÃ¶dtext"/>
       </xsl:attribute>
       <Table name="Format A" title="">
 	<xsl:for-each select="row[position()=last()]/c">
@@ -493,9 +494,9 @@ to be in their own templates.
   <xsl:template mode="print" match="node()[comment()]"/>
 
   <!--
-    <if ppoint=... case="insensitive"> som används nedan
-    är ett specialhack i manualserverns sbtags för att det
-    ska gå att skriva <product name="platform"> trots att
+    <if ppoint=... case="insensitive"> som anvÃ¤nds nedan
+    Ã¤r ett specialhack i manualserverns sbtags fÃ¶r att det
+    ska gÃ¥ att skriva <product name="platform"> trots att
     RXML-skyddspunkten heter Platform.	  /jhs, 2000-09-29
   -->
   <xsl:template name="product">
