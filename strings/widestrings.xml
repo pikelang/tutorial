@@ -1,5 +1,3 @@
-<manual>
-
 <p>Normal strings contain characters with character codes between 0
 and 255, so-called 8-bit characters. But Pike can also handle strings
 with characters with higher character codes. This is needed for some
@@ -53,5 +51,3 @@ string.</p>
 </item>
 
 </list>
-
-</manual>

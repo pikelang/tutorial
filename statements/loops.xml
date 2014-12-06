@@ -1,5 +1,3 @@
-<manual>
-
 <p>Pike has four different facilities for repetition: the
 <tt>while</tt> statement, the <tt>for</tt> statement, the
 <tt>do while</tt> statement, and the <tt>foreach</tt> statement.</p>
@@ -230,5 +228,3 @@ method.</p>
 <p>You can call <tt>exit</tt> to terminate the program.</p>
 </item>
 </list>
-
-</manual>

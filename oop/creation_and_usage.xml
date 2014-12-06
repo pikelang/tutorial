@@ -1,5 +1,3 @@
-<manual>
-
 <p>Assuming that we have the class <tt>animal</tt>, we can define some
 variables that can be used to store animals. Remember that the class
 is also a <b>data type</b>. We can also create some animals to put in
@@ -43,5 +41,3 @@ syntax:</p>
 my_dog-&gt;eat("quiche"); // Real dogs eat quiche.
 write("Its weight is now " + my_dog-&gt;weight + ".\n");
 </pi>
-
-</manual>

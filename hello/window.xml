@@ -1,5 +1,3 @@
-<manual>
-
 <p>Pike has support for graphical user interfaces. If you have the GTK
 Pike module installed on your computer, you can use a slightly
 modified program to print "Hello world!" in its own window:</p>
@@ -62,5 +60,3 @@ program to exit. This is what the rest of of the statement does (even
 if we don't explain the exact details here):</p>
 
 <pi>-&gt; signal_connect("destroy", lambda(){ exit(0); });</pi>
-
-</manual>

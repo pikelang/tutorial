@@ -1,5 +1,3 @@
-<manual>
-
 <p>Sometimes we want to inherit from two or more classes. This works
 in Pike (and in C++, but not in Java). You just write several
 inherits.</p>
@@ -41,5 +39,3 @@ h-&gt;cuddle();      // Cuddle as a friend
 h-&gt;eat("grain");  // Eat as an animal
 h-&gt;dance();       // Dance as a hamster
 </pi>
-
-</manual>

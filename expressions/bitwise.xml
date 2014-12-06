@@ -1,5 +1,3 @@
-<manual>
-
 <p>In the rare cases where you have to fiddle with the bits inside
 integers, you can use the bitwise operations in Pike. They work just
 like in C and C++, and if you need to use them, you probably already
@@ -14,5 +12,3 @@ know what they mean.</p>
 <row><c><p>Bitwise or</p></c>		<c><p>a | b</p></c></row>
 <row><c><p>Bitwise exclusive or</p></c><c><p>a ^ b</p></c></row>
 </xtable>
-
-</manual>

@@ -1,5 +1,3 @@
-<manual>
-
 <p>A program must sometimes make choices, choosing between different
 instructions to execute. Sometimes it must also execute the same
 instructions several times. All this is done using various <b>control
@@ -182,5 +180,3 @@ else
 <p>We recommend that you don't use the <tt>? :</tt> operator, unless
 you have to. It can be necessary when writing function-like macros,
 but that is beyond the scope of this tutorial.</p>
-
-</manual>

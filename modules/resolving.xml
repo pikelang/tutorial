@@ -1,5 +1,3 @@
-<manual>
-
 <p>Here is a somewhat detailed explanation of exactly how Pike finds
 the modules that you tell it to use. Normally you don't really need to
 worry about all the details, except for what is needed to put your own
@@ -90,5 +88,3 @@ C or C++ code.</p>
 <p>As we said before, you usually don't need to worry about these
 details, except for what is needed to put your modules somewhere where
 Pike can find them.</p>
-
-</manual>

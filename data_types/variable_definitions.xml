@@ -1,5 +1,3 @@
-<manual>
-
 <h1>Zero is special</h1>
 
 <p>The value zero (<b>0</b>) is a special case. It is not just an
@@ -81,5 +79,3 @@ usually better to use <tt>string|int</tt> than <tt>mixed</tt>. It is
 slightly longer to write, but it allows Pike to do type checking when
 the program is compiled and executed, thus helping you to ensure that
 your program works as it should.</p>
-
-</manual>

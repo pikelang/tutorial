@@ -1,5 +1,3 @@
-<manual>
-
 <p>We have already seen integers (<tt>int</tt>) and strings
 (<tt>string</tt>) being used in several examples, but the third basic
 type, <tt>float</tt>, is new. A <tt>float</tt>, also called a <b>real
@@ -28,5 +26,3 @@ mixed x;                // A variable for anything
 </pi>
 
 <p>The data type <tt>mixed</tt> means "any type of value".</p>
-
-</manual>

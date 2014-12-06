@@ -1,5 +1,3 @@
-<manual>
-
 <p>Pike lets you compare things to each other.</p>
 
 <xtable>
@@ -97,5 +95,3 @@ your operating system supports this, Pike will too. For example, in
 Unix you can set the environment variables <tt>LC_CTYPE</tt> and
 <tt>LC_LANG</tt>, and Pike will use their values to determine the
 right sorting order.</p>
-
-</manual>

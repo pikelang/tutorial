@@ -1,5 +1,3 @@
-<manual>
-
 <p>Some of the data types are <b>containers</b>. A data item of one of
 these container types can contain other data items.</p>
 
@@ -73,5 +71,3 @@ called dictionaries, and lets you translate from one value (such as
 might know the datatype by the name "associative array", Perl
 programmers call them "hashes". Mappings and multisets are explained
 in a later chapter.</p>
-
-</manual>

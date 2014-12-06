@@ -1,5 +1,3 @@
-<manual>
-
 <h1>C++ and C</h1>
 
 <p>Pike looks a lot like C++ on the surface, but is easier and safer
@@ -42,5 +40,3 @@ other hand is faster, has a more advanced type system, and has better
 support for object-oriented programming. Pike's more C++-like syntax
 makes it easier to get started with for programmers who know C++, C or
 Java.</p>
-
-</manual>

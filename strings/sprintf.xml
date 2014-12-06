@@ -1,5 +1,3 @@
-<manual>
-
 <p>C programmers are familiar with the functions <tt>sprintf</tt> and
 <tt>sscanf</tt>, which are used to respectively create and analyze
 strings according to format specifiers. Pike had its own
@@ -128,5 +126,3 @@ printed</p></c>
 <p>C programmers should note that a difference from the
 <tt>sprintf</tt> you have in C is that Pike's <tt>sprintf</tt> returns
 the string as the value of the call.</p>
-
-</manual>

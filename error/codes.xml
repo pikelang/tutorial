@@ -1,5 +1,3 @@
-<manual>
-
 <p>The return value 0 from a method may show that there was some
 error, but not what the problem was. It is common to combine return
 values of this kind with a way to find out the nature of the problem.
@@ -57,5 +55,3 @@ something like this:</p>
 Couldn't open 'foobar.txt'.
 No such file or directory (errno = 2).
 </out>
-
-</manual>

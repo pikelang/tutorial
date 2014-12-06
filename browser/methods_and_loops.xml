@@ -1,5 +1,3 @@
-<manual>
-
 <p>We will soon ad the web stuff, and actually download the web page.
 But the method <tt>main</tt> is getting a bit long now, so perhaps it
 is time to divide or program into several methods. Instead of putting
@@ -138,5 +136,3 @@ amount of white space at the beginning of each line, makes it easy to
 follow the "block structure" of the program. For example, you can
 easily see that the <b>do-while</b> loop is inside the first case of
 the <tt>if</tt> statement.</p>
-
-</manual>

@@ -1,5 +1,3 @@
-<manual>
-
 <p>Most programming languages allow you to divide your program into
 smaller parts. These can be called "sub-routines", "procedures",
 "functions" or "methods". In Pike, we use the term "method". Other
@@ -117,5 +115,3 @@ the method:</p>
 
 <p>If you reach the end of the body of a method, without having
 returned first, the method will return zero as return value.</p>
-
-</manual>

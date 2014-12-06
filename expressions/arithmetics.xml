@@ -1,5 +1,3 @@
-<manual>
-
 <p>Pike can do all the usual arithmetic operations: addition (which is
 expressed with the operator <tt>+</tt>), subtraction (<tt>-</tt>),
 division (<tt>/</tt>), multiplication (<tt>*</tt>), and also modulo
@@ -96,5 +94,3 @@ case, <tt>++i</tt> gives the new, incremented, contents of <tt>i</tt>
 as value, while <tt>i++</tt> gives the old contents of <tt>i</tt> as
 value. The same difference applies to <tt>--i</tt> and
 <tt>i--</tt>.</p>
-
-</manual>

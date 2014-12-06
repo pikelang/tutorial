@@ -1,5 +1,3 @@
-<manual>
-
 <h1>The Empty Statement</h1>
 
 <p>Sometimes you may need a statement that does nothing. The <b>empty
@@ -109,5 +107,3 @@ error:</p>
 
 <p>You can read more about the <tt>catch</tt> statement in the chapter
 about error handling.</p>
-
-</manual>

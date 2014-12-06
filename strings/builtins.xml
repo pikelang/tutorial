@@ -1,5 +1,3 @@
-<manual>
-
 <p>The functions <tt>sprintf</tt> and <tt>sscanf</tt> will be
 presented in their own sections, below.</p>
 
@@ -93,5 +91,3 @@ the string <i>haystack</i>:</p>
 </p>
 </item>
 </list>
-
-</manual>

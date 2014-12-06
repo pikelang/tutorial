@@ -1,5 +1,3 @@
-<manual>
-
 <p>This tutorial assumes that you are familiar with some fundamental
 concepts that are used in all programming environments. Look through
 the list, and if you don't immediately know what one of the terms
@@ -216,5 +214,3 @@ does.</p>
 computer can execute. This format can be machine code, which is
 directly executable by the computer. It can also be an intermediate
 format, which has to be interpreted by another program.</p>
-
-</manual>

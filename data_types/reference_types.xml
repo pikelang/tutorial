@@ -1,5 +1,3 @@
-<manual>
-
 <p>We have said before that a variable is a sort of box that can be
 used to store a value. But there is a difference between what we call
 "basic" values, such as integers, and more complex values, such as
@@ -154,5 +152,3 @@ send data to a method as arguments, and when you return data as the
 value of the method, what is actually sent is either the values
 themselves (for the basic types), or references (for the reference
 types).</p>
-
-</manual>

@@ -1,5 +1,3 @@
-<manual>
-
 <p>First of all, Pike calculates the values of all the arguments. In
 the call</p>
 
@@ -45,5 +43,3 @@ value <b>2.5</b>, it will send the two values <b>1.0</b> and
 <b>2.5</b> to <tt>average</tt>. This second call of <tt>average</tt>
 will return <b>1.75</b>, and this is the value of the entire
 expression.</p>
-
-</manual>

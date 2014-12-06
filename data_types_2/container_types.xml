@@ -1,5 +1,3 @@
-<manual>
-
 <p>These are the <b>container types</b> in Pike:</p>
 
 <list type="ul">
@@ -684,5 +682,3 @@ if <i>multiset1</i> and <i>multiset2</i> look the same, otherwise
 <b>exclusive or</b> (<tt>^</tt>).</p>
 </item>
 </list>
-
-</manual>

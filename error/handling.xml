@@ -1,5 +1,3 @@
-<manual>
-
 <p>After an error is detected, it can be handled in different ways.
 The web browser uses two ways: trying again, and terminating the
 program with an error message. If the user gave a zero-length web
@@ -34,5 +32,3 @@ output from a program, like this:</p>
 <p>then the standard output will be printed to the file
 <tt>output.txt</tt>, but the standard error output will still be
 printed on the screen.</p>
-
-</manual>

@@ -1,5 +1,3 @@
-<manual>
-
 <p>When Pike encounters an error that it can't handle, or finds
 something suspicious in a program, you may get an <b>error message</b>
 or a <b>warning</b>. An error message is a piece of text that Pike
@@ -87,5 +85,3 @@ modules) that it uses.</p>
 <p>It is usually a very good idea to turn on warnings, at least during
 program development. Why would you <i>not</i> let the computer help
 you find the bugs in your program?</p>
-
-</manual>

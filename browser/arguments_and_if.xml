@@ -1,5 +1,3 @@
-<manual>
-
 <p>Before we let the program actually do anything with the URL we give
 to it, we will improve the program to let it take the URL as a
 <b>command-line argument</b>. That is, we want to start the program
@@ -102,5 +100,3 @@ in the <i>something-else</i>, so we must enclose it in curly brackets,
 <tt>{</tt> and <tt>}</tt>.</p>
 </item>
 </list>
-
-</manual>

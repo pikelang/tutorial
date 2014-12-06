@@ -1,5 +1,3 @@
-<manual>
-
 <p>To create a class, you write a <b>class definition</b>, with all
 the member variables and methods. For the class <tt>animal</tt>, which
 we have used above, the class definition may look like this:</p>
@@ -54,5 +52,3 @@ needed for cleanup, but much more seldom in Pike than in C++, since
 Pike has automatic garbage collection.</p>
 </item>
 </list>
-
-</manual>

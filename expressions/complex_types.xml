@@ -1,5 +1,3 @@
-<manual>
-
 <p>The same operators as for the arithmetical operations can also be
 used on some other data types. For example, by "adding" two arrays you
 can concatenate them: <tt>({ 7, 6, 3 }) + ({ 6, 19 })</tt> gives the
@@ -183,5 +181,3 @@ results will be returned. Example: <tt>"foo-bar"/"-"</tt> will return
 </row>
 
 </xtable>
-
-</manual>

@@ -1,5 +1,3 @@
-<manual>
-
 <p>The <b>comma</b> operator, written as a comma (<tt>,</tt>) takes
 two operands. It evaluates its left operand and discards the value. It
 then evaluates its right operand, and returns that value as the result
@@ -15,5 +13,3 @@ preprocessor macros, which we advise against anyway.</p>
 
 <p>The commas used to separate the arguments in a call to a method, or
 the elements in an array, are not comma operators.</p>
-
-</manual>

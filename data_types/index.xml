@@ -1,5 +1,3 @@
-<manual>
-
 <p>Pike works with <b>data items</b>, also called <b>values</b>, such
 as the integers <b>17</b> and <b>-4717</b>, or the string of
 characters <tt>"Hello world!"</tt>. Each data item has, or "is", a
@@ -40,5 +38,3 @@ general.</p>
 <tt>mapping</tt>, <tt>multiset</tt>), and then the three types
 <tt>program</tt>, <tt>object</tt> and <tt>function</tt>. We will start
 by looking at the basic types.</p>
-
-</manual>

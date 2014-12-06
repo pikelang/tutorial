@@ -1,5 +1,3 @@
-<manual>
-
 <p>Values of one type can be converted to a value of another type. For
 example, the integer <tt>4711</tt> can be converted to the string
 <tt>"4711"</tt>. (These two may look similar, but they are actually
@@ -120,5 +118,3 @@ i = m;	// This makes Pike suspicious if you turn on strict type checking
 <tt>m</tt> is an integer and nothing else:</p>
 
 <pi>i = [int]m; // Don't worry. I promise it's an int!</pi>
-
-</manual>

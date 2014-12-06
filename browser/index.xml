@@ -1,5 +1,3 @@
-<manual>
-
 <p>Your first Pike program, which was examined above in this tutorial,
 was a program that printed "Hello world!" on the screen. Your second
 Pike program will be a World Wide Web browser, just like Netscape or
@@ -111,5 +109,3 @@ Type the address of the web page:
 <in>http://pike.ida.liu.se/</in>
 <out>URL: http://pike.ida.liu.se/</out>
 </interactive>
-
-</manual>

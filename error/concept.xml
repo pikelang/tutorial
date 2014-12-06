@@ -1,5 +1,3 @@
-<manual>
-
 <p>When you examine a program that is intended to solve a real problem
 in the real world, a surprisingly large portion of the program will be
 written just to take care of possible errors. Even in the simple web
@@ -25,5 +23,3 @@ address.</p>
 
 <p>Error handling usually consists of two parts:
 <b>detecting</b> the error, and <b>handling</b> it.</p>
-
-</manual>

@@ -1,5 +1,3 @@
-<manual>
-
 <p>The counterpart or "opposite" of <tt>sprintf</tt> is
 <tt>sscanf</tt>. It looks at a string, and extracts values from it
 according to another string with format specifiers. It then places the
@@ -189,5 +187,3 @@ sscanf("foo % 1 2 3 fum",
 <p>In contrast to variables defined in a <tt>for</tt> statement, these
 variables are available in the rest of the block, and not just inside
 the <tt>sscanf</tt>.</p>
-
-</manual>

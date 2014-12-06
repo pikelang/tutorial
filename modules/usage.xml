@@ -1,5 +1,3 @@
-<manual>
-
 <p>To use a member of a module, just prefix the member name with the
 module name and a dot. For example, we have already used the standard
 input, which is called <tt>Stdio.stdin</tt>. That means that it is the
@@ -67,5 +65,3 @@ program that used the module:</p>
 import .florble;
 .gnooble.droop(7, 3);
 </pi>
-
-</manual>

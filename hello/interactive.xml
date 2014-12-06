@@ -1,5 +1,3 @@
-<manual>
-
 <p>You can use Pike interactively, which means that you type a line at
 a time, letting Pike execute it immediately. Just start Pike by giving
 the command <tt>pike</tt>, without any arguments. Then type a
@@ -41,5 +39,3 @@ testing things, for example when you are following this tutorial. It
 can also be used as a very advanced calculator. <i>But beware! Some
 things don't work the same way in interactive mode as they do when you
 run a Pike program from a file!</i></p>
-
-</manual>

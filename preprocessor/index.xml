@@ -1,5 +1,3 @@
-<manual>
-
 <p>When Pike executes a program file, the source code is first run
 through the <b>preprocessor</b>, The preprocessor performs some
 textual transformations on the source code. By "textual
@@ -86,5 +84,3 @@ with the date when the file was compiled (or, more to the point, when
 the preprocessor replaced the entity). Similarly, <tt>__TIME__</tt>
 turns into a 24-hour <pi>"HH:MM:SS"</pi> time string constant, e g
 <pi>"19:17:21"</pi>.</p>
-
-</manual>

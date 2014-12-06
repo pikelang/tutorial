@@ -1,5 +1,3 @@
-<manual>
-
 <p>In this section we explain two operators that are used in
 connection with calls to methods: the <b>method-call</b> operator and
 the <b>splice</b> operator.</p>
@@ -48,5 +46,3 @@ koogle(@a);
 <p>is equivalent to</p>
 
 <pi>koogle(17, -0.3, "foo");</pi>
-
-</manual>

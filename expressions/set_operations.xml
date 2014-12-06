@@ -1,5 +1,3 @@
-<manual>
-
 <p>Some of the operators that are used for bitwise operations
 (<tt>|</tt>, <tt>&amp;</tt> and <tt>^</tt>) can also be used for
 operations on sets, such as union and intersection. They can be
@@ -123,5 +121,3 @@ union:</p>
 </row>
 
 </xtable>
-
-</manual>

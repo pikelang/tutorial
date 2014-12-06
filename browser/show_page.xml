@@ -1,5 +1,3 @@
-<manual>
-
 <p>A web browser that just prints "Done" instead of the web page isn't
 of much use, so we add some lines at the end of the method
 <tt>handle_url</tt> to print the contents of the web page:</p>
@@ -53,5 +51,3 @@ variables, among them the method <tt>data</tt>.</p>
 in the way we have seen, is often called a <b>class</b>. You can read
 more about how to use, and create, classes in the chapter about
 <b>object-oriented programming</b>.</p>
-
-</manual>

@@ -1,5 +1,3 @@
-<manual>
-
 <p>A module is a package of Pike code, typically a file. You can also
 write modules in C or C++, but how to do that is outside the scope of
 this tutorial.</p>
@@ -47,5 +45,3 @@ int main()
   return 0;
 }
 </pi>
-
-</manual>

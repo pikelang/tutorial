@@ -1,5 +1,3 @@
-<manual>
-
 <p>These are the <b>basic types</b> in Pike:</p>
 
 <list type="ul">
@@ -234,5 +232,3 @@ after each other:</p>
 <p>Pike has many powerful built-in operations for working with
 strings. Read more about those in the chapter about string handling,
 below.</p>
-
-</manual>

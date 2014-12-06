@@ -1,5 +1,3 @@
-<manual>
-
 <p>A class may <b>inherit</b> another class. This means that the
 inheriting class (also called <b>subclass</b> or <b>derived class</b>)
 starts with all the methods and member variables that the inherited
@@ -135,5 +133,3 @@ Stdio.File the_file;
 // ...
 the_file-&gt;read();
 </pi>
-
-</manual>

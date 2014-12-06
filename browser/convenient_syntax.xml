@@ -1,5 +1,3 @@
-<manual>
-
 <h1>Importing a Module</h1>
 
 <p>If we don't want to write the module name every time we use
@@ -49,5 +47,3 @@ reason to write:</p>
 <pi>
   <changed>Query web_page = get_url(this_url);</changed>
 </pi>
-
-</manual>

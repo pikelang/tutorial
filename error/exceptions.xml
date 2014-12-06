@@ -1,5 +1,3 @@
-<manual>
-
 <p>It is not uncommon that we want to separate the detection and the
 handling of errors. The place where an error can be detected is not
 always the place where it is best to handle the error. Take for
@@ -160,5 +158,3 @@ else {
   write("There was some other type of error.\n");
 }
 </pi>
-
-</manual>

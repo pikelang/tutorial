@@ -1,5 +1,3 @@
-<manual>
-
 <p>A module is a sort of "plug-in": a software package that can easily
 be used by other programmers. Modules can contain methods, classes,
 constants, and also other modules. We will use the term <b>members</b>
@@ -84,5 +82,3 @@ such as mySQL, Oracle and Sybase.</p>
 <p>Depending on which operating system you are using, and on exactly
 how Pike was installed on your system, some of these modules may not
 be available.</p>
-
-</manual>

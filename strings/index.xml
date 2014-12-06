@@ -1,5 +1,3 @@
-<manual>
-
 <p>Pike has a large number of operations that you can do with strings.
 Some of them are expressed with operators such as <tt>+</tt> and
 <tt>-</tt>, and some are expressed as functions or methods that you
@@ -149,5 +147,3 @@ them:</p>
 </p>
 </item>
 </list>
-
-</manual>

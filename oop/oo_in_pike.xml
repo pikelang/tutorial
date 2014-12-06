@@ -1,5 +1,3 @@
-<manual>
-
 <h1>Programs Within Programs: Object-Oriented Pike</h1>
 
 <p>As we have said before, a <b>class</b> is a description of a type
@@ -25,5 +23,3 @@ course it won't really eat, since it's just some data in the computer
 and not a real animal. But the method can change the member variables,
 for example by increasing the value of <tt>weight</tt> for that
 animal.</p>
-
-</manual>

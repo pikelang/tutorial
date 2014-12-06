@@ -1,5 +1,3 @@
-<manual>
-
 <p>Here are two more examples of method definitions:</p>
 
 <pi>
@@ -53,5 +51,3 @@ side-effect of <tt>show_user</tt> is probably not a problem. On the
 other hand, if a programmer uses <tt>getDex</tt> to get the value of
 the variable <tt>Dex</tt>, it could come as a surprise that this
 method also changes the value.</p>
-
-</manual>

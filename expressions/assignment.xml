@@ -1,5 +1,3 @@
-<manual>
-
 <p>Assignment is used to give a new value to a variable:</p>
 
 <pi>
@@ -143,5 +141,3 @@ float f1, f2;
 
 <p>This syntax is very convenient when you deal with functions who
 always return a fixed-width array of data.</p>
-
-</manual>

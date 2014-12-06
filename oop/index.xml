@@ -1,5 +1,3 @@
-<manual>
-
 <p>After half a century or so of computer programming, we have learned
 that <b>modularization</b> is a cornerstone of software development.
 Modularization, in this context, means that we divide a big problem
@@ -86,5 +84,3 @@ counts animals or sorts them, we can use the same program code to
 count or sort birds, without changing anything. So not only can we
 re-use the work that was put into the "animal" class: we can also
 re-use the work that was put into much of the rest of the program.</p>
-
-</manual>

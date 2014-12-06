@@ -1,5 +1,3 @@
-<manual>
-
 <p>The data items of some of the data types in Pike can contain other
 data items. The indexing and range operators are used to retrieve
 information from inside those complex data items.</p>
@@ -183,5 +181,3 @@ so on. In general, <tt>arr[-i]</tt> is equivalent to
 <p>Negative indices do not work with the range operator. The range
 operator will try to convert negative or too-large index values to
 something legal.</p>
-
-</manual>

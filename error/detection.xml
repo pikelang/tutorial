@@ -1,5 +1,3 @@
-<manual>
-
 <p>In the web browser, we detected the first two possible errors by
 checking the data: the number of command-line arguments, and the
 length of the web address that the user types.</p>
@@ -30,5 +28,3 @@ supposed to do. Most Pike programmers use the same convention.</p>
 in a variable of any type, and it can be returned from any method.
 Every new variable that you define will contain the value 0, until you
 give it another value.</p>
-
-</manual>

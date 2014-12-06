@@ -1,5 +1,3 @@
-<manual>
-
 <p>An appropriate next step would be making your program run without
 the need for manually invoking it with the pike parser. If you are
 using a Unix system, such as Linux or Solaris, you can make the web
@@ -39,5 +37,3 @@ the file to <tt>webbrowser</tt>, without the extension.)</p>
 <tt>pike</tt> with the Pike program. Then you can start the web
 browser by clicking on the web browser's icon, or by giving the
 command <tt>webbrowser.pike</tt> in the Command Prompt Window.</p>
-
-</manual>

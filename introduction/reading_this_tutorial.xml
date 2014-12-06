@@ -1,5 +1,3 @@
-<manual>
-
 <p>This tutorial gives an introduction to the language Pike. It is not
 a complete reference manual. It does not document the modules and
 libraries that come with the Pike distribution, except for what is
@@ -82,5 +80,3 @@ changes are marked in dark red bold text, as in:</p>
 </item>
 
 </list>
-
-</manual>

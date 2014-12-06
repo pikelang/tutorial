@@ -1,5 +1,3 @@
-<manual>
-
 <p>It is traditional to start a book or tutorial about a programming
 language with a very simple example: a program that just writes the
 text "Hello world!" on the screen. Here it is in Pike:</p>
@@ -117,5 +115,3 @@ int main() {
   return 0;
 }
 </pi>
-
-</manual>

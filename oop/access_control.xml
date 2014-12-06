@@ -1,5 +1,3 @@
-<manual>
-
 <p>Do you remember about <b>information hiding</b>? In the examples
 above, everyone could access all the methods and member variables in
 all objects. For example, it is very easy to lose weight:</p>
@@ -60,5 +58,3 @@ subclass, methods in this class will still use this method.</p>
 It is not supposed to be called except during the construction of the
 object, and if it is not <pi>static</pi> there may be some type
 incompatibilities in connection with inheritance.</p>
-
-</manual>

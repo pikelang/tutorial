@@ -1,5 +1,3 @@
-<manual>
-
 <list type="ul">
 <item>
 <p>When our simple web browser prints a web page, it just prints the
@@ -33,5 +31,3 @@ non-existent page, it generates a new web page with an error message,
 and your web browser receives and shows that page.</p>
 </item>
 </list>
-
-</manual>
