@@ -1,18 +1,3 @@
-<metadata>
- <datum name=__commit_id valuen=19138>
- <datum name=__created valuen=0>
- <datum name=__ext_created valuen=1411269020>
- <datum name=__uuid value="980fde1d-7fc1-461e-9d12-4d1bb2dd57ea">
- <datum name=author value="0">
- <datum name=description value="">
- <datum name=external_use value="">
- <datum name=http-content-type value="text/xml">
- <datum name=keywords value="">
- <datum name=stationery value="">
- <datum name=stationery_md_flags value="">
- <datum name=template value="tutorial.xsl">
- <datum name=title value="Operator Precedence and Associativity">
-</metadata>
 <manual>
 
 <p>Operator precedence is why the expression <tt>5 + 3 * 2</tt> is
