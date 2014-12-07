@@ -1,0 +1,260 @@
+# More About Data Types
+
+# The Basic Types
+
+These are the **basic types** in Pike:
+
+<list type="ul">
+<item>integer (written `int` in Pike)</item>
+<item>floating-point number (written `float`)</item>
+<item>string (written `string`)</item>
+</list>
+
+They are basic in the sense that data items of these data types
+can't contain other data items. When a data item of a basic type
+is stored in a variable, it is the data item itself that is stored,
+and not just a reference to it, as explained earlier.
+
+## The Data Type `int`
+
+Integer values can be written in several ways:
+
+<list type="ul">
+<item>
+In decimal (that is, base 10) format, i e the normal way to write
+numbers, such as `78`.
+</item>
+
+<item>
+In octal (that is, base 8) format, with a leading `0`, such
+as `0116` (which is equal to `78` in decimal
+notation).
+</item>
+
+<item>
+In hexadecimal (that is, base 16) format, with a leading
+`0x`, such as `0x4e` (which is also equal to `78`
+in decimal notation).
+</item>
+
+<item>
+In binary (ones and zeroes) format, with aleading `0b`, such
+as `0b1001110` (which again is equal to `78` in decimal
+notation).
+</item>
+
+<item>
+As a character literal within single quotes, which will give the
+internal character code for that character. For example, `'N'`
+will give the character code for the character **N**, which is
+usually equal to `78`.
+</item>
+</list>
+
+You can use normal arithmetic operations, such as addition and
+multiplication, with integers, but you can also consider integers as
+sequences of bits and, apply bitwise operations on them.
+
+For example, the integer value **247** is stored internally as
+the sequence of bits **1111011**, and you could left-shift it three
+positions with the expression `247 << 3`, giving the bit
+pattern **1111011000**, which is equal to **1976**.
+
+Integers in Pike can be very large. For small integers (usually
+less than 2 billion or so), Pike will use the computer's own,
+hardware-supported way of representing integers. For larger integers,
+Pike will use "bignums". These are slower, but can be arbitrarily
+large. Just like the smaller integers, bignums are represented
+exactly, without any rounding errors.
+
+As a programmer, you will usually not need to worry about the
+difference between bignums and smaller integers. There may however be
+some operations, for example certain methods in certain modules, that
+cannot handle bignums but work with smaller integers.
+
+Some operations that you can apply to integers:
+
+<list type="ul">
+<item name="Check if it is an integer">
+```pike
+intp(*something*)
+```
+
+The function `intp` returns **1** if the value
+*something* is an integer, otherwise **0**. Example:
+
+```pike
+if (intp(u))
+  write("The integer is " + u + ".\n");
+else
+  write("It is not an integer.\n");
+
+```
+</item>
+
+<item name="Get a random number">
+```pike
+random(*limit*)
+
+``` returns a random value which is
+greater or equal to **0** and less than the integer
+*limit*.
+</item>
+
+<item name="Reverse the bits">
+```pike
+reverse(*integer-value*)
+
+``` returns an integer with the
+bits in the *integer-value* in reverse order.
+</item>
+</list>
+
+## The Data Type `float`
+
+Real numbers, which are numbers that can have a fractional part,
+such as **18.34** and **-1000.03**, are represented in the
+computer as **floating-point numbers**. Floating-point numbers can
+be used to represent very large numbers, but with limited precision.
+The number of significant digits is the same, no matter the magnitude
+of the value.
+
+You can write floating-point values in two ways, as usual with
+decimals, or in exponential form with an `e`:
+
+```pike
+3.1415926535
+-123.0001
+12.0
+1.0e6 // 1.0 times 10 to the power of 6, i e one million
+2.0e-6 // 2.0 times 10 to the power of -6, i e two one-millionths
+-1.0e-2 // Minus one hundredth
+```
+
+Some operations that you can apply to floating-point numbers:
+
+<list type="ul">
+<item name="Check if it is a floating-point number">
+```pike
+floatp(*something*)
+```
+
+The function `floatp` returns **1** if the value
+*something* is a floating-point number, otherwise **0**.
+</item>
+
+<item name="Round downwards">
+```pike
+floor(*float-value*)
+
+``` returns the largest integer that
+is less than or equal to *float-value*, but as a floating-point
+number. For example, `floor(7.3)` gives **7.0** (and not the
+integer **7**). If you do want the integer value, you can use an
+explicit type conversion: `(int)7.3` gives you the integer
+**7**.
+</item>
+
+<item name="Round upwards">
+```pike
+ceil(*float-value*)
+
+``` returns the smallest integer that
+is greater than or equal to *float-value*, as a floating-point
+number. For example, `ceil(7.3)` gives **8.0** (and not the
+integer **8**).
+</item>
+</list>
+
+## The Data Type `string`
+
+Strings are sequences of characters, and are written within double
+quotes (`"`) in Pike:
+
+```pike
+"scorch"
+"Hello world!"
+"Woe to you, oh Earth and Sea"
+""
+```
+
+The last one is the empty string. Special characters, such as the
+double quote character, need to be preceded by a backslash character
+(`\`):
+
+<list type="ul">
+<item>`\"` to get a double quote (`"`) in the string</item>
+<item>`\\` to get a backslash character (`\`)</item>
+<item>`\n` to get a newline character</item>
+<item>`\t` to get a tab character</item>
+<item>`\r` to get a carriage return</item>
+<item>
+`\0` to get a NUL character, i e the character with
+character code **0**
+</item>
+</list>
+
+Here are some examples of strings:
+
+```pike
+"One line\nAnother line\nA third line"
+"Strings are written within \" characters."
+```
+
+You can use character codes instead of the characters themselves.
+If you write \d followed by a decimal (that is, normal base 10) number,
+it will be replaced by the character with that character code.
+The same goes for \x followed by a hexadecimal (base 16) number,
+and a single \ followed by an octal (that is, base 8) number.
+The `\0` is actually an example of this.
+These four strings are identical:
+
+```pike
+"Hello world"
+"Hello \d119orld"
+"Hello \x77orld"
+"Hello \167orld"
+```
+
+Strings in Pike are what we call "shared", which means that if two
+or more strings contain exactly the same characters, there will still
+be only one copy of it.
+
+Some operations that you can apply to strings:
+
+<list type="ul">
+<item name="Check if it is a string">
+```pike
+stringp(*something*)
+```
+
+The function `stringp` returns **1** if the value
+*something* is a string, otherwise **0**.
+</item>
+
+<item name="Concatenation">
+Strings can be concatenated with the `+` operator:
+
+```pike
+string s1 = "Hello";
+string s2 = " ";
+string s3 = "world!";
+write(s1 + s2 + s3 + "\n");
+
+```
+</item>
+
+<item name="Concatenation of string literals">
+**String literals**, who are strings within double quotes that
+are written in a program, can be concatenated by just putting them
+after each other:
+
+```pike
+write("Hello"  " "  "world!" + "\n");
+```
+</item>
+</list>
+
+Pike has many powerful built-in operations for working with
+strings. Read more about those in the chapter about string handling,
+below.

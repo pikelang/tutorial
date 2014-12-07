@@ -1,0 +1,69 @@
+# Error Codes
+
+The return value 0 from a method may show that there was some
+error, but not what the problem was. It is common to combine return
+values of this kind with a way to find out the nature of the problem.
+This can be done with special **error codes**, that your program
+can retrieve from somewhere. Lets look at this example, which opens a
+file on disk for reading:
+
+```pike
+Stdio.File localfile = Stdio.File();
+if (!localfile->open(file_name, "r"))
+{
+  werror("Couldn't open '" + file_name + "'.\n");
+  werror(strerror(localfile->errno()) +
+         " (errno = " + localfile->errno() + ").\n");
+  exit(1);
+}
+```
+
+Some comments about this:
+
+<list type="ul">
+<item>
+```pike
+Stdio.File
+
+``` is a stream that can be used to read from a
+file on fisk. It is similar to the data type `FILE` in C, and
+the classes `ifstream` and `ofstream` in C++.
+</item>
+
+<item>
+
+```pike
+!localfile->open(file_name, "r")
+
+``` means exactly the same
+thing as 
+```pike
+localfile->open(file_name, "r") == 0
+
+```.
+
+
+It is common to use the **logical not** operator (`!`) to
+check if something is 0.
+</item>
+
+<item>
+`errno` is a method in the class `Stdio.File`, and
+can be used io check what kind of error has occurred in a particular
+stream. It returns an error code. `errno` is not a global
+variable, as in C.
+</item>
+
+<item>
+`strerror` returns a string that describes the error number
+given as an argument.
+</item>
+</list>
+
+If the file couldn't be opened, the program's output will look
+something like this:
+
+<out>
+Couldn't open 'foobar.txt'.
+No such file or directory (errno = 2).
+</out>

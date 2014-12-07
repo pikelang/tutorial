@@ -1,0 +1,36 @@
+# Handling the Error
+
+After an error is detected, it can be handled in different ways.
+The web browser uses two ways: trying again, and terminating the
+program with an error message. If the user gave a zero-length web
+address, the program asks again.
+
+If you want to terminate the program, this is a common code
+snippet:
+
+```pike
+if (result_of_something == 0)
+{
+  werror("Failed to open the file called '" +
+         file_name + "'\n");
+  exit(1);
+}
+```
+
+The call to `exit` will terminate the program. An argument
+greater than 0 to `exit`, or as a return value from
+`main`, means that the program failed in some way.
+
+The built-in function `werror` prints a string on the
+**standard error output** (`Stdio.stderr`) instead of the
+normal **standard output** (`Stdio.stdout`). This has a
+higher chance of being seen by the user, since if you re-direct the
+output from a program, like this:
+
+<interactive>
+<in>webbrowser.pike cod.ida.liu.se > output.txt</in>
+</interactive>
+
+then the standard output will be printed to the file
+`output.txt`, but the standard error output will still be
+printed on the screen.

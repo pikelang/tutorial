@@ -1,0 +1,153 @@
+# Assignment
+
+Assignment is used to give a new value to a variable:
+
+```pike
+i = 16;
+i = i + 15;
+```
+
+"Variable" is used in a general sense here. Assignment can give
+values not only to normal variables, but also to member variables in
+an object, and to positions within an array, a mapping or a
+multiset:
+
+```pike
+my_cat->name = "Falkenberg";
+a[7] = 8;
+english2german["four"] = "vier";
+set_of_winners["Tom"] = 0;
+```
+
+An assignment, such as `k = 3`, is an expression, and its
+value is the same value as was assigned to the variable. You can use
+an assignment expression within another expression, for example in a
+"chain" of assignments that assign the same value to several
+variables:
+
+```pike
+i = j = k = 3;
+```
+
+Assignments that follow the pattern
+
+```pike
+i = i + 3;
+k = k * 4;
+miles_traveled["Anne"] = miles_traveled["Anne"] + 5;
+debt[get_name()] = debt[get_name()] + 500;
+```
+
+are very common in programming. That is, an assignment to a
+variable, where you use the old value of the variable to calculate the
+new one. To simplify such assignments, Pike has a number of extra
+assignment operators, looking like *operator*`=`, for
+example:
+
+```pike
+i += 3;
+k *= 4;
+miles_traveled["Anne"] += 5;
+debt[get_name()] += 500;
+```
+
+In general, the expression
+
+```pike
+*variable* *operator*`=` *expression*
+```
+
+means the same as
+
+```pike
+*variable* `=` *variable* *operator*
+*expression*
+```
+
+But note that the *variable* part is only calculated once. For
+example, in
+
+```pike
+debt[get_name()] += 500;
+```
+
+the function `get_name` is only called once.
+
+<xtable>
+
+<row>
+<h>Syntax</h>
+<h>Equivalent to</h>
+</row>
+
+<row>
+<c>`*variable* += *expression*`</c>
+<c>`*variable* = *variable* + *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* -= *expression*`</c>
+<c>`*variable* = *variable* - *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* *= *expression*`</c>
+<c>`*variable* = *variable* * *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* /= *expression*`</c>
+<c>`*variable* = *variable* / *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* %= *expression*`</c>
+<c>`*variable* = *variable* % *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* <<= *expression*`</c>
+<c>`*variable* = *variable* << *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* >>= *expression*`</c>
+<c>`*variable* = *variable* >> *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* |= *expression*`</c>
+<c>`*variable* = *variable* | *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* &= *expression*`</c>
+<c>`*variable* = *variable* & *expression*`</c>
+</row>
+
+<row>
+<c>`*variable* ^= *expression*`</c>
+<c>`*variable* = *variable* ^ *expression*`</c>
+</row>
+
+</xtable>
+
+Note that the increment and decrement operators (`i++`,
+`++i`, `i--`, and `--i`)<comment>--</comment>
+also change the value of the variable they are used on.
+
+## Multi-Assignment
+
+In Pike, you can assign values to several variable at once, taking
+the values from an array:
+
+```pike
+int i;
+string s;
+float f1, f2;
+
+[ i, s, f1, f2 ] = ({ 3, "hi", 2.2, 3.14 });
+```
+
+This syntax is very convenient when you deal with functions who
+always return a fixed-width array of data.

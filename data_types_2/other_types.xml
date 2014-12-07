@@ -1,0 +1,207 @@
+# The Other Reference Types
+
+This section about "other reference types" covers these types:
+
+<list type="ul">
+<item>program or "class" (written `program` in Pike)</item>
+<item>mapping or "dictionary" (written `mapping`)</item>
+<item>multiset or "bag" (written `multiset`)</item>
+</list>
+
+Just like the container types, these types are
+**reference types**: When a data item of a basic type is stored in
+a variable, it is not the data item itself that is stored, but a
+reference to it.
+
+## The Data Type `program`
+
+The data type `program` in Pike is used to contain class
+definitions. Not the **source code**, i e the program text, but
+the internal representation that Pike generates when it has read the
+source code.
+
+As described above in the chapter about object-oriented
+programming, programs and classes are the same in Pike. Both an
+explicit class definition (that is, with the keyword `class`)
+and a source code file can be used to define a program/class.
+
+Here are some useful things that you can do with programs:
+
+<list type="ul">
+<item name="Check if it is a program">
+```pike
+programp(*something*)
+```
+
+The function `programp` returns **1** if the value
+*something* is a program, otherwise **0**.
+</item>
+
+<item name="Cloning">
+
+```pike
+*program-name*()
+
+``` or 
+```pike
+*program-name*(*arguments*)
+```
+
+
+This creates a new object of the type *program-name*. If
+arguments are given, they are sent to the method `create` in
+this program.
+</item>
+
+<item name="Defining variables">
+```pike
+*program-name* *variable-name*;
+```
+
+This creates a new variable of the type *program-name*.
+</item>
+</list>
+
+Read more about classes and objects in the chapter about
+object-oriented programming.
+
+## The Data Type `object`
+
+In object-oriented programming, the data items that are instances
+(also called **clones**) of a class are called objects. The data
+type `object` is used to store such objects.
+
+An `object` is an instance of any class. Usually you use the
+more specific data type `object(*classname*)`, which means
+an object that is an instance of the class *classname*. You can
+also write just `*classname*` instead of
+`object(*classname*)`, and this is the recommended
+form.
+
+Here are some useful things that you can do with objects:
+
+<list type="ul">
+<item name="Check if it is an object">
+```pike
+objectp(*something*)
+```
+
+The function `objectp` returns **1** if the value
+*something* is a object, otherwise **0**.
+</item>
+
+<item name="Create an object">
+```pike
+*program-name*()
+
+``` or 
+```pike
+*program-name*(*arguments*)
+```
+
+This creates a new object of the type *program-name*. If
+arguments are given, they are sent to the method `create` in
+the program.
+</item>
+
+<item name="Destroy an object">
+```pike
+destruct(*object*)
+```
+
+This destroys the object *object*. All variables that contain
+references to this object will be set to **0**. If there is a
+method called `destroy` in the object, that method will first
+be called.
+
+Note that usually you don't need to explicitly destroy objects.
+Pike has automatic garbage collection, and when an object is no longer
+referenced from anywhere, which means that it can never be used again,
+it is destroyed automatically.
+</item>
+
+<item name="Accessing a member">
+```pike
+*object* -> *member-name*
+```
+
+This is used to access the method or member variable called
+*member-name* in the object *object*. Example:
+
+```pike
+web_page->data()
+```
+</item>
+</list>
+
+Read more about classes and objects in the chapter about
+object-oriented programming.
+
+## The Data Type `function`
+
+Something else that may surprise you is that there is a data type
+for **methods**. Sometimes you want to refer to "any method". Take
+for example the built-in method `map`, which is used to apply
+an operation to all the elements in an array. You call `map`
+with (at least) two arguments: the array to go through, and the method
+to call for each element:
+
+```pike
+void write_one(int x)
+{
+  write("Number: " + x + "\n");
+}
+
+int main()
+{
+  array(int) all_of_them = ({ 1, 5, -1, 17, 17 });
+  map(all_of_them, write_one);
+  return 0;
+}
+```
+
+The first argument to `map` is an array, and the second
+argument is of the type `function`. As you can see, you get a
+method reference of the type `function` by just typing the
+method name, without the parentheses used in method calls.
+
+A method stored in a variable can be called just like a normal
+method:
+
+```pike
+function w = write;
+w("Hello!\n");
+```
+
+Here are some useful things that you can do with method
+references:
+
+<list type="ul">
+<item name="Check if it is a method reference">
+```pike
+functionp(*something*)
+```
+
+The function `functionp` returns **1** if the value
+*something* is a method reference, otherwise **0**.
+</item>
+
+<item name="Find the name of a function">
+```pike
+function_name(*function*)
+
+``` returns a string with the name of the function *function*.
+Example:
+
+
+```pike
+function_name(write)
+
+``` gives the result
+```pike
+"write"
+
+```.
+
+</item>
+</list>

@@ -1,0 +1,918 @@
+# Container Types
+
+These are the **container types** in Pike:
+
+<list type="ul">
+<item>
+array or "vector" (written `array` in Pike)
+</item>
+
+<item>
+mapping, "dictionary" or "associative array" (written
+`mapping`)
+</item>
+
+<item>multiset or "bag" (written `multiset`)</item>
+</list>
+
+A data item of a container type can contain other data items. The
+container types are also **reference types**: When a data item of a
+container type is stored in a variable, it is not the data item itself
+that is stored, but a reference to it.
+
+## The Data Type `array`
+
+As described earlier in this tutorial, an array is a container that
+can contain a sequence of elements. The elements are numbered from 0
+and on.
+
+```pike
+array(string) b;     // Array of strings
+b = ({ "foo", "bar", "fum" });
+b[1] = "bloo";       // Replaces "bar" with "bloo"
+```
+
+As you can see, array literals are written as comma-separated lists
+inside parenthesis-curly-bracket quotes. The data type of an array
+that can contain elements of the data type `*datatype*` is
+`array(*datatype*)`. The data type `array(mixed)`,
+i e an array that can contain any types of values, can also be
+written just `array`.
+
+An array variable that hasn't been given a value contains 0, and
+not an empty array. If you want an empty array, you have to give it
+explicitly:
+
+```pike
+array(string) a1;       // a1 contains 0
+a1 = ({ });             // Now a1 contains an empty array
+array(int) a2 = ({ });  // a2 contains an empty array
+```
+
+As described earlier, you can access the elements in an array,
+either to just get the value or to replace it. This is usually called
+**indexing** the array. Indexing is done by writing the position
+number, or index, within square brackets after the array:
+
+```pike
+write(a[0]);
+b[1] = "bloo";
+c[1] = b[2];
+```
+
+Note that the first position in an array is numbered 0 and not 1,
+and the second one is numbered 1, and so on.
+
+A special feature is that you can use negative indices:
+`*array*[-1]` means the last position in the array
+*array*, `*array*[-2]` the next-to-last position, and
+so on.
+
+An array can contain any type of values, including other arrays. In
+that case, you may need several indexing operators after each
+other:
+
+```pike
+array(array(int)) aai = ({
+  ({ 7, 9, 8 }),
+  ({ -4, 9 }),
+  ({ 100, 1, 2, 4, 17 })
+});
+
+write("aai[2][3] is " + aai[2][3] + "\n");
+```
+
+This will print `aai[2][3] is 4`.
+
+It is sometimes important to differentiate between two array
+expressions being **equal**, and two that also are the **same**.
+Whenever you write an array literal in your program, you get a new
+array. This array is only the **same** as itself, but it can be
+**equal** to other arrays. After executing the following code
+snippet, the variables `a` and `b` will refer to the
+**same** array, but `c` will refer to an array that is just
+**equal** to the first one.
+
+```pike
+array(string) a = ({ "foo", "bar" });
+array(string) b = a;
+array(string) c = ({ "foo", "bar" });
+```
+
+Here are some of the many things that you can do with arrays:
+
+<list type="ul">
+<item name="Check if it is an array">
+```pike
+arrayp(*something*)
+```
+
+The function `arrayp` returns **1** if the value
+*something* is an array, otherwise **0**.
+</item>
+
+<item name="Extract a range">
+```pike
+*array*[*from*..*to*]
+
+``` returns a new array,
+containing the elements at the index *from* up to and including
+the index *to*.
+
+
+```pike
+({ 1, 7, 3, 3, 7 })[ 1..3 ]
+
+``` gives the result
+```pike
+({ 7, 3, 3 })
+
+```.
+
+
+The form `*array*[*from*..]` will give the
+elements starting at index *from* and to the end of the array.
+The form `*array*[..*to*]` will give the elements
+from the start of the array, up to and including index *to*.
+</item>
+
+<item name="Comparing arrays">
+```pike
+*array1* == *array2*
+
+``` returns **1** if
+*array1* and *array2* are the same array, otherwise
+**0**. They have to be the *same* array, not just equal. Given
+the variable definition
+
+```pike
+array(int) a = ({ 7, 1 });
+```
+
+this will be true:
+
+```pike
+a == a
+```
+
+but this will be false:
+
+```pike
+({ 7, 1 }) == ({ 7, 1 })
+```
+
+You can also use the operator `!=`, which means "not same".
+The relational operators (`<`, `>`, etc) do not
+work with arrays.
+</item>
+
+<item name="Comparing arrays (again)">
+```pike
+equal(*array1*, *array2)*
+
+``` returns **1** if
+*array1* and *array2* look the same, otherwise **0**. Two
+arrays look the same if they have the same number of elements, and
+each two corresponding elements in the two arrays look the same. For
+example, this will be return 1:
+
+```pike
+equal( ({ 7, 1 }), ({ 7, 1 }) );
+```
+</item>
+
+<item name="Concatenation">
+```pike
+*array1* + *array2*
+
+``` returns a new array with the
+elements from both arrays, in the same order. This is a simple
+concatenation of the arrays, so duplicate elements are of course not
+removed.
+
+
+```pike
+({ 7, 1, 1 }) + ({ 1, 3 })
+
+``` gives the result
+```pike
+({ 7, 1, 1, 1, 3 })
+
+```.
+
+</item>
+
+<item name="Union">
+```pike
+*array1* | *array2*
+
+``` returns a new array with the
+elements that are present in *array1*, or in *array2*, or in
+both. The elements in the result can come in any order, and duplicates
+may or may not be removed.
+
+
+```pike
+({ 7, 1 }) | ({ 3, 1 })
+
+``` gives the result
+```pike
+({ 7, 3, 1 })
+
+```.
+
+</item>
+
+<item name="Intersection">
+```pike
+*array1* & *array2*
+
+``` returns a new array with
+the elements that are present in both arrays. The elements in the
+result can come in any order, and duplicates may or may not be
+removed.
+
+
+```pike
+({ 7, 1 }) & ({ 3, 1 })
+
+``` gives the result
+```pike
+({ 1 })
+
+```.
+
+</item>
+
+<item name="Difference">
+```pike
+*array1* - *array2*
+
+``` returns a new array with the
+elements in the array *array1* that are not also present in the
+array *array2*. The elements in the result can come in any order,
+and duplicates may or may not be removed.
+
+
+```pike
+({ 7, 1 }) - ({ 3, 1 })
+
+``` gives the result
+```pike
+({ 7 })
+
+```.
+
+</item>
+
+<item name="Exclusive or">
+```pike
+*array1* ^ *array2*
+
+``` returns a new array with the
+elements that are present in *array1* or in *array2*, but
+not in both. The elements in the result can come in any order, and
+duplicates may or may not be removed.
+
+
+```pike
+({ 7, 1 }) ^ ({ 3, 1 })
+
+``` gives the result
+```pike
+({ 7, 3 })
+
+```.
+
+</item>
+
+<item name="Division">
+```pike
+*array* / *delimiter*
+```
+
+This will split the array *array* into an array of arrays. If
+the *delimiter* is an array, the array *array* will be split
+at each occurrence of that array:
+
+
+```pike
+({ 7, 1, 2, 3, 4, 1, 2, 1, 2, 77 }) / ({ 1, 2 })
+```
+gives the result
+```pike
+({ ({ 7 }), ({ 3, 4 }), ({ }), ({ 77 }) })
+
+```.
+
+
+If the *delimiter* is an **integer**,
+the array *array* will be split into arrays of size *delimiter*,
+with any extra elements ignored:
+
+
+```pike
+({ 7, 1, 2, 3, 4, 1, 2 }) / 3
+```
+gives the result
+```pike
+({ ({ 7, 1, 2 }), ({ 3, 4, 1 }) })
+
+```.
+
+
+If you convert the same integer to a **floating-point number**,
+the extra elements will not be thrown away:
+
+
+```pike
+({ 7, 1, 2, 3, 4, 1, 2 }) / 3.0
+
+``` gives the result
+```pike
+({ ({ 7, 1, 2 }), ({ 3, 4, 1 }), ({ 2 }) })
+
+```.
+
+</item>
+
+<item name="Modulo">
+```pike
+*array* % *integer*
+```
+
+This gives the extra elements that would be ignored in the division
+operation 
+```pike
+*array* / *integer*
+
+```:
+
+
+```pike
+({ 7, 1, 2, 3, 4, 1, 2 }) % 3
+
+``` gives the result
+```pike
+({ 2 })
+
+```.
+
+</item>
+
+<item name="Finding the size">
+```pike
+sizeof(*array*)
+
+``` returns the number of elements in the
+array *array*.
+
+```pike
+sizeof( ({ }) )
+
+``` gives the result 
+```pike
+0
+
+```.
+</item>
+
+<item name="Allocating an empty array">
+```pike
+allocate(*size*)
+```
+
+This will create an array with *size* elements. *size* is
+an integer. All the elements will have the value **0**.
+</item>
+
+<item name="Reversing an array">
+```pike
+reverse(*array*)
+
+``` returns a new array with the
+elements in the array *array* in reverse order: with the first
+element last, and so on. This operation creates a copy, and does not
+change the array *array* itself.
+</item>
+
+<item name="Finding an element in an array">
+```pike
+search(*haystack*, *needle*)
+
+``` returns the index
+of the first occurrence of an element equal to the *needle* in
+the array *haystack*. If the needle wasn't found 
+```pike
+-1
+
+``` will
+be returned. The comparison is done with `==`, so the element
+must be the **same** as the *needle*.
+If only the existence of an element in an array is needed, the
+```pike
+has_value(*haystack*, *needle*)
+
+``` can be used instead.
+It returns 
+```pike
+1
+
+``` on success and 
+```pike
+0
+
+``` on failure.
+</item>
+
+<item name="Replacing elements in an array">
+```pike
+replace(*array*, *old*, *new*)
+
+``` replaces all
+the elements that are equal (with `==`) to *old* with
+*new*. This operation does not create a copy, but changes the
+array *array* itself.
+</item>
+</list>
+
+## The Data Type `mapping`
+
+**Mappings** are sometimes called dictionaries or associative
+arrays. A mapping lets you translate from one value (such as
+`"beer"`) to another value (`"cerveza"`). This is
+possible since the mapping contains **index-value pairs**,
+consisting of two data items. If you know the **index**, Pike can
+quickly find the corresponding **value** for you.
+
+A mapping literal can be written as a comma-separated list
+of index-value pairs inside parenthesis-square-bracket quotes:
+
+```pike
+([ "beer" : "cerveza", "cat" : "gato", "dog" : "perro" ])
+```
+
+The data type of a mapping with indices of the type
+`*index-type*` and values of the type
+`*value-type*` is written `mapping(*index-type* :
+*value-type*)`. The data type `mapping(mixed:mixed)`,
+i e a mapping that can contain any types of indices and values, can
+also be written just `mapping`.
+
+Here are a few variables that can contain mappings:
+
+```pike
+mapping(string:string) m;
+mapping(int:float) mif = ([ 1:3.6, -19:73.0 ]);
+mapping(string:string) english2spanish = ([
+  "beer" : "cerveza",
+  "cat" : "gato",
+  "dog" : "perro"
+]);
+mapping(mixed:int) m2i = ([ 19.0 : 3, "foo" : 17 ]);
+```
+
+A mapping variable that hasn't been given a value contains
+**0**, and not an empty mapping. If you want an empty mapping, you
+have to give it explicitly:
+
+```pike
+mapping(string:float) m1;  // m1 contains 0
+m1 = ([ ]);   // Now m1 contains an empty mapping
+mapping(int:int) m2 = ([ ]);
+              // m2 contains an empty mapping
+```
+
+When you want to **look up** a value in the mapping, you use the
+same **indexing operator** as for arrays: write the index within
+square brackets after the mapping. You can use this both to just
+retrieve values, and to change them:
+
+```pike
+write(english2spanish["cat"]); // Prints "gato"
+english2spanish["dog"] = "gato";
+    // Now, english2spanish["dog"] is "gato" too
+english2spanish["beer"] = english2spanish["cat"];
+    // Now, all values are "gato"
+```
+
+Index-value pairs can be inserted in the mapping either by writing
+them in the mapping literal, or with the indexing operator.
+
+There is no specific order between the index-value pairs in a
+mapping, so there is no difference between the following two mapping
+literals:
+
+```pike
+([ 1:2, 3:4 ])
+([ 3:4, 1:2 ])
+```
+
+If you try to look up an index that hasn't been inserted
+in the mapping, the indexing operator will return **0**:
+
+```pike
+english2spanish["cat"]     // Gives "gato"
+english2spanish["glurble"] // Gives 0
+```
+
+Lookups are done using `==`, so the thing used as index in
+the lookup must be the **same** as the thing used when inserting
+things in the mapping. Remember that arrays, mappings and multisets
+may look the same, without being the same. Look at this example:
+
+```pike
+mapping(array(int) : int) m = ([ ]);
+array(int) a = ({ 1, 2 });
+m[a] = 3;
+```
+
+After running this code snippet, the expression `m[a]` will
+give the value **3**, but the expression `m[ ({ 1, 2 }) ]`
+will give the value **0**.
+
+Mappings are similar to arrays. If you had a mapping from integers
+(to something), and used the integer values **0**, **1**,
+**2**, and so on, in order, this mapping would work very much like
+an array. But mappings are much more flexible, since you can use any
+type of values as indices. They are also slower and take up more space
+in the computer's memory.
+
+Here are some useful things that you can do with mappings:
+
+<list type="ul">
+<item name="Check if it is a mapping">
+```pike
+mappingp(*something*)
+```
+
+The function `mappingp` returns **1** if the value
+*something* is a mapping, otherwise **0**.
+</item>
+
+<item name="Comparing mappings">
+```pike
+*mapping1* == *mapping2*
+
+``` returns **1** if
+*mapping1* and *mapping2* are the same mapping, otherwise
+**0**. Just as with arrays, they have to be the *same*
+mapping, not just equal. You can also use the operator `!=`,
+which means "not same". The relational operators (`<`,
+`>`, etc) do not work with mappings.
+</item>
+
+<item name="Comparing mappings (again)">
+```pike
+equal(*mapping1*, *mapping2)*
+
+``` returns **1**
+if *mapping1* and *mapping2* look the same, otherwise
+**0**.
+</item>
+
+<item name="Getting just the indices">
+```pike
+indices(*mapping*)
+
+``` returns an array containing all
+the indices from the index-value pairs in the mapping
+*mapping*.
+</item>
+
+<item name="Getting just the values">
+```pike
+values(*mapping*)
+
+``` returns an array containing all the
+values from the index-value pairs in the mapping *mapping*. If
+you retrieve the indices (with `indices`) and the values (with
+`values`) from the same mapping, without performing any other
+mapping operations in between, the returned arrays will be in the same
+order. They can be be used as arguments to `mkmapping` to
+create an equivalent copy of the mapping.
+</item>
+
+<item name="Create a mapping">
+```pike
+mkmapping(*index-array*, *value-array*)
+
+``` builds a
+new mapping with indices from the array *index-array*, and the
+corresponding values from the array *value-array*.
+</item>
+
+<item name="Union">
+```pike
+*mapping1* | *mapping2*
+```
+
+You can use **set operations** such as **union** (`|`)
+on mappings. All the indices in a mapping are considered as a set, and
+the set operators work with these sets. The values just "tag
+along".
+
+The union operator returns a new mapping with the elements that are
+present in *mapping1*, or in *mapping2*, or in both. If an
+index is present in both mappings, the value part of the resulting
+index-value pair will come from the right-hand mapping
+(*mapping2*). Example:
+
+
+```pike
+([ 1:2, 3:4 ]) | ([ 3:5, 6:7 ])
+
+``` gives the result
+```pike
+([ 1:2, 3:5, 6:7 ])
+
+```.
+
+
+But note that the elements in a mapping don't have a specified
+order.
+
+The **addition operator** (`+`) is a synonym for
+**union** (`|`) on mappings.
+</item>
+
+<item name="Intersection">
+```pike
+*mapping1* & *mapping2*
+
+``` returns a new
+mapping with the elements that are present in both mappings. The value
+parts of the resulting index-value pairs will come from the right-hand
+mapping (*mapping2*).
+
+
+```pike
+([ 1:2, 3:4 ]) & ([ 3:5, 6:7 ])
+
+``` gives the result
+```pike
+([ 3:5 ])
+
+```.
+
+</item>
+
+<item name="Difference">
+```pike
+*mapping1* - *mapping2*
+
+``` returns a new mapping
+with the elements in the mapping *mapping1* that are not also
+present in the mapping *mapping2*.
+
+
+```pike
+([ 1:2, 3:4 ]) - ([ 3:5, 6:7 ])
+
+``` gives the result
+```pike
+([ 1:2 ])
+
+```.
+
+</item>
+
+<item name="Exclusive or">
+```pike
+*mapping1* ^ *mapping2*
+
+``` returns a new mapping
+with the elements that are present in *mapping1* or in
+*mapping2*, but not in both.
+
+
+```pike
+([ 1:2, 3:4 ]) ^ ([ 3:5, 6:7 ])
+
+``` gives the result
+```pike
+([ 1:2, 6:7 ])
+
+```.
+
+</item>
+
+<item name="Finding the size">
+```pike
+sizeof(*mapping*)
+
+``` returns the number of index-value
+pairs in the mapping *mapping*.
+
+```pike
+sizeof( ([ ]) )
+
+``` gives the result 
+```pike
+0
+
+```.
+</item>
+
+<item name="Finding a value in a mapping">
+```pike
+search(*haystack*, *needle*)
+```
+
+This is a "reverse lookup" that searches among the values of the
+index-value pairs instead of among the indices. It returns the index
+of the index-value pair that has the value *needle* in the
+mapping *haystack*. If there are several index-value pairs that
+have the same *needle* as value, any of them can be chosen. The
+comparison is done with `==`, so the element must be the same
+as the *needle*. Example:
+
+
+```pike
+search(([ 1:2, 3:4, 4:5, 7:4 ]), 4)
+
+``` gives either
+**3** or **7**.
+
+</item>
+
+<item name="Replacing values in a mapping">
+```pike
+replace(*mapping*, *old*, *new*)
+
+``` replaces
+all the values that are equal (with `==`) to *old* with
+*new*. This operation does not create a copy, but changes the
+mapping *mapping* itself. Example:
+
+
+```pike
+replace(([ 1:2, 2:3, 3:2 ]), 2, 17)
+```
+gives the result 
+```pike
+([ 1:17, 2:3, 3:17 ])
+
+```.
+
+</item>
+
+<item name="Checking if an index is present">
+```pike
+zero_type(*mapping*[*index*])
+
+``` returns **0**
+if the index *index* is present in the mapping *mapping*,
+otherwise it returns something other than **0**. This can be useful
+to discriminate between an index that isn't present in the mapping,
+and one that is present but associated with the value **0**:
+
+```pike
+if (temp["sauna"] == 0)
+{
+  if (zero_type(temp["sauna"]))
+    write("We don't know the temp in the sauna.\n");
+  else
+    write("It's mighty cold in that sauna.\n");
+}
+
+```
+</item>
+</list>
+
+## The Data Type `multiset`
+
+A set is something where a value is either a member or not. A
+**multiset** (sometimes called a "bag") is a set where a value can
+be a member several times. The multiset can contain several copies of
+the same value.
+
+A multiset literal can be written as a comma-separated list
+of the elements, inside `(< >)` like this:
+
+```pike
+(< "foo", "bar", "fum", "foo", "foo" >)
+```
+
+The data type of a set with elements of the type
+`*element-type*` is written
+`multiset(*element-type*)`. The data type
+`multiset(mixed:mixed)`, i e a multiset that can contain any
+types of elements, can also be written just `multiset`.
+
+Here are a few variables that can contain multisets:
+
+```pike
+multiset(string) m;
+multiset(int) mi = (< 1, -19, 0 >);
+multiset(string) dogs = (< "Fido", "Buster" >);
+```
+
+A multiset variable that hasn't been given a value contains
+**0**, and not an empty multiset. If you want an empty multiset,
+you have to give it explicitly:
+
+```pike
+multiset(string) m1;  // m1 contains 0
+m1 = (< >);  // Now m1 contains an empty multiset
+multiset(int) m2 = (< >);
+             // m2 contains an empty multiset
+```
+
+Multisets are very similar to **mappings**, except that:
+
+<list type="ul">
+<item>
+Multisets just have elements, not index-value pairs.
+</item>
+
+<item>
+You can have multiple instances of the same element in a multiset,
+while in a mapping you can only have the same index in one single
+index-value pair.
+</item>
+</list>
+
+Multisets also use the **indexing operator**,
+to see if an element is present, and to add and remove elements:
+
+```pike
+if (dogs["Fido"])
+  write("Fido is one of my dogs.\n");
+if (!dogs["Dirk"])
+  write("Dirk is not one of my dogs.\n");
+dogs["Kicker"] = 1; // Add Kicker to the set
+dogs["Buster"] = 0; // Remove Buster
+```
+
+As you can see, you can write
+
+```pike
+*multiset*[*element*] = 1
+```
+
+to add the element *element* to the multiset *multiset*,
+and
+
+```pike
+*multiset*[*element*] = 0
+```
+
+to remove it. Your program may be easier to understand if you use
+set operations instead:
+
+```pike
+dogs |= (< "Kicker" >); // Add Kicker to the set
+dogs -= (< "Buster" >); // Remove Buster
+```
+
+There is no specific order between the index-value pairs in a
+multiset, so there is no difference between the following two multiset
+literals:
+
+```pike
+(< "foo", "bar" >)
+(< "bar", "foo" >)
+```
+
+Here are some useful things that you can do with multisets:
+
+<list type="ul">
+<item name="Check if it is a multiset">
+```pike
+multisetp(*something*)
+```
+
+The function `multisetp` returns **1** if the value
+*something* is a multiset, otherwise **0**.
+</item>
+
+<item name="Comparing multisets">
+```pike
+*multiset1* == *multiset2*
+
+``` returns **1** if
+*multiset1* and *multiset2* are the same multiset, otherwise
+**0**. Just as with arrays, they have to be the *same*
+multiset, not just equal. You can also use the operator `!=`,
+which means "not same". The relational operators (`<`,
+`>`, etc) do not work with multisets.
+</item>
+
+<item name="Comparing multisets (again)">
+```pike
+equal(*multiset1*, *multiset2)*
+
+``` returns **1**
+if *multiset1* and *multiset2* look the same, otherwise
+**0**.
+</item>
+
+<item name="Set operations">
+All the set operations work with multisets:
+**union** (`|`),
+**difference** (`-`),
+**intersection** (`&`), and
+**exclusive or** (`^`).
+</item>
+</list>

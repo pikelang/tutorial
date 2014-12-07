@@ -1,0 +1,103 @@
+# Comparison
+
+Pike lets you compare things to each other.
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c>Same</c>
+<c>a == b</c>
+<c>1 if a is the same value as b, 0 otherwise</c>
+</row>
+
+<row>
+<c>Not same</c>
+<c>a != b</c>
+<c>0 if a is the same value as b, 1 otherwise</c>
+</row>
+
+<row>
+<c>Greater than</c>
+<c>a > b</c>
+<c>1 if a is greater than b, 0 otherwise</c>
+</row>
+
+<row>
+<c>Greater than or equal to</c>
+<c>a >= b</c>
+<c>1 if a is greater to or equal to b, 0 otherwise</c>
+</row>
+
+<row>
+<c>Lesser than</c>
+<c>a < b</c>
+<c>1 if a is less than b, 0 otherwise</c>
+</row>
+
+<row>
+<c>Lesser than or equal to</c>
+<c>a <= b</c>
+<c>1 if a is less than or equal to b, 0 otherwise</c>
+</row>
+
+</xtable>
+
+As you may remember, Pike interprets the value zero (**0**) as
+**false**, and everything else is interpreted as **true**. The
+comparison operators give a truth value as result, and to simplify
+things they always return **0** for **false** and **1** for
+**true**.
+
+The operators `==` and `!=` can be used on any type.
+Note that these two operators check if two things are the *same*,
+not just if they are *equal*. For two things to be the same,
+first of all they have to have the same type. For example, **1**
+and **1.0** may be equal, but they are not the same.
+
+All values of the basic types (integers, floating-point values, and
+strings) that are of the same type and that are equal, are also the
+same. The expressions `7 == 7` and `"hi" == "hi"` will
+always be **true**. With the other types, the so-called reference
+types, it is more difficult: Two arrays can have the same length and
+contain the same elements, but still be two separate arrays. For a
+comparison like `a1 == a2` to be true, where `a1` and
+`a2` are array variables, they must refer to the same array,
+not just two similar arrays. (See also the section "The difference
+between basic types and reference types" in the chapter about data
+types.)
+
+To check if two things are similar, even if they are not
+necessarily the same, you can use the function `equal`. This
+comparison will be true:
+
+```pike
+equal( ({ 7, 1, ({ 7 }) }), ({ 7, 1, ({ 7 }) }) )
+```
+
+but this one will be false:
+
+```pike
+({ 7, 1, ({ 7 }) }) == ({ 7, 1, ({ 7 }) })
+```
+
+The relational operators
+`>`,
+`>=`,
+`<`, and
+`<=`
+can only be used with integers, floating-point values, and strings. If
+you compare an integer with a floating-point value, the integer will
+be converted to a floating-point value before the comparison.
+
+When comparing strings, lexical or "alphabetical" order is used.
+Different countries sort their alphabets in different order, and if
+your operating system supports this, Pike will too. For example, in
+Unix you can set the environment variables `LC_CTYPE` and
+`LC_LANG`, and Pike will use their values to determine the
+right sorting order.

@@ -1,0 +1,112 @@
+<metadata>
+ <datum name=__removed valuen=1>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Error Messages from Pike">
+</metadata>
+<manual>
+
+When Pike encounters an error that it can't handle, or finds
+something suspicious in a program, you may get an **error message**
+or a **warning**. An error message is a piece of text that Pike
+prints in order to inform you of a problem that has occurred, and that
+prevents the program from continuing. A warning is like an error
+message, but is just given as information of a possible problem.
+
+Your program can print its own warnings and error messages, but
+this chapter is about those that Pike itself prints when it reads and
+examines your program.
+
+Most warnings are about possible problems with data types. For
+example, let us assume the following three variable definitions:
+
+```pike
+mixed m;
+string s;
+int i;
+```
+
+In that case, the following assignment will give a warning:
+
+```pike
+i = m;
+```
+
+The variable `m` can contain any type of value, but
+`i` can only contain integer values, so Pike warns you that
+there is a possible problem. For example, what would happen if
+`m` contains a string?
+
+Warning messages follow the pattern
+
+<out>
+*filename*:*line-number*: Warning: *description*
+</out>
+
+so the warning message that is printed will look something like
+this:
+
+<out>
+ex3.pike:17: Warning: An expression type mixed
+cannot be assigned to a variable of type int.
+</out>
+
+Warnings and error messages are not printed on the standard output,
+but on the standard error output. Even if you re-direct the output
+from a program, the standard error output is usually printed on the
+screen.
+
+Given the same three variable definitions, this expression gives an
+error and not just a warning:
+
+```pike
+i = s;
+```
+
+The error message looks something like this:
+
+<out>
+ex3.pike:21:Bad type in assignment.
+ex3.pike:21:Expected: int
+ex3.pike:21:Got     : string
+Pike: Failed to compile script:
+Compilation failed.
+</out>
+
+Error messages are always printed, and will cause the program to
+terminate. By default, warnings are *not* printed. They are
+turned off by default, and you have to turn them on.
+
+To turn on warnings for the code in a certain file, you can add the
+line
+
+```pike
+#pragma strict_types
+```
+
+to that file. An alternative is to give the command-line argument
+`-rt` to Pike, or `-rt` to turn on warnings for all
+files, even those that are used from your program.
+
+You must also give the argument `-w` to Pike, for Pike to
+actually print the warnings. An example:
+
+<interactive>
+<in>pike -w -rT myprogram.pike</in>
+</interactive>
+
+This will print all warnings that Pike is able to generate for the
+file `myprogram.pike`, and for all other files (such as
+modules) that it uses.
+
+It is usually a very good idea to turn on warnings, at least during
+program development. Why would you *not* let the computer help
+you find the bugs in your program?
+
+</manual>

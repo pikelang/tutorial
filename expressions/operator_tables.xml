@@ -1,0 +1,358 @@
+# Operator Precedence and Associativity
+
+Operator precedence is why the expression `5 + 3 * 2` is
+calculated as `5 + (3 * 2)`, giving 11, and not as `(5 + 3)
+* 2`, giving 16.
+
+We say that the multiplication operator (`*`) has higher
+"precedence" or "priority" than the addition operator (`+`), so
+the multiplication must be performed first.
+
+Operator associativity is why the expression `8 - 3 - 2` is
+calculated as `(8 - 3) - 2`, giving 3, and and not as `8 -
+(3 - 2)`, giving 7.
+
+We say that the subtraction operator (`-`) is "left
+associative", so the left multiplication must be performed first. When
+we can't decide by operator precedence alone in which order to
+calculate an expression, we must use associativity.
+
+Since the operators `+` and `-` have the same
+precedence, and are left-associative, the following expressions are
+all equivalent:
+
+```pike
+x + 3 - y + 5
+(x + 3) - y + 5
+((x + 3) - y) + 5
+((x + 3) - y + 5)
+```
+
+Since the operators `=`, `+=` and `-=` have
+the same precedence, and are right-associative, the following
+expressions are all equivalent:
+
+```pike
+x = y += z -= 4
+x = y += (z -= 4)
+x = (y += (z -= 4))
+(x = y += (z -= 4))
+```
+
+You can use parentheses to tell the compiler in which order to
+evaluate things. If you don't use parentheses, Pike will use the
+precedences and the associativities of the operators to decide in
+which order to perform them. Spaces have no effect.
+
+This table shows the priority and associativity of each operator in
+Pike, with the highest priority at the top:
+
+<xtable>
+
+<row>
+<h>Operators</h>
+<h>Associativity</h>
+</row>
+
+<row>
+<c>
+```pike
+::a a::b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a() a[b] a->b a[b..c] ({}) ([]) (<>)
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a++ a--
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+!a ~a (*type*)a ++a --a
+
+```<comment>--</comment></c>
+<c>right to left!</c>
+</row>
+
+<row>
+<c>
+```pike
+a*b a/b a%b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a+b a-b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a>>b a<<b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a>b a>=b a<b a<=b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a==b a!=b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a&b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a^b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a|b
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+&&
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+||
+
+```</c>
+<c>left to right</c>
+</row>
+
+<row>
+<c>
+```pike
+a?b:c
+
+```</c>
+<c>right to left!</c>
+</row>
+
+<row>
+<c>
+```pike
+=
++=
+-=
+*=
+/=
+%=
+<<=
+>>=
+&=
+|=
+^=
+
+
+```</c>
+<c>right to left!</c>
+</row>
+
+<row>
+<c>
+```pike
+@a
+
+```</c>
+<c>right to left!</c>
+</row>
+
+<row>
+<c>
+```pike
+,
+
+```</c>
+<c>left to right</c>
+</row>
+
+</xtable>
+
+Examples:
+
+<xtable>
+
+<row>
+<h>This expression </h>
+<h>is evaluated in this order</h>
+</row>
+
+<row>
+<c>
+```pike
+ 1+2*2 
+
+```</c>
+<c>
+```pike
+ 1+(2*2) 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ 1+2*2*4 
+
+```</c>
+<c>
+```pike
+ 1+((2*2)*4) 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ (1+2)*2*4 
+
+```</c>
+<c>
+```pike
+ ((1+2)*2)*4 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ 1+4,c=2|3+5 
+
+```</c>
+<c>
+```pike
+ (1+4),(c=(2|(3+5))) 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ 1 + 5&4 == 3 
+
+```</c>
+<c>
+```pike
+ (1 + 5) & (4 == 3) 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ c=1,99 
+
+```</c>
+<c>
+```pike
+ (c=1),99 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ !a++ + ~f() 
+
+```</c>
+<c>
+```pike
+ (!(a++)) + (~(f())) 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ s == "klas" || i < 9 
+
+```</c>
+<c>
+```pike
+ (s == "klas") || (i < 9) 
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+ r = s == "sten" 
+
+```</c>
+<c>
+```pike
+ r = (s == "sten") 
+
+```</c>
+</row>
+
+</xtable>

@@ -1,0 +1,54 @@
+# Call and Splice
+
+In this section we explain two operators that are used in
+connection with calls to methods: the **method-call** operator and
+the **splice** operator.
+
+A method call, which we have seen many examples of, is actually a
+use of the method-call operator. It is written with a pair of
+parentheses according to this template:
+
+```pike
+*method-expression* ( *argument-list* )
+```
+
+First the *method-expression* is calculated, to find out which
+method to call. The *method-expression* is often a single
+identifier, such as `write`, but can be more complicated. Then
+all the expressions in the comma-separated *argument-list* are
+calculated. Finally, the method is executed, with the argument values
+as parameters.
+
+Some notes about the method-call operator:
+
+<list type="ul">
+<item>
+If the value of the *method-expression* is an **array**,
+Pike assumes that each element in the array is a method that can be
+called. Pike will call each method in that array, with the given
+arguments, and the result of all this is an array with the return
+values from the calls.
+</item>
+
+<item>
+If the value of the *method-expression* is a **program**
+(that is, a **class**), Pike will create (or **clone**) a new
+object from that class, and then call the method `create` in
+that object, with the given arguments.
+</item>
+</list>
+
+The **splice** operator, written with a commercial-at sign
+(`@`), lets us use an array as an argument list. For
+example,
+
+```pike
+array a = ({ 17, -0.3, "foo" });
+koogle(@a);
+```
+
+is equivalent to
+
+```pike
+koogle(17, -0.3, "foo");
+```

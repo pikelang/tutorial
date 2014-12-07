@@ -1,0 +1,185 @@
+# Operations on Complex Types
+
+The same operators as for the arithmetical operations can also be
+used on some other data types. For example, by "adding" two arrays you
+can concatenate them: `({ 7, 6, 3 }) + ({ 6, 19 })` gives the
+result `({ 7, 6, 3, 6, 19 })`.
+
+Here is a complete table of what happens when you use the
+arithmetic operators with values of the various types in Pike:
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Returned type</h>
+<h>result</h>
+</row>
+
+<row>
+<c>`*int* + *int*`</c>
+<c>int</c>
+<c>the sum of the two values</c>
+</row>
+
+<row>
+<c>`*float* + *int*<br/>
+*int* + *float*<br/>
+*float* + *float*`</c>
+<c>float</c>
+<c>the sum of the two values</c>
+</row>
+
+<row>
+<c>`*string* + *string*<br/>
+*int* + *string*<br/>
+*float* + *string*<br/>
+*string* + *int*<br/>
+*string* + *float*`</c>
+<c>string</c>
+<c>In this case, any int or float is first converted to a string. Then
+the two strings are concatenated and the resulting string is
+returned.</c>
+</row>
+
+<row>
+<c>`*array* + *array*`</c>
+<c>array</c>
+<c>The two arrays are concatenated into a new array and that new array
+is returned.</c>
+</row>
+
+<row>
+<c>`*mapping* + *mapping*`</c>
+<c>mapping</c>
+<c>A mapping with all the index-value pairs from both mappings is
+returned. If an index is present in both mappings the index-value pair
+from the right mapping will be used.</c>
+</row>
+
+<row>
+<c>`*multiset* + *multiset*`</c>
+<c>multiset</c>
+<c>A multiset with all the members from both multisets is
+returned.</c>
+</row>
+
+<row>
+<c>`*int* - *int*`</c>
+<c>int</c>
+<c>The right value subtracted from the left.</c>
+</row>
+
+<row>
+<c>`*float* - *int*<br/>
+*int* - *float*<br/>
+*float* - *float*`</c>
+<c>float</c>
+<c>The right value subtracted from the left.</c>
+</row>
+
+<row>
+<c>`*string* - *string*`</c>
+<c>string</c>
+<c>A copy of the left string with all occurrences of the right string
+removed.</c>
+</row>
+
+<row>
+<c>`*array* - *array*`</c>
+<c>array</c>
+<c>A copy of the right array with all elements present in the right
+array removed. Example: `({2,1,4,5,3,6,7}) - ({3,5,1})` will
+return `({2,4,6,7})`.</c>
+</row>
+
+<row>
+<c>`*mapping* - *mapping*`</c>
+<c>mapping</c>
+<c>A new mapping with all index-value pairs from the left mapping,
+except those indexes that are also present in the right mapping.</c>
+</row>
+
+<row>
+<c>`*multiset* - *multiset*`</c>
+<c>multiset</c>
+<c>A copy of the left multiset without any member present in the left
+multiset.</c>
+</row>
+
+<row>
+<c>`- *int*`</c>
+<c>int</c>
+<c>Same as 0 - *int*.</c>
+</row>
+
+<row>
+<c>`- *float*`</c>
+<c>float</c>
+<c>Same as 0 - *float*.</c>
+</row>
+
+<row>
+<c>`*int* * *int*`</c>
+<c>int</c>
+<c>the product of the two values</c>
+</row>
+
+<row>
+<c>`*float* * *int*<br/>
+*int* * *float*<br/>
+*float* * *float*`</c>
+<c>float</c>
+<c>the product of the two values</c>
+</row>
+
+<row>
+<c>`*array(string)* * *string*`</c>
+<c>string</c>
+<c>All the strings in the array are concatenated with the string on
+the right in between each string. Example: `({"foo,"bar})*"-"`
+will return `"foo-bar".`</c>
+</row>
+
+<row>
+<c>`*int* / *int*`</c>
+<c>int</c>
+<c>The right integer divided by the left integer rounded towards minus
+infinity.</c>
+</row>
+
+<row>
+<c>`*float* / *int*<br/>
+*int* / *float*<br/>
+*float* / *float*`</c>
+<c>float</c>
+<c>The right value divided by the left value.</c>
+</row>
+
+<row>
+<c>`*string* / *string*`</c>
+<c>array(string)</c>
+<c>In symmetry with the multiplication operator, the division operator
+can split a string into pieces. The right string will be split at
+every occurrence of the right string and an array containing the
+results will be returned. Example: `"foo-bar"/"-"` will return
+`({"foo","bar"})`</c>
+</row>
+
+<row>
+<c>`*int* % *int*`</c>
+<c>int</c>
+<c>The rest of a division. If `a` and `b` are integers,
+`a%b` is the same as `a-(a/b)*b`</c>
+</row>
+
+<row>
+<c>`*float* % *float*<br/>
+*int* % *float*<br/>
+*float* % *int*`</c>
+<c>float</c>
+<c>The rest of a division. If `a` and `b` are floats,
+`a%b` is the same as `a-floor(a/b)*b`</c>
+</row>
+
+</xtable>

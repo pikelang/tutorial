@@ -1,0 +1,98 @@
+# Arithmetical Operations
+
+Pike can do all the usual arithmetic operations: addition (which is
+expressed with the operator `+`), subtraction (`-`),
+division (`/`), multiplication (`*`), and also modulo
+(`%`). The modulo operation, sometimes called "remainder" or
+"rest", gives the remainder from a division. For example, if you
+divide 7 by 3, 3 goes in 7 two times. But there is a remainder of 1,
+and that is the result of the modulo operation.
+
+Here is a table of the arithmetic operations:
+
+<xtable>
+<row><h>Operation</h>  <h>Syntax</h> <h>Result</h></row>
+<row><c>Addition</c>   <c>a + b</c>  <c>the sum of a and b</c></row>
+<row><c>Subtraction</c><c>a - b</c>  <c>b subtracted from a</c></row>
+<row><c>Negation</c>   <c>- a</c>    <c>minus a</c></row>
+<row><c>Multiplication</c><c>a * b</c> <c>a multiplied by b</c></row>
+<row><c>Division</c>   <c>a / b</c>  <c>a divided by b</c></row>
+<row><c>Modulo</c>     <c>a % b</c>
+<c>the remainder of a division between a and b</c></row>
+</xtable>
+
+Remember that pike makes a difference between numerical values that
+are integers (the type `int`), and numerical values that are
+real or "floating-point" numbers (the type `float`). This has
+some importance for how expressions with arithmetic operations are
+calculated by Pike. If at least one of the operands is a
+`float`, we use the floating-point versions of the operation.
+In if both operands are integers, we use a special integer-only
+version of the operation. For most of the operations, the only
+difference is that the type of the result will be different: `2 +
+2` will give the integer value **4**, while `2 + 2.0`
+will give the floating-point value **4.0**. But with division is
+more important.
+
+With **floating-point division**, such as in `9.0 / 4.0`,
+the result is a floating-point value, in this case **2.25**. But
+with **integer division**, such as in `9 / 4`, the result is
+only the integer part, in this case **2**.
+
+The fact that integer division only gives the integer part can be
+treacherous: If 73 out of 92 people payed their income tax on time,
+don't try to calculate the percentage with the expression `73 / 92
+* 100`. That would give the result **0**.
+
+It is very common in programs to increment or decrement a variable
+with one, such as in the statements
+
+```pike
+i = i + 1;
+p = p - 1;
+```
+
+To simplify such programs, Pike has these extra operators, which
+you can use if you want to:
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c>Increment</c>
+<c>++ a</c>
+<c>increments a and returns the new value for a</c>
+</row>
+
+<row>
+<c>Decrement</c>
+<c>-- a</c>
+<c>decrements a and returns the new value for a</c>
+</row>
+
+<row>
+<c>Post increment</c>
+<c>a ++</c>
+<c>increments a and returns the old value for a</c>
+</row>
+
+<row>
+<c>Post decrement</c>
+<c>a --</c>
+<c>decrements a and returns the old value for a</c>
+</row>
+
+</xtable>
+
+The two versions of increment, `++i` and `i++`, both
+increment the value in the variable `i` with 1. The difference
+is if we want to use them as parts of a larger expression. In that
+case, `++i` gives the new, incremented, contents of `i`
+as value, while `i++` gives the old contents of `i` as
+value. The same difference applies to `--i` and
+`i--`.

@@ -1,0 +1,16 @@
+# Bitwise Operations
+
+In the rare cases where you have to fiddle with the bits inside
+integers, you can use the bitwise operations in Pike. They work just
+like in C and C++, and if you need to use them, you probably already
+know what they mean.
+
+<xtable>
+<row><h>Operation</h>		<h>Syntax</h></row>
+<row><c>Shift left</c>		<c>a << b</c></row>
+<row><c>Shift right</c>		<c>a >> b</c></row>
+<row><c>Bitwise not</c>		<c>~ a</c></row>
+<row><c>Bitwise and</c>		<c>a & b</c></row>
+<row><c>Bitwise or</c>		<c>a | b</c></row>
+<row><c>Bitwise exclusive or</c><c>a ^ b</c></row>
+</xtable>

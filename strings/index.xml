@@ -1,0 +1,243 @@
+# Working with Strings
+
+# Operators on Strings
+
+Pike has a large number of operations that you can do with strings.
+Some of them are expressed with operators such as `+` and
+`-`, and some are expressed as functions or methods that you
+call from your program. We will start by looking at the indexing
+operator, `[]`, and then the rest of the operators.
+
+Here is a list of some operators that you can use with strings.
+
+<list type="ul">
+<item name="Comparing strings">
+```pike
+*string1* == *string2*
+
+``` returns **1** if
+*string1* and *string2* are the same string, otherwise
+**0**. Since strings are shared, strings that look exactly the same
+*are* the same string.
+
+You can also use the operator `!=`, which means "not same".
+The relational operators (`<`, `>`, etc) do work
+with strings. The will use lexical order, i e the same order that
+the strings would stand in a dictionary, if that dictionary considered
+all the characters, including blanks etc.
+
+For example, `"foo"` would stand before `"fum"`, and
+is therefore smaller. As another example, `"foo"` would stand
+before `"foobar"`.
+</item>
+
+<item name="Concatenation">
+```pike
+*string1* + *string2*
+
+``` returns a new string with
+*string1* and *string2* concatenated.
+
+
+```pike
+"Foo" + "Bar"
+
+``` gives the result 
+```pike
+"FooBar"
+
+```.
+
+</item>
+
+<item name="Remove substrings">
+```pike
+*string1* - *string2*
+
+``` returns a new string where
+all occurrences of *string2* have been remove from
+*string1*.
+
+
+```pike
+"FooBarFoofooFum" - "Foo"
+
+``` gives the result
+```pike
+"BarfooFum"
+
+```.
+
+
+Mathematically inclined programmers may want to note that for
+strings, it is not (necessarily) true that a+b-b equals a.
+</item>
+
+<item name="Concatenation of string literals">
+**String literals**, which are strings within double quotes that
+are written in a program, can be concatenated by just putting them
+after each other:
+
+```pike
+write("Hello"  " "  "world!" + "\n");
+```
+</item>
+
+<item name="Indexing a character">
+To accessing individual characters inside a string, you use the
+same indexing operator as for arrays:
+```pike
+*string*[*position*]
+
+```.
+
+There is no data type for characters in Pike, so when you extract
+or insert a character in a string, you really work with the
+**character code** of that character. The character code is an
+integer. But you don't need to look up character codes in a table. You
+can use **character literals**, such as `'b'`. The character
+literal `'b'` will be translated internally in Pike to
+**98**, which happens to the character code for the character
+**b**. (Or something else, if you use a different character set
+than ISO-8859-1 aka ISO Latin 1, but you almost certainly don't.)
+
+You can use negative indices, just as with arrays:
+```pike
+*string*[-1]
+
+``` means the last character in the string
+*string*, 
+```pike
+*string*[-2]
+
+``` the next-to-last character,
+and so on.
+</item>
+
+<item name="Taking a range">
+```pike
+*string*[*from*..*to*]
+
+``` returns a new
+string, containing the characters at the index *from* up to and
+including the index *to*.
+
+
+```pike
+({ 1, 7, 3, 3, 7 }) [ 1..3 ]
+
+``` gives the result
+```pike
+({ 7, 3, 3 })
+
+```.
+
+
+The form 
+```pike
+*string*[*from*..]
+
+``` will give the
+characters starting at index *from* and to the end of the string.
+The form 
+```pike
+*string*[..*to*]
+
+``` will give the characters
+from the start of the string, up to and including index *to*.
+</item>
+
+<item name="Division">
+```pike
+*string* / *delimiter*
+```
+
+This will split the string *string* into an array of strings,
+using occurrences of the string *delimiter* as places to cut.
+
+
+```pike
+"abcdfoofoo x" / "foo"
+
+``` gives the result
+```pike
+({ "abcd", "", " x" })
+```
+
+
+An alternative is to divide with an **integer**, which will
+split the string into strings of the length given by that integer.
+Extra characters are thrown away:
+
+
+```pike
+"abcdfoofoo x" / 5
+
+``` gives the result
+```pike
+({ "abcdf", "oofoo" })
+
+```.
+
+
+If you divide with the same integer, converted to a
+**floating-point number**, the extra characters will not be thrown
+away:
+
+
+```pike
+"abcdfoofoo x" / 5.0
+
+``` gives the result
+```pike
+({ "abcdf", "oofoo", " x" })
+
+```.
+
+</item>
+
+<item name="Modulo">
+```pike
+*string* % *integer*
+```
+
+This gives the extra characters that would be ignored in the
+division operation 
+```pike
+*string* / *integer*
+
+```:
+
+
+```pike
+"abcdfoofoo x" % 5
+
+``` gives the result
+```pike
+" x"
+
+```.
+
+</item>
+
+<item name="Multiplication">
+```pike
+*array* * *delimiter*
+```
+
+This will create a new string by concatenating all the strings in
+the array *array*, with the string *delimiter* between
+them:
+
+
+```pike
+({ "7", "1", "foo" }) * ":"
+
+``` gives the result
+```pike
+"7:1:foo"
+
+```.
+
+</item>
+</list>

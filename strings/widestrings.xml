@@ -1,0 +1,57 @@
+# Wide Strings
+
+Normal strings contain characters with character codes between 0
+and 255, so-called 8-bit characters. But Pike can also handle strings
+with characters with higher character codes. This is needed for some
+languages, such as Japanese. Such strings are called **wide
+strings**:
+
+```pike
+"The character \x123456 is the same as \d1193046."
+```
+
+This string contains two occurrences of the character with
+(decimal) character code 1193046. As you may remember, Pike will
+translate \x followed by a hexadecimal (that is, base 16) number in a
+string literal to the character with that character code. The same is
+true for \d followed by a decimal (that is, normal base 10) number,
+and for a single \ followed by an octal (base 8) number.
+
+Internally, Pike will handle wide strings differently from normal
+8-bit strings, but as a Pike programmer, you will usually not need to
+worry about the difference. Just use the characters you need. There
+may however be some operations, for example certain methods in certain
+modules, that cannot handle wide strings but that work with 8-bit
+strings.
+
+Here are some functions that can be used to examine wide
+strings:
+
+<list type="ul">
+<item name="String.width(string data)">
+
+This gives the width of the string *data*. This width of a
+string is the number of bits that is used to store each character in
+the string. Normal strings are 8 bits wide, but strings can also be 16
+or 32 bits wide. For each string, Pike will use as few bits as
+possible. For example, `"foo"` will be 8 bits wide,
+`"foo\d255"` is also 8 bits wide, `"foo\d256"` is 16
+bits wide, and `"foo\d70000"` is 32 bits wide.
+</item>
+
+<item name="string_to_utf8(string data)">
+
+This translates the string *data*, which can be a wide string,
+to a string in the format UTF8. UTF8 is a format that encodes wide
+characters in an 8-bit string.
+</item>
+
+<item name="utf8_to_string(string utf8_encoded_data)">
+
+This translates an UTF8-encoded string *utf8_encoded_data*
+(which, by implication of the nature of the coding, can not be a wide
+string, since the UTF8 encoding is 8-bit by definition), to a pike
+string.
+</item>
+
+</list>

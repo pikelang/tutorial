@@ -1,0 +1,72 @@
+# Logical Expressions
+
+We often want to express conditions such as "if this is true,
+*and* that is true, then we do something". Such calculations with
+truth values are done with the **logical operators** in Pike:
+
+<xtable>
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c>Logical and</c>
+<c>a && b</c>
+<c>If a is false, a is returned and b is not calculated. Otherwise, b
+is returned.</c>
+</row>
+
+<row>
+<c>Logical or</c>
+<c>a || b</c>
+<c>If a is true, a is returned and b is not calculated. Otherwise, b
+is returned.</c>
+</row>
+
+<row>
+<c>Logical not</c>
+<c>! a</c>
+<c>Returns 0 if a is true, 1 otherwise.</c>
+</row>
+
+</xtable>
+
+For example, if the temperature is below 100 degrees, and we still
+have some fuel, we want to burn some more:
+
+```pike
+if (temperature < 100 && fuel > 0)
+burn();
+```
+
+Both `&&` and `||` always calculate their
+first argument, but the second one is calculated only if it is
+necessary to find the value of the entire expression. In `a
+&& b`, if `a` is false, `a` *and*
+`b` can never be true, so we don't bother to calculate
+`b`. This is useful in cases like this:
+
+```pike
+if (i <sizeof(a) && a[i] != 0)
+smorgle(a);
+```
+
+If `i` is too big to be a valid index in the array
+`a`, which we check in the first part of the condition, we will
+get an error if we try the operation `a[i]`, and our program
+will be interrupted.
+
+Since the `||` operator returns the first argument that is
+non-zero, there is a useful trick that can be used to check a number
+of variables:
+
+```pike
+return a || b || "";
+```
+
+This will return `a`, except in the case when `a` is
+**0**, in which case it will return `b`. Except in the case
+when `b` also is **0**, in which case it will return an
+empty string.

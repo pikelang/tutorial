@@ -1,0 +1,50 @@
+Here are some of the things not covered:
+
+<list type="ul">
+<item>
+Many details, for example all the format specifiers to
+```pike
+sprintf
+```
+</item>
+<item>Unnamed functions, with 
+```pike
+lambda
+
+```</item>
+<item>Operator functions, such as 
+```pike
+'+
+
+```</item>
+<item>Operator overloading in classes</item>
+<item>
+```pike
+void my_function(mixed ... args)
+
+```</item>
+<item>
+```pike
+at_exit()
+
+```</item>
+<item>
+Type information with 
+```pike
+typeof
+
+```, 
+```pike
+_typeof
+
+``` and
+```pike
+sprintf("%t", ...)
+```
+</item>
+<item>Time measurement with 
+```pike
+gauge
+
+```</item>
+</list>

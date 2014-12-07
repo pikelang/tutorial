@@ -1,0 +1,181 @@
+# Operations on Sets
+
+Some of the operators that are used for bitwise operations
+(`|`, `&` and `^`) can also be used for
+operations on sets, such as union and intersection. They can be
+applied to multisets, but also to arrays and mappings.
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c>Intersection (and)</c>
+<c>a & b</c>
+<c>All elements present in both a and b.</c>
+</row>
+
+<row>
+<c>Union (or)</c>
+<c>a | b</c>
+<c>All elements present in at least one of a and b.</c>
+</row>
+
+<row>
+<c>Symmetric difference (exclusive or)</c>
+<c>a ^ b</c>
+<c>All elements present in a or b, but not present in both.</c>
+</row>
+
+</xtable>
+
+Two calculate the difference between two multisets, arrays or
+mappings, you use the `-` operator:
+
+<xtable>
+
+<row>
+<h>Operation</h>
+<h>Syntax</h>
+<h>Result</h>
+</row>
+
+<row>
+<c>difference</c>
+<c>a - b</c>
+<c>All elements present in a, but not in b.</c>
+</row>
+
+</xtable>
+
+When using mappings in set operations, we only consider the
+indices. The values are copied along with the indices. If an index is
+present in both mappings in a union or intersection, the one from the
+right-side mapping will be used.
+
+Some examples:
+
+```pike
+mapping m1 = ([ 1:"one", 2:"two" ]),
+        m2 = ([ 2:"TWO", 3:"THREE" ]);
+```
+
+<xtable>
+
+<row>
+<h>Expression</h>
+<h>Result</h>
+</row>
+
+<row>
+<c>
+```pike
+m1 & m2
+
+```</c>
+<c>
+```pike
+([ 2:"TWO" ])
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+m1 | m2
+
+```</c>
+<c>
+```pike
+([ 1:"one", 2:"TWO", 3:"THREE" ])
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+m1 + m2
+
+```</c>
+<c>
+```pike
+([ 1:"one", 2:"TWO", 3:"THREE" ])
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+m1 ^ m2
+
+```</c>
+<c>
+```pike
+([ 1:"one", 3:"THREE" ])
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+m1 - m2
+
+```</c>
+<c>
+```pike
+([ 1:"one" ])
+
+```</c>
+</row>
+
+</xtable>
+
+
+You can also use the operator `+` on multisets, arrays and
+mappings. For multisets and mappings, it calculates the union, i e the
+same as the `|` operator. For arrays, it gives a different
+result: it just concatenates the arrays, instead of calculating the
+union:
+
+<xtable>
+
+<row>
+<h>Expression</h>
+<h>Result</h>
+</row>
+
+<row>
+<c>
+```pike
+({ 1, 2, 4 }) | ({ 3, 4 })
+
+```</c>
+<c>
+```pike
+({ 1, 2, 3, 4 })
+
+```</c>
+</row>
+
+<row>
+<c>
+```pike
+({ 1, 2, 4 }) + ({ 3, 4 })
+
+```</c>
+<c>
+```pike
+({ 1, 2, 4, 3, 4 })
+
+```</c>
+</row>
+
+</xtable>

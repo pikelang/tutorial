@@ -1,0 +1,124 @@
+# Type Conversions
+
+Values of one type can be converted to a value of another type. For
+example, the integer `4711` can be converted to the string
+`"4711"`. (These two may look similar, but they are actually
+entirely different things. For example, `4711 + 3` will give
+you `4714`, `"4711" + "3"` will give you
+`"47113"`.)
+
+Some conversions are done automatically. For example, in the
+expression `"hello" + 17` the integer `17` will be
+automatically converted to the string `"17"`, before the two
+strings are concatenated, giving the result `"hello17"`. But
+some conversions need to be performed with a special operation, called
+an **explicit type conversion**, **value cast**, or most often simply
+**cast**. There is a special **cast operator**, which is
+written as a data type between parentheses:
+
+```pike
+(float)14	// Gives the float 14.0
+(int)6.9	// Gives the int 6
+(string)6.7	// Gives the string "6.7"
+(float)"6.7"	// Gives the float 6.7
+```
+
+Here is a list of some useful casts:
+
+<xtable>
+
+<row>
+<h>Casting from</h>
+<h>to</h>
+<h>gives the result</h>
+</row>
+
+<row>
+<c>int</c>
+<c>float</c>
+<c>The floating-point number with the same value as the integer</c>
+</row>
+
+<row>
+<c>float</c>
+<c>int</c>
+<c>An integer, with the fractional part ("the decimals") just
+skipped</c>
+</row>
+
+<row>
+<c>int</c>
+<c>string</c>
+<c>Converts the integer to a string with a number in normal base-10
+notation</c>
+</row>
+
+<row>
+<c>float</c>
+<c>string</c>
+<c>Converts the floating-point number to a string</c>
+</row>
+
+<row>
+<c>string</c>
+<c>int</c>
+<c>Converts the first number in the string to an integer. The number
+should be an integer written in normal base-10 notation.</c>
+</row>
+
+<row>
+<c>string</c>
+<c>float</c>
+<c>Converts the first number, with or without decimals, in the string
+to a floating-point number</c>
+</row>
+
+<row>
+<c>string</c>
+<c>program</c>
+<c>If the string contains a filename, compile the file and return the
+program. The results are cached.</c>
+</row>
+
+<row>
+<c>string</c>
+<c>object</c>
+<c>First casts the string to a program as above, and then clones the
+result. The results are cached.</c>
+</row>
+
+<row>
+<c>array</c>
+<c>array(*type*)</c>
+<c>This recursively casts all values in the array to *type*.</c>
+</row>
+
+<row>
+<c>multiset</c>
+<c>array</c>
+<c>The same as doing `indices(*multiset*)`.</c>
+</row>
+
+</xtable>
+
+Sometimes you know more than what Pike does about data types, and
+another use for casts is to tell Pike what you know. For
+example, lets say that you have a variable with the type
+`mixed`, which means that it can contain any type of data. Lets
+also say that you happen to know that that variable contains an
+integer. If you want to use this value where an integer is required,
+Pike might complain about it:
+
+```pike
+mixed m;
+int i;
+m = 18;
+i = m;	// This makes Pike suspicious if you turn on strict type checking
+```
+
+You can use a **type cast** (aka **soft cast**) to tell Pike that
+`m` is an integer and nothing else:
+
+```pike
+i = [int]m; // Don't worry. I promise it's an int!
+```

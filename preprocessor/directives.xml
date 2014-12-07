@@ -1,0 +1,133 @@
+<metadata>
+ <datum name=__removed valuen=1>
+ <datum name=author value="0">
+ <datum name=description value="">
+ <datum name=external_use value="">
+ <datum name=http-content-type value="text/xml">
+ <datum name=keywords value="">
+ <datum name=stationery value="">
+ <datum name=stationery_md_flags value="">
+ <datum name=template value="tutorial.xsl">
+ <datum name=title value="Preprocessor Directives">
+</metadata>
+<manual>
+
+When Pike executes a program file, the source code is first run
+through the **preprocessor**, The preprocessor performs some
+textual transformations on the source code. By "textual
+transformations" we mean that the preprocessor doesn't know a lot
+about Pike, and just looks at the source code as text, where it for
+example can replace some of the words.
+
+We recommend that you don't use the preprocessor at all, unless you
+have to. Most of what the preprocessor can do, can be done in better
+ways in Pike.
+
+The preprocessor is controlled by **preprocessor directives**. A
+preprocessor directive must be written on its own line, and starts
+with a hash character (#). This is an example of a preprocessor
+directive:
+
+```pike
+#define MAX_TEMP 100
+```
+
+This directive defines the **macro** `MAX_TEMP`. The
+preprocessor will now replace the word `MAX_TEMP` with
+`100` in the rest of the file, before translating and executing
+the source code.
+
+Try to avoid this. Pike will replace every occurrence of
+`MAX_TEMP` in the rest of the file with `100`, and this
+can cause all sorts of trouble. It is better to use a real
+constant:
+
+```pike
+constant MAX_TEMP = 100;
+```
+
+Preprocessor macros can have arguments:
+
+```pike
+#define square(x) x * x
+```
+
+This directive will cause Pike to replace every occurrence of
+"`square(*expression*)`" with "`*expression* *
+*expression*`". But note that this is just a textual
+transformation! As an example of what this means, the statement
+
+```pike
+i = square(2 + 3);
+```
+
+which we expect to assign 25 to the variable `i`,
+will be translated to
+
+```pike
+i = 2 + 3 * 2 + 3;
+```
+
+where multiplication, as always, has higher precedence than
+addition. The result is that a value of 11 will be assigned to
+`i`. Macros have several other problems similar to this one, so
+whenever you can you should use a method instead:
+
+```pike
+int square(int x) { return x * x; }
+```
+
+Another unfortunately common preprocessor directive is the
+**include** directive:
+
+```pike
+#include "somefile.pike"
+```
+
+Before the source code is translated, this directive will be
+replaced by the contents of the file "somefile.pike". By including
+another Pike file, we can implement a primitive form of inheritance.
+If that is what you are doing, it is much better to use the real
+inheritance mechanism:
+
+```pike
+inherit .somefile;
+```
+
+One thing that you can use the preprocessor for is to tell Pike
+which character set you are using in the Pike source code:
+
+```pike
+#charset <*charset-name*>
+```
+
+The default character set is `iso8859-1`, which is the right
+one for English and most Western European languages. Some other
+character sets are `utf-8` and `iso2022`.
+
+## Magic Preprocessor Constants
+
+The preprocessor also expands a few specific keywords to pike
+constants (C programmers will feel right at home); a `__LINE__`
+in your code will be translated to an integer pointing out at which
+line the keyword was found. `__DATE__` will be expanded to a
+```pike
+"Mon day Year"
+
+``` string constant, e g 
+```pike
+"May 2 2000"
+```
+with the date when the file was compiled (or, more to the point, when
+the preprocessor replaced the entity). Similarly, `__TIME__`
+turns into a 24-hour 
+```pike
+"HH:MM:SS"
+
+``` time string constant, e g
+```pike
+"19:17:21"
+
+```.
+
+</manual>
