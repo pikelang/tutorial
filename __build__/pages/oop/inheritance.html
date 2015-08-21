@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Inheritance</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Inheritance</h1>
+<p>A class may <strong>base class</strong>other class. This means that the inheriting class (also called <strong>base class</strong>r <strong>base class</strong>s<strong> or </strong>ts with all the methods and member variables that the inherited class, (also called <strong>base class</strong> or <strong>base class</strong>) has. The subclass can then have its own, additional methods and member variables.</p>
+<p>One situation when inheritance can be useful is when you want to create two or more classes that have a common part. Birds and fishes, for example, are different, with different characteristics, but they do have much in common. You can make use of this by creating a class, for example called &quot;animal&quot;, with the common properties. Then you define the two subclasses &quot;bird&quot; and &quot;fish&quot;, which inherit from &quot;animal&quot;.</p>
+<p>At other times you already have a class that almost does what you want it to, but you would like to add something to it. For example, a class &quot;connection&quot;, which models an Internet connection, may have everything you need except for a time limit on how long you can be connected. You could then create a new class, &quot;restricted_connection&quot;, which inherits from the old connection class, but with the time limit added.</p>
+<p>In both of these situations, we have what is sometimes called an <strong>is a</strong>elationship<strong> animal, a restricted_connection </strong>cted_connection <strong>is a</strong> connection. We recommend that you use inheritance in this way: to model is-a relationships.</p>
+<p>You use the keyword <code>inherit</code> to let a class inherit from another class. For example, to create the sub-classes <code>bird</code> and <code>fish</code>, which both inherit from <code>animal</code>, you would write:</p>
+<pre><code class="language-pike">class bird
+{
+  inherit animal;
+  float max_altitude;
+
+  void fly()
+  {
+    write(name + " flies.\n");
+  }
+
+  void eat(string food)
+  {
+    write(name + " flutters its wings.\n");
+    ::eat(food);
+  }
+}
+
+class fish
+{
+  inherit animal;
+  float max_depth;
+
+  void swim()
+  {
+    write(name + " swims.\n");
+  }
+}</code></pre>
+<p>A <code>bird</code> like Tweety can do anything an animal can do, and it has all the data that an animal has. But it can also fly (the method <code>fly</code>), and it has a maximum altitude (the member variable <code>max_altitude</code>).</p>
+<p>Note that the class <code>bird</code> has its own method called <code>eat</code>. There was one in <code>animal</code> too, but the new one <strong>overrides</strong> the old one, and will be used in all <code>bird</code> objects. If you have a method in the subclass with the same name as a method in the superclass, the module in the subclass <strong>overrides</strong><strong>overrides</strong> the method in the in superclass.</p>
+<p>If you still want to call the method in the superclass, you can prefix the name with two colons (<code>::</code>). That is what is done in the <code>eat</code> method: after fluttering its wings at the sight of the food, the bird will do the actual eating, and that is done with a call to <code>::eat</code>.</p>
+<p>You can now use our two new classes:</p>
+<pre><code class="language-pike">bird tweety = bird("Tweety", 0.13);
+tweety-&gt;eat("corn");
+tweety-&gt;fly();
+tweety-&gt;max_altitude = 180.0;
+
+fish b = fish("Bubbles", 1.13);
+b-&gt;eat("fish food");
+b-&gt;swim();
+
+animal w = fish("Willy", 4000.0);
+w-&gt;eat("tourists");
+w-&gt;swim();</code></pre>
+<p>One thing that needs explaining is the last line in the example above:</p>
+<pre><code class="language-pike">w-&gt;swim();</code></pre>
+<p>The variable <code>w</code> is of type <code>animal</code>, and that class has no method called <code>swim</code>. But that doesn't matter, since Pike always looks at the <strong>static binding</strong> stored in the variable. In this case, Pike looks at the contents of the variable <code>w</code>, finds that it is a <code>fish</code>, and then calls the method <code>swim</code> in that object. Looking at the actual object like this is called <strong>static binding</strong>*. (The opposite, to just look at the type of the variable and ignore what's actually in it, would be called <strong>static binding</strong>.)</p>
+<p>As we said, we used inheritance to express <strong>is-a relationships</strong>. But there are other ways of using inheritance, for example to simply get access to some functionality. If you write a program that needs to work with a file on your hard disk, we could inherit the file-handling class <code>Stdio.File</code>, and then use all the methods in that class as if you had written them in your own program:</p>
+<pre><code class="language-pike">inherit Stdio.File;
+// ...
+read();</code></pre>
+<p>This works, but we recommend that you create an object of the type <code>Stdio.File</code> instead, and call the methods for that object:</p>
+<pre><code class="language-pike">Stdio.File the_file;
+// ...
+the_file-&gt;read();</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

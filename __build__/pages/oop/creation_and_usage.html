@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Creating and Using Objects</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Creating and Using Objects</h1>
+<p>Assuming that we have the class <code>animal</code>, we can define some variables that can be used to store animals. Remember that the class is also a <strong>data type</strong>. We can also create some animals to put in those variables. To create an animal, we use the syntax <code>*classname*()</code>, i e the name of the class followed by a pair of parentheses.</p>
+<pre><code class="language-pike">animal some_animal;
+some_animal = animal();
+animal my_dog = animal();</code></pre>
+<p>To access a member variable in an object, we use the syntax <code>*object-expression*-&gt;*variable-name*</code>, i e the object followed by the operator <code>-&gt;</code> followed by the name of the variable.</p>
+<pre><code class="language-pike">my_dog-&gt;name = "Fido";
+my_dog-&gt;weight = 10.0;
+some_animal-&gt;name = "Glorbie";
+write("My dog is called " + my_dog-&gt;name + ".\n");
+write("Its weight is " + my_dog-&gt;weight + ".\n");
+write("That animal is called " + some_animal-&gt;name + ".\n");</code></pre>
+<p>Most objects need some initial values for its member variables. For example, every animal needs a name and a weight. One way to handle this is to set those variables separately, as we have done above. A better way is to design the class in a way that lets it set the variables immediately when an object is cloned from the class. You can then give the values when cloning:</p>
+<pre><code class="language-pike">animal piglet = animal("Piglet", 6.3);</code></pre>
+<p>We can call a method in an object, with a similar &quot;<code>-&gt;</code>&quot; syntax:</p>
+<pre><code class="language-pike">my_dog-&gt;eat("quiche"); // Real dogs eat quiche.
+write("Its weight is now " + my_dog-&gt;weight + ".\n");</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

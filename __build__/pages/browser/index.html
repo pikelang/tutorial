@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Your Second Pike Program</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Your Second Pike Program</h1>
+<p>Your first Pike program, which was examined above in this tutorial, was a program that printed &quot;Hello world!&quot; on the screen. Your second Pike program will be a World Wide Web browser, just like Firefox, Google Chrome, Safari or Internet Explorer.</p>
+<p>Well, perhaps not <em>just</em> like those; those are all very large programs, and our browser will be a very small one. We will just make it advanced enough to connect to a World Wide Web server, download a web page, and then display its markup on the screen.</p>
+<p>We start by creating a file, for example called <code>webbrowser.pike</code>:</p>
+<pre><code class="language-pike">// The Very Simple World Wide Web Browser
+
+int main()
+{
+  write("Welcome to the Very Simple WWW Browser!\n");
+  return 0;
+} // main</code></pre>
+<p>This is almost the same program as the &quot;hello world&quot; program. The only difference is that it prints something else, and that we have added some <strong>comments</strong>. Two &quot;slash&quot; characters (<code>//</code>) means that the rest of the line is a comment. Comments are ignored by Pike, and are intended for humans who read your program.</p>
+<p>Pike has another type of comments, which start with <code>/*</code> and end with <code>*/</code>. Such comments can span several lines:</p>
+<pre><code class="language-pike">/*
+This is also a comment.
+For example, you can "comment out" parts
+of your program with this type of comment,
+so Pike doesn't run those parts.
+*/</code></pre>
+<h2>Variables</h2>
+<p>The web browser must be told which web page it should download and display. As you may know, the &quot;addresses&quot; to web pages are called URLs (Uniform Resource Locators), and they look like <code>pike.lysator.liu.se</code> or <code>http://pike.lysator.liu.se/</code> (where the second form is correct, but the first one usually works too).</p>
+<p>We add some code that lets the user type a URL, stores that URL in a variable, and also prints it on the screen as confirmation. The new additions are commented with numbers, described further below:</p>
+<pre><code class="language-pike">// The Very Simple World Wide Web Browser
+
+int main()
+{
+  write("Welcome to the Very Simple WWW Browser!\n");
+  string url; // 1
+  write("Type the address of the web page:\n");
+  url = Stdio.stdin-&gt;gets(); // 2
+  write("URL: " + url + "\n"); // 3
+  return 0;
+} // main</code></pre>
+<p>There are four new things here:</p>
+<ol>
+<li>We create a <strong>define</strong><strong> with the name <code>url</code>. This is called to </strong>define** a variable. The variable has the type <code>string</code>, which means that we an use it to store strings in. A string is a sequence of characters.</li>
+<li><code>Stdio.stdin-&gt;gets()</code> is used to let the user type some text on the keyboard. When the user hits the return key, the text is returned as a string. (<code>Stdio.stdin-&gt;gets()</code> calls the method <code>gets</code> in the object <code>stdin</code> from the module <code>Stdio</code>, but you don't need to worry about that just yet.)
+<p>We take that string, and store it in the variable. This is called <strong>assign</strong>nt<strong>, or to </strong>assign** a value to the variable.</p></li>
+<li>In the last line with <code>write</code>, we add three strings together: <code>"URL: " + url + "\n"</code></li>
+</ol>
+<p>When we run the program, it may look something like this. The user's commands and input are shown after the <code>&gt;</code> prompts:</p>
+<pre><code>&gt; pike webbrowser.pike
+Welcome to the Very Simple WWW Browser!
+Type the address of the web page:
+&gt; http://pike.ida.liu.se/
+URL: http://pike.ida.liu.se/</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

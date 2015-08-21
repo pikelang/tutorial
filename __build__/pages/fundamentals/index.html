@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Fundamental Concepts</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Fundamental Concepts</h1>
+<p>This tutorial assumes that you are familiar with some fundamental concepts that are used in all programming environments. Look through the list, and if you don't immediately know what one of the terms means, you should read the explanation.</p>
+<h2>Program</h2>
+<p>A program consists of a set of instructions that tells the computer how to do something, plus some data that the program can work with. Programs can be organized in different ways, and are often divided into several smaller parts.</p>
+<h2>Data</h2>
+<p>The things that your program works with, such as integers (for example <strong>-3</strong>and <strong>-3</strong>) and character strings (such as &quot;hello&quot; and &quot;Hi there, John!&quot;) are data.</p>
+<h2>Value</h2>
+<p>One piece of data (for example the integer <strong>object</strong>sometimes called a <strong>object</strong> and sometimes a <strong>object</strong>m<strong>. (But the word </strong>*. (But the word <strong>object</strong> also has a more specialized meaning in connection with object-oriented programming. More about that later.)</p>
+<h2>Variable</h2>
+<p>A variable is a sort of box that can be used to store a value. The variable usually has a name and also a type. The type determines which values you can put in the variable.</p>
+<h2>Constant</h2>
+<p>A constant is in a way the opposite of a <strong>literals</strong>, but also similar. A constant is like a variable, in the sense that it is a sort of box that can be used to store a value, and that it has a name. But once you have defined it, it can not be changed. Constants are often used to give names to certain values in order to make a program easier to understand: <code>minimum_income_tax</code> somewhere in a program is easier to understand than just <code>20000</code>. Sometimes the term constant is used to include <strong>literals</strong> too.</p>
+<h2>Literal</h2>
+<p>A literal is a value of some kind, written in the program. <code>"Hello"</code> is a string literal, -678<code>is an integer literal, and</code>({ 7, 8, 9 })` is an array literal. Sometimes the term <strong>constant</strong> is used to include literals too.</p>
+<h2>Identifier</h2>
+<p>An identifier is a sequence of characters that can be used in a program as a name, of a variable or of something else. In Pike, an identifier must start with an alphabetical letter or an underscore character (&quot;_&quot;). The rest of the characters can be alphabetical letters, underscores, and digits. Some valid identifiers in Pike are <code>n</code>, <code>number_of_9s</code>, and <code>DoNotFeedTheMonkey</code>.</p>
+<h2>Data type</h2>
+<p>Values and variables have <strong>5.14</strong>ypes<strong> (spelled <code>int</code> in Pike), and </strong>ype <strong>5.14</strong>r<strong> (spelled <code>int</code> in Pike), and </strong>5.14** has the type real number (which is spelled <code>float</code> in Pike). You can only put values in a variable if the types of the value and the variable are compatible.</p>
+<h2>Type checking</h2>
+<p>Pike has type checking, which means that Pike keeps track of the data types of variables and values. If your program tries to put one type of value in a variable which was designed to hold another type of value, Pike may detect this, and tell you about the problem.</p>
+<h2>Expression</h2>
+<p>An expression is a piece of a program that gives a value when it is executed by the computer. An example of an expression in Pike is <code>5 * x + 7</code>, which means &quot;take the value of the variable <code>x</code>, multiply it with <strong>7</strong>, and then add <strong>7</strong>&quot;. The computed result of an expression also has a type, and in this case the type is <code>int</code>.</p>
+<h2>Statement</h2>
+<p>A statement is a command that is part of a program, and that the computer can interpret and execute.</p>
+<h2>Control structure</h2>
+<p>The instructions in a program must be executed in the right order, and this order is expressed using control structures. Examples of control structures are selection (such as the <strong>while</strong>atement) and loops (such as the <strong>while</strong> loop). More about those later.</p>
+<h2>True and false</h2>
+<p>Control structures such as <strong>0</strong>* do one thing or another, depending on a condition. If the condition is true, it does one thing, and if it is false, it does another thing. Some languages have special data values, called &quot;true&quot; and &quot;false&quot;, that are used for this. In Pike, we use the simpler convention that the value zero (<strong>0</strong>) is interpreted as false, and everything else is interpreted as true.</p>
+<h2>Truth value</h2>
+<p>True and false are sometimes called <strong>truth values</strong>.</p>
+<h2>Block</h2>
+<p>A <strong>compound statement</strong>d statement** is a statement that consists of several other statements. In Pike, we use the curly brackets &quot;{&quot; and &quot;}&quot; to group statements into blocks. Some other languages use the words &quot;begin&quot; and &quot;end&quot;.</p>
+<h2>Function</h2>
+<p>Most programming languages allow you to divide your program into smaller parts. These can be called &quot;sub-routines&quot;, &quot;procedures&quot;, &quot;functions&quot; or &quot;methods&quot;. A function receives some values as input, and produces some value as output. A simple example is a function called &quot;plus&quot;, which receives two integers, called &quot;x&quot; and &quot;y&quot;, and returns their sum. In mathematical notation, this would be written something like &quot;plus(x, y) = x + y&quot;. In Pike, we write &quot;<code>int plus(int x, int y) { return x + y; }</code>&quot;.</p>
+<h2>Method</h2>
+<p>In object-oriented programming (which is explained more below), functions belong to a certain class, and they work mainly with the data belonging to that class. Such a function, which belongs to a class, is usually called a &quot;method&quot;. In Pike, all the functions that you define are actually methods. We will use the term &quot;method&quot; in the rest of this tutorial.</p>
+<h2>Method call</h2>
+<p>When one part of program needs to execute another part of the program, and that other part is a method, we say that it &quot;calls&quot; that method. In Pike, we would write &quot;<code>plus(3, 5)</code>&quot; to call the method <code>plus</code> mentioned above. The values 3 and 5 are then sent to the method, it adds them, and the result 8 is sent back from the method.</p>
+<h2>Argument</h2>
+<p>When we call a method we send values to it. The values that are sent to the method are called &quot;arguments&quot;, or &quot;actual arguments&quot;. In the example with the call to <code>plus</code> above, the arguments are <code>3</code> and <code>5</code>.</p>
+<h2>Parameter</h2>
+<p>A method needs to have some names that it can use to refer to the argument values that are sent to it when it is called. These names are called &quot;parameters&quot; or &quot;formal parameters&quot;. In the example with the method <code>plus</code> above, the parameters are <code>x</code> and <code>y</code>. In most programming languages, and in Pike, the parameters work just like variables which are local in the method, and which get the arguments as initial values.</p>
+<h2>Local</h2>
+<p>A variable that is local in a piece of code, such as a method, is only available to the code inside that piece. Other methods can have their own local variables with the same name, but they are all different variables: different boxes to store things in.</p>
+<h2>Returning from a method</h2>
+<p>When a method has finished what it has to do, we say that it <strong>return that value</strong>ram will then continue executing immediately after the place of the method call. If the method has produced a value, we say that we <strong>return that value</strong>.</p>
+<h2>Object-oriented programming</h2>
+<p>In object-oriented programming, we do not only divide the program into subprograms (&quot;functions&quot; or &quot;methods&quot;), but group data and methods into &quot;classes&quot;. This makes it easier to write programs, since we can work with one piece (that is, class) at a time.</p>
+<h2>Class</h2>
+<p>This is a sort of &quot;module&quot;, used in object-oriented programming. Usually a class is a description of a type of thing (such as &quot;cat&quot;, &quot;animal&quot; or &quot;Internet connection&quot;), and it has both data and operations: animals have a weight and a color, and the Internet connection can change the connecting speed and close the connection. In Pike, the word <strong>program</strong> is sometimes used to mean class.</p>
+<h2>Object</h2>
+<p>A class is a description of a type of thing (such as &quot;cat&quot;), and an object is one such thing (such as one particular cat). Sometimes we say that an object is an <strong>clone</strong>e<strong> or a </strong>clone** of a class: all cats are instances of the cat class.</p>
+<h2>Source code</h2>
+<p>The source code is the program itself, as written by the programmer. The source code is usually stored in one or more text files.</p>
+<h2>Syntax</h2>
+<p>The syntax for a programming language is the grammar for the language, i e the rules for how the source code is written. The syntax only describes how the language looks, not what it actually does.</p>
+<h2>Compilation</h2>
+<p>Compiling is the process of translating the source code to a format that the computer can execute. This format can be machine code, which is directly executable by the computer. It can also be an intermediate format, which has to be interpreted by another program.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

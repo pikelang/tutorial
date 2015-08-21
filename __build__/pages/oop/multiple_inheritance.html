@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Multiple Inheritance</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Multiple Inheritance</h1>
+<p>Sometimes we want to inherit from two or more classes. This works in Pike (and in C++, but not in Java). You just write several inherits.</p>
+<p>Lets say we have a class <code>friend</code>, that represents a friend:</p>
+<pre><code class="language-pike">class friend
+{
+  void cuddle()
+  {
+    write("Cuddle, cuddle, cuddle!\n");
+  }
+}</code></pre>
+<p>A hamster, as we all know, is both an animal and a friend, and it can also dance:</p>
+<pre><code class="language-pike">class hamster
+{
+  inherit animal;
+  inherit friend;
+
+  void dance()
+  {
+    write(name + " dances.\n");
+  }
+}</code></pre>
+<p>So, try it out:</p>
+<pre><code class="language-pike">hamster h = hamster("Blue Lightning", 0.12);
+h-&gt;cuddle();      // Cuddle as a friend
+h-&gt;eat("grain");  // Eat as an animal
+h-&gt;dance();       // Dance as a hamster</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

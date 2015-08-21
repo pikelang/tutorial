@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Access control</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Access control</h1>
+<p>Do you remember about <strong>information hiding</strong>? In the examples above, everyone could access all the methods and member variables in all objects. For example, it is very easy to lose weight:</p>
+<pre><code class="language-pike">h-&gt;weight -= 10.0;</code></pre>
+<p>Oh? The hamster only weighed 0.12, and now it weighs <em>minus</em> 9.88?</p>
+<p>We would like to control the access to the member variable <code>weight</code>, so that other classes cannot touch it. For uses like this, there are a number of <strong>access modifiers</strong>, which are written before the data type in the definition of a method or member variable. For example, the weight of an animal is represented by the member variable <code>weight</code>, defined as:</p>
+<pre><code class="language-pike">float weight;</code></pre>
+<p>By changing that to</p>
+<pre><code class="language-pike">private float weight;</code></pre>
+<p>we only allow methods in the same class to access that variable.</p>
+<p>The following access modifiers exist:</p>
+<ul>
+<li><code>public</code>
+<p>This is the default, and means that any method can access the member variable, or call the method.</p></li>
+<li><code>private</code>
+<p>This means that the member variable or method is only available to methods in the same class.</p></li>
+<li><code>static</code>
+<p>This means that this member variable or method is only available to methods in the same class, and in subclasses (<code>static</code> in Pike does not at all mean the same thing as <code>static</code> in C++: instead, it is similar to <code>protected</code> in C++).</p></li>
+<li><code>local</code>
+<p>This means that even if this method is overridden by a method in a subclass, methods in this class will still use this method.</p></li>
+<li><code>final</code>
+<p>This prevents subclasses from re-defining this method.</p></li>
+</ul>
+<p>If a class has a constructor (that is, a method called <code>create</code>) it can be a good idea to declare it <code>static</code>. It is not supposed to be called except during the construction of the object, and if it is not <code>static</code> there may be some type incompatibilities in connection with inheritance.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

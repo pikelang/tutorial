@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Interactive Pike</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Interactive Pike</h1>
+<p>You can use Pike interactively, which means that you type a line at a time, letting Pike execute it immediately. Just start Pike by giving the command <code>pike</code>, without any command line arguments. Then type a statement, for example:</p>
+<pre><code>&gt; pike
+Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
+&gt; write("hello!\n");</code></pre>
+<p>Pike will then do what you told it to do, i e print &quot;hello!&quot; on a line:</p>
+<pre><code>&gt; pike
+Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
+&gt; write("hello!\n");
+hello!</code></pre>
+<p>Similar to <code>main</code>, the built-in function <code>write</code> returns a value, which happens to be the number of characters it has written. Interactive Pike will also show you this return value:</p>
+<pre><code>&gt; pike
+Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
+&gt; write("hello!\n");
+hello!
+(1) Result: 7
+&gt;</code></pre>
+<p>The return value from write is the number of characters written, which in this case is seven characters; <code>h</code>, <code>e</code>, <code>l</code>, <code>l</code>, <code>o</code>, the exclamation mark, and the newline character. The one in parenthesis at the beginning of the line tells you that this is the first result in the session's history, if you want to refer to it in subsequent expressions.</p>
+<pre><code>&gt; pike
+Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
+&gt; "hello";
+(1) Result: "hello"
+&gt; _;
+(2) Result: "hello"
+&gt; _ + " world!";
+(3) Result: "hello world!"
+&gt; __[1];
+(4) Result: "hello"</code></pre>
+<p>For convenience, the interactive pike session offers two automatic variables: <code>_</code>, which holds the most recent result, and <code>__</code>, which lets you index out any result in session history by id.</p>
+<p>Running Pike interactively like this can be very useful when testing things, for example when you are following this tutorial. It can also be used as a very advanced calculator. <em>But beware! Some things don't work the same way in interactive mode as they do when you run a Pike program from a file!</em></p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

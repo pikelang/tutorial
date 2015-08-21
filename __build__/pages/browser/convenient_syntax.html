@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Syntactic Sugar</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Syntactic Sugar</h1>
+<h2>Importing a Module</h2>
+<p>If we don't want to write the module name every time we use something from that module, an alternative is to <strong>import</strong> the module. If we import <code>Protocols.HTTP</code>, we can use the data type <code>Query</code>, and the method <code>get_url</code>, without prefixing them with <code>Protocols.HTTP</code>:</p>
+<pre><code class="language-pike">import Protocols.HTTP;
+
+void handle_url(string this_url)
+{
+  write("Fetching URL '" + this_url + "'...");
+  Query web_page;
+  web_page = get_url(this_url);
+  if (web_page == 0)
+  {
+    write(" Failed.\n");
+    return;
+  }
+  write(" Done.\n");
+} // handle_url</code></pre>
+<p>Although you <em>could</em> import lots and lots of modules for the ease of lazy typing, this mostly isn't a recommended practice, for obvious reasons of clarity and readability. There are also some non-obvious reasons to refrain from doing imports. If someone adds the method <code>write</code> to the module <code>Protocols.HTTP</code>, we would call that method instead of the one that writes text to the user. It also takes longer to start the program, since Pike must search through all imported modules to find the methods you use.</p>
+<h2>Initial Values for Variables</h2>
+<p>We can give a value to a variable when we define it, so there is no reason to write:</p>
+<pre><code class="language-pike">  Query web_page;
+  web_page = get_url(this_url);</code></pre>
+<p>We change it to this:</p>
+<pre><code class="language-pike">  Query web_page = get_url(this_url);</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>An Introduction</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>An Introduction</h1>
+<h1>Methods</h1>
+<p>Most programming languages allow you to divide your program into smaller parts. These can be called &quot;sub-routines&quot;, &quot;procedures&quot;, &quot;functions&quot; or &quot;methods&quot;. In Pike, we use the term &quot;method&quot;. Other parts of the program can <strong>call</strong> the method, i e cause it to be executed.</p>
+<h2>How to create a method</h2>
+<p>To create a method, you must <strong>method definition</strong> <strong>method definition</strong>. A method definition follows this template:</p>
+<pre><code class="language-pike">*access-modifiers* *type* *method-name*( *parameter-list* )
+*method-body*</code></pre>
+<p>Here is a description of the various parts in the definition template:</p>
+<ul>
+<li>The <em>access-modifiers</em> are optional. If they are present, they control from where this method can be called. An example of an access-modifier is <code>private</code>, which makes it impossible for other programs to call this method.</li>
+<li>The <em>type</em> is a <strong>data type</strong>, which specifies the type of the value that the method returns. It is sometimes called the &quot;return type of the method&quot;, or the &quot;type of the method&quot;. An example of a data type is <code>string</code>. If the type is <code>void</code>, the method is not supposed to return a value.</li>
+<li>The <em>method-name</em> is the name of the method. This is an identifier, for example <code>plus</code>, <code>destroy_all_enemy_ships</code> or <code>mUndoLatestChange</code>. A method should have a name that correctly describes what the method does: a method that prints a list of customers should probably be called something like <code>print_customers</code>.</li>
+<li>The <em> acts like a variable, which is local in the method, and which gets the corresponding argument value from the method call as its initial value. Some examples of parameters are &quot;<code>int number_of_cars</code>&quot; and &quot;<code>string name</code>&quot;. A method can have up to 256 parameters. If the method doesn't expect to receive any argument values, the </em>e up to 256 parameters. If the method doesn't expect to receive any argument values, the <em>parameter-list</em> can be empty.</li>
+<li>The <em>method-body</em> is a <strong>block</strong>, and can contain statements and local definitions.</li>
+</ul>
+<p>Sometimes we talk of the <strong>call</strong> and the <strong>call</strong> of a method. The body is of course the <em>method-body</em> in the template above, while the head consists of everything in the method definition except the body. We can say that the method head is a description of the method: its name, which arguments it expects, and what type of value it will return. A part of the program that wants to <strong>call</strong> a method, needs to know about the head of that method, but not about the body.</p>
+<p>The <strong>method body</strong>, on the other hand, contains the statements that will be executed when the method is called. The body is therefore a description of what, and how, the method performs whatever it is that it does.</p>
+<p>Here is a simple example of a method definition:</p>
+<pre><code class="language-pike">float average(float x1, float x2)
+{
+  return (x1 + x2) / 2;
+}</code></pre>
+<p>The method <code>average</code> returns the average of its two arguments. Both the return value and the two parameters are floating-point values. Here are some valid statements that contain calls to <code>average</code>:</p>
+<pre><code class="language-pike">float x = average(19.0 + 11.0, 10.0);
+average(27.13, x + 27.15);
+float y = average(1.0, 2.0) + average(6.0, 7.1);
+float z = average(1.0, average(2.0, 3.0));</code></pre>
+<p>When a method has finished what it has to do, we say that it <strong>returns</strong>. The program will then continue executing immediately after the place of the method call. If the method has produced a value, we say that we return that value.</p>
+<p>The <code>return</code> statement is used to send a value from a method back to the point from where it was called:</p>
+<pre><code>return *expression*;</code></pre>
+<p>The <code>return</code> statement will also cause Pike to leave the method, and continue execution immediately after the point where the call to the method was made. You can have several <code>return</code> statements in the same method. If the method is defined to return <code>void</code>, you can use <code>return</code> without a value to leave the method:</p>
+<pre><code class="language-pike">return;</code></pre>
+<p>If you reach the end of the body of a method, without having returned first, the method will return zero as return value.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

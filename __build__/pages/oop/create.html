@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>How to Create a Class</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>How to Create a Class</h1>
+<p>To create a class, you write a <strong>class definition</strong>, with all the member variables and methods. For the class <code>animal</code>, which we have used above, the class definition may look like this:</p>
+<pre><code class="language-pike">class animal
+{
+  string name;
+  float weight;
+
+  void create(string n, float w)
+  {
+    name = n;
+    weight = w;
+  }
+
+  void eat(string food)
+  {
+    write(name + " eats some " + food + ".\n");
+    weight += 0.5;
+  }
+}</code></pre>
+<p>Some explanations about this:</p>
+<ul>
+<li>A member variable, such as <code>name</code>, exists once in each cloned object, not in the class itself.</li>
+<li>When a method, such as <code>eat</code>, refers to a member variable, such as <code>weight</code>, it will use that variable in the same object that it was called for. For example, when we call <code>my_dog-&gt;eat("quiche")</code>, it is the <code>weight</code> in the object <code>my_dog</code> that is increased.</li>
+<li>The method <code>create</code> is special. This method that handles the arguments that you give when you clone an object. (C++ programmers would call this a &quot;constructor&quot;.)</li>
+<li>You can also have a method called <code>destroy</code>. This method is what C++ programmers would call the &quot;destructor&quot;, i e a method that is run just before the object disappears. A destructor is sometimes needed for cleanup, but much more seldom in Pike than in C++, since Pike has automatic garbage collection.</li>
+</ul></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

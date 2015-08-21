@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>More Advanced Examples</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>More Advanced Examples</h1>
+<p>Here are two more examples of method definitions:</p>
+<pre><code class="language-pike">int getDex()
+{
+  int oldDex = Dex;
+  Dex = 0;
+  return oldDex;
+}
+
+private void
+show_user(int|string id, void|string full_name)
+{
+  write("Id: " + id + "\n");
+  if (full_name)
+    write("Full name: " + full_name + "\n");
+}</code></pre>
+<p>The method <code>getDex</code> returns the value of a non-local variable called <code>Dex</code>, but also changes the value of that variable to zero (<strong>0</strong>).</p>
+<p>The method <code>show_user</code> expects to receive either one or two arguments. The first argument can be either an integer or a string. The second argument is optional, but if it is present it must be a string.</p>
+<p>Here are some valid statements that contain calls to the two methods above:</p>
+<pre><code class="language-pike">getDex();
+show_user(19);
+show_user("john");
+show_user(19, "John Doe");
+show_user("john", "John Doe");</code></pre>
+<h2>Side-effects in Methods</h2>
+<p>When working with methods, you may want to be careful with <strong>side-effects</strong>. A side-effect is anything that the method causes to change or happen, except for the returned value. Sometimes the side-effects are the reason for the method, and sometimes they are a dangerous misfeature. In the three examples above, <code>getDex</code> has the side-effect of setting the value of the non-local variable <code>Dex</code> to 0, and <code>show_user</code> has the side-effect that it writes some text to the standard output. We can guess that <code>show_user</code> has been created just to write that text, so this side-effect of <code>show_user</code> is probably not a problem. On the other hand, if a programmer uses <code>getDex</code> to get the value of the variable <code>Dex</code>, it could come as a surprise that this method also changes the value.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

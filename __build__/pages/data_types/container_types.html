@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Container Types</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Container Types</h1>
+<p>Some of the data types are <strong>containers</strong>. A data item of one of these container types can contain other data items.</p>
+<p>The simplest of the container types is the <strong>index</strong>. If a variable is a box where you can put a data item, an array is a whole sequence of such boxes. The boxes are numbered, starting with 0, so in an array with 10 places the first one has number 0, and the tenth and last one has number 9. The position numbers are called <strong>index</strong><strong>. (One </strong>index**, many indices.)</p>
+<p>You can give an array in your Pike program by listing its elements inside parenthesis-curly-bracket quotes:</p>
+<pre><code class="language-pike">({ "geegle", "boogle", "fnordle blordle" })
+({ 12, 17, -3, 8 })
+({  })
+({ 12, 17, 17, "foo", ({ "gleep", "gleep" }) })</code></pre>
+<p>As you can see, an array can be empty (containing no elements), and it can also contain other arrays. An array can contain elements of different types, but it is more common with arrays that only contain one type of element.</p>
+<p>You can define array variables like this:</p>
+<pre><code class="language-pike">array a;        // Array of anything
+array(string) b;    // Array of strings
+array(array(string)) c;    // Array of arrays of strings
+array(mixed) d;        // Array of anything</code></pre>
+<p>Then you can give values to these variables:</p>
+<pre><code class="language-pike">a = ({ 17, "hello", 3.6 });
+b = ({ "foo", "bar", "fum" });
+c = ({ ({ "John", "Sherlock" }), ({ "Holmes" }) });
+d = c;</code></pre>
+<p>You can access the elements in an array, either to just get the value or to replace it. This is usually called <strong>indexing</strong> the array. Indexing is done by writing the position number, or index, within square brackets after the array:</p>
+<pre><code class="language-pike">write(a[0]);    // Writes 17
+b[1] = "bloo";  // Replaces "bar" with "bloo"
+c[1][0] = b[2]; // Replaces "Holmes" with "fum"</code></pre>
+<p>There are many useful operations that can be done with arrays. For example, you can add two arrays together:</p>
+<pre><code class="language-pike">({ 7, 1 }) + ({ 3, 1, 6 })</code></pre>
+<p>The result of that expression is a new array, with the elements from the two arrays concatenated:</p>
+<pre><code class="language-pike">({ 7, 1, 3, 1, 6 })</code></pre>
+<p>Except for arrays there are two other container types in Pike, <code>mapping</code> and <code>multiset</code>. A set is something where a value is either a member or not, and a multiset is a set which can contain several copies of the same value. Mappings are sometimes called dictionaries, and lets you translate from one value (such as <code>"beer"</code>) to another value (<code>"cerveza"</code>). Academics might know the datatype by the name &quot;associative array&quot;, perl programmers call them &quot;hashes&quot;, javascript programmers say &quot;Objects&quot;. Mappings and multisets are explained in a later chapter.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

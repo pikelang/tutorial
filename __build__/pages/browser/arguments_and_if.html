@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Command-line Arguments and if</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Command-line Arguments and if</h1>
+<p>Before we let the program actually do anything with the URL we give to it, we will improve the program to let it take the URL as a <strong>command-line argument</strong>. That is, we want to start the program with the command</p>
+<pre><code>&gt; webbrowser.pike http://pike.ida.liu.se/</code></pre>
+<p>instead of letting the program ask for the URL. We add some code for this:</p>
+<pre><code class="language-pike">#! /usr/local/bin/pike
+
+// The Very Simple World Wide Web Browser
+
+int main(int argc, array(string) argv) // 2)
+{
+  write("Welcome to the Very Simple WWW Browser!\n");
+  string url;
+  if (argc == 2)   // 3), 5)
+    url = argv[1]; // 4)
+  else             // 5)
+  {                // 5)
+    write("Type the address of the web page:\n");
+    url = Stdio.stdin-&gt;gets();
+  }                // 5)
+  write("URL: " + url + "\n");
+  return 0;
+} // main</code></pre>
+<p>This program can handle a command-line argument, but if you don't give one, it will ask for an URL just as before.</p>
+<p>There are some new things to explain here:</p>
+<ol>
+<li>The first line <code>#! /usr/local/bin/pike</code> only works on a Unix system, as described earlier. You can remove it if you are using Windows.</li>
+<li>We have added <code>int argc, array(string) argv</code> as <strong>parameters</strong> to <code>main</code>. These parameters are like normal variables, except that they will be assigned some values automatically when the program starts.
+<p>The variable <code>argc</code> has the type <code>int</code>, which means <strong>2</strong>eger<strong>. It will contain the number of command-line arguments. The program name is counted as an argument, so if you give one argument to the program, <code>argc</code> will have the value </strong>2**.</p>
+<p>The variable <code>argv</code> will contain the arguments. Its type is <code>array(string)</code>, which means <strong>array of strings</strong>. Each command-line argument is put in a string, and together they form a list or array.</p></li>
+<li><code>argc == 2</code> is a comparison. We check if the value of <code>argc</code> is <strong>operator</strong>is an <strong>operator</strong> that checks if two things are the same. Some other comparison operators in Pike are <code>&lt;</code> (less than), <code>&gt;=</code> (greater than or equal), and <code>!=</code> (not same).</li>
+<li><code>argv[1]</code> retrieves the element at position number 1 in an array. The positions are numbered from 0, so position 1 is actually the second element in the array. This is the URL given as argument to the program. <code>argv[0]</code> contains the name of the program, the string <code>"webbrowser.pike"</code>.</li>
+<li>The <code>if</code> statement lets Pike choose between different actions. It follows the template or pattern
+<pre><code class="language-pike">if ( *condition* )
+ *something*
+else
+ *something-else*</code></pre>
+<p>If the <em>. In our program, there are two <strong>statements</strong> in the </em> Pike will do the <em>. In our program, there are two <strong>statements</strong> in the </em> the <em> in the </em>-else<em>. In our program, there are two <strong>statements</strong> in the </em>something-else*, so we must enclose it in curly brackets, <code>{</code> and <code>}</code>.</p></li>
+</ol></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

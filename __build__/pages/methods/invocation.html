@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Calling a method</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Calling a method</h1>
+<p>First of all, Pike calculates the values of all the arguments. In the call</p>
+<pre><code class="language-pike">average(19.0 + 11.0, 10.0);</code></pre>
+<p>the two arguments are calculated, giving the values <strong>10.0</strong> and <strong>10.0</strong>. Then the argument values are sent to the method. If we look at the method head,</p>
+<pre><code class="language-pike">float average(float x1, float x2)</code></pre>
+<p>we see that it has two formal parameters. The argument values will be put in the two parameter variables <code>x1</code> and <code>x2</code>, which work as local variables but with the argument values as initial values.</p>
+<p>Execution will then continue with the body of the method. In this case, the body is</p>
+<pre><code class="language-pike">{
+  return (x1 + x2) / 2;
+}</code></pre>
+<p>The value of <code>(x1 + x2) / 2</code> will be calculated, giving <strong>20.0</strong>. This value is then returned to the point where the method was called, and is used as the value of the method-call expression.</p>
+<p>Note that Pike uses &quot;call by value&quot;. This means that Pike always calculates the value of the arguments before calling a method, and then it sends those values (or, more precisely: copies of those values) to the called method. This means that in the example</p>
+<pre><code class="language-pike">average(1.0, average(2.0, 3.0));</code></pre>
+<p>Pike will first call <code>average</code> with the two values <strong>1.75</strong>and <strong>1.75</strong> and when <code>average</code> has returned the value <strong>1.75</strong> it will send the two values <strong>1.75</strong>and <strong>1.75</strong>to <code>average</code>. This second call of <code>average</code> will return <strong>1.75</strong>, and this is the value of the entire expression.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Object, Program and Function</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Object, Program and Function</h1>
+<p>These three data types will be described in more detail later, but here is a short explanation of what they are good for.</p>
+<p>An <code>object</code> is an object, in the object-oriented sense: the values of a bunch of member variables as defined by a <strong>class</strong><strong> (or </strong>class**, as a C++, Java or Smalltalk programmer would say). We say that the object is an instance of the program.</p>
+<p>An object is an instance of a program, and just as we want to store objects in variables, and send them back and forth to functions, we sometimes want to do the same with the <strong>programs</strong>. For example, we may need a function that creates an instance (that is, <code>object</code>) of any program, and we must therefore be able to send the program as an argument to the function. This is what we use the data type <code>program</code> for.</p>
+<p>It may come as a surprise that there is a special datatype for Pike programs, but it is actually very useful, and adds a lot of flexibility to Pike.</p>
+<p>Something else that may surprise you is that there is a data type for <strong>methods</strong>. Sometimes you want to refer to &quot;any method&quot;. Take for example the built-in method <code>map</code>, which is used to apply an operation to all the elements in an array. You call <code>map</code> with (at least) two arguments: the array to go through, and the method to call for each element:</p>
+<pre><code class="language-pike">void write_one(int x)
+{
+  write("Number: " + x + "\n");
+}
+
+int main()
+{
+  array(int) all_of_them = ({ 1, 5, -1, 17, 17 });
+  map(all_of_them, write_one);
+  return 0;
+}</code></pre>
+<p>Running this code snippet would output:</p>
+<pre><code>Number: 1
+Number: 5
+Number: -1
+Number: 17
+Number: 17</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

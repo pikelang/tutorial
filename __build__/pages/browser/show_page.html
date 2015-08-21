@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Showing the Page</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Showing the Page</h1>
+<p>A web browser that just prints &quot;Done&quot; instead of the web page isn't of much use, so we add some lines at the end of the method <code>handle_url</code> to print the contents of the web page:</p>
+<pre><code class="language-pike">void handle_url(string this_url)
+{
+  write("Fetching URL '" + this_url + "'...");
+  Query web_page = get_url(this_url);
+  if (web_page == 0)
+  {
+    write(" Failed.\n");
+    return;
+  }
+  write(" Done.\n");
+  write("This is the contents of '" + this_url + "':\n\n");
+  string page_contents = web_page-&gt;data();
+  write(page_contents + "\n");
+} // handle_url</code></pre>
+<p>The interesting part here is the expression</p>
+<pre><code class="language-pike">web_page-&gt;data()</code></pre>
+<p>where we call the method <code>data</code> in the data item <code>web_page</code>. This method returns the contents of the web page, i e the HTML code, as a string. We then print that string.</p>
+<h2>Methods in data items?</h2>
+<p>&quot;But&quot;, you say, &quot;what is all this about a method in a data item? I thought methods were pieces of code that were parts of a program?&quot;</p>
+<p>Well, a method <em>is</em> a part of a program, just as we have seen. But just as the web browser we have written contains methods, other programs can contain methods. And the &quot;data type&quot; <code>Protocols.HTTP.Query</code> is actually another program. The big difference is that it doesn't have a method called <code>main</code>, so it can't be used by itself. It can only be used as a part of another program, as we have done here.</p>
+<p>Somewhere on your computer there is a file, called something like <code>/usr/local/pike/8.0.28/lib/modules/Protocols.pmod/HTTP.pmod/Query.pike</code> or <code>C:\Program Files\Pike\lib\pike\modules\Protocols.pmod\HTTP.pmod\Query.pike</code>. This file contains the program <code>Query</code> with all its methods and variables, among them the method <code>data</code>.</p>
+<p>A program like <code>Query</code>, which can be used in other programs in the way we have seen, is often called a <strong>object-oriented programming</strong>out how to use, and create, classes in the chapter about <a href="../oop/index.html"><strong>object-oriented programming</strong></a>.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

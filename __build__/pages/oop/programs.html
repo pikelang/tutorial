@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Programs are Classes and Vice Versa</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Programs are Classes and Vice Versa</h1>
+<p>It may surprise you to know that you have already seen several class definitions in this tutorial. If you have written a program in Pike, you have also written a class. This is because in Pike, programs and classes are the same, and the terms <strong>class</strong><strong> and </strong>class** are sometimes used as synonyms.</p>
+<p>A Pike program in a file is a class definition. The methods that you have defined in the file are the methods of the class, and the global variables (that is, the variables defined outside the methods) are the member variables. If you like, you can imagine that the file has an implicit &quot;<code>class { }</code>&quot; around the code. But it would be bothersome if we had to put every little class in its own file, so we also have the &quot;<code>class { }</code> notation.</p>
+<p>To create the equivalent of the class <code>animal</code>, which we defined above, we would need a file with the following contents. The file name can be &quot;animal.pike&quot;, but any name will work.</p>
+<pre><code class="language-pike">string name;
+
+float weight;
+
+void create(string n, float w)
+{
+  name = n;
+  weight = w;
+}
+
+void eat(string food)
+{
+  write(name + " eats some " + food + ".\n");
+  weight += 0.5;
+}</code></pre>
+<p>We can't use a string as a type name, so the file name won't work as a data type:</p>
+<pre><code class="language-pike">"animal.pike" my_dog; // Doesn't work at all.</code></pre>
+<p>Instead, we must let Pike read and compile the file, making a <strong>constant</strong>of it (or <strong>constant</strong>f you prefer that term, but the data type is <code>program</code>), and then we put that program in a <strong>constant</strong>:</p>
+<pre><code class="language-pike">constant animal = (program)"animal.pike";</code></pre>
+<p>Now you can use <code>animal</code> as the class name, just as before:</p>
+<pre><code class="language-pike">animal piglet = animal("Piglet", 6.3);</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

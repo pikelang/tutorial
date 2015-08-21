@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>I Want My Greeting in a Window!</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>I Want My Greeting in a Window!</h1>
+<p>Pike has support for graphical user interfaces. If you have the GTK Pike module installed on your computer, you can use a slightly modified program to print &quot;Hello world!&quot; in its own window:</p>
+<pre><code class="language-pike">int main()
+{
+  GTK.setup_gtk();
+  GTK.Alert("Hello world!");
+  return -1;
+}</code></pre>
+<p>The statement &quot;<code>GTK.setup_gtk();</code>&quot; is a call to a method, similar to the call to <code>write</code> in our first example. The difference here is that <code>setup_gtk</code> is found in a module called <code>GTK</code>, so we must prefix it with &quot;<code>GTK.</code>&quot; to let Pike know where to look for it.</p>
+<p>The next statement, &quot;<code>GTK.Alert("Hello world!");</code>&quot;, creates a small window, an &quot;alert window&quot;, with the text &quot;Hello world!&quot; in it. The window will look something like this:</p>
+<p><img alt="alertwindow" src="alertwindow.gif"></p>
+<p><em>The window that pops up when the GTK hello-world program is run</em></p>
+<p>When you click on the &quot;OK&quot; button, the window disappears.</p>
+<p>The last statement in <code>main</code> is &quot;<code>return -1;</code>&quot;. In Pike, a negative return value from <code>main</code> means that the program doesn't stop executing when <code>main</code> is finished. This is necessary here, since otherwise the program would finish as soon as it had created the window, and the window would disappear at once.</p>
+<p>But there is a problem with this program. The program doesn't stop executing when <code>main</code> is finished, so when does it stop? Never. We may close the window, but the program is still running. It doesn't actually do anything, but it is there.</p>
+<p>We can fix the problem like this:</p>
+<pre><code class="language-pike">int main()
+{
+  GTK.setup_gtk();
+  GTK.Alert("Hello world!")
+    -&gt; signal_connect("destroy", lambda(){ exit(0); });
+  return -1;
+}</code></pre>
+<p>To explain this, think that</p>
+<pre><code class="language-pike">GTK.Alert("Hello world!")</code></pre>
+<p>creates the Alert window. The Alert window is a thing, or an &quot;object&quot;. It not only pops up on your computer screen, but you can also let your program do things with this object. For example, you can tell the window that when it is destroyed, it should order the entire program to exit. This is what the rest of of the statement does (even if we don't explain the exact details here):</p>
+<pre><code class="language-pike">-&gt; signal_connect("destroy", lambda(){ exit(0); });</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

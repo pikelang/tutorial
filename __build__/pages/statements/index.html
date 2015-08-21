@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Statements</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Statements</h1>
+<h1>Choosing between Alternatives</h1>
+<p>A program must sometimes make choices, choosing between different instructions to execute. Sometimes it must also execute the same instructions several times. All this is done using various <strong>control structures</strong>. We will start by looking at the different ways of choosing between alternatives.</p>
+<p>Pike has three facilities for choosing between alternatives: the <strong>switch</strong>tement, the <strong>switch</strong> statement, and the <code>? :</code> operator.</p>
+<h2>The <code>if</code> statement</h2>
+<p>The <code>if</code> statement comes in two flavors. The first and simplest one follows this pattern or template:</p>
+<pre><code class="language-pike">if ( *expression* )
+  *statement*</code></pre>
+<p>As usual in this tutorial, words in a <code>fixed-width font</code> are supposed to be written verbatim in the program, while words in <em>statement</em>re supposed to be replaced by something else. This means that the word <code>if</code> and the parentheses should be kept, but you replace <em>statement</em><em> with some expression, and </em>statement* with some statement. An example, which could have been part of a control program for a stove, looks like this:</p>
+<pre><code class="language-pike">if (temperature &lt; 200.0)
+  burn();</code></pre>
+<p>When Pike encounters an <code>if</code> statement, it first calculates the value of the <em> or <strong>true</strong>*. The value zero (<strong>true</strong>s considered to be <strong>true</strong>*, and everything else is <strong>true</strong>. If the value is <strong>true</strong>, the </em>thing else is <strong>false</strong> If the value is <strong>false</strong> the <em>statement</em> is executed. If the value is <strong>false</strong>, nothing is done, and program execution will continue after the <code>if</code> statement.</p>
+<p>An <code>if</code> statement can also follow this template:</p>
+<pre><code class="language-pike">if ( *expression* )
+  *statement1*
+else
+  *statement2*</code></pre>
+<p>Example:</p>
+<pre><code class="language-pike">if (this_user == file_owner)
+  allow_access();
+else
+  deny_access();</code></pre>
+<p>A statement can be a block, which is several statements enclosed by curly brackets. Example:</p>
+<pre><code class="language-pike">if (this_user == file_owner)
+  allow_access();
+else
+{
+  deny_access();
+  send_message(file_owner, "Warning: " + this_user +
+               " tried to access your file.");
+}</code></pre>
+<p>You can &quot;chain&quot; several <code>if</code> statements together, like this:</p>
+<pre><code class="language-pike">if (temperature &lt; 200.0)
+  burn(10);
+else if (temperature &lt; 300.0)
+  burn(5);
+else if (temperature &lt; 400.0)
+  burn(2);
+else
+  turn_off_heat();</code></pre>
+<h2>The <code>switch</code> statement</h2>
+<p>If your program is choosing between a number of different actions, depending on the value of a variable or expression, you can express this using a chain of <code>if</code> statements:</p>
+<pre><code class="language-pike">if (command == "print")
+  print(argument);
+else if (command == "save")
+  save(argument);
+else if (command == "quit" || command == "exit")
+  quit(argument);
+else
+  write("Unknown command.\n");</code></pre>
+<p>In such cases a <code>switch</code> statement can be a better alternative:</p>
+<pre><code class="language-pike">switch(command)
+{
+  case "print":
+    print(argument);
+    break;
+  case "save":
+    save(argument);
+    break;
+  case "quit":
+  case "exit":
+    quit(argument);
+    break;
+  default:
+    write("Unknown command.\n");
+    break;
+}</code></pre>
+<p>In a <code>switch</code> statement, Pike first calculates the value of the expression between the parentheses, in this case <code>command</code>. It then compares this value with all the values given in the <code>case</code>s in the body (i e between the curly brackets) of the <code>switch</code> statement. If it finds a value that is equal, it jumps to that place and continues to execute the program there. If it comes to a <code>break</code> statement, it will skip the rest of the code in the <code>switch</code> body, and continue execution after the block.</p>
+<p>It is not necessary to have a <code>default:</code> block, but if one exists, Pike will go to that one if it finds no matching <code>case</code> value. The final <code>break</code> statement in this example isn't really necessary, since the switch statement block ends there anyway, but it won't hurt either.</p>
+<p>You can use a range of values in a case:</p>
+<pre><code class="language-pike">case 10..14:</code></pre>
+<p>This case will match if the value is between 10 and 14, inclusively: 10, 11, 12, 13 or 14.</p>
+<h2>The ugly <code>? :</code> operator</h2>
+<p>The operator <code>? :</code> is similar to the <code>if</code> statement, but returns a value. Expressions that use the operator <code>? :</code> follow this template:</p>
+<pre><code class="language-pike">*condition* ? *then-expression* : *else-expression*</code></pre>
+<p><em> or </em>tion<em> or </em>en-expression<em> or </em><em> or </em>expression<em> or </em>three expressions. Pike starts by calculating the value of <em> or </em>tion<em> or </em>that value is <strong>false</strong> it then calculates <em> or </em>expression<em> or </em> doesn't do anything with <em> or </em>expression<em> or </em>the value of <em> or </em>tion<em> or </em><em> or </em><em> or </em> calculates <em>else-expression</em>, and doesn't do anything with <em>else-expression</em>. The value of the whole construct is the value of the expression that was calculated: either <em>else-expression</em> or <em>else-expression</em>.</p>
+<p>Using this operator, you can rewrite</p>
+<pre><code class="language-pike">if (a &gt; b)
+  max_value = a;
+else
+  max_value = b;</code></pre>
+<p>as</p>
+<pre><code class="language-pike">max_value = (a &gt; b) ? a : b;</code></pre>
+<p>We recommend that you don't use the <code>? :</code> operator, unless you have to. It can be necessary when writing function-like macros, but that is beyond the scope of this tutorial.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

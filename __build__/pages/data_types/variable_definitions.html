@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Variable Definitions</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Variable Definitions</h1>
+<h2>Zero is special</h2>
+<p>The value zero (<strong>0</strong>) is a special case. It is not just an integer value, but can also be used to mean &quot;no value&quot; for all the types, and not just integers. If you create a variable and don't put a value in it, it starts with the value <strong>0</strong>.</p>
+<p>Some effects of this may be surprising to C programmers:</p>
+<pre><code class="language-pike">float f;  // Now, f contains the **integer** value 0.
+f = f + 1;// Now, f contains the **integer** value 1.
+f = 0;    // Now, f contains the **integer** value 0 again!
+f = 0.0;  // Now, f contains the **real** value 0.0.</code></pre>
+<p>It's important to note that the integer value 0 and the real value 0.0 are not equal to one another in Pike. It is also worth noting that uninitialized strings, as all other uninitialized variables, start at 0. If you don't take this into account, and write code that successively builds some form of answer, reply or similar:</p>
+<pre><code class="language-pike">string accumulate_answer()
+{
+  string result;
+  // Probably some code here
+  result += "Hi!\n";
+  // More code goes here
+  return result;
+}</code></pre>
+<p>you will get a string <code>"0Hi!\n"</code>, since Pike will try to make the best of the situation, adding your string to the integer 0. Had you instead initialized the variable to <code>""</code>, as in <code>string result = "";</code>, you'd get a better result.</p>
+<h2>How to specify data types</h2>
+<p>In general, you just use the name of the data type:</p>
+<pre><code class="language-pike">int number_of_wolves;
+Protocols.HTTP.Query this_web_page;
+float simple_plus(float x, float y) { return x + y; }</code></pre>
+<p>You can also use the data type <code>mixed</code>, meaning any type of value:</p>
+<pre><code class="language-pike">mixed x;
+array(mixed) build_array(mixed x) { return ({ x }); }</code></pre>
+<p>The variable <code>x</code> can contain any type of value. The method <code>build_array</code> takes an argument of any type, and returns it inside an array.</p>
+<p>Pike also lets you use &quot;or&quot; notation for datatypes, saying that a value is one of several possible datatypes:</p>
+<pre><code class="language-pike">int|string w;
+
+array(int|string|float) make_array(int|string|float x)
+{
+  return ({ x });
+}</code></pre>
+<p>The variable <code>w</code> can contain either an integer or a string. The method <code>make_array</code> takes an integer, a string or a floating-point number as argument, and returns it inside an array.</p>
+<p>If you know that a variable will contain strings or integers, it is usually better to use <code>string|int</code> than <code>mixed</code>. It is slightly longer to write, but it allows Pike to do type checking when the program is compiled and executed, thus helping you to ensure that your program works as it should.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

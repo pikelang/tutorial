@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Classes as Record Types</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Classes as Record Types</h1>
+<p>Sometimes you just need to group a few values together. This is called a &quot;record&quot; in Pascal, and a &quot;struct&quot; in C. You can use Pike's <strong>class</strong> mechanism for this too. Just create a class with the data you are interested in:</p>
+<pre><code class="language-pike">class customer
+{
+  int number;
+  string name;
+  array(string) phone_numbers;
+}</code></pre>
+<p>Then use it:</p>
+<pre><code class="language-pike">array(customer) all_customers = ({ });
+customer c = customer();
+c-&gt;number = 18;
+c-&gt;name = "Ellen Ripley";
+c-&gt;phone_numbers = ({ "555-8767", "555-4001" });
+all_customers += ({ c });</code></pre></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>

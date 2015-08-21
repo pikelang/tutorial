@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Other Statement Types</title>
+	</head>
+	<body>
+	  <header>
+      <div class="container">
+        <h1>Pike Tutorial</h1>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container"><h1>Other Statement Types</h1>
+<h2>The Empty Statement</h2>
+<p>Sometimes you may need a statement that does nothing. The <strong>empty statement</strong> can be used for this. It just consists of a single semi-colon. For example, sometimes you may want the body of a loop to do nothing:</p>
+<pre><code class="language-pike">// Keep checking if it is finished, until it is
+while (! finished())
+  ;</code></pre>
+<h2>The Block, or Compound Statement</h2>
+<p>As we have seen above, you can enclose several statements in curly brackets, &quot;{&quot; and &quot;}&quot;. The result is called a <strong>compound statement</strong>d statement**, and can be used as a single statement. Here is one example:</p>
+<pre><code class="language-pike">{
+  write("Hello ");
+  write("world!\n");
+}</code></pre>
+<p>Do not put a semi-colon (&quot;;&quot;) after the final bracket (&quot;}&quot;).</p>
+<p>You can define variables inside the block. Such a variable is local in that block, and is available only to the program code written inside the block:</p>
+<pre><code class="language-pike">{
+  write("What is your name?\n");
+  string name;
+  name = Stdio.stdin-&gt;gets();
+  write("Your name is " + name + ".\n");
+}</code></pre>
+<p>A block can be empty:</p>
+<pre><code class="language-pike">{ }</code></pre>
+<h2>The Expression Statement</h2>
+<p>The <strong>expression statement</strong> follows this template:</p>
+<pre><code class="language-pike">*expression* ;</code></pre>
+<p>That is, you just take an expression and put a semi-colon (<code>;</code>) at the end. Typical expression statements are:</p>
+<pre><code class="language-pike">write("Hello world!\n");
+i = 7;
+++i;</code></pre>
+<p>All of these are expressions with a semi-colon appended. Since the expression statement doesn't do anything with the value of the expression, it is the so-called &quot;side-effects&quot; of the expressions that we are interested in. For example, the expression &quot;<code>i = 7</code>&quot; has the value <strong>7</strong>, but what is interesting is of course that it has the side-effect of setting the variable <code>i</code> to <strong>7</strong>.</p>
+<p>Since you can take any expression and add a semi-colon, these strange-looking (and rather useless) statements are also allowed:</p>
+<pre><code class="language-pike">2 + 2;
+3;</code></pre>
+<h2>Other Statements: <code>return</code> and <code>catch</code></h2>
+<p>The <code>return</code> statement is used to leave a method, and sometimes also to return a value from that method:</p>
+<pre><code class="language-pike">return;
+return x + 3;</code></pre>
+<p>You can read more about the <code>return</code> statement in the chapter about methods.</p>
+<p>The <code>catch</code> statement is used to try to execute some Pike code, letting the programmer control what happens if there is an error:</p>
+<pre><code class="language-pike">  mixed result = catch
+  {
+    i = klooble() + 2;
+    fnooble();
+    j = 1/i;
+  };
+
+  if (result == 0)
+    write("Everything was ok.\n");
+  else
+    write("Oops. There was an error.\n");</code></pre>
+<p>You can read more about the <code>catch</code> statement in the chapter about error handling.</p></div>
+    </section>
+    <footer>
+      <div class="container">
+        2015-04-05 15:34
+      </div>
+    </footer>
+	</body>
+</html>
