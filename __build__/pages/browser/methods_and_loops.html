@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Methods and Loops</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,73 +71,58 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Methods and Loops</h1>
-<p>We will soon ad the web stuff, and actually download the web page. But the method <code>main</code> is getting a bit long now, so perhaps it is time to divide or program into several methods. Instead of putting the web stuff in <code>main</code>, we write a method called <code>handle_url</code>, which will do all the handling of a URL.</p>
-<pre><code class="language-pike">void handle_url(string this_url)
-{
-  write("URL: " + this_url + "\n");
-} // handle_url</code></pre>
-<p>So far, it only writes the URL on the screen, just like we did in <code>main</code>.</p>
-<p>Some interesting things to note:</p>
-<ul>
-<li><code>main</code> returns an integer, to indicate if the program succeeded or not. We don't care if <code>handle_url</code> fails, so we set the <strong>return type</strong> to <code>void</code>, which means it returns &quot;nothing&quot;.</li>
-<li><code>main</code> had two parameters. <code>handle_url</code> only has one, <code>this_url</code>. <code>this_url</code> can contain a string.</li>
-</ul>
-<p>For this method to be executed by Pike, we must <strong>call</strong> it from <code>main</code>. We replace the statement that printed the URL with:</p>
-<pre><code class="language-pike">handle_url(url);</code></pre>
-<p>This sends the value in the variable <code>url</code>, which is a local variable in <code>main</code>, to <code>handle_url</code>, where it will be put in the variable <code>this_url</code>. The thing that is sent, <code>url</code>, is usually called an <strong>parameter</strong> and the variable that receives it, <code>this_url</code>, is usually called a <strong>parameter</strong>.</p>
-<p>A problem with our program is what happens if the user doesn't give an argument, and then just hits the return key when the program asks for a URL. <code>Stdio.stdin-&gt;gets()</code> will return an empty sting, just as it should, but that is not a valid web address. If we want the program to keep asking until it gets a non-empty answer, we can put the two ask-and-read statements inside a <strong>loop</strong>:</p>
-<pre><code class="language-pike">do
-{
-  write("Type the address of the web page:\n");
-  url = Stdio.stdin-&gt;gets();
-} while (sizeof(url) == 0);</code></pre>
-<p>This is a <strong>do-while loop</strong>, and such a loop follows the pattern</p>
-<pre><code class="language-pike">do
-  *something*
-while ( *condition* );</code></pre>
-<p>The do-while loop will do the <em>condition</em> at least once, and then keep doing it as long as the <em>condition</em> is true. First it does the <em>condition</em>, then it checks the <em>condition</em>, and then it either leaves the loop and continues after it, or goes back to the start of the loop and does the <em>condition</em> again. In our case, the <em>condition</em> is that <code>sizeof(url) == 0</code>, i e that the string <code>url</code> is empty.</p>
-<p>Another problem with our program is that it only checks if <code>argc</code> is 2. If you give several arguments, the program will ignore them. We change the <code>if</code> test a bit, so that it prints an error message and then terminates the program if we give too many arguments. The complete program now looks like this:</p>
-<pre><code class="language-pike">#! /usr/local/bin/pike
-
-// The Very Simple World Wide Web Browser
-
-void handle_url(string this_url)
-{
-  write("URL: " + this_url + "\n");
-} // handle_url
-
-int main(int argc, array(string) argv)
-{
-  write("Welcome to the Very Simple WWW Browser!\n");
-  string url;
-  if (argc == 1)
-  {
-    do
-    {
-      write("Type the address of the web page:\n");
-      url = Stdio.stdin-&gt;gets();
-    } while (sizeof(url) == 0);
-  }
-  else if (argc == 2)
-  {
-    url = argv[1];
-  }
-  else
-  {
-    write("Too many arguments. Goodbye. Sorry.\n");
-    return 1;
-  }
-  handle_url(url);
-  return 0;
-} // main</code></pre>
-<p>Note how we have chained two <code>if</code> statements together with an <code>else if</code>.</p>
-<p>Neither the curly brackets around <code>url = argv[1];</code> nor those around the <code>do</code> loop are necessary, since they only encircle a single statement each, but some programmers feel that it is to be on the safe side having them there either way, in case they would add yet another statement later on and forget about adding the braces. Others feel that if you have curly brackets around one of the possible cases in an <code>if</code> statement, you should have curly braces around all of them. Uniformity makes it easier to grasp the structure of the whole thing at a glance.</p>
-<p>Also note how the use of <strong>do-while</strong>n<strong>, i e the varying amount of white space at the beginning of each line, makes it easy to follow the &quot;block structure&quot; of the program. For example, you can easily see that the </strong>do-while** loop is inside the first case of the <code>if</code> statement.</p></div>
+      <div class="container"><h1>Methods and Loops</h1><p>We will soon ad the web stuff, and actually download the web page. But the method <code class="language-pike">main</code> is getting a bit long now, so perhaps it is time to divide or program into several methods. Instead of putting the web stuff in <code class="language-pike">main</code>, we write a method called <code class="language-pike">handle_url</code>, which will do all the handling of a URL.</p><pre><code class="language-pike"><span style='color:#09F'><b>void</b></span>&#160;handle_url<span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span>&#160;this_url<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;URL:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;this_url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;handle_url</span>&#160;
+</code></pre><p>So far, it only writes the URL on the screen, just like we did in <code class="language-pike">main</code>.</p><p>Some interesting things to note:</p><ul><li><code class="language-pike">main</code> returns an integer, to indicate if the program succeeded or not. We don't care if <code class="language-pike">handle_url</code> fails, so we set the <strong>return type</strong> to <code class="language-pike">void</code>, which means it returns &quot;nothing&quot;.</li><li><code class="language-pike">main</code> had two parameters. <code class="language-pike">handle_url</code> only has one, <code class="language-pike">this_url</code>. <code class="language-pike">this_url</code> can contain a string.</li></ul><p>For this method to be executed by Pike, we must <strong>call</strong> it from <code class="language-pike">main</code>. We replace the statement that printed the URL with:</p><pre><code class="language-pike">handle_url<span style='color:#00C'>(</span>url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>This sends the value in the variable <code class="language-pike">url</code>, which is a local variable in <code class="language-pike">main</code>, to <code class="language-pike">handle_url</code>, where it will be put in the variable <code class="language-pike">this_url</code>. The thing that is sent, <code class="language-pike">url</code>, is usually called an <strong>parameter</strong> and the variable that receives it, <code class="language-pike">this_url</code>, is usually called a <strong>parameter</strong>.</p><p>A problem with our program is what happens if the user doesn't give an argument, and then just hits the return key when the program asks for a URL. <code class="language-pike">Stdio.stdin-&gt;gets()</code> will return an empty sting, just as it should, but that is not a valid web address. If we want the program to keep asking until it gets a non-empty answer, we can put the two ask-and-read statements inside a <strong>loop</strong>:</p><pre><code class="language-pike"><span style='color:#006'><b>do</b></span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Type&#160;the&#160;address&#160;of&#160;the&#160;web&#160;page:\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;url&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#C00'>sizeof</span><span style='color:#00C'>(</span>url<span style='color:#00C'>)</span>&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>This is a <strong>do-while loop</strong>, and such a loop follows the pattern</p><pre><code class="language-pike"><span style='color:#006'><b>do</b></span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>something<span style='color:#00C'>*</span>&#160;&#160;
+<span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>condition<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>The do-while loop will do the <em>condition</em> at least once, and then keep doing it as long as the <em>condition</em> is true. First it does the <em>condition</em>, then it checks the <em>condition</em>, and then it either leaves the loop and continues after it, or goes back to the start of the loop and does the <em>condition</em> again. In our case, the <em>condition</em> is that <code class="language-pike">sizeof(url) == 0</code>, i e that the string <code class="language-pike">url</code> is empty.</p><p>Another problem with our program is that it only checks if <code class="language-pike">argc</code> is 2. If you give several arguments, the program will ignore them. We change the <code class="language-pike">if</code> test a bit, so that it prints an error message and then terminates the program if we give too many arguments. The complete program now looks like this:</p><pre><code class="language-pike"><span style='color:#99510a'><b>#!&#160;/usr/local/bin/pike
+</b></span>&#160;
+&#160;&#160;
+<span style='color:#818A9E'>//&#160;The&#160;Very&#160;Simple&#160;World&#160;Wide&#160;Web&#160;Browser</span>&#160;
+&#160;&#160;
+<span style='color:#09F'><b>void</b></span>&#160;handle_url<span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span>&#160;this_url<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;URL:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;this_url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;handle_url</span>&#160;
+&#160;&#160;
+<span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span>&#160;argc<span style='color:#00C'>,</span>&#160;<span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span><span style='color:#00C'>)</span>&#160;argv<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Welcome&#160;to&#160;the&#160;Very&#160;Simple&#160;WWW&#160;Browser!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;url<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>argc&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>1</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>do</b></span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Type&#160;the&#160;address&#160;of&#160;the&#160;web&#160;page:\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;url&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#00C'>}</span>&#160;<span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#C00'>sizeof</span><span style='color:#00C'>(</span>url<span style='color:#00C'>)</span>&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>else</b></span>&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>argc&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>2</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;&#160;&#160;url&#160;<span style='color:#00C'>=</span>&#160;argv<span style='color:#00C'>[</span><span style='color:purple'>1</span><span style='color:#00C'>]</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Too&#160;many&#160;arguments.&#160;Goodbye.&#160;Sorry.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>1</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;handle_url<span style='color:#00C'>(</span>url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;main</span>&#160;
+</code></pre><p>Note how we have chained two <code class="language-pike">if</code> statements together with an <code class="language-pike">else if</code>.</p><p>Neither the curly brackets around <code class="language-pike">url = argv[1];</code> nor those around the <code class="language-pike">do</code> loop are necessary, since they only encircle a single statement each, but some programmers feel that it is to be on the safe side having them there either way, in case they would add yet another statement later on and forget about adding the braces. Others feel that if you have curly brackets around one of the possible cases in an <code class="language-pike">if</code> statement, you should have curly braces around all of them. Uniformity makes it easier to grasp the structure of the whole thing at a glance.</p><p>Also note how the use of <strong>do-while</strong>n<strong>, i e the varying amount of white space at the beginning of each line, makes it easy to follow the &quot;block structure&quot; of the program. For example, you can easily see that the </strong>do-while** loop is inside the first case of the <code class="language-pike">if</code> statement.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

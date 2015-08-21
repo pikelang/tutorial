@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Variable Definitions</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,46 +71,34 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Variable Definitions</h1>
-<h2>Zero is special</h2>
-<p>The value zero (<strong>0</strong>) is a special case. It is not just an integer value, but can also be used to mean &quot;no value&quot; for all the types, and not just integers. If you create a variable and don't put a value in it, it starts with the value <strong>0</strong>.</p>
-<p>Some effects of this may be surprising to C programmers:</p>
-<pre><code class="language-pike">float f;  // Now, f contains the **integer** value 0.
-f = f + 1;// Now, f contains the **integer** value 1.
-f = 0;    // Now, f contains the **integer** value 0 again!
-f = 0.0;  // Now, f contains the **real** value 0.0.</code></pre>
-<p>It's important to note that the integer value 0 and the real value 0.0 are not equal to one another in Pike. It is also worth noting that uninitialized strings, as all other uninitialized variables, start at 0. If you don't take this into account, and write code that successively builds some form of answer, reply or similar:</p>
-<pre><code class="language-pike">string accumulate_answer()
-{
-  string result;
-  // Probably some code here
-  result += "Hi!\n";
-  // More code goes here
-  return result;
-}</code></pre>
-<p>you will get a string <code>"0Hi!\n"</code>, since Pike will try to make the best of the situation, adding your string to the integer 0. Had you instead initialized the variable to <code>""</code>, as in <code>string result = "";</code>, you'd get a better result.</p>
-<h2>How to specify data types</h2>
-<p>In general, you just use the name of the data type:</p>
-<pre><code class="language-pike">int number_of_wolves;
-Protocols.HTTP.Query this_web_page;
-float simple_plus(float x, float y) { return x + y; }</code></pre>
-<p>You can also use the data type <code>mixed</code>, meaning any type of value:</p>
-<pre><code class="language-pike">mixed x;
-array(mixed) build_array(mixed x) { return ({ x }); }</code></pre>
-<p>The variable <code>x</code> can contain any type of value. The method <code>build_array</code> takes an argument of any type, and returns it inside an array.</p>
-<p>Pike also lets you use &quot;or&quot; notation for datatypes, saying that a value is one of several possible datatypes:</p>
-<pre><code class="language-pike">int|string w;
-
-array(int|string|float) make_array(int|string|float x)
-{
-  return ({ x });
-}</code></pre>
-<p>The variable <code>w</code> can contain either an integer or a string. The method <code>make_array</code> takes an integer, a string or a floating-point number as argument, and returns it inside an array.</p>
-<p>If you know that a variable will contain strings or integers, it is usually better to use <code>string|int</code> than <code>mixed</code>. It is slightly longer to write, but it allows Pike to do type checking when the program is compiled and executed, thus helping you to ensure that your program works as it should.</p></div>
+      <div class="container"><h1>Variable Definitions</h1><h2>Zero is special</h2><p>The value zero (<strong>0</strong>) is a special case. It is not just an integer value, but can also be used to mean &quot;no value&quot; for all the types, and not just integers. If you create a variable and don't put a value in it, it starts with the value <strong>0</strong>.</p><p>Some effects of this may be surprising to C programmers:</p><pre><code class="language-pike"><span style='color:#09F'><b>float</b></span>&#160;f<span style='color:#00C'>;</span>&#160;&#160;<span style='color:#818A9E'>//&#160;Now,&#160;f&#160;contains&#160;the&#160;**integer**&#160;value&#160;0.</span>&#160;
+f&#160;<span style='color:#00C'>=</span>&#160;f&#160;<span style='color:#00C'>+</span>&#160;<span style='color:purple'>1</span><span style='color:#00C'>;</span><span style='color:#818A9E'>//&#160;Now,&#160;f&#160;contains&#160;the&#160;**integer**&#160;value&#160;1.</span>&#160;
+f&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;Now,&#160;f&#160;contains&#160;the&#160;**integer**&#160;value&#160;0&#160;again!</span>&#160;
+f&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>.</span><span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;<span style='color:#818A9E'>//&#160;Now,&#160;f&#160;contains&#160;the&#160;**real**&#160;value&#160;0.0.</span>&#160;
+</code></pre><p>It's important to note that the integer value 0 and the real value 0.0 are not equal to one another in Pike. It is also worth noting that uninitialized strings, as all other uninitialized variables, start at 0. If you don't take this into account, and write code that successively builds some form of answer, reply or similar:</p><pre><code class="language-pike"><span style='color:#09F'><b>string</b></span>&#160;accumulate_answer<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;result<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#818A9E'>//&#160;Probably&#160;some&#160;code&#160;here</span>&#160;
+&#160;&#160;result&#160;<span style='color:#00C'>+</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;Hi!\n&#34;</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#818A9E'>//&#160;More&#160;code&#160;goes&#160;here</span>&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;result<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>you will get a string <code class="language-pike">"0Hi!\n"</code>, since Pike will try to make the best of the situation, adding your string to the integer 0. Had you instead initialized the variable to <code class="language-pike">""</code>, as in <code class="language-pike">string result = "";</code>, you'd get a better result.</p><h2>How to specify data types</h2><p>In general, you just use the name of the data type:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;number_of_wolves<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#909'><b>Protocols</b></span><span style='color:#00C'>.</span>HTTP<span style='color:#00C'>.</span>Query&#160;this_web_page<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#09F'><b>float</b></span>&#160;simple_plus<span style='color:#00C'>(</span><span style='color:#09F'><b>float</b></span>&#160;x<span style='color:#00C'>,</span>&#160;<span style='color:#09F'><b>float</b></span>&#160;y<span style='color:#00C'>)</span>&#160;<span style='color:#00C'>{</span>&#160;<span style='color:#006'><b>return</b></span>&#160;x&#160;<span style='color:#00C'>+</span>&#160;y<span style='color:#00C'>;</span>&#160;<span style='color:#00C'>}</span>&#160;
+</code></pre><p>You can also use the data type <code class="language-pike">mixed</code>, meaning any type of value:</p><pre><code class="language-pike"><span style='color:#09F'><b>mixed</b></span>&#160;x<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>mixed</b></span><span style='color:#00C'>)</span>&#160;build_array<span style='color:#00C'>(</span><span style='color:#09F'><b>mixed</b></span>&#160;x<span style='color:#00C'>)</span>&#160;<span style='color:#00C'>{</span>&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;x&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#00C'>}</span>&#160;
+</code></pre><p>The variable <code class="language-pike">x</code> can contain any type of value. The method <code class="language-pike">build_array</code> takes an argument of any type, and returns it inside an array.</p><p>Pike also lets you use &quot;or&quot; notation for datatypes, saying that a value is one of several possible datatypes:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span><span style='color:#00C'>|</span><span style='color:#09F'><b>string</b></span>&#160;w<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;
+<span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span><span style='color:#00C'>|</span><span style='color:#09F'><b>string</b></span><span style='color:#00C'>|</span><span style='color:#09F'><b>float</b></span><span style='color:#00C'>)</span>&#160;make_array<span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span><span style='color:#00C'>|</span><span style='color:#09F'><b>string</b></span><span style='color:#00C'>|</span><span style='color:#09F'><b>float</b></span>&#160;x<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;x&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>The variable <code class="language-pike">w</code> can contain either an integer or a string. The method <code class="language-pike">make_array</code> takes an integer, a string or a floating-point number as argument, and returns it inside an array.</p><p>If you know that a variable will contain strings or integers, it is usually better to use <code class="language-pike">string|int</code> than <code class="language-pike">mixed</code>. It is slightly longer to write, but it allows Pike to do type checking when the program is compiled and executed, thus helping you to ensure that your program works as it should.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

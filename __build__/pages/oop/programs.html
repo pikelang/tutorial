@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Programs are Classes and Vice Versa</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,35 +71,29 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Programs are Classes and Vice Versa</h1>
-<p>It may surprise you to know that you have already seen several class definitions in this tutorial. If you have written a program in Pike, you have also written a class. This is because in Pike, programs and classes are the same, and the terms <strong>class</strong><strong> and </strong>class** are sometimes used as synonyms.</p>
-<p>A Pike program in a file is a class definition. The methods that you have defined in the file are the methods of the class, and the global variables (that is, the variables defined outside the methods) are the member variables. If you like, you can imagine that the file has an implicit &quot;<code>class { }</code>&quot; around the code. But it would be bothersome if we had to put every little class in its own file, so we also have the &quot;<code>class { }</code> notation.</p>
-<p>To create the equivalent of the class <code>animal</code>, which we defined above, we would need a file with the following contents. The file name can be &quot;animal.pike&quot;, but any name will work.</p>
-<pre><code class="language-pike">string name;
-
-float weight;
-
-void create(string n, float w)
-{
-  name = n;
-  weight = w;
-}
-
-void eat(string food)
-{
-  write(name + " eats some " + food + ".\n");
-  weight += 0.5;
-}</code></pre>
-<p>We can't use a string as a type name, so the file name won't work as a data type:</p>
-<pre><code class="language-pike">"animal.pike" my_dog; // Doesn't work at all.</code></pre>
-<p>Instead, we must let Pike read and compile the file, making a <strong>constant</strong>of it (or <strong>constant</strong>f you prefer that term, but the data type is <code>program</code>), and then we put that program in a <strong>constant</strong>:</p>
-<pre><code class="language-pike">constant animal = (program)"animal.pike";</code></pre>
-<p>Now you can use <code>animal</code> as the class name, just as before:</p>
-<pre><code class="language-pike">animal piglet = animal("Piglet", 6.3);</code></pre></div>
+      <div class="container"><h1>Programs are Classes and Vice Versa</h1><p>It may surprise you to know that you have already seen several class definitions in this tutorial. If you have written a program in Pike, you have also written a class. This is because in Pike, programs and classes are the same, and the terms <strong>class</strong><strong> and </strong>class** are sometimes used as synonyms.</p><p>A Pike program in a file is a class definition. The methods that you have defined in the file are the methods of the class, and the global variables (that is, the variables defined outside the methods) are the member variables. If you like, you can imagine that the file has an implicit &quot;<code class="language-pike">class { }</code>&quot; around the code. But it would be bothersome if we had to put every little class in its own file, so we also have the &quot;<code class="language-pike">class { }</code> notation.</p><p>To create the equivalent of the class <code class="language-pike">animal</code>, which we defined above, we would need a file with the following contents. The file name can be &quot;animal.pike&quot;, but any name will work.</p><pre><code class="language-pike"><span style='color:#09F'><b>string</b></span>&#160;name<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;
+<span style='color:#09F'><b>float</b></span>&#160;weight<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;
+<span style='color:#09F'><b>void</b></span>&#160;create<span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span>&#160;n<span style='color:#00C'>,</span>&#160;<span style='color:#09F'><b>float</b></span>&#160;w<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;name&#160;<span style='color:#00C'>=</span>&#160;n<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;weight&#160;<span style='color:#00C'>=</span>&#160;w<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;
+<span style='color:#09F'><b>void</b></span>&#160;eat<span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span>&#160;food<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span>name&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;&#160;eats&#160;some&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;food&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;weight&#160;<span style='color:#00C'>+</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>.</span><span style='color:purple'>5</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>We can't use a string as a type name, so the file name won't work as a data type:</p><pre><code class="language-pike"><span style='color:#070'>&#34;animal.pike&#34;</span>&#160;my_dog<span style='color:#00C'>;</span>&#160;<span style='color:#818A9E'>//&#160;Doesn&#39;t&#160;work&#160;at&#160;all.</span>&#160;
+</code></pre><p>Instead, we must let Pike read and compile the file, making a <strong>constant</strong>of it (or <strong>constant</strong>f you prefer that term, but the data type is <code class="language-pike">program</code>), and then we put that program in a <strong>constant</strong>:</p><pre><code class="language-pike"><span style='color:#006'><b>constant</b></span>&#160;animal&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#00C'>(</span><span style='color:#09F'><b>program</b></span><span style='color:#00C'>)</span><span style='color:#070'>&#34;animal.pike&#34;</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>Now you can use <code class="language-pike">animal</code> as the class name, just as before:</p><pre><code class="language-pike">animal&#160;piglet&#160;<span style='color:#00C'>=</span>&#160;animal<span style='color:#00C'>(</span><span style='color:#070'>&#34;Piglet&#34;</span><span style='color:#00C'>,</span>&#160;<span style='color:purple'>6</span><span style='color:#00C'>.</span><span style='color:purple'>3</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

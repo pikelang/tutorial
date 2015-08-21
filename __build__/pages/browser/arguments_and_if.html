@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Command-line Arguments and if</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,48 +71,34 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Command-line Arguments and if</h1>
-<p>Before we let the program actually do anything with the URL we give to it, we will improve the program to let it take the URL as a <strong>command-line argument</strong>. That is, we want to start the program with the command</p>
-<pre><code>&gt; webbrowser.pike http://pike.ida.liu.se/</code></pre>
-<p>instead of letting the program ask for the URL. We add some code for this:</p>
-<pre><code class="language-pike">#! /usr/local/bin/pike
-
-// The Very Simple World Wide Web Browser
-
-int main(int argc, array(string) argv) // 2)
-{
-  write("Welcome to the Very Simple WWW Browser!\n");
-  string url;
-  if (argc == 2)   // 3), 5)
-    url = argv[1]; // 4)
-  else             // 5)
-  {                // 5)
-    write("Type the address of the web page:\n");
-    url = Stdio.stdin-&gt;gets();
-  }                // 5)
-  write("URL: " + url + "\n");
-  return 0;
-} // main</code></pre>
-<p>This program can handle a command-line argument, but if you don't give one, it will ask for an URL just as before.</p>
-<p>There are some new things to explain here:</p>
-<ol>
-<li>The first line <code>#! /usr/local/bin/pike</code> only works on a Unix system, as described earlier. You can remove it if you are using Windows.</li>
-<li>We have added <code>int argc, array(string) argv</code> as <strong>parameters</strong> to <code>main</code>. These parameters are like normal variables, except that they will be assigned some values automatically when the program starts.
-<p>The variable <code>argc</code> has the type <code>int</code>, which means <strong>2</strong>eger<strong>. It will contain the number of command-line arguments. The program name is counted as an argument, so if you give one argument to the program, <code>argc</code> will have the value </strong>2**.</p>
-<p>The variable <code>argv</code> will contain the arguments. Its type is <code>array(string)</code>, which means <strong>array of strings</strong>. Each command-line argument is put in a string, and together they form a list or array.</p></li>
-<li><code>argc == 2</code> is a comparison. We check if the value of <code>argc</code> is <strong>operator</strong>is an <strong>operator</strong> that checks if two things are the same. Some other comparison operators in Pike are <code>&lt;</code> (less than), <code>&gt;=</code> (greater than or equal), and <code>!=</code> (not same).</li>
-<li><code>argv[1]</code> retrieves the element at position number 1 in an array. The positions are numbered from 0, so position 1 is actually the second element in the array. This is the URL given as argument to the program. <code>argv[0]</code> contains the name of the program, the string <code>"webbrowser.pike"</code>.</li>
-<li>The <code>if</code> statement lets Pike choose between different actions. It follows the template or pattern
-<pre><code class="language-pike">if ( *condition* )
- *something*
-else
- *something-else*</code></pre>
-<p>If the <em>. In our program, there are two <strong>statements</strong> in the </em> Pike will do the <em>. In our program, there are two <strong>statements</strong> in the </em> the <em> in the </em>-else<em>. In our program, there are two <strong>statements</strong> in the </em>something-else*, so we must enclose it in curly brackets, <code>{</code> and <code>}</code>.</p></li>
-</ol></div>
+      <div class="container"><h1>Command-line Arguments and if</h1><p>Before we let the program actually do anything with the URL we give to it, we will improve the program to let it take the URL as a <strong>command-line argument</strong>. That is, we want to start the program with the command</p><pre><code class="language-pike">&gt; webbrowser.pike http://pike.ida.liu.se/</code></pre><p>instead of letting the program ask for the URL. We add some code for this:</p><pre><code class="language-pike"><span style='color:#99510a'><b>#!&#160;/usr/local/bin/pike
+</b></span>&#160;
+&#160;&#160;
+<span style='color:#818A9E'>//&#160;The&#160;Very&#160;Simple&#160;World&#160;Wide&#160;Web&#160;Browser</span>&#160;
+&#160;&#160;
+<span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span>&#160;argc<span style='color:#00C'>,</span>&#160;<span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span><span style='color:#00C'>)</span>&#160;argv<span style='color:#00C'>)</span>&#160;<span style='color:#818A9E'>//&#160;2)</span>&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Welcome&#160;to&#160;the&#160;Very&#160;Simple&#160;WWW&#160;Browser!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;url<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>argc&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>2</span><span style='color:#00C'>)</span>&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;3),&#160;5)</span>&#160;
+&#160;&#160;&#160;&#160;url&#160;<span style='color:#00C'>=</span>&#160;argv<span style='color:#00C'>[</span><span style='color:purple'>1</span><span style='color:#00C'>]</span><span style='color:#00C'>;</span>&#160;<span style='color:#818A9E'>//&#160;4)</span>&#160;
+&#160;&#160;<span style='color:#006'><b>else</b></span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;5)</span>&#160;
+&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;5)</span>&#160;
+&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Type&#160;the&#160;address&#160;of&#160;the&#160;web&#160;page:\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;url&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;5)</span>&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;URL:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;main</span>&#160;
+</code></pre><p>This program can handle a command-line argument, but if you don't give one, it will ask for an URL just as before.</p><p>There are some new things to explain here:</p><ol><li>The first line <code class="language-pike">#! /usr/local/bin/pike</code> only works on a Unix system, as described earlier. You can remove it if you are using Windows.</li><li>We have added <code class="language-pike">int argc, array(string) argv</code> as <strong>parameters</strong> to <code class="language-pike">main</code>. These parameters are like normal variables, except that they will be assigned some values automatically when the program starts.<p>The variable <code class="language-pike">argc</code> has the type <code class="language-pike">int</code>, which means <strong>2</strong>eger<strong>. It will contain the number of command-line arguments. The program name is counted as an argument, so if you give one argument to the program, <code class="language-pike">argc</code> will have the value </strong>2**.</p><p>The variable <code class="language-pike">argv</code> will contain the arguments. Its type is <code class="language-pike">array(string)</code>, which means <strong>array of strings</strong>. Each command-line argument is put in a string, and together they form a list or array.</p></li><li><code class="language-pike">argc == 2</code> is a comparison. We check if the value of <code class="language-pike">argc</code> is <strong>operator</strong>is an <strong>operator</strong> that checks if two things are the same. Some other comparison operators in Pike are <code class="language-pike">&lt;</code> (less than), <code class="language-pike">&gt;=</code> (greater than or equal), and <code class="language-pike">!=</code> (not same).</li><li><code class="language-pike">argv[1]</code> retrieves the element at position number 1 in an array. The positions are numbered from 0, so position 1 is actually the second element in the array. This is the URL given as argument to the program. <code class="language-pike">argv[0]</code> contains the name of the program, the string <code class="language-pike">"webbrowser.pike"</code>.</li><li>The <code class="language-pike">if</code> statement lets Pike choose between different actions. It follows the template or pattern<pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>condition<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span>&#160;&#160;
+&#160;<span style='color:#00C'>*</span>something<span style='color:#00C'>*</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;<span style='color:#00C'>*</span>something<span style='color:#00C'>-</span><span style='color:#006'><b>else</b></span><span style='color:#00C'>*</span>&#160;
+</code></pre><p>If the <em>. In our program, there are two <strong>statements</strong> in the </em> Pike will do the <em>. In our program, there are two <strong>statements</strong> in the </em> the <em> in the </em>-else<em>. In our program, there are two <strong>statements</strong> in the </em>something-else*, so we must enclose it in curly brackets, <code class="language-pike">{</code> and <code class="language-pike">}</code>.</p></li></ol></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

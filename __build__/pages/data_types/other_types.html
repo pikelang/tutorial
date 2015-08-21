@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Object, Program and Function</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,25 +71,18 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Object, Program and Function</h1>
-<p>These three data types will be described in more detail later, but here is a short explanation of what they are good for.</p>
-<p>An <code>object</code> is an object, in the object-oriented sense: the values of a bunch of member variables as defined by a <strong>class</strong><strong> (or </strong>class**, as a C++, Java or Smalltalk programmer would say). We say that the object is an instance of the program.</p>
-<p>An object is an instance of a program, and just as we want to store objects in variables, and send them back and forth to functions, we sometimes want to do the same with the <strong>programs</strong>. For example, we may need a function that creates an instance (that is, <code>object</code>) of any program, and we must therefore be able to send the program as an argument to the function. This is what we use the data type <code>program</code> for.</p>
-<p>It may come as a surprise that there is a special datatype for Pike programs, but it is actually very useful, and adds a lot of flexibility to Pike.</p>
-<p>Something else that may surprise you is that there is a data type for <strong>methods</strong>. Sometimes you want to refer to &quot;any method&quot;. Take for example the built-in method <code>map</code>, which is used to apply an operation to all the elements in an array. You call <code>map</code> with (at least) two arguments: the array to go through, and the method to call for each element:</p>
-<pre><code class="language-pike">void write_one(int x)
-{
-  write("Number: " + x + "\n");
-}
-
-int main()
-{
-  array(int) all_of_them = ({ 1, 5, -1, 17, 17 });
-  map(all_of_them, write_one);
-  return 0;
-}</code></pre>
-<p>Running this code snippet would output:</p>
-<pre><code>Number: 1
+      <div class="container"><h1>Object, Program and Function</h1><p>These three data types will be described in more detail later, but here is a short explanation of what they are good for.</p><p>An <code class="language-pike">object</code> is an object, in the object-oriented sense: the values of a bunch of member variables as defined by a <strong>class</strong><strong> (or </strong>class**, as a C++, Java or Smalltalk programmer would say). We say that the object is an instance of the program.</p><p>An object is an instance of a program, and just as we want to store objects in variables, and send them back and forth to functions, we sometimes want to do the same with the <strong>programs</strong>. For example, we may need a function that creates an instance (that is, <code class="language-pike">object</code>) of any program, and we must therefore be able to send the program as an argument to the function. This is what we use the data type <code class="language-pike">program</code> for.</p><p>It may come as a surprise that there is a special datatype for Pike programs, but it is actually very useful, and adds a lot of flexibility to Pike.</p><p>Something else that may surprise you is that there is a data type for <strong>methods</strong>. Sometimes you want to refer to &quot;any method&quot;. Take for example the built-in method <code class="language-pike">map</code>, which is used to apply an operation to all the elements in an array. You call <code class="language-pike">map</code> with (at least) two arguments: the array to go through, and the method to call for each element:</p><pre><code class="language-pike"><span style='color:#09F'><b>void</b></span>&#160;write_one<span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span>&#160;x<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Number:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;x&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;
+<span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span><span style='color:#00C'>)</span>&#160;all_of_them&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;<span style='color:purple'>1</span><span style='color:#00C'>,</span>&#160;<span style='color:purple'>5</span><span style='color:#00C'>,</span>&#160;<span style='color:#00C'>-</span><span style='color:purple'>1</span><span style='color:#00C'>,</span>&#160;<span style='color:purple'>17</span><span style='color:#00C'>,</span>&#160;<span style='color:purple'>17</span>&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>map</span><span style='color:#00C'>(</span>all_of_them<span style='color:#00C'>,</span>&#160;write_one<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>Running this code snippet would output:</p><pre><code class="language-pike">Number: 1
 Number: 5
 Number: -1
 Number: 17
@@ -37,7 +90,7 @@ Number: 17</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

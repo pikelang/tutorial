@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>First Steps</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,51 +71,35 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>First Steps</h1>
-<p>It is traditional to start a book or tutorial about a programming language with a very simple example: a program that just writes the text &quot;Hello world!&quot; on the screen. Here it is in Pike:</p>
-<pre><code class="language-pike">int main()
-{
-  write("Hello world!\n");
-  return 0;
-}</code></pre>
-<p>To run this program, you will write it in a text file, for example called &quot;<code>hello.pike</code>&quot;, and then run it. If you are using a text-based interface, such as a Unix command shell or the Command Prompt Window in Windows NT, you can run the program by typing the command &quot;<code>pike hello.pike</code>&quot;.</p>
-<p>If you are using a graphical interface where the file is shown as an icon, such as the Windows Explorer, or a graphical file manager in Unix, you may be able to run the program by dragging its icon and dropping it on the Pike interpreter, or by double-clicking on the program icon.</p>
-<p>All this assumes that Pike has been installed on your computer.</p>
-<p>When you run the program, it will (surprise, surprise) print</p>
-<pre><code>Hello world!</code></pre>
-<p>on the screen. (In a graphical environment, this text may pop up in a separate window.)</p>
-<h2>Explaining the &quot;hello world&quot; program</h2>
-<p>If we start in the middle of this program, the line</p>
-<pre><code class="language-pike">  write("Hello world!\n");</code></pre>
-<p>is the central part of the program. We are using the built-in function <code>write</code>, which prints text to the so-called <strong>standard output</strong>. The standard output is usually the computer screen.</p>
-<p>Between the parentheses after <code>write</code> we have put the <strong>newline character</strong> send to the function. In this case, there is only one argument, the text <code>"Hello world!\n"</code>. The double quotes (<code>"</code>) signify that it is a <strong>newline character</strong>uence of characters. The combination <code>\n</code> is translated to a <strong>newline character</strong>, so the next thing that is printed on the screen after the greeting will come on a different line.</p>
-<p>We cannot let a line like this stand by itself in a program. It must be contained in a larger construct called a <strong>method</strong><strong>, or </strong>method**. We therefore enclose it in the method <code>main</code>:</p>
-<pre><code class="language-pike">int main()
-{
-  write("Hello world!\n");
-}</code></pre>
-<p>This (as yet unfinished) program means that there exists a method called <code>main</code>, and that this method will print a greeting to the standard output as explained before. The <code>int</code> before <code>main</code> means that (besides doing the printing) the method will also return a value, an integer, to whatever it is that uses it. But we have not specified which value it will return, so we add a line that does this, finally yielding the complete program:</p>
-<pre><code class="language-pike">int main()
-{
-  write("Hello world!\n");
-  return 0;
-}</code></pre>
-<p>When Pike runs (or &quot;executes&quot;) a file like this one, it always starts by calling <code>main</code>. When <code>main</code> is finished, the program stops executing, and the returned value is used to indicate whether the program succeeded to do what it was supposed to do. Returning the value 0 from <code>main</code> means success.</p>
-<p>A semi-colon (<code>;</code>) signifies the end of a so-called <strong>statement</strong>. This program contains two statements: the use of <code>write</code>, and the returning of a value. In the good old days, statements would have been called &quot;program lines&quot;, since you had to have a statement on each line, but nowadays most programming languages allow you to write in &quot;free format&quot;, dividing your program into lines in any way that you feel makes it easy to read. There are still some constraints: you can't split words, and you can't start a new line in the middle of a quoted string. This is the same program as before, but rearranged:</p>
-<pre><code class="language-pike">   int
-main (   )    {write    (
-"Hello world!\n"); return
-
-    0;     }</code></pre>
-<p>Ok, those changes probably didn't make the program easier to read and understand, but there are many quite legitimate variations in how programmers choose to write. For example, this is another common style:</p>
-<pre><code class="language-pike">int main() {
-  write("Hello world!\n");
-  return 0;
-}</code></pre></div>
+      <div class="container"><h1>First Steps</h1><p>It is traditional to start a book or tutorial about a programming language with a very simple example: a program that just writes the text &quot;Hello world!&quot; on the screen. Here it is in Pike:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>To run this program, you will write it in a text file, for example called &quot;<code class="language-pike">hello.pike</code>&quot;, and then run it. If you are using a text-based interface, such as a Unix command shell or the Command Prompt Window in Windows NT, you can run the program by typing the command &quot;<code class="language-pike">pike hello.pike</code>&quot;.</p><p>If you are using a graphical interface where the file is shown as an icon, such as the Windows Explorer, or a graphical file manager in Unix, you may be able to run the program by dragging its icon and dropping it on the Pike interpreter, or by double-clicking on the program icon.</p><p>All this assumes that Pike has been installed on your computer.</p><p>When you run the program, it will (surprise, surprise) print</p><pre><code class="language-pike">Hello world!</code></pre><p>on the screen. (In a graphical environment, this text may pop up in a separate window.)</p><h2>Explaining the &quot;hello world&quot; program</h2><p>If we start in the middle of this program, the line</p><pre><code class="language-pike">&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>is the central part of the program. We are using the built-in function <code class="language-pike">write</code>, which prints text to the so-called <strong>standard output</strong>. The standard output is usually the computer screen.</p><p>Between the parentheses after <code class="language-pike">write</code> we have put the <strong>newline character</strong> send to the function. In this case, there is only one argument, the text <code class="language-pike">"Hello world!\n"</code>. The double quotes (<code class="language-pike">"</code>) signify that it is a <strong>newline character</strong>uence of characters. The combination <code class="language-pike">\n</code> is translated to a <strong>newline character</strong>, so the next thing that is printed on the screen after the greeting will come on a different line.</p><p>We cannot let a line like this stand by itself in a program. It must be contained in a larger construct called a <strong>method</strong><strong>, or </strong>method**. We therefore enclose it in the method <code class="language-pike">main</code>:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>This (as yet unfinished) program means that there exists a method called <code class="language-pike">main</code>, and that this method will print a greeting to the standard output as explained before. The <code class="language-pike">int</code> before <code class="language-pike">main</code> means that (besides doing the printing) the method will also return a value, an integer, to whatever it is that uses it. But we have not specified which value it will return, so we add a line that does this, finally yielding the complete program:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>When Pike runs (or &quot;executes&quot;) a file like this one, it always starts by calling <code class="language-pike">main</code>. When <code class="language-pike">main</code> is finished, the program stops executing, and the returned value is used to indicate whether the program succeeded to do what it was supposed to do. Returning the value 0 from <code class="language-pike">main</code> means success.</p><p>A semi-colon (<code class="language-pike">;</code>) signifies the end of a so-called <strong>statement</strong>. This program contains two statements: the use of <code class="language-pike">write</code>, and the returning of a value. In the good old days, statements would have been called &quot;program lines&quot;, since you had to have a statement on each line, but nowadays most programming languages allow you to write in &quot;free format&quot;, dividing your program into lines in any way that you feel makes it easy to read. There are still some constraints: you can't split words, and you can't start a new line in the middle of a quoted string. This is the same program as before, but rearranged:</p><pre><code class="language-pike">&#160;&#160;&#160;<span style='color:#09F'><b>int</b></span>&#160;&#160;
+main&#160;<span style='color:#00C'>(</span>&#160;&#160;&#160;<span style='color:#00C'>)</span>&#160;&#160;&#160;&#160;<span style='color:#00C'>{</span><span style='color:#C00'>write</span>&#160;&#160;&#160;&#160;<span style='color:#00C'>(</span>&#160;&#160;
+<span style='color:#070'>&#34;Hello&#160;world!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#006'><b>return</b></span>&#160;&#160;
+&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;&#160;&#160;&#160;<span style='color:#00C'>}</span>&#160;
+</code></pre><p>Ok, those changes probably didn't make the program easier to read and understand, but there are many quite legitimate variations in how programmers choose to write. For example, this is another common style:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

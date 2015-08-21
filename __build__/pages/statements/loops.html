@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Repetition (or &quot;Loops&quot;)</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,104 +71,71 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Repetition (or &quot;Loops&quot;)</h1>
-<p>Pike has four different facilities for repetition: the <code>while</code> statement, the <code>for</code> statement, the <code>do while</code> statement, and the <code>foreach</code> statement.</p>
-<h2>The <code>while</code> Statement</h2>
-<p>The <code>while</code> statement does something as long as a condition is true. It follows this template:</p>
-<pre><code class="language-pike">while ( *expression* )
-  *statement*</code></pre>
-<p>Pike calculates the value of <em>, and then it goes back to the start and calculates the value of </em> value is <strong>true</strong>, it executes <em>expression</em> and then it goes back to the start and calculates the value of <em>expression</em> once again, to see if we should run another iteration of the loop.</p>
-<p>Example:</p>
-<pre><code class="language-pike">while (temperature &lt; 200)
-  heat_some_more();</code></pre>
-<p>This will keep calling the method <code>heat_some_more</code> until the value of <code>temperature</code> is at least <strong>200</strong>. If <code>temperature</code> was at least <strong>200</strong> from the start, <code>heat_some_more</code> is never called.</p>
-<p>As always, <em>statement</em> can be a block, so we can have several statements that are executed in each iteration of the loop. This example will print the first five elements (element number 0, 1, 2, 3, and 4) in the array <code>argv</code>, each on its own line:</p>
-<pre><code class="language-pike">int i = 0;
-while (i &lt; 5)
-{
-  write(argv[i] + "\n");
-  i = i + 1;
-}</code></pre>
-<h2>The <code>for</code> Statement</h2>
-<p>The <code>for</code> statement does something as long as a condition is <strong>true</strong>, just like the <code>while</code> statement, but the <code>for</code> statement also has a place to put an expression that is calculated before the loop is started, and another place for an expression that is run immediately after the statement in the loop. The <code>for</code> loop follows this template:</p>
-<pre><code class="language-pike">for ( *init-expression* ; *condition-expression* ; *change-expression* )
-  *statement*</code></pre>
-<p>This is (almost exactly) equivalent to this <strong>while</strong> loop:</p>
-<pre><code class="language-pike">*init-expression*;
-while ( *condition-expression* )
-{
-  *statement*
-  *change-expression*;
-}</code></pre>
-<p>The <strong>for</strong><strong> loop in the example above, the one that writes the element in an array, can be re-written as a </strong>for** loop, like this:</p>
-<pre><code class="language-pike">int i;
-for (i = 0; i &lt; 5; i = i + 1)
-  write(argv[i] + "\n");</code></pre>
-<p>As an extra feature, the definition of the loop variable can be put inside the <code>for</code> loop:</p>
-<pre><code class="language-pike">for (int i = 0; i &lt; 5; i = i + 1)
-  write(argv[i] + "\n");</code></pre>
-<p>In that case, the variable <code>i</code> is local in the <code>for</code> loop, and disappears when we leave the loop.</p>
-<h2>The <code>do while</code> Statement</h2>
-<p>Sometimes we don't want to do the test in a loop until after the first iteration of the statement in the loop. In those case we can use a <strong>do while</strong> loop. The <strong>do while</strong> loop statement follows this template:</p>
-<pre><code class="language-pike">do
-  *statement*
-while ( *expression* );</code></pre>
-<p>Pike starts by executing <em> again, and then calculates the value of </em>f <em> again, and then calculates the value of </em> leaves the loop. If the value is <strong>true</strong>, it goes to the start of the loop, executes <em>expression</em>again, and then calculates the value of <em>expression</em> once again, to see if we should run another iteration of the loop.</p>
-<p>If we want the user to answer &quot;yes&quot; or &quot;no&quot; to a question, and we want to keep asking until we get either &quot;yes&quot; or &quot;no&quot;, we could write a loop like this:</p>
-<pre><code class="language-pike">string answer;
-write("Have you stopped beating your wife yet?\n");
-do
-{
-  write("Answer yes or no: ");
-  answer = Stdio.stdin-&gt;gets();
-} while (answer != "yes" &amp;&amp; answer != "no");</code></pre>
-<h2>The <code>foreach</code> Statement</h2>
-<p>The <strong>foreach</strong> loop statement is very useful. It goes through all the elements in an array, doing something with each element. It follows this template:</p>
-<pre><code class="language-pike">foreach( *container* , *loop-variable* )
-  *statement*</code></pre>
-<p><em>loop-variable</em>uld be an expression with an array as value, and <em>loop-variable</em> should be the name of a variable. Pike will execute <em>loop-variable</em>e for each element in the array <em>loop-variable</em>th that element in the variable <em>loop-variable</em>. This example will print all the strings in the array <strong>argv</strong>, each on its own line:</p>
-<pre><code class="language-pike">string s;
-foreach (argv, s)
-  write(s + "\n");</code></pre>
-<p>The <code>foreach</code> statement is similar to the <code>for</code> statement, in that the definition of the loop variable can be put inside the <code>foreach</code> loop:</p>
-<pre><code class="language-pike">foreach(argv, string s)
-  write(s + "\n");</code></pre>
-<p>In that case, the variable <code>s</code> is local in the <code>foreach</code> loop, and disappears when we leave the loop.</p>
-<h2><code>break</code> and <code>continue</code></h2>
-<p>Sometimes you want to leave a loop somewhere in the middle, and continue executing the program after the end of the loop. You can use the <code>break</code> statement for this, as in this example:</p>
-<pre><code class="language-pike">while (1)
-{
-  string command = Stdio.stdin-&gt;gets();
-  if (command == "quit")
-    break;
-  do_command(command);
-}</code></pre>
-<p><code>break</code> can be used in loops and in <code>switch</code> statements. It will cause Pike to &quot;break out&quot; of the loop or <code>switch</code> statements, and execution will continue after the loop or <code>switch</code> statement.</p>
-<p><code>continue</code>, on the other hand, can only be used in loops. A <code>continue</code> statement will cause Pike to skip the rest of the body of the loop, going directly to the next iteration. For example, this loop will never call <code>do_command</code> with an empty string as argument:</p>
-<pre><code class="language-pike">while (1)
-{
-  string command = Stdio.stdin-&gt;gets();
-  if (strlen(command) == 0)
-    continue;
-  do_command(command);
-}</code></pre>
-<p>Some programmers feel that <code>continue</code> is unnecessary and makes the code hard to read. A loop that uses <code>continue</code> can always be re-written without <code>continue</code>. Our example would look like this:</p>
-<pre><code class="language-pike">while (1)
-{
-  string command = Stdio.stdin-&gt;gets();
-  if (strlen(command) != 0)
-    do_command(command);
-}</code></pre>
-<p>There are at least three more ways of leaving a loop in the middle:</p>
-<ul>
-<li>You can use the <code>return</code> statement to leave the entire method.</li>
-<li>You can use <code>throw</code> to throw an exception.</li>
-<li>You can call <code>exit</code> to terminate the program.</li>
-</ul></div>
+      <div class="container"><h1>Repetition (or &quot;Loops&quot;)</h1><p>Pike has four different facilities for repetition: the <code class="language-pike">while</code> statement, the <code class="language-pike">for</code> statement, the <code class="language-pike">do while</code> statement, and the <code class="language-pike">foreach</code> statement.</p><h2>The <code class="language-pike">while</code> Statement</h2><p>The <code class="language-pike">while</code> statement does something as long as a condition is true. It follows this template:</p><pre><code class="language-pike"><span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement<span style='color:#00C'>*</span>&#160;
+</code></pre><p>Pike calculates the value of <em>, and then it goes back to the start and calculates the value of </em> value is <strong>true</strong>, it executes <em>expression</em> and then it goes back to the start and calculates the value of <em>expression</em> once again, to see if we should run another iteration of the loop.</p><p>Example:</p><pre><code class="language-pike"><span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span>temperature&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>200</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;heat_some_more<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>This will keep calling the method <code class="language-pike">heat_some_more</code> until the value of <code class="language-pike">temperature</code> is at least <strong>200</strong>. If <code class="language-pike">temperature</code> was at least <strong>200</strong> from the start, <code class="language-pike">heat_some_more</code> is never called.</p><p>As always, <em>statement</em> can be a block, so we can have several statements that are executed in each iteration of the loop. This example will print the first five elements (element number 0, 1, 2, 3, and 4) in the array <code class="language-pike">argv</code>, each on its own line:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;i&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span>i&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>5</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span>argv<span style='color:#00C'>[</span>i<span style='color:#00C'>]</span>&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;i&#160;<span style='color:#00C'>=</span>&#160;i&#160;<span style='color:#00C'>+</span>&#160;<span style='color:purple'>1</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><h2>The <code class="language-pike">for</code> Statement</h2><p>The <code class="language-pike">for</code> statement does something as long as a condition is <strong>true</strong>, just like the <code class="language-pike">while</code> statement, but the <code class="language-pike">for</code> statement also has a place to put an expression that is calculated before the loop is started, and another place for an expression that is run immediately after the statement in the loop. The <code class="language-pike">for</code> loop follows this template:</p><pre><code class="language-pike"><span style='color:#006'><b>for</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>init<span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>;</span>&#160;<span style='color:#00C'>*</span>condition<span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>;</span>&#160;<span style='color:#00C'>*</span>change<span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement<span style='color:#00C'>*</span>&#160;
+</code></pre><p>This is (almost exactly) equivalent to this <strong>while</strong> loop:</p><pre><code class="language-pike"><span style='color:#00C'>*</span>init<span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>condition<span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement<span style='color:#00C'>*</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>change<span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>The <strong>for</strong><strong> loop in the example above, the one that writes the element in an array, can be re-written as a </strong>for** loop, like this:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;i<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>for</b></span>&#160;<span style='color:#00C'>(</span>i&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;i&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>5</span><span style='color:#00C'>;</span>&#160;i&#160;<span style='color:#00C'>=</span>&#160;i&#160;<span style='color:#00C'>+</span>&#160;<span style='color:purple'>1</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span>argv<span style='color:#00C'>[</span>i<span style='color:#00C'>]</span>&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>As an extra feature, the definition of the loop variable can be put inside the <code class="language-pike">for</code> loop:</p><pre><code class="language-pike"><span style='color:#006'><b>for</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span>&#160;i&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;i&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>5</span><span style='color:#00C'>;</span>&#160;i&#160;<span style='color:#00C'>=</span>&#160;i&#160;<span style='color:#00C'>+</span>&#160;<span style='color:purple'>1</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span>argv<span style='color:#00C'>[</span>i<span style='color:#00C'>]</span>&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>In that case, the variable <code class="language-pike">i</code> is local in the <code class="language-pike">for</code> loop, and disappears when we leave the loop.</p><h2>The <code class="language-pike">do while</code> Statement</h2><p>Sometimes we don't want to do the test in a loop until after the first iteration of the statement in the loop. In those case we can use a <strong>do while</strong> loop. The <strong>do while</strong> loop statement follows this template:</p><pre><code class="language-pike"><span style='color:#006'><b>do</b></span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement<span style='color:#00C'>*</span>&#160;&#160;
+<span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>Pike starts by executing <em> again, and then calculates the value of </em>f <em> again, and then calculates the value of </em> leaves the loop. If the value is <strong>true</strong>, it goes to the start of the loop, executes <em>expression</em>again, and then calculates the value of <em>expression</em> once again, to see if we should run another iteration of the loop.</p><p>If we want the user to answer &quot;yes&quot; or &quot;no&quot; to a question, and we want to keep asking until we get either &quot;yes&quot; or &quot;no&quot;, we could write a loop like this:</p><pre><code class="language-pike"><span style='color:#09F'><b>string</b></span>&#160;answer<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Have&#160;you&#160;stopped&#160;beating&#160;your&#160;wife&#160;yet?\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>do</b></span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Answer&#160;yes&#160;or&#160;no:&#160;&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;answer&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span>answer&#160;<span style='color:#00C'>!</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;yes&#34;</span>&#160;<span style='color:#00C'>&#38;</span><span style='color:#00C'>&#38;</span>&#160;answer&#160;<span style='color:#00C'>!</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;no&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><h2>The <code class="language-pike">foreach</code> Statement</h2><p>The <strong>foreach</strong> loop statement is very useful. It goes through all the elements in an array, doing something with each element. It follows this template:</p><pre><code class="language-pike"><span style='color:#006'><b>foreach</b></span><span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>container<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>,</span>&#160;<span style='color:#00C'>*</span>loop<span style='color:#00C'>-</span>variable<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement<span style='color:#00C'>*</span>&#160;
+</code></pre><p><em>loop-variable</em>uld be an expression with an array as value, and <em>loop-variable</em> should be the name of a variable. Pike will execute <em>loop-variable</em>e for each element in the array <em>loop-variable</em>th that element in the variable <em>loop-variable</em>. This example will print all the strings in the array <strong>argv</strong>, each on its own line:</p><pre><code class="language-pike"><span style='color:#09F'><b>string</b></span>&#160;s<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>foreach</b></span>&#160;<span style='color:#00C'>(</span>argv<span style='color:#00C'>,</span>&#160;s<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span>s&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>The <code class="language-pike">foreach</code> statement is similar to the <code class="language-pike">for</code> statement, in that the definition of the loop variable can be put inside the <code class="language-pike">foreach</code> loop:</p><pre><code class="language-pike"><span style='color:#006'><b>foreach</b></span><span style='color:#00C'>(</span>argv<span style='color:#00C'>,</span>&#160;<span style='color:#09F'><b>string</b></span>&#160;s<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span>s&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>In that case, the variable <code class="language-pike">s</code> is local in the <code class="language-pike">foreach</code> loop, and disappears when we leave the loop.</p><h2><code class="language-pike">break</code> and <code class="language-pike">continue</code></h2><p>Sometimes you want to leave a loop somewhere in the middle, and continue executing the program after the end of the loop. You can use the <code class="language-pike">break</code> statement for this, as in this example:</p><pre><code class="language-pike"><span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span><span style='color:purple'>1</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;command&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>command&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;quit&#34;</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>break</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;do_command<span style='color:#00C'>(</span>command<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p><code class="language-pike">break</code> can be used in loops and in <code class="language-pike">switch</code> statements. It will cause Pike to &quot;break out&quot; of the loop or <code class="language-pike">switch</code> statements, and execution will continue after the loop or <code class="language-pike">switch</code> statement.</p><p><code class="language-pike">continue</code>, on the other hand, can only be used in loops. A <code class="language-pike">continue</code> statement will cause Pike to skip the rest of the body of the loop, going directly to the next iteration. For example, this loop will never call <code class="language-pike">do_command</code> with an empty string as argument:</p><pre><code class="language-pike"><span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span><span style='color:purple'>1</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;command&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#C00'>strlen</span><span style='color:#00C'>(</span>command<span style='color:#00C'>)</span>&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>continue</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;do_command<span style='color:#00C'>(</span>command<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>Some programmers feel that <code class="language-pike">continue</code> is unnecessary and makes the code hard to read. A loop that uses <code class="language-pike">continue</code> can always be re-written without <code class="language-pike">continue</code>. Our example would look like this:</p><pre><code class="language-pike"><span style='color:#006'><b>while</b></span>&#160;<span style='color:#00C'>(</span><span style='color:purple'>1</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;command&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#C00'>strlen</span><span style='color:#00C'>(</span>command<span style='color:#00C'>)</span>&#160;<span style='color:#00C'>!</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;&#160;&#160;do_command<span style='color:#00C'>(</span>command<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>There are at least three more ways of leaving a loop in the middle:</p><ul><li>You can use the <code class="language-pike">return</code> statement to leave the entire method.</li><li>You can use <code class="language-pike">throw</code> to throw an exception.</li><li>You can call <code class="language-pike">exit</code> to terminate the program.</li></ul></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

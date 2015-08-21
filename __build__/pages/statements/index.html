@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Statements</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,94 +71,70 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Statements</h1>
-<h1>Choosing between Alternatives</h1>
-<p>A program must sometimes make choices, choosing between different instructions to execute. Sometimes it must also execute the same instructions several times. All this is done using various <strong>control structures</strong>. We will start by looking at the different ways of choosing between alternatives.</p>
-<p>Pike has three facilities for choosing between alternatives: the <strong>switch</strong>tement, the <strong>switch</strong> statement, and the <code>? :</code> operator.</p>
-<h2>The <code>if</code> statement</h2>
-<p>The <code>if</code> statement comes in two flavors. The first and simplest one follows this pattern or template:</p>
-<pre><code class="language-pike">if ( *expression* )
-  *statement*</code></pre>
-<p>As usual in this tutorial, words in a <code>fixed-width font</code> are supposed to be written verbatim in the program, while words in <em>statement</em>re supposed to be replaced by something else. This means that the word <code>if</code> and the parentheses should be kept, but you replace <em>statement</em><em> with some expression, and </em>statement* with some statement. An example, which could have been part of a control program for a stove, looks like this:</p>
-<pre><code class="language-pike">if (temperature &lt; 200.0)
-  burn();</code></pre>
-<p>When Pike encounters an <code>if</code> statement, it first calculates the value of the <em> or <strong>true</strong>*. The value zero (<strong>true</strong>s considered to be <strong>true</strong>*, and everything else is <strong>true</strong>. If the value is <strong>true</strong>, the </em>thing else is <strong>false</strong> If the value is <strong>false</strong> the <em>statement</em> is executed. If the value is <strong>false</strong>, nothing is done, and program execution will continue after the <code>if</code> statement.</p>
-<p>An <code>if</code> statement can also follow this template:</p>
-<pre><code class="language-pike">if ( *expression* )
-  *statement1*
-else
-  *statement2*</code></pre>
-<p>Example:</p>
-<pre><code class="language-pike">if (this_user == file_owner)
-  allow_access();
-else
-  deny_access();</code></pre>
-<p>A statement can be a block, which is several statements enclosed by curly brackets. Example:</p>
-<pre><code class="language-pike">if (this_user == file_owner)
-  allow_access();
-else
-{
-  deny_access();
-  send_message(file_owner, "Warning: " + this_user +
-               " tried to access your file.");
-}</code></pre>
-<p>You can &quot;chain&quot; several <code>if</code> statements together, like this:</p>
-<pre><code class="language-pike">if (temperature &lt; 200.0)
-  burn(10);
-else if (temperature &lt; 300.0)
-  burn(5);
-else if (temperature &lt; 400.0)
-  burn(2);
-else
-  turn_off_heat();</code></pre>
-<h2>The <code>switch</code> statement</h2>
-<p>If your program is choosing between a number of different actions, depending on the value of a variable or expression, you can express this using a chain of <code>if</code> statements:</p>
-<pre><code class="language-pike">if (command == "print")
-  print(argument);
-else if (command == "save")
-  save(argument);
-else if (command == "quit" || command == "exit")
-  quit(argument);
-else
-  write("Unknown command.\n");</code></pre>
-<p>In such cases a <code>switch</code> statement can be a better alternative:</p>
-<pre><code class="language-pike">switch(command)
-{
-  case "print":
-    print(argument);
-    break;
-  case "save":
-    save(argument);
-    break;
-  case "quit":
-  case "exit":
-    quit(argument);
-    break;
-  default:
-    write("Unknown command.\n");
-    break;
-}</code></pre>
-<p>In a <code>switch</code> statement, Pike first calculates the value of the expression between the parentheses, in this case <code>command</code>. It then compares this value with all the values given in the <code>case</code>s in the body (i e between the curly brackets) of the <code>switch</code> statement. If it finds a value that is equal, it jumps to that place and continues to execute the program there. If it comes to a <code>break</code> statement, it will skip the rest of the code in the <code>switch</code> body, and continue execution after the block.</p>
-<p>It is not necessary to have a <code>default:</code> block, but if one exists, Pike will go to that one if it finds no matching <code>case</code> value. The final <code>break</code> statement in this example isn't really necessary, since the switch statement block ends there anyway, but it won't hurt either.</p>
-<p>You can use a range of values in a case:</p>
-<pre><code class="language-pike">case 10..14:</code></pre>
-<p>This case will match if the value is between 10 and 14, inclusively: 10, 11, 12, 13 or 14.</p>
-<h2>The ugly <code>? :</code> operator</h2>
-<p>The operator <code>? :</code> is similar to the <code>if</code> statement, but returns a value. Expressions that use the operator <code>? :</code> follow this template:</p>
-<pre><code class="language-pike">*condition* ? *then-expression* : *else-expression*</code></pre>
-<p><em> or </em>tion<em> or </em>en-expression<em> or </em><em> or </em>expression<em> or </em>three expressions. Pike starts by calculating the value of <em> or </em>tion<em> or </em>that value is <strong>false</strong> it then calculates <em> or </em>expression<em> or </em> doesn't do anything with <em> or </em>expression<em> or </em>the value of <em> or </em>tion<em> or </em><em> or </em><em> or </em> calculates <em>else-expression</em>, and doesn't do anything with <em>else-expression</em>. The value of the whole construct is the value of the expression that was calculated: either <em>else-expression</em> or <em>else-expression</em>.</p>
-<p>Using this operator, you can rewrite</p>
-<pre><code class="language-pike">if (a &gt; b)
-  max_value = a;
-else
-  max_value = b;</code></pre>
-<p>as</p>
-<pre><code class="language-pike">max_value = (a &gt; b) ? a : b;</code></pre>
-<p>We recommend that you don't use the <code>? :</code> operator, unless you have to. It can be necessary when writing function-like macros, but that is beyond the scope of this tutorial.</p></div>
+      <div class="container"><h1>Statements</h1><h1>Choosing between Alternatives</h1><p>A program must sometimes make choices, choosing between different instructions to execute. Sometimes it must also execute the same instructions several times. All this is done using various <strong>control structures</strong>. We will start by looking at the different ways of choosing between alternatives.</p><p>Pike has three facilities for choosing between alternatives: the <strong>switch</strong>tement, the <strong>switch</strong> statement, and the <code class="language-pike">? :</code> operator.</p><h2>The <code class="language-pike">if</code> statement</h2><p>The <code class="language-pike">if</code> statement comes in two flavors. The first and simplest one follows this pattern or template:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement<span style='color:#00C'>*</span>&#160;
+</code></pre><p>As usual in this tutorial, words in a <code class="language-pike">fixed-width font</code> are supposed to be written verbatim in the program, while words in <em>statement</em>re supposed to be replaced by something else. This means that the word <code class="language-pike">if</code> and the parentheses should be kept, but you replace <em>statement</em><em> with some expression, and </em>statement* with some statement. An example, which could have been part of a control program for a stove, looks like this:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>temperature&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>200</span><span style='color:#00C'>.</span><span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;burn<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>When Pike encounters an <code class="language-pike">if</code> statement, it first calculates the value of the <em> or <strong>true</strong>*. The value zero (<strong>true</strong>s considered to be <strong>true</strong>*, and everything else is <strong>true</strong>. If the value is <strong>true</strong>, the </em>thing else is <strong>false</strong> If the value is <strong>false</strong> the <em>statement</em> is executed. If the value is <strong>false</strong>, nothing is done, and program execution will continue after the <code class="language-pike">if</code> statement.</p><p>An <code class="language-pike">if</code> statement can also follow this template:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>&#160;<span style='color:#00C'>*</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement1<span style='color:#00C'>*</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>*</span>statement2<span style='color:#00C'>*</span>&#160;
+</code></pre><p>Example:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>this_user&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;file_owner<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;allow_access<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;&#160;deny_access<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>A statement can be a block, which is several statements enclosed by curly brackets. Example:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>this_user&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;file_owner<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;allow_access<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;deny_access<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;send_message<span style='color:#00C'>(</span>file_owner<span style='color:#00C'>,</span>&#160;<span style='color:#070'>&#34;Warning:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;this_user&#160;<span style='color:#00C'>+</span>&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#070'>&#34;&#160;tried&#160;to&#160;access&#160;your&#160;file.&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>You can &quot;chain&quot; several <code class="language-pike">if</code> statements together, like this:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>temperature&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>200</span><span style='color:#00C'>.</span><span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;burn<span style='color:#00C'>(</span><span style='color:purple'>10</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>temperature&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>300</span><span style='color:#00C'>.</span><span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;burn<span style='color:#00C'>(</span><span style='color:purple'>5</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>temperature&#160;<span style='color:#00C'>&#60;</span>&#160;<span style='color:purple'>400</span><span style='color:#00C'>.</span><span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;burn<span style='color:#00C'>(</span><span style='color:purple'>2</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;&#160;turn_off_heat<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><h2>The <code class="language-pike">switch</code> statement</h2><p>If your program is choosing between a number of different actions, depending on the value of a variable or expression, you can express this using a chain of <code class="language-pike">if</code> statements:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>command&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;print&#34;</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;print<span style='color:#00C'>(</span>argument<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>command&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;save&#34;</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;save<span style='color:#00C'>(</span>argument<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>command&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;quit&#34;</span>&#160;<span style='color:#00C'>|</span><span style='color:#00C'>|</span>&#160;command&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;exit&#34;</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;quit<span style='color:#00C'>(</span>argument<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Unknown&#160;command.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>In such cases a <code class="language-pike">switch</code> statement can be a better alternative:</p><pre><code class="language-pike"><span style='color:#006'><b>switch</b></span><span style='color:#00C'>(</span>command<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>case</b></span>&#160;<span style='color:#070'>&#34;print&#34;</span><span style='color:#00C'>:</span>&#160;&#160;
+&#160;&#160;&#160;&#160;print<span style='color:#00C'>(</span>argument<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>break</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>case</b></span>&#160;<span style='color:#070'>&#34;save&#34;</span><span style='color:#00C'>:</span>&#160;&#160;
+&#160;&#160;&#160;&#160;save<span style='color:#00C'>(</span>argument<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>break</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>case</b></span>&#160;<span style='color:#070'>&#34;quit&#34;</span><span style='color:#00C'>:</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>case</b></span>&#160;<span style='color:#070'>&#34;exit&#34;</span><span style='color:#00C'>:</span>&#160;&#160;
+&#160;&#160;&#160;&#160;quit<span style='color:#00C'>(</span>argument<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>break</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>default</b></span><span style='color:#00C'>:</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Unknown&#160;command.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>break</b></span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>In a <code class="language-pike">switch</code> statement, Pike first calculates the value of the expression between the parentheses, in this case <code class="language-pike">command</code>. It then compares this value with all the values given in the <code class="language-pike">case</code>s in the body (i e between the curly brackets) of the <code class="language-pike">switch</code> statement. If it finds a value that is equal, it jumps to that place and continues to execute the program there. If it comes to a <code class="language-pike">break</code> statement, it will skip the rest of the code in the <code class="language-pike">switch</code> body, and continue execution after the block.</p><p>It is not necessary to have a <code class="language-pike">default:</code> block, but if one exists, Pike will go to that one if it finds no matching <code class="language-pike">case</code> value. The final <code class="language-pike">break</code> statement in this example isn't really necessary, since the switch statement block ends there anyway, but it won't hurt either.</p><p>You can use a range of values in a case:</p><pre><code class="language-pike"><span style='color:#006'><b>case</b></span>&#160;<span style='color:purple'>10</span><span style='color:#00C'>.</span><span style='color:#00C'>.</span><span style='color:purple'>14</span><span style='color:#00C'>:</span>&#160;
+</code></pre><p>This case will match if the value is between 10 and 14, inclusively: 10, 11, 12, 13 or 14.</p><h2>The ugly <code class="language-pike">? :</code> operator</h2><p>The operator <code class="language-pike">? :</code> is similar to the <code class="language-pike">if</code> statement, but returns a value. Expressions that use the operator <code class="language-pike">? :</code> follow this template:</p><pre><code class="language-pike"><span style='color:#00C'>*</span>condition<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>?</span>&#160;<span style='color:#00C'>*</span>then<span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span>&#160;<span style='color:#00C'>:</span>&#160;<span style='color:#00C'>*</span><span style='color:#006'><b>else</b></span><span style='color:#00C'>-</span>expression<span style='color:#00C'>*</span>&#160;
+</code></pre><p><em> or </em>tion<em> or </em>en-expression<em> or </em><em> or </em>expression<em> or </em>three expressions. Pike starts by calculating the value of <em> or </em>tion<em> or </em>that value is <strong>false</strong> it then calculates <em> or </em>expression<em> or </em> doesn't do anything with <em> or </em>expression<em> or </em>the value of <em> or </em>tion<em> or </em><em> or </em><em> or </em> calculates <em>else-expression</em>, and doesn't do anything with <em>else-expression</em>. The value of the whole construct is the value of the expression that was calculated: either <em>else-expression</em> or <em>else-expression</em>.</p><p>Using this operator, you can rewrite</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>a&#160;<span style='color:#00C'>&#62;</span>&#160;b<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;max_value&#160;<span style='color:#00C'>=</span>&#160;a<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;&#160;max_value&#160;<span style='color:#00C'>=</span>&#160;b<span style='color:#00C'>;</span>&#160;
+</code></pre><p>as</p><pre><code class="language-pike">max_value&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#00C'>(</span>a&#160;<span style='color:#00C'>&#62;</span>&#160;b<span style='color:#00C'>)</span>&#160;<span style='color:#00C'>?</span>&#160;a&#160;<span style='color:#00C'>:</span>&#160;b<span style='color:#00C'>;</span>&#160;
+</code></pre><p>We recommend that you don't use the <code class="language-pike">? :</code> operator, unless you have to. It can be necessary when writing function-like macros, but that is beyond the scope of this tutorial.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

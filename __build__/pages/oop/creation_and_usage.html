@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Creating and Using Objects</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,27 +71,23 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Creating and Using Objects</h1>
-<p>Assuming that we have the class <code>animal</code>, we can define some variables that can be used to store animals. Remember that the class is also a <strong>data type</strong>. We can also create some animals to put in those variables. To create an animal, we use the syntax <code>*classname*()</code>, i e the name of the class followed by a pair of parentheses.</p>
-<pre><code class="language-pike">animal some_animal;
-some_animal = animal();
-animal my_dog = animal();</code></pre>
-<p>To access a member variable in an object, we use the syntax <code>*object-expression*-&gt;*variable-name*</code>, i e the object followed by the operator <code>-&gt;</code> followed by the name of the variable.</p>
-<pre><code class="language-pike">my_dog-&gt;name = "Fido";
-my_dog-&gt;weight = 10.0;
-some_animal-&gt;name = "Glorbie";
-write("My dog is called " + my_dog-&gt;name + ".\n");
-write("Its weight is " + my_dog-&gt;weight + ".\n");
-write("That animal is called " + some_animal-&gt;name + ".\n");</code></pre>
-<p>Most objects need some initial values for its member variables. For example, every animal needs a name and a weight. One way to handle this is to set those variables separately, as we have done above. A better way is to design the class in a way that lets it set the variables immediately when an object is cloned from the class. You can then give the values when cloning:</p>
-<pre><code class="language-pike">animal piglet = animal("Piglet", 6.3);</code></pre>
-<p>We can call a method in an object, with a similar &quot;<code>-&gt;</code>&quot; syntax:</p>
-<pre><code class="language-pike">my_dog-&gt;eat("quiche"); // Real dogs eat quiche.
-write("Its weight is now " + my_dog-&gt;weight + ".\n");</code></pre></div>
+      <div class="container"><h1>Creating and Using Objects</h1><p>Assuming that we have the class <code class="language-pike">animal</code>, we can define some variables that can be used to store animals. Remember that the class is also a <strong>data type</strong>. We can also create some animals to put in those variables. To create an animal, we use the syntax <code class="language-pike">*classname*()</code>, i e the name of the class followed by a pair of parentheses.</p><pre><code class="language-pike">animal&#160;some_animal<span style='color:#00C'>;</span>&#160;&#160;
+some_animal&#160;<span style='color:#00C'>=</span>&#160;animal<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+animal&#160;my_dog&#160;<span style='color:#00C'>=</span>&#160;animal<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>To access a member variable in an object, we use the syntax <code class="language-pike">*object-expression*-&gt;*variable-name*</code>, i e the object followed by the operator <code class="language-pike">-&gt;</code> followed by the name of the variable.</p><pre><code class="language-pike">my_dog<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>name&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;Fido&#34;</span><span style='color:#00C'>;</span>&#160;&#160;
+my_dog<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>weight&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>10</span><span style='color:#00C'>.</span><span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+some_animal<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>name&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;Glorbie&#34;</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;My&#160;dog&#160;is&#160;called&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;my_dog<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>name&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Its&#160;weight&#160;is&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;my_dog<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>weight&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;That&#160;animal&#160;is&#160;called&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;some_animal<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>name&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>Most objects need some initial values for its member variables. For example, every animal needs a name and a weight. One way to handle this is to set those variables separately, as we have done above. A better way is to design the class in a way that lets it set the variables immediately when an object is cloned from the class. You can then give the values when cloning:</p><pre><code class="language-pike">animal&#160;piglet&#160;<span style='color:#00C'>=</span>&#160;animal<span style='color:#00C'>(</span><span style='color:#070'>&#34;Piglet&#34;</span><span style='color:#00C'>,</span>&#160;<span style='color:purple'>6</span><span style='color:#00C'>.</span><span style='color:purple'>3</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>We can call a method in an object, with a similar &quot;<code class="language-pike">-&gt;</code>&quot; syntax:</p><pre><code class="language-pike">my_dog<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>eat<span style='color:#00C'>(</span><span style='color:#070'>&#34;quiche&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#818A9E'>//&#160;Real&#160;dogs&#160;eat&#160;quiche.</span>&#160;
+<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Its&#160;weight&#160;is&#160;now&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;my_dog<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>weight&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

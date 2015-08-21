@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>I Want My Greeting in a Window!</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,37 +71,26 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>I Want My Greeting in a Window!</h1>
-<p>Pike has support for graphical user interfaces. If you have the GTK Pike module installed on your computer, you can use a slightly modified program to print &quot;Hello world!&quot; in its own window:</p>
-<pre><code class="language-pike">int main()
-{
-  GTK.setup_gtk();
-  GTK.Alert("Hello world!");
-  return -1;
-}</code></pre>
-<p>The statement &quot;<code>GTK.setup_gtk();</code>&quot; is a call to a method, similar to the call to <code>write</code> in our first example. The difference here is that <code>setup_gtk</code> is found in a module called <code>GTK</code>, so we must prefix it with &quot;<code>GTK.</code>&quot; to let Pike know where to look for it.</p>
-<p>The next statement, &quot;<code>GTK.Alert("Hello world!");</code>&quot;, creates a small window, an &quot;alert window&quot;, with the text &quot;Hello world!&quot; in it. The window will look something like this:</p>
-<p><img alt="alertwindow" src="alertwindow.gif"></p>
-<p><em>The window that pops up when the GTK hello-world program is run</em></p>
-<p>When you click on the &quot;OK&quot; button, the window disappears.</p>
-<p>The last statement in <code>main</code> is &quot;<code>return -1;</code>&quot;. In Pike, a negative return value from <code>main</code> means that the program doesn't stop executing when <code>main</code> is finished. This is necessary here, since otherwise the program would finish as soon as it had created the window, and the window would disappear at once.</p>
-<p>But there is a problem with this program. The program doesn't stop executing when <code>main</code> is finished, so when does it stop? Never. We may close the window, but the program is still running. It doesn't actually do anything, but it is there.</p>
-<p>We can fix the problem like this:</p>
-<pre><code class="language-pike">int main()
-{
-  GTK.setup_gtk();
-  GTK.Alert("Hello world!")
-    -&gt; signal_connect("destroy", lambda(){ exit(0); });
-  return -1;
-}</code></pre>
-<p>To explain this, think that</p>
-<pre><code class="language-pike">GTK.Alert("Hello world!")</code></pre>
-<p>creates the Alert window. The Alert window is a thing, or an &quot;object&quot;. It not only pops up on your computer screen, but you can also let your program do things with this object. For example, you can tell the window that when it is destroyed, it should order the entire program to exit. This is what the rest of of the statement does (even if we don't explain the exact details here):</p>
-<pre><code class="language-pike">-&gt; signal_connect("destroy", lambda(){ exit(0); });</code></pre></div>
+      <div class="container"><h1>I Want My Greeting in a Window!</h1><p>Pike has support for graphical user interfaces. If you have the GTK Pike module installed on your computer, you can use a slightly modified program to print &quot;Hello world!&quot; in its own window:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#909'><b>GTK</b></span><span style='color:#00C'>.</span>setup_gtk<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#909'><b>GTK</b></span><span style='color:#00C'>.</span>Alert<span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:#00C'>-</span><span style='color:purple'>1</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>The statement &quot;<code class="language-pike">GTK.setup_gtk();</code>&quot; is a call to a method, similar to the call to <code class="language-pike">write</code> in our first example. The difference here is that <code class="language-pike">setup_gtk</code> is found in a module called <code class="language-pike">GTK</code>, so we must prefix it with &quot;<code class="language-pike">GTK.</code>&quot; to let Pike know where to look for it.</p><p>The next statement, &quot;<code class="language-pike">GTK.Alert("Hello world!");</code>&quot;, creates a small window, an &quot;alert window&quot;, with the text &quot;Hello world!&quot; in it. The window will look something like this:</p><p><img src="alertwindow.gif" alt="alertwindow"></p><p><em>The window that pops up when the GTK hello-world program is run</em></p><p>When you click on the &quot;OK&quot; button, the window disappears.</p><p>The last statement in <code class="language-pike">main</code> is &quot;<code class="language-pike">return -1;</code>&quot;. In Pike, a negative return value from <code class="language-pike">main</code> means that the program doesn't stop executing when <code class="language-pike">main</code> is finished. This is necessary here, since otherwise the program would finish as soon as it had created the window, and the window would disappear at once.</p><p>But there is a problem with this program. The program doesn't stop executing when <code class="language-pike">main</code> is finished, so when does it stop? Never. We may close the window, but the program is still running. It doesn't actually do anything, but it is there.</p><p>We can fix the problem like this:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#909'><b>GTK</b></span><span style='color:#00C'>.</span>setup_gtk<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#909'><b>GTK</b></span><span style='color:#00C'>.</span>Alert<span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!&#34;</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>&#160;signal_connect<span style='color:#00C'>(</span><span style='color:#070'>&#34;destroy&#34;</span><span style='color:#00C'>,</span>&#160;<span style='color:#006'><b>lambda</b></span><span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>{</span>&#160;<span style='color:#C00'>exit</span><span style='color:#00C'>(</span><span style='color:purple'>0</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:#00C'>-</span><span style='color:purple'>1</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>To explain this, think that</p><pre><code class="language-pike"><span style='color:#909'><b>GTK</b></span><span style='color:#00C'>.</span>Alert<span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#160;world!&#34;</span><span style='color:#00C'>)</span>&#160;
+</code></pre><p>creates the Alert window. The Alert window is a thing, or an &quot;object&quot;. It not only pops up on your computer screen, but you can also let your program do things with this object. For example, you can tell the window that when it is destroyed, it should order the entire program to exit. This is what the rest of of the statement does (even if we don't explain the exact details here):</p><pre><code class="language-pike"><span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>&#160;signal_connect<span style='color:#00C'>(</span><span style='color:#070'>&#34;destroy&#34;</span><span style='color:#00C'>,</span>&#160;<span style='color:#006'><b>lambda</b></span><span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>{</span>&#160;<span style='color:#C00'>exit</span><span style='color:#00C'>(</span><span style='color:purple'>0</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

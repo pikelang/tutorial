@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Running the Program</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,22 +71,13 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Running the Program</h1>
-<p>An appropriate next step would be making your program run without the need for manually invoking it with the pike parser. If you are using a Unix system, such as Linux, Solaris or OS X, you can make the web browser a free-standing program by adding:</p>
-<pre><code class="language-pike">#! /usr/local/bin/pike</code></pre>
-<p>(or &quot;<code>#!</code>&quot; followed by whatever Pike itself happens to be called on your system) as the very first line in the file, without any spaces in the part pointing out the path to your pike binary.</p>
-<p>Assuming you want your script to run with whatever &quot;pike&quot; binary would be run if &quot;pike&quot; was entered at the prompt, that is, the first &quot;pike&quot; executable found in the user's path, a useful and portable alternative is this syntax:</p>
-<pre><code class="language-pike">#! /usr/bin/env pike</code></pre>
-<p>Either way, you must finish off the work by making the file executable:</p>
-<pre><code>&gt; chmod a+x webbrowser.pike</code></pre>
-<p>Now, you can run the web browser just by giving the command:</p>
-<pre><code>&gt; ./webbrowser.pike</code></pre>
-<p>or by clicking on its icon in a graphic file manager. (If you don't like the extension <code>.pike</code>, you can simply change the name of the file to <code>webbrowser</code>, without the extension.)</p>
-<p>Under Windows, you can associate the file extension <code>pike</code> with the Pike program. Then you can start the web browser by clicking on the web browser's icon, or by giving the command <code>webbrowser.pike</code> in the Command Prompt Window.</p></div>
+      <div class="container"><h1>Running the Program</h1><p>An appropriate next step would be making your program run without the need for manually invoking it with the pike parser. If you are using a Unix system, such as Linux, Solaris or OS X, you can make the web browser a free-standing program by adding:</p><pre><code class="language-pike"><span style='color:#99510a'><b>#!&#160;/usr/local/bin/pike</b></span>&#160;
+</code></pre><p>(or &quot;<code class="language-pike">#!</code>&quot; followed by whatever Pike itself happens to be called on your system) as the very first line in the file, without any spaces in the part pointing out the path to your pike binary.</p><p>Assuming you want your script to run with whatever &quot;pike&quot; binary would be run if &quot;pike&quot; was entered at the prompt, that is, the first &quot;pike&quot; executable found in the user's path, a useful and portable alternative is this syntax:</p><pre><code class="language-pike"><span style='color:#99510a'><b>#!&#160;/usr/bin/env&#160;pike</b></span>&#160;
+</code></pre><p>Either way, you must finish off the work by making the file executable:</p><pre><code class="language-pike">&gt; chmod a+x webbrowser.pike</code></pre><p>Now, you can run the web browser just by giving the command:</p><pre><code class="language-pike">&gt; ./webbrowser.pike</code></pre><p>or by clicking on its icon in a graphic file manager. (If you don't like the extension <code class="language-pike">.pike</code>, you can simply change the name of the file to <code class="language-pike">webbrowser</code>, without the extension.)</p><p>Under Windows, you can associate the file extension <code class="language-pike">pike</code> with the Pike program. Then you can start the web browser by clicking on the web browser's icon, or by giving the command <code class="language-pike">webbrowser.pike</code> in the Command Prompt Window.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

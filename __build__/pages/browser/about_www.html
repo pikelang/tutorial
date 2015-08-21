@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Some Notes About WWW</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,17 +71,11 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Some Notes About WWW</h1>
-<ul>
-<li>When our simple web browser prints a web page, it just prints the raw HTML code. All the things between <code>&lt;</code> and <code>&gt;</code> characters are called <em>tags</em>, and they contain commands that indicate how the rest of the text should be formatted. To do that well is beyond the scope of this tutorial.</li>
-<li>Some web addresses don't refer to HTML pages, but to (among other things) sound clips or pictures. If you try to access such a web address with this browser, it will dump the sound or picture on the screen as if it had been text, and this will look even uglier than raw HTML code. Real web browsers check the type of the web page, and then take the appropriate action depending on that type.</li>
-<li>If your web browser fails to retrieve a web page that you think exists, this may be because you haven't typed the address exactly correct. For example, some addresses must have a slash (<code>/</code>) at the end. More advanced web browsers discuss things like this with the web server, and they usually manage to fix the address for you.</li>
-<li>You may not get a &quot;failed&quot; message when you try to retrieve a web page that doesn't exist. When the web server gets a request for a non-existent page, it generates a new web page with an error message, and your web browser receives and shows that page.</li>
-</ul></div>
+      <div class="container"><h1>Some Notes About WWW</h1><ul><li>When our simple web browser prints a web page, it just prints the raw HTML code. All the things between <code class="language-pike">&lt;</code> and <code class="language-pike">&gt;</code> characters are called <em>tags</em>, and they contain commands that indicate how the rest of the text should be formatted. To do that well is beyond the scope of this tutorial.</li><li>Some web addresses don't refer to HTML pages, but to (among other things) sound clips or pictures. If you try to access such a web address with this browser, it will dump the sound or picture on the screen as if it had been text, and this will look even uglier than raw HTML code. Real web browsers check the type of the web page, and then take the appropriate action depending on that type.</li><li>If your web browser fails to retrieve a web page that you think exists, this may be because you haven't typed the address exactly correct. For example, some addresses must have a slash (<code class="language-pike">/</code>) at the end. More advanced web browsers discuss things like this with the web server, and they usually manage to fix the address for you.</li><li>You may not get a &quot;failed&quot; message when you try to retrieve a web page that doesn't exist. When the web server gets a request for a non-existent page, it generates a new web page with an error message, and your web browser receives and shows that page.</li></ul></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

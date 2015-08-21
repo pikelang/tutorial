@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>More Advanced Examples</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,36 +71,30 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>More Advanced Examples</h1>
-<p>Here are two more examples of method definitions:</p>
-<pre><code class="language-pike">int getDex()
-{
-  int oldDex = Dex;
-  Dex = 0;
-  return oldDex;
-}
-
-private void
-show_user(int|string id, void|string full_name)
-{
-  write("Id: " + id + "\n");
-  if (full_name)
-    write("Full name: " + full_name + "\n");
-}</code></pre>
-<p>The method <code>getDex</code> returns the value of a non-local variable called <code>Dex</code>, but also changes the value of that variable to zero (<strong>0</strong>).</p>
-<p>The method <code>show_user</code> expects to receive either one or two arguments. The first argument can be either an integer or a string. The second argument is optional, but if it is present it must be a string.</p>
-<p>Here are some valid statements that contain calls to the two methods above:</p>
-<pre><code class="language-pike">getDex();
-show_user(19);
-show_user("john");
-show_user(19, "John Doe");
-show_user("john", "John Doe");</code></pre>
-<h2>Side-effects in Methods</h2>
-<p>When working with methods, you may want to be careful with <strong>side-effects</strong>. A side-effect is anything that the method causes to change or happen, except for the returned value. Sometimes the side-effects are the reason for the method, and sometimes they are a dangerous misfeature. In the three examples above, <code>getDex</code> has the side-effect of setting the value of the non-local variable <code>Dex</code> to 0, and <code>show_user</code> has the side-effect that it writes some text to the standard output. We can guess that <code>show_user</code> has been created just to write that text, so this side-effect of <code>show_user</code> is probably not a problem. On the other hand, if a programmer uses <code>getDex</code> to get the value of the variable <code>Dex</code>, it could come as a surprise that this method also changes the value.</p></div>
+      <div class="container"><h1>More Advanced Examples</h1><p>Here are two more examples of method definitions:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;getDex<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>int</b></span>&#160;oldDex&#160;<span style='color:#00C'>=</span>&#160;Dex<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;Dex&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;oldDex<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;
+<span style='color:#006'><b>private</b></span>&#160;<span style='color:#09F'><b>void</b></span>&#160;&#160;
+show_user<span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span><span style='color:#00C'>|</span><span style='color:#09F'><b>string</b></span>&#160;id<span style='color:#00C'>,</span>&#160;<span style='color:#09F'><b>void</b></span><span style='color:#00C'>|</span><span style='color:#09F'><b>string</b></span>&#160;full_name<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Id:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;id&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>full_name<span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Full&#160;name:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;full_name&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>The method <code class="language-pike">getDex</code> returns the value of a non-local variable called <code class="language-pike">Dex</code>, but also changes the value of that variable to zero (<strong>0</strong>).</p><p>The method <code class="language-pike">show_user</code> expects to receive either one or two arguments. The first argument can be either an integer or a string. The second argument is optional, but if it is present it must be a string.</p><p>Here are some valid statements that contain calls to the two methods above:</p><pre><code class="language-pike">getDex<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+show_user<span style='color:#00C'>(</span><span style='color:purple'>19</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+show_user<span style='color:#00C'>(</span><span style='color:#070'>&#34;john&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+show_user<span style='color:#00C'>(</span><span style='color:purple'>19</span><span style='color:#00C'>,</span>&#160;<span style='color:#070'>&#34;John&#160;Doe&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+show_user<span style='color:#00C'>(</span><span style='color:#070'>&#34;john&#34;</span><span style='color:#00C'>,</span>&#160;<span style='color:#070'>&#34;John&#160;Doe&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><h2>Side-effects in Methods</h2><p>When working with methods, you may want to be careful with <strong>side-effects</strong>. A side-effect is anything that the method causes to change or happen, except for the returned value. Sometimes the side-effects are the reason for the method, and sometimes they are a dangerous misfeature. In the three examples above, <code class="language-pike">getDex</code> has the side-effect of setting the value of the non-local variable <code class="language-pike">Dex</code> to 0, and <code class="language-pike">show_user</code> has the side-effect that it writes some text to the standard output. We can guess that <code class="language-pike">show_user</code> has been created just to write that text, so this side-effect of <code class="language-pike">show_user</code> is probably not a problem. On the other hand, if a programmer uses <code class="language-pike">getDex</code> to get the value of the variable <code class="language-pike">Dex</code>, it could come as a surprise that this method also changes the value.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

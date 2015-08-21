@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>What Does Pike Look Like?</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,22 +71,18 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>What Does Pike Look Like?</h1>
-<p>Here is a small Pike program:</p>
-<pre><code class="language-pike">int main()
-{
-  write("Hi there! What's your name?\n");
-  string name = Stdio.stdin-&gt;gets();
-  write("Nice to meet you, " + name + "!\n");
-  return 0;
-}</code></pre>
-<p>Programmers with some experience from programming languages such as C, C#, and Java will not have much trouble understanding what this program does. Pike looks a lot like those languages, and for example uses the &quot;curly brackets&quot; &quot;{&quot; and &quot;}&quot; to organize program code into blocks. An excerpt from a Pike program usually does the same thing that a similar-looking program fragment in C, C# and Java would do. Exactly <em>how</em> it is done can be very different, though.</p>
-<p>Even if you have never seen any code in C, C# or Java before, perhaps it doesn't come as a surprise if I tell you that the program writes <code>Hi there! What's your name?</code> on the screen, then waits for you to type your name, and finally tells you that it is nice to meet you?</p>
-<p>All those backslashes (that is, &quot;\&quot;) and semicolons (&quot;;&quot;) can be a bit confusing at the start. Getting comfortable with the syntax (that is, how a program looks on the surface) is often the most difficult part about learning Pike. On the other hand, experience shows that this is the syntax that most people feel is easy and productive when they have become used to it, and that is the reason why we keep it as it is.</p></div>
+      <div class="container"><h1>What Does Pike Look Like?</h1><p>Here is a small Pike program:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hi&#160;there!&#160;What&#39;s&#160;your&#160;name?\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;name&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Nice&#160;to&#160;meet&#160;you,&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;name&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>Programmers with some experience from programming languages such as C, C#, and Java will not have much trouble understanding what this program does. Pike looks a lot like those languages, and for example uses the &quot;curly brackets&quot; &quot;{&quot; and &quot;}&quot; to organize program code into blocks. An excerpt from a Pike program usually does the same thing that a similar-looking program fragment in C, C# and Java would do. Exactly <em>how</em> it is done can be very different, though.</p><p>Even if you have never seen any code in C, C# or Java before, perhaps it doesn't come as a surprise if I tell you that the program writes <code class="language-pike">Hi there! What's your name?</code> on the screen, then waits for you to type your name, and finally tells you that it is nice to meet you?</p><p>All those backslashes (that is, &quot;\&quot;) and semicolons (&quot;;&quot;) can be a bit confusing at the start. Getting comfortable with the syntax (that is, how a program looks on the surface) is often the most difficult part about learning Pike. On the other hand, experience shows that this is the syntax that most people feel is easy and productive when they have become used to it, and that is the reason why we keep it as it is.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

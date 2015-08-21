@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Object Orientation in Pike</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,16 +71,11 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Object Orientation in Pike</h1>
-<h2>Programs Within Programs: Object-Oriented Pike</h2>
-<p>As we have said before, a <strong>instance</strong> a description of a type of thing. You can <strong>instance</strong>e class to create <strong>instance</strong> Each object is a <strong>instance</strong>ometimes called <strong>instance</strong>) of the class.</p>
-<p>A class contains some variables, which are sometimes called <strong>member variables</strong>. The variables are attributes or characteristics of the objects, and each object will have its own set of the member variables. For example, if the class <code>animal</code> has the member variables <code>name</code> and <code>weight</code>, then each animal will have those two variables, so each animal can have a name and a weight.</p>
-<p>A class also contains some methods. (C++ programmers would call them &quot;member functions&quot;.) The methods describe things that the objects can do.</p>
-<p>For example, if the class &quot;animal&quot; has the method <code>eat</code>, then you can call that method in any animal, to make it eat. Well, of course it won't really eat, since it's just some data in the computer and not a real animal. But the method can change the member variables, for example by increasing the value of <code>weight</code> for that animal.</p></div>
+      <div class="container"><h1>Object Orientation in Pike</h1><h2>Programs Within Programs: Object-Oriented Pike</h2><p>As we have said before, a <strong>instance</strong> a description of a type of thing. You can <strong>instance</strong>e class to create <strong>instance</strong> Each object is a <strong>instance</strong>ometimes called <strong>instance</strong>) of the class.</p><p>A class contains some variables, which are sometimes called <strong>member variables</strong>. The variables are attributes or characteristics of the objects, and each object will have its own set of the member variables. For example, if the class <code class="language-pike">animal</code> has the member variables <code class="language-pike">name</code> and <code class="language-pike">weight</code>, then each animal will have those two variables, so each animal can have a name and a weight.</p><p>A class also contains some methods. (C++ programmers would call them &quot;member functions&quot;.) The methods describe things that the objects can do.</p><p>For example, if the class &quot;animal&quot; has the method <code class="language-pike">eat</code>, then you can call that method in any animal, to make it eat. Well, of course it won't really eat, since it's just some data in the computer and not a real animal. But the method can change the member variables, for example by increasing the value of <code class="language-pike">weight</code> for that animal.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

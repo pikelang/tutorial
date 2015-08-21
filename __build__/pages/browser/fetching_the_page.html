@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Magic Web Stuff</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,53 +71,33 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Magic Web Stuff</h1>
-<p>Now it's time to start surfing the web! Perhaps you know that web pages are written in something called HTML (HyperText Markup Language), and that the <code>http</code> you see in web addresses like <code>http://pike.ida.liu.se/</code> means HyperText Transfer Protocol. The HyperText Transfer Protocol is a description of how web browsers communicate with web servers.</p>
-<p>It is actually a fairly complicated operation to connect to a web server, to tell it to send you a web page, and then to receive that page as the server sends it. Fortunately for us, someone has already done this for us. There is a <strong>module</strong> called <code>Protocols.HTTP</code>, which handles the communication with the web server. A module is a package of Pike code that can easily be used by other programmers.</p>
-<p>We rewrite the method <code>handle_url</code> to actually try to fetch the web page, using the module <code>Protocols.HTTP</code>:</p>
-<pre><code class="language-pike">void handle_url(string this_url)
-{
-  write("Fetching URL '" + this_url + "'...");
-  Protocols.HTTP.Query web_page;
-  web_page = Protocols.HTTP.get_url(this_url);
-  if (web_page == 0)
-  {
-    write(" Failed!\n");
-    return;
-  }
-  write(" Done.\n");
-} // handle_url</code></pre>
-<p>The interesting part here is the lines</p>
-<pre><code class="language-pike">  Protocols.HTTP.Query web_page;
-  web_page = Protocols.HTTP.get_url(this_url);</code></pre>
-<p>First we define the variable <code>web_page</code>, with the data type <code>Protocols.HTTP.Query</code>. Actually, the data type is called <code>Query</code>, and is defined in the module <code>Protocols.HTTP</code>, but we must write it as <code>Protocols.HTTP.Query</code> so Pike knows where to find it.</p>
-<p>A data item of the type <code>Protocols.HTTP.Query</code> contains the result of a web page retrieval: the text of the web page, but also some more information, such as the time when the page was created.</p>
-<p>The actual work is done by the method <code>Protocols.HTTP.get_url</code>, which is actually the method <code>get_url</code> in the module <code>Protocols.HTTP</code>. It talks to the web server, fills a <code>Query</code> object with everything it finds, and returns it. If it cannot find the web page, it returns zero (<strong>0</strong>) instead.</p>
-<p>Some other things that might need to be explained in this example:</p>
-<ul>
-<li>We can use single quotes (') inside a string. If we want to put a double quote (&quot;) in a string, we can do so by prefixing the double quote with a backslash:
-<pre><code class="language-pike">"This string contains a \"."</code></pre></li>
-<li>If the web page couldn't be found, we use the statement
-<pre><code class="language-pike">return;`</code></pre>
-<p>to stop executing the method <code>handle_url</code>, and instead return to where it was called. This is the same as the</p>
-<pre><code class="language-pike">return 0;</code></pre>
-<p>we have seen in <code>main</code>, except that <code>handle_url</code> doesn't return a value.</p></li>
-<li><code>return</code> just returns from the method we are in. If we want to terminate the program, we can use the built-in function <code>exit</code>:
-<pre><code class="language-pike">exit(0);</code></pre>
-<p>This has the same effect as returning <strong>0</strong> from <code>main</code>.</p></li>
-</ul>
-<p>When we run this version of the web browser, it may look something like this. The user's command is shown in <em>italics</em>:</p>
-<pre><code>&gt; webbrowser.pike pike.ida.liu.se
+      <div class="container"><h1>Magic Web Stuff</h1><p>Now it's time to start surfing the web! Perhaps you know that web pages are written in something called HTML (HyperText Markup Language), and that the <code class="language-pike">http</code> you see in web addresses like <code class="language-pike">http://pike.ida.liu.se/</code> means HyperText Transfer Protocol. The HyperText Transfer Protocol is a description of how web browsers communicate with web servers.</p><p>It is actually a fairly complicated operation to connect to a web server, to tell it to send you a web page, and then to receive that page as the server sends it. Fortunately for us, someone has already done this for us. There is a <strong>module</strong> called <code class="language-pike">Protocols.HTTP</code>, which handles the communication with the web server. A module is a package of Pike code that can easily be used by other programmers.</p><p>We rewrite the method <code class="language-pike">handle_url</code> to actually try to fetch the web page, using the module <code class="language-pike">Protocols.HTTP</code>:</p><pre><code class="language-pike"><span style='color:#09F'><b>void</b></span>&#160;handle_url<span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span>&#160;this_url<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Fetching&#160;URL&#160;&#39;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;this_url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;&#39;...&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#909'><b>Protocols</b></span><span style='color:#00C'>.</span>HTTP<span style='color:#00C'>.</span>Query&#160;web_page<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;web_page&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Protocols</b></span><span style='color:#00C'>.</span>HTTP<span style='color:#00C'>.</span>get_url<span style='color:#00C'>(</span>this_url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>web_page&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;&#160;Failed!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>return</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;&#160;Done.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;handle_url</span>&#160;
+</code></pre><p>The interesting part here is the lines</p><pre><code class="language-pike">&#160;&#160;<span style='color:#909'><b>Protocols</b></span><span style='color:#00C'>.</span>HTTP<span style='color:#00C'>.</span>Query&#160;web_page<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;web_page&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Protocols</b></span><span style='color:#00C'>.</span>HTTP<span style='color:#00C'>.</span>get_url<span style='color:#00C'>(</span>this_url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>First we define the variable <code class="language-pike">web_page</code>, with the data type <code class="language-pike">Protocols.HTTP.Query</code>. Actually, the data type is called <code class="language-pike">Query</code>, and is defined in the module <code class="language-pike">Protocols.HTTP</code>, but we must write it as <code class="language-pike">Protocols.HTTP.Query</code> so Pike knows where to find it.</p><p>A data item of the type <code class="language-pike">Protocols.HTTP.Query</code> contains the result of a web page retrieval: the text of the web page, but also some more information, such as the time when the page was created.</p><p>The actual work is done by the method <code class="language-pike">Protocols.HTTP.get_url</code>, which is actually the method <code class="language-pike">get_url</code> in the module <code class="language-pike">Protocols.HTTP</code>. It talks to the web server, fills a <code class="language-pike">Query</code> object with everything it finds, and returns it. If it cannot find the web page, it returns zero (<strong>0</strong>) instead.</p><p>Some other things that might need to be explained in this example:</p><ul><li>We can use single quotes (') inside a string. If we want to put a double quote (&quot;) in a string, we can do so by prefixing the double quote with a backslash:<pre><code class="language-pike"><span style='color:#070'>&#34;This&#160;string&#160;contains&#160;a&#160;\&#34;.&#34;</span>&#160;
+</code></pre></li><li>If the web page couldn't be found, we use the statement<pre><code class="language-pike"><span style='color:#006'><b>return</b></span><span style='color:#00C'>;</span>`&#160;
+</code></pre><p>to stop executing the method <code class="language-pike">handle_url</code>, and instead return to where it was called. This is the same as the</p><pre><code class="language-pike"><span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>we have seen in <code class="language-pike">main</code>, except that <code class="language-pike">handle_url</code> doesn't return a value.</p></li><li><code class="language-pike">return</code> just returns from the method we are in. If we want to terminate the program, we can use the built-in function <code class="language-pike">exit</code>:<pre><code class="language-pike"><span style='color:#C00'>exit</span><span style='color:#00C'>(</span><span style='color:purple'>0</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>This has the same effect as returning <strong>0</strong> from <code class="language-pike">main</code>.</p></li></ul><p>When we run this version of the web browser, it may look something like this. The user's command is shown in <em>italics</em>:</p><pre><code class="language-pike">&gt; webbrowser.pike pike.ida.liu.se
 Welcome to the Very Simple WWW Browser!
-Fetching URL 'pike.lysator.liu.se'... Done.</code></pre>
-<p>If we try to retrieve a web page that doesn't exist, the web browser fails:</p>
-<pre><code>&gt; webbrowser.pike cod.lysator.liu.se
+Fetching URL 'pike.lysator.liu.se'... Done.</code></pre><p>If we try to retrieve a web page that doesn't exist, the web browser fails:</p><pre><code class="language-pike">&gt; webbrowser.pike cod.lysator.liu.se
 Welcome to the Very Simple WWW Browser!
 Fetching URL 'cod.ida.liu.se'... Failed!</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Syntactic Sugar</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,34 +71,28 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Syntactic Sugar</h1>
-<h2>Importing a Module</h2>
-<p>If we don't want to write the module name every time we use something from that module, an alternative is to <strong>import</strong> the module. If we import <code>Protocols.HTTP</code>, we can use the data type <code>Query</code>, and the method <code>get_url</code>, without prefixing them with <code>Protocols.HTTP</code>:</p>
-<pre><code class="language-pike">import Protocols.HTTP;
-
-void handle_url(string this_url)
-{
-  write("Fetching URL '" + this_url + "'...");
-  Query web_page;
-  web_page = get_url(this_url);
-  if (web_page == 0)
-  {
-    write(" Failed.\n");
-    return;
-  }
-  write(" Done.\n");
-} // handle_url</code></pre>
-<p>Although you <em>could</em> import lots and lots of modules for the ease of lazy typing, this mostly isn't a recommended practice, for obvious reasons of clarity and readability. There are also some non-obvious reasons to refrain from doing imports. If someone adds the method <code>write</code> to the module <code>Protocols.HTTP</code>, we would call that method instead of the one that writes text to the user. It also takes longer to start the program, since Pike must search through all imported modules to find the methods you use.</p>
-<h2>Initial Values for Variables</h2>
-<p>We can give a value to a variable when we define it, so there is no reason to write:</p>
-<pre><code class="language-pike">  Query web_page;
-  web_page = get_url(this_url);</code></pre>
-<p>We change it to this:</p>
-<pre><code class="language-pike">  Query web_page = get_url(this_url);</code></pre></div>
+      <div class="container"><h1>Syntactic Sugar</h1><h2>Importing a Module</h2><p>If we don't want to write the module name every time we use something from that module, an alternative is to <strong>import</strong> the module. If we import <code class="language-pike">Protocols.HTTP</code>, we can use the data type <code class="language-pike">Query</code>, and the method <code class="language-pike">get_url</code>, without prefixing them with <code class="language-pike">Protocols.HTTP</code>:</p><pre><code class="language-pike"><span style='color:#006'><b>import</b></span>&#160;<span style='color:#909'><b>Protocols</b></span><span style='color:#00C'>.</span>HTTP<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;
+<span style='color:#09F'><b>void</b></span>&#160;handle_url<span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span>&#160;this_url<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Fetching&#160;URL&#160;&#39;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;this_url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;&#39;...&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;Query&#160;web_page<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;web_page&#160;<span style='color:#00C'>=</span>&#160;get_url<span style='color:#00C'>(</span>this_url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>web_page&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;&#160;Failed.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>return</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;&#160;Done.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;handle_url</span>&#160;
+</code></pre><p>Although you <em>could</em> import lots and lots of modules for the ease of lazy typing, this mostly isn't a recommended practice, for obvious reasons of clarity and readability. There are also some non-obvious reasons to refrain from doing imports. If someone adds the method <code class="language-pike">write</code> to the module <code class="language-pike">Protocols.HTTP</code>, we would call that method instead of the one that writes text to the user. It also takes longer to start the program, since Pike must search through all imported modules to find the methods you use.</p><h2>Initial Values for Variables</h2><p>We can give a value to a variable when we define it, so there is no reason to write:</p><pre><code class="language-pike">&#160;&#160;Query&#160;web_page<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;web_page&#160;<span style='color:#00C'>=</span>&#160;get_url<span style='color:#00C'>(</span>this_url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>We change it to this:</p><pre><code class="language-pike">&#160;&#160;Query&#160;web_page&#160;<span style='color:#00C'>=</span>&#160;get_url<span style='color:#00C'>(</span>this_url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

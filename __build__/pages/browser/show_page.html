@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Showing the Page</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,34 +71,26 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Showing the Page</h1>
-<p>A web browser that just prints &quot;Done&quot; instead of the web page isn't of much use, so we add some lines at the end of the method <code>handle_url</code> to print the contents of the web page:</p>
-<pre><code class="language-pike">void handle_url(string this_url)
-{
-  write("Fetching URL '" + this_url + "'...");
-  Query web_page = get_url(this_url);
-  if (web_page == 0)
-  {
-    write(" Failed.\n");
-    return;
-  }
-  write(" Done.\n");
-  write("This is the contents of '" + this_url + "':\n\n");
-  string page_contents = web_page-&gt;data();
-  write(page_contents + "\n");
-} // handle_url</code></pre>
-<p>The interesting part here is the expression</p>
-<pre><code class="language-pike">web_page-&gt;data()</code></pre>
-<p>where we call the method <code>data</code> in the data item <code>web_page</code>. This method returns the contents of the web page, i e the HTML code, as a string. We then print that string.</p>
-<h2>Methods in data items?</h2>
-<p>&quot;But&quot;, you say, &quot;what is all this about a method in a data item? I thought methods were pieces of code that were parts of a program?&quot;</p>
-<p>Well, a method <em>is</em> a part of a program, just as we have seen. But just as the web browser we have written contains methods, other programs can contain methods. And the &quot;data type&quot; <code>Protocols.HTTP.Query</code> is actually another program. The big difference is that it doesn't have a method called <code>main</code>, so it can't be used by itself. It can only be used as a part of another program, as we have done here.</p>
-<p>Somewhere on your computer there is a file, called something like <code>/usr/local/pike/8.0.28/lib/modules/Protocols.pmod/HTTP.pmod/Query.pike</code> or <code>C:\Program Files\Pike\lib\pike\modules\Protocols.pmod\HTTP.pmod\Query.pike</code>. This file contains the program <code>Query</code> with all its methods and variables, among them the method <code>data</code>.</p>
-<p>A program like <code>Query</code>, which can be used in other programs in the way we have seen, is often called a <strong>object-oriented programming</strong>out how to use, and create, classes in the chapter about <a href="../oop/index.html"><strong>object-oriented programming</strong></a>.</p></div>
+      <div class="container"><h1>Showing the Page</h1><p>A web browser that just prints &quot;Done&quot; instead of the web page isn't of much use, so we add some lines at the end of the method <code class="language-pike">handle_url</code> to print the contents of the web page:</p><pre><code class="language-pike"><span style='color:#09F'><b>void</b></span>&#160;handle_url<span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span>&#160;this_url<span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Fetching&#160;URL&#160;&#39;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;this_url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;&#39;...&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;Query&#160;web_page&#160;<span style='color:#00C'>=</span>&#160;get_url<span style='color:#00C'>(</span>this_url<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span>web_page&#160;<span style='color:#00C'>=</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;&#160;Failed.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;&#160;&#160;<span style='color:#006'><b>return</b></span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#00C'>}</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;&#160;Done.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;This&#160;is&#160;the&#160;contents&#160;of&#160;&#39;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;this_url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;&#39;:\n\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;page_contents&#160;<span style='color:#00C'>=</span>&#160;web_page<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>data<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span>page_contents&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;handle_url</span>&#160;
+</code></pre><p>The interesting part here is the expression</p><pre><code class="language-pike">web_page<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>data<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;
+</code></pre><p>where we call the method <code class="language-pike">data</code> in the data item <code class="language-pike">web_page</code>. This method returns the contents of the web page, i e the HTML code, as a string. We then print that string.</p><h2>Methods in data items?</h2><p>&quot;But&quot;, you say, &quot;what is all this about a method in a data item? I thought methods were pieces of code that were parts of a program?&quot;</p><p>Well, a method <em>is</em> a part of a program, just as we have seen. But just as the web browser we have written contains methods, other programs can contain methods. And the &quot;data type&quot; <code class="language-pike">Protocols.HTTP.Query</code> is actually another program. The big difference is that it doesn't have a method called <code class="language-pike">main</code>, so it can't be used by itself. It can only be used as a part of another program, as we have done here.</p><p>Somewhere on your computer there is a file, called something like <code class="language-pike">/usr/local/pike/8.0.28/lib/modules/Protocols.pmod/HTTP.pmod/Query.pike</code> or <code class="language-pike">C:\Program Files\Pike\lib\pike\modules\Protocols.pmod\HTTP.pmod\Query.pike</code>. This file contains the program <code class="language-pike">Query</code> with all its methods and variables, among them the method <code class="language-pike">data</code>.</p><p>A program like <code class="language-pike">Query</code>, which can be used in other programs in the way we have seen, is often called a <strong>object-oriented programming</strong>out how to use, and create, classes in the chapter about <a href="../oop/index.html"><strong>object-oriented programming</strong></a>.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

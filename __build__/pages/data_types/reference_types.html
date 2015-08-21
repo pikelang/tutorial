@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Basic Types and Reference Types</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,78 +71,24 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Basic Types and Reference Types</h1>
-<p>We have said before that a variable is a sort of box that can be used to store a value. But there is a difference between what we call &quot;basic&quot; values, such as integers, and more complex values, such as arrays. The basic values are stored in the variables, just as as we can expect, but the complex ones are not. They are stored somewhere else, and the variable only contains a reference to the actual data.</p>
-<p>Usually, you don't need to think about this difference, but there are cases when it is important.</p>
-<p>Here is an example to show exactly what the difference means. We start by defining an integer variable called <code>i1</code>:</p>
-<pre><code class="language-pike">int i1;</code></pre>
-<p>This variable can now be used to store integer values. We put the value <strong>5</strong> in <code>i1</code>:</p>
-<pre><code class="language-pike">i1 = 5;</code></pre>
-<p>If we could look inside the computer, this is what we would see:</p>
-<p><img alt="referencesnot1" src="referencesnot1.gif"></p>
-<p><em>A non-reference variable</em></p>
-<p><code>i1</code> is a box, which contains the value <strong>5</strong>. We now define another integer variable, called <code>i2</code>, and copy the value in <code>i1</code> to <code>i2</code>:</p>
-<pre><code class="language-pike">int i2;
-i2 = i1;</code></pre>
-<p>This is how it looks now:</p>
-<p><img alt="referencesnot2" src="referencesnot2.gif"></p>
-<p><em>Two non-reference variables, before the change</em></p>
-<p>As we might have expected, there is a <strong>5</strong> in <code>i1</code>, and another <strong>5</strong> in <code>i2</code>. What happens if we change the value of <code>i2</code>?</p>
-<pre><code class="language-pike">i2 = 17;</code></pre>
-<p>Well, again as expected, the value in the variable <code>i2</code> changes. The value in <code>i1</code> of course doesn't:</p>
-<p><img alt="referencesnot3" src="referencesnot3.gif"></p>
-<p><em>Two non-reference variables, after the change</em></p>
-<p>But with complex types, such as arrays, things are a bit different. To illustrate this, we define an array variable, <code>a1</code>:</p>
-<pre><code class="language-pike">array(int) a1;</code></pre>
-<p>This variable is of the type &quot;array(int)&quot;, so we can use it to store arrays of integers. So let's do just that. We create an array, and put that array in <code>a1</code>:</p>
-<pre><code class="language-pike">a1 = ({ 19, 3, 5 });</code></pre>
-<p>Inside the computer, it now looks like this:</p>
-<p><img alt="references1" src="references1.gif"></p>
-<p><em>A reference variable</em></p>
-<p>Note that <code>a1</code> doesn't actually contain the array, it just contains a &quot;pointer&quot; or &quot;reference&quot; to the array.</p>
-<p>What happens if we try to do the same thing as we did with the integers above, that is, copy the value to a new variable, and then change the value in that new variable?</p>
-<p>To show what happens, we define a new array variable, <code>a2</code>, and try to copy the array <code>a1</code> to this new variable:</p>
-<pre><code class="language-pike">array(int) a2;
-a2 = a1;</code></pre>
-<p>This is where things are different. Remember that the variable <code>a1</code> doesn't contain the real array, but just a reference to it, and that an expression of the type</p>
-<pre><code class="language-pike">a2 = a1;</code></pre>
-<p>means &quot;take whatever there is in <code>a1</code>, make a copy of it, and put that copy it in <code>a2</code>&quot;. Because of this, what gets stored in <code>a2</code> is a copy of the <em>reference</em>, not of the array:</p>
-<p><img alt="references2" src="references2.gif"></p>
-<p><em>Two reference variables, before the change</em></p>
-<p>Note that both <code>a1</code> and <code>a2</code> now point to the same array. If we now try to change <code>a2</code>, for example by changing the last element in <code>a2</code> from <strong>17</strong>to <strong>17</strong>:</p>
-<pre><code class="language-pike">a2[2] = 17;</code></pre>
-<p>what will change is the array pointed to by the reference in <code>a2</code>:</p>
-<p><img alt="references3" src="references3.gif"></p>
-<p><em>Two reference variables, after the change</em></p>
-<p>If we don't think about the fact that <code>a1</code> and <code>a2</code> just contain references, pointing to the same array, it would seem as if our change to the variable <code>a2</code> had, in some mysterious way, also changed the contents of the variable <code>a1</code>!</p>
-<p>If we want a real copy, and not just a reference to the same array, we must create that copy explicitly. We can use the function <code>copy_value</code> for this:</p>
-<pre><code class="language-pike">a2 = copy_value(a1);</code></pre>
-<p>This will create a copy of the array, and store a reference to that copy in <code>a2</code>:</p>
-<p><img alt="references4" src="references4.gif"></p>
-<p><em>Two reference variables, pointing to different things</em></p>
-<p>Note that <code>copy_value</code> creates a <em>recursive</em> copy, which means that if the array contains other arrays, it will create copies of those arrays too, and so on. A trick for creating a non-recursive copy of an array is to add an empty array:</p>
-<pre><code class="language-pike">a2 = a1 + ({ });</code></pre>
-<p>The result of the expression <code>a1 + ({ })</code> is a new array that is a copy of <code>a1</code>.</p>
-<p>The following data types in Pike are <strong>basic types</strong>, and are stored in the variables themselves:</p>
-<ul>
-<li><code>int</code></li>
-<li><code>float</code></li>
-<li><code>string</code></li>
-</ul>
-<p>The following data types in Pike are <strong>reference types</strong>, and what is stored in the variables are just references to the data objects:</p>
-<ul>
-<li><code>array</code></li>
-<li><code>mapping</code></li>
-<li><code>multiset</code></li>
-<li><code>program</code></li>
-<li><code>object</code></li>
-<li><code>function</code></li>
-</ul>
-<p>Note that the same difference applies to method calls. When you send data to a method as arguments, and when you return data as the value of the method, what is actually sent is either the values themselves (for the basic types), or references (for the reference types).</p></div>
+      <div class="container"><h1>Basic Types and Reference Types</h1><p>We have said before that a variable is a sort of box that can be used to store a value. But there is a difference between what we call &quot;basic&quot; values, such as integers, and more complex values, such as arrays. The basic values are stored in the variables, just as as we can expect, but the complex ones are not. They are stored somewhere else, and the variable only contains a reference to the actual data.</p><p>Usually, you don't need to think about this difference, but there are cases when it is important.</p><p>Here is an example to show exactly what the difference means. We start by defining an integer variable called <code class="language-pike">i1</code>:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;i1<span style='color:#00C'>;</span>&#160;
+</code></pre><p>This variable can now be used to store integer values. We put the value <strong>5</strong> in <code class="language-pike">i1</code>:</p><pre><code class="language-pike">i1&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>5</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>If we could look inside the computer, this is what we would see:</p><p><img src="referencesnot1.gif" alt="referencesnot1"></p><p><em>A non-reference variable</em></p><p><code class="language-pike">i1</code> is a box, which contains the value <strong>5</strong>. We now define another integer variable, called <code class="language-pike">i2</code>, and copy the value in <code class="language-pike">i1</code> to <code class="language-pike">i2</code>:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;i2<span style='color:#00C'>;</span>&#160;&#160;
+i2&#160;<span style='color:#00C'>=</span>&#160;i1<span style='color:#00C'>;</span>&#160;
+</code></pre><p>This is how it looks now:</p><p><img src="referencesnot2.gif" alt="referencesnot2"></p><p><em>Two non-reference variables, before the change</em></p><p>As we might have expected, there is a <strong>5</strong> in <code class="language-pike">i1</code>, and another <strong>5</strong> in <code class="language-pike">i2</code>. What happens if we change the value of <code class="language-pike">i2</code>?</p><pre><code class="language-pike">i2&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>17</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>Well, again as expected, the value in the variable <code class="language-pike">i2</code> changes. The value in <code class="language-pike">i1</code> of course doesn't:</p><p><img src="referencesnot3.gif" alt="referencesnot3"></p><p><em>Two non-reference variables, after the change</em></p><p>But with complex types, such as arrays, things are a bit different. To illustrate this, we define an array variable, <code class="language-pike">a1</code>:</p><pre><code class="language-pike"><span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span><span style='color:#00C'>)</span>&#160;a1<span style='color:#00C'>;</span>&#160;
+</code></pre><p>This variable is of the type &quot;array(int)&quot;, so we can use it to store arrays of integers. So let's do just that. We create an array, and put that array in <code class="language-pike">a1</code>:</p><pre><code class="language-pike">a1&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;<span style='color:purple'>19</span><span style='color:#00C'>,</span>&#160;<span style='color:purple'>3</span><span style='color:#00C'>,</span>&#160;<span style='color:purple'>5</span>&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>Inside the computer, it now looks like this:</p><p><img src="references1.gif" alt="references1"></p><p><em>A reference variable</em></p><p>Note that <code class="language-pike">a1</code> doesn't actually contain the array, it just contains a &quot;pointer&quot; or &quot;reference&quot; to the array.</p><p>What happens if we try to do the same thing as we did with the integers above, that is, copy the value to a new variable, and then change the value in that new variable?</p><p>To show what happens, we define a new array variable, <code class="language-pike">a2</code>, and try to copy the array <code class="language-pike">a1</code> to this new variable:</p><pre><code class="language-pike"><span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>int</b></span><span style='color:#00C'>)</span>&#160;a2<span style='color:#00C'>;</span>&#160;&#160;
+a2&#160;<span style='color:#00C'>=</span>&#160;a1<span style='color:#00C'>;</span>&#160;
+</code></pre><p>This is where things are different. Remember that the variable <code class="language-pike">a1</code> doesn't contain the real array, but just a reference to it, and that an expression of the type</p><pre><code class="language-pike">a2&#160;<span style='color:#00C'>=</span>&#160;a1<span style='color:#00C'>;</span>&#160;
+</code></pre><p>means &quot;take whatever there is in <code class="language-pike">a1</code>, make a copy of it, and put that copy it in <code class="language-pike">a2</code>&quot;. Because of this, what gets stored in <code class="language-pike">a2</code> is a copy of the <em>reference</em>, not of the array:</p><p><img src="references2.gif" alt="references2"></p><p><em>Two reference variables, before the change</em></p><p>Note that both <code class="language-pike">a1</code> and <code class="language-pike">a2</code> now point to the same array. If we now try to change <code class="language-pike">a2</code>, for example by changing the last element in <code class="language-pike">a2</code> from <strong>17</strong>to <strong>17</strong>:</p><pre><code class="language-pike">a2<span style='color:#00C'>[</span><span style='color:purple'>2</span><span style='color:#00C'>]</span>&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>17</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>what will change is the array pointed to by the reference in <code class="language-pike">a2</code>:</p><p><img src="references3.gif" alt="references3"></p><p><em>Two reference variables, after the change</em></p><p>If we don't think about the fact that <code class="language-pike">a1</code> and <code class="language-pike">a2</code> just contain references, pointing to the same array, it would seem as if our change to the variable <code class="language-pike">a2</code> had, in some mysterious way, also changed the contents of the variable <code class="language-pike">a1</code>!</p><p>If we want a real copy, and not just a reference to the same array, we must create that copy explicitly. We can use the function <code class="language-pike">copy_value</code> for this:</p><pre><code class="language-pike">a2&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#C00'>copy_value</span><span style='color:#00C'>(</span>a1<span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>This will create a copy of the array, and store a reference to that copy in <code class="language-pike">a2</code>:</p><p><img src="references4.gif" alt="references4"></p><p><em>Two reference variables, pointing to different things</em></p><p>Note that <code class="language-pike">copy_value</code> creates a <em>recursive</em> copy, which means that if the array contains other arrays, it will create copies of those arrays too, and so on. A trick for creating a non-recursive copy of an array is to add an empty array:</p><pre><code class="language-pike">a2&#160;<span style='color:#00C'>=</span>&#160;a1&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>The result of the expression <code class="language-pike">a1 + ({ })</code> is a new array that is a copy of <code class="language-pike">a1</code>.</p><p>The following data types in Pike are <strong>basic types</strong>, and are stored in the variables themselves:</p><ul><li><code class="language-pike">int</code></li><li><code class="language-pike">float</code></li><li><code class="language-pike">string</code></li></ul><p>The following data types in Pike are <strong>reference types</strong>, and what is stored in the variables are just references to the data objects:</p><ul><li><code class="language-pike">array</code></li><li><code class="language-pike">mapping</code></li><li><code class="language-pike">multiset</code></li><li><code class="language-pike">program</code></li><li><code class="language-pike">object</code></li><li><code class="language-pike">function</code></li></ul><p>Note that the same difference applies to method calls. When you send data to a method as arguments, and when you return data as the value of the method, what is actually sent is either the values themselves (for the basic types), or references (for the reference types).</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Pike Beginner's Tutorial</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,127 +71,11 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Pike Beginner's Tutorial</h1>
-<p>The first version of this tutorial, influenced by an old Pike tutorial by Fredrik Hübinette, was completed by Thomas Padron-McCarthy on February 29, 2000. Maintenance since then has been in the hands of the pike development team, and we would hope that you too would want to participate, helping out and contributing updates, pointing out what could be improved upon, and how. Join us!</p>
-<p>OBSERVE: Some of the examples are showing their age and need to be updated to the latest Pike version. If you are having problems, ask for help on the Pike mailing list or read the reference manual if you feel up to it.</p>
-<ul>
-<li><a href="introduction/index.html">Introduction</a>
-<ul>
-<li><a href="introduction/index.html">What is Pike?</a></li>
-<li><a href="introduction/first_glance.html">What Does Pike Look Like?</a></li>
-<li><a href="introduction/language_comparison.html">Pike and Some Other Languages</a></li>
-<li><a href="introduction/reading_this_tutorial.html">Reading this Tutorial</a></li>
-</ul></li>
-<li><a href="hello/index.html">First Steps</a>
-<ul>
-<li><a href="hello/index.html">Hello World</a></li>
-<li><a href="hello/window.html">I Want My Greeting in a Window!</a></li>
-<li><a href="hello/interactive.html">Interactive Pike</a></li>
-</ul></li>
-<li><a href="fundamentals/index.html">Fundamental Concepts</a>
-<ul>
-<li><a href="fundamentals/index.html">Terminology / Glossary</a></li>
-</ul></li>
-<li><a href="browser/index.html">Your Second Pike Program</a>
-<ul>
-<li><a href="browser/index.html">The Bare Bones</a></li>
-<li><a href="browser/invocation.html">Running the Program</a></li>
-<li><a href="browser/arguments_and_if.html">Command-line Arguments and if</a></li>
-<li><a href="browser/methods_and_loops.html">Methods and Loops</a></li>
-<li><a href="browser/fetching_the_page.html">Magic Web Stuff</a></li>
-<li><a href="browser/convenient_syntax.html">Syntactic Sugar</a></li>
-<li><a href="browser/show_page.html">Showing the Page</a></li>
-<li><a href="browser/about_www.html">Some Notes About WWW</a></li>
-</ul></li>
-<li><a href="data_types/index.html">An Introduction to Data Types</a>
-<ul>
-<li><a href="data_types/index.html">What is a data type?</a></li>
-<li><a href="data_types/basic_types.html">Basic Types</a></li>
-<li><a href="data_types/container_types.html">Container Types</a></li>
-<li><a href="data_types/other_types.html">Object, Program and Function</a></li>
-<li><a href="data_types/variable_definitions.html">Variable Definitions</a></li>
-<li><a href="data_types/reference_types.html">Basic Types and Reference Types</a></li>
-</ul></li>
-<li><a href="methods/index.html">Methods</a>
-<ul>
-<li><a href="methods/index.html">An Introduction</a></li>
-<li><a href="methods/invocation.html">Calling a method</a></li>
-<li><a href="methods/advanced.html">More Advanced Examples</a></li>
-</ul></li>
-<li><a href="oop/index.html">Object-Oriented Programming</a>
-<ul>
-<li><a href="oop/index.html">Object Orientation in General</a></li>
-<li><a href="oop/oo_in_pike.html">Object Orientation in Pike</a></li>
-<li><a href="oop/creation_and_usage.html">Creating and Using Objects</a></li>
-<li><a href="oop/create.html">How to Create a Class</a></li>
-<li><a href="oop/grouping_data.html">Classes as Record Types</a></li>
-<li><a href="oop/programs.html">Programs are Classes and Vice Versa</a></li>
-<li><a href="oop/inheritance.html">Inheritance</a></li>
-<li><a href="oop/multiple_inheritance.html">Multiple Inheritance</a></li>
-<li><a href="oop/access_control.html">Access control</a></li>
-</ul></li>
-<li><a href="statements/index.html">Statements</a>
-<ul>
-<li><a href="statements/index.html">Choosing between Alternatives</a></li>
-<li><a href="statements/loops.html">Repetition (or &quot;Loops&quot;)</a></li>
-<li><a href="statements/others.html">Other Statement Types</a></li>
-</ul></li>
-<li><a href="data_types_2/index.html">More About Data Types</a>
-<ul>
-<li><a href="data_types_2/index.html">The Basic Types</a></li>
-<li><a href="data_types_2/container_types.html">Container Types</a></li>
-<li><a href="data_types_2/other_types.html">The Other Reference Types</a></li>
-</ul></li>
-<li><a href="strings/index.html">Working with Strings</a>
-<ul>
-<li><a href="strings/index.html">Operators on Strings</a></li>
-<li><a href="strings/builtins.html">Built-in Functions for Strings</a></li>
-<li><a href="strings/sprintf.html">Composing Strings with sprintf</a></li>
-<li><a href="strings/sscanf.html">Analyzing Strings with sscanf</a></li>
-<li><a href="strings/widestrings.html">Wide Strings</a></li>
-</ul></li>
-<li><a href="expressions/index.html">Expressions</a>
-<ul>
-<li><a href="expressions/index.html">Some Terminology</a></li>
-<li><a href="expressions/arithmetics.html">Arithmetical Operations</a></li>
-<li><a href="expressions/complex_types.html">Operations on Complex Types</a></li>
-<li><a href="expressions/comparison.html">Comparison</a></li>
-<li><a href="expressions/logical.html">Logical Expressions</a></li>
-<li><a href="expressions/bitwise.html">Bitwise Operations</a></li>
-<li><a href="expressions/set_operations.html">Operations on Sets</a></li>
-<li><a href="expressions/indexing.html">Indexing</a></li>
-<li><a href="expressions/assignment.html">Assignment</a></li>
-<li><a href="expressions/casting.html">Type Conversions</a></li>
-<li><a href="expressions/comma.html">The Comma Operator</a></li>
-<li><a href="expressions/call_and_splice.html">Call and Splice</a></li>
-<li><a href="expressions/operator_tables.html">Operator Precedence and Associativity</a></li>
-</ul></li>
-<li><a href="preprocessor/index.html">The Preprocessor</a>
-<ul>
-<li><a href="preprocessor/index.html">Preprocessor Directives</a></li>
-</ul></li>
-<li><a href="modules/index.html">Modules</a>
-<ul>
-<li><a href="modules/index.html">Some Examples of Modules</a></li>
-<li><a href="modules/usage.html">How Do You Use a Module?</a></li>
-<li><a href="modules/creating.html">How Do You Create a Module?</a></li>
-<li><a href="modules/resolving.html">How Does Pike Find the Modules?</a></li>
-</ul></li>
-<li><a href="error/index.html">Errors and Error Handling</a>
-<ul>
-<li><a href="error/index.html">Error Messages from Pike</a></li>
-<li><a href="error/concept.html">Error Handling: the Concept</a></li>
-<li><a href="error/detection.html">Detecting an Error</a></li>
-<li><a href="error/handling.html">Handling the Error</a></li>
-<li><a href="error/codes.html">Error Codes</a></li>
-<li><a href="error/exceptions.html"><code>catch</code> and <code>throw</code></a></li>
-</ul></li>
-<li><a href="not_covered/index.html">Not Covered Here</a></li>
-</ul></div>
+      <div class="container"><h1>Pike Beginner's Tutorial</h1><p>The first version of this tutorial, influenced by an old Pike tutorial by Fredrik Hübinette, was completed by Thomas Padron-McCarthy on February 29, 2000. Maintenance since then has been in the hands of the pike development team, and we would hope that you too would want to participate, helping out and contributing updates, pointing out what could be improved upon, and how. Join us!</p><p>OBSERVE: Some of the examples are showing their age and need to be updated to the latest Pike version. If you are having problems, ask for help on the Pike mailing list or read the reference manual if you feel up to it.</p><ul><li><a href="introduction/index.html">Introduction</a><ul><li><a href="introduction/index.html">What is Pike?</a></li><li><a href="introduction/first_glance.html">What Does Pike Look Like?</a></li><li><a href="introduction/language_comparison.html">Pike and Some Other Languages</a></li><li><a href="introduction/reading_this_tutorial.html">Reading this Tutorial</a></li></ul></li><li><a href="hello/index.html">First Steps</a><ul><li><a href="hello/index.html">Hello World</a></li><li><a href="hello/window.html">I Want My Greeting in a Window!</a></li><li><a href="hello/interactive.html">Interactive Pike</a></li></ul></li><li><a href="fundamentals/index.html">Fundamental Concepts</a><ul><li><a href="fundamentals/index.html">Terminology / Glossary</a></li></ul></li><li><a href="browser/index.html">Your Second Pike Program</a><ul><li><a href="browser/index.html">The Bare Bones</a></li><li><a href="browser/invocation.html">Running the Program</a></li><li><a href="browser/arguments_and_if.html">Command-line Arguments and if</a></li><li><a href="browser/methods_and_loops.html">Methods and Loops</a></li><li><a href="browser/fetching_the_page.html">Magic Web Stuff</a></li><li><a href="browser/convenient_syntax.html">Syntactic Sugar</a></li><li><a href="browser/show_page.html">Showing the Page</a></li><li><a href="browser/about_www.html">Some Notes About WWW</a></li></ul></li><li><a href="data_types/index.html">An Introduction to Data Types</a><ul><li><a href="data_types/index.html">What is a data type?</a></li><li><a href="data_types/basic_types.html">Basic Types</a></li><li><a href="data_types/container_types.html">Container Types</a></li><li><a href="data_types/other_types.html">Object, Program and Function</a></li><li><a href="data_types/variable_definitions.html">Variable Definitions</a></li><li><a href="data_types/reference_types.html">Basic Types and Reference Types</a></li></ul></li><li><a href="methods/index.html">Methods</a><ul><li><a href="methods/index.html">An Introduction</a></li><li><a href="methods/invocation.html">Calling a method</a></li><li><a href="methods/advanced.html">More Advanced Examples</a></li></ul></li><li><a href="oop/index.html">Object-Oriented Programming</a><ul><li><a href="oop/index.html">Object Orientation in General</a></li><li><a href="oop/oo_in_pike.html">Object Orientation in Pike</a></li><li><a href="oop/creation_and_usage.html">Creating and Using Objects</a></li><li><a href="oop/create.html">How to Create a Class</a></li><li><a href="oop/grouping_data.html">Classes as Record Types</a></li><li><a href="oop/programs.html">Programs are Classes and Vice Versa</a></li><li><a href="oop/inheritance.html">Inheritance</a></li><li><a href="oop/multiple_inheritance.html">Multiple Inheritance</a></li><li><a href="oop/access_control.html">Access control</a></li></ul></li><li><a href="statements/index.html">Statements</a><ul><li><a href="statements/index.html">Choosing between Alternatives</a></li><li><a href="statements/loops.html">Repetition (or &quot;Loops&quot;)</a></li><li><a href="statements/others.html">Other Statement Types</a></li></ul></li><li><a href="data_types_2/index.html">More About Data Types</a><ul><li><a href="data_types_2/index.html">The Basic Types</a></li><li><a href="data_types_2/container_types.html">Container Types</a></li><li><a href="data_types_2/other_types.html">The Other Reference Types</a></li></ul></li><li><a href="strings/index.html">Working with Strings</a><ul><li><a href="strings/index.html">Operators on Strings</a></li><li><a href="strings/builtins.html">Built-in Functions for Strings</a></li><li><a href="strings/sprintf.html">Composing Strings with sprintf</a></li><li><a href="strings/sscanf.html">Analyzing Strings with sscanf</a></li><li><a href="strings/widestrings.html">Wide Strings</a></li></ul></li><li><a href="expressions/index.html">Expressions</a><ul><li><a href="expressions/index.html">Some Terminology</a></li><li><a href="expressions/arithmetics.html">Arithmetical Operations</a></li><li><a href="expressions/complex_types.html">Operations on Complex Types</a></li><li><a href="expressions/comparison.html">Comparison</a></li><li><a href="expressions/logical.html">Logical Expressions</a></li><li><a href="expressions/bitwise.html">Bitwise Operations</a></li><li><a href="expressions/set_operations.html">Operations on Sets</a></li><li><a href="expressions/indexing.html">Indexing</a></li><li><a href="expressions/assignment.html">Assignment</a></li><li><a href="expressions/casting.html">Type Conversions</a></li><li><a href="expressions/comma.html">The Comma Operator</a></li><li><a href="expressions/call_and_splice.html">Call and Splice</a></li><li><a href="expressions/operator_tables.html">Operator Precedence and Associativity</a></li></ul></li><li><a href="preprocessor/index.html">The Preprocessor</a><ul><li><a href="preprocessor/index.html">Preprocessor Directives</a></li></ul></li><li><a href="modules/index.html">Modules</a><ul><li><a href="modules/index.html">Some Examples of Modules</a></li><li><a href="modules/usage.html">How Do You Use a Module?</a></li><li><a href="modules/creating.html">How Do You Create a Module?</a></li><li><a href="modules/resolving.html">How Does Pike Find the Modules?</a></li></ul></li><li><a href="error/index.html">Errors and Error Handling</a><ul><li><a href="error/index.html">Error Messages from Pike</a></li><li><a href="error/concept.html">Error Handling: the Concept</a></li><li><a href="error/detection.html">Detecting an Error</a></li><li><a href="error/handling.html">Handling the Error</a></li><li><a href="error/codes.html">Error Codes</a></li><li><a href="error/exceptions.html"><code>catch</code> and <code>throw</code></a></li></ul></li><li><a href="not_covered/index.html">Not Covered Here</a></li></ul></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

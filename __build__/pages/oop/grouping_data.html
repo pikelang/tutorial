@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Classes as Record Types</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,25 +71,23 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Classes as Record Types</h1>
-<p>Sometimes you just need to group a few values together. This is called a &quot;record&quot; in Pascal, and a &quot;struct&quot; in C. You can use Pike's <strong>class</strong> mechanism for this too. Just create a class with the data you are interested in:</p>
-<pre><code class="language-pike">class customer
-{
-  int number;
-  string name;
-  array(string) phone_numbers;
-}</code></pre>
-<p>Then use it:</p>
-<pre><code class="language-pike">array(customer) all_customers = ({ });
-customer c = customer();
-c-&gt;number = 18;
-c-&gt;name = "Ellen Ripley";
-c-&gt;phone_numbers = ({ "555-8767", "555-4001" });
-all_customers += ({ c });</code></pre></div>
+      <div class="container"><h1>Classes as Record Types</h1><p>Sometimes you just need to group a few values together. This is called a &quot;record&quot; in Pascal, and a &quot;struct&quot; in C. You can use Pike's <strong>class</strong> mechanism for this too. Just create a class with the data you are interested in:</p><pre><code class="language-pike"><span style='color:#006'><b>class</b></span>&#160;customer&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>int</b></span>&#160;number<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;name<span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span><span style='color:#09F'><b>string</b></span><span style='color:#00C'>)</span>&#160;phone_numbers<span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre><p>Then use it:</p><pre><code class="language-pike"><span style='color:#09F'><b>array</b></span><span style='color:#00C'>(</span>customer<span style='color:#00C'>)</span>&#160;all_customers&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+customer&#160;c&#160;<span style='color:#00C'>=</span>&#160;customer<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+c<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>number&#160;<span style='color:#00C'>=</span>&#160;<span style='color:purple'>18</span><span style='color:#00C'>;</span>&#160;&#160;
+c<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>name&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;Ellen&#160;Ripley&#34;</span><span style='color:#00C'>;</span>&#160;&#160;
+c<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>phone_numbers&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;<span style='color:#070'>&#34;555-8767&#34;</span><span style='color:#00C'>,</span>&#160;<span style='color:#070'>&#34;555-4001&#34;</span>&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+all_customers&#160;<span style='color:#00C'>+</span><span style='color:#00C'>=</span>&#160;<span style='color:#00C'>(</span><span style='color:#00C'>{</span>&#160;c&#160;<span style='color:#00C'>}</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

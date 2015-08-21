@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Reading this Tutorial</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,36 +71,18 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Reading this Tutorial</h1>
-<p>This tutorial gives an introduction to the language Pike. It is not a complete reference manual. It does not document the modules and libraries that come with the Pike distribution, except for what is necessary to explain the workings of the language itself. We also assume that Pike has already been installed on your computer. How to install Pike is explained elsewhere.</p>
-<p>The tutorial is mainly intended for people with at least some experience of programming, for example from writing some JavaScript on a web page, or trying to write CGI scripts on a web server in some language. We assume that you now have a need for, or just an interest in, using Pike. We also assume that you are willing to spend a few hours on reading this introduction. We recommend that you try to run the examples as you read them, since this will help your learning greatly.</p>
-<p>Even total beginners at programming will be able to understand much of what is said. If you have never programmed before it is nevertheless a good idea to read a book or tutorial intended for beginners. There are some general skills and ways of thinking that are needed to write good programs, and a language tutorial such as this one will not cover those in any depth.</p>
-<p>We have tried to make this tutorial platform-independent, meaning that it will not matter if you are using Pike under Linux, Solaris, Windows NT, or some other operating system.</p>
-<p>The following conventions for type faces are used:</p>
-<ul>
-<li><strong>Boldface</strong> is used for terms that have a special meaning. Example:
-<p>A <strong>7.3</strong>ble<strong> can be seen as a sort of box where you can store a value. It can also be used to show values, such as </strong>7.3**.</p></li>
-<li><code>Fixed size</code> is used for something that is copied verbatim from the computer. It can be parts of a program, or something printed by the computer, or something typed by the user. Example:
-<p>In Pike, the datatype integer is spelled <code>int</code>.</p></li>
-<li><em>Italics</em> can be used for emphasis, but also as a placeholder for other things. Example:
-<p>In Pike, you can define a variable with &quot;<em>datatype</em> <em>datatype</em>where you replace <em>datatype</em>h the name of the variable, and <em>datatype</em> with its type.</p></li>
-<li>A bordered section of fixed-size text represents an interactive session, where user input is prefixed with a <code>&gt;</code> prompt. The rest of the session's text is program output:</li>
-</ul>
-<pre><code>Hello, professor.
+      <div class="container"><h1>Reading this Tutorial</h1><p>This tutorial gives an introduction to the language Pike. It is not a complete reference manual. It does not document the modules and libraries that come with the Pike distribution, except for what is necessary to explain the workings of the language itself. We also assume that Pike has already been installed on your computer. How to install Pike is explained elsewhere.</p><p>The tutorial is mainly intended for people with at least some experience of programming, for example from writing some JavaScript on a web page, or trying to write CGI scripts on a web server in some language. We assume that you now have a need for, or just an interest in, using Pike. We also assume that you are willing to spend a few hours on reading this introduction. We recommend that you try to run the examples as you read them, since this will help your learning greatly.</p><p>Even total beginners at programming will be able to understand much of what is said. If you have never programmed before it is nevertheless a good idea to read a book or tutorial intended for beginners. There are some general skills and ways of thinking that are needed to write good programs, and a language tutorial such as this one will not cover those in any depth.</p><p>We have tried to make this tutorial platform-independent, meaning that it will not matter if you are using Pike under Linux, Solaris, Windows NT, or some other operating system.</p><p>The following conventions for type faces are used:</p><ul><li><strong>Boldface</strong> is used for terms that have a special meaning. Example:<p>A <strong>7.3</strong>ble<strong> can be seen as a sort of box where you can store a value. It can also be used to show values, such as </strong>7.3**.</p></li><li><code class="language-pike">Fixed size</code> is used for something that is copied verbatim from the computer. It can be parts of a program, or something printed by the computer, or something typed by the user. Example:<p>In Pike, the datatype integer is spelled <code class="language-pike">int</code>.</p></li><li><em>Italics</em> can be used for emphasis, but also as a placeholder for other things. Example:<p>In Pike, you can define a variable with &quot;<em>datatype</em> <em>datatype</em>where you replace <em>datatype</em>h the name of the variable, and <em>datatype</em> with its type.</p></li><li>A bordered section of fixed-size text represents an interactive session, where user input is prefixed with a <code class="language-pike">&gt;</code> prompt. The rest of the session's text is program output:</li></ul><pre><code class="language-pike">Hello, professor.
 I see you brought the keys to the ferarri.
 &gt; run project 21
-Warming up particle accelerator...</code></pre>
-<ul>
-<li>A bordered section of fixed-size, syntax-highlighted text represents pike code. Sometimes changes are highlighted with an end-of-line comment:</li>
-</ul>
-<pre><code class="language-pike">void example()
-{
-  write("Hello!\n"); // This line was changed from the previous example
-}</code></pre></div>
+Warming up particle accelerator...</code></pre><ul><li>A bordered section of fixed-size, syntax-highlighted text represents pike code. Sometimes changes are highlighted with an end-of-line comment:</li></ul><pre><code class="language-pike"><span style='color:#09F'><b>void</b></span>&#160;example<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#818A9E'>//&#160;This&#160;line&#160;was&#160;changed&#160;from&#160;the&#160;previous&#160;example</span>&#160;
+<span style='color:#00C'>}</span>&#160;
+</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

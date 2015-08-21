@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>An Introduction to Data Types</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,20 +71,12 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>An Introduction to Data Types</h1>
-<h2>What is a data type?</h2>
-<p>Pike works with <strong>string</strong>ms<strong> in a Pike program, we write <code>int</code>. For the type </strong><strong> in a Pike program, we write <code>int</code>. For the type </strong> world!&quot;<code>. Each data item has, or "is", a certain type: **17** and **-4717** both have the type **integer**, and</code>&quot;Hello world!&quot;<code>has the type **string**. If we want to refer to the data type **integer** in a Pike program, we write</code>int<code>. For the type **string**, we write</code>string`.</p>
-<p>Each variable, method, and method parameter also has a type. The types of these determines which data items you can put in the variable, return from the method, or use as arguments to the method. An integer variable, created with</p>
-<pre><code class="language-pike">int i;</code></pre>
-<p>can only contain integer values. If we try to put something else, such as a string, in this variable, Pike will try to discover the discrepancy and complain about it. This is called <strong>type checking</strong>.</p>
-<p><code>string</code> and <code>int</code> are <strong>classes</strong>types<strong> in Pike. You can also create your own data types, or </strong>classes**. We have already seen some examples of this, for example the class <code>Query</code>, which is part of the module <code>Protocols.HTTP</code>, and which is used to contain the data we get when we retrieve a page from the World Wide Web.</p>
-<p>We will examine each individual data type in some detail in a later chapter, but this chapter will give an introduction to data types in general.</p>
-<h2>Different Kinds of Types</h2>
-<p>The data types in Pike can be divided into three categories: the <strong>container types</strong>nt<code>,</code>float<code>, and</code>string<code>), the **container types** (</code>array<code>,</code>mapping<code>,</code>multiset<code>), and then the three types</code>program<code>,</code>object<code>and</code>function`. We will start by looking at the basic types.</p></div>
+      <div class="container"><h1>An Introduction to Data Types</h1><h1>What is a data type?</h1><p>Pike works with <strong>string</strong>ms<strong> in a Pike program, we write <code class="language-pike">int</code>. For the type </strong><strong> in a Pike program, we write <code class="language-pike">int</code>. For the type </strong> world!&quot;<code class="language-pike">. Each data item has, or "is", a certain type: **17** and **-4717** both have the type **integer**, and</code>&quot;Hello world!&quot;<code class="language-pike">has the type **string**. If we want to refer to the data type **integer** in a Pike program, we write</code>int<code class="language-pike">. For the type **string**, we write</code>string`.</p><p>Each variable, method, and method parameter also has a type. The types of these determines which data items you can put in the variable, return from the method, or use as arguments to the method. An integer variable, created with</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;i<span style='color:#00C'>;</span>&#160;
+</code></pre><p>can only contain integer values. If we try to put something else, such as a string, in this variable, Pike will try to discover the discrepancy and complain about it. This is called <strong>type checking</strong>.</p><p><code class="language-pike">string</code> and <code class="language-pike">int</code> are <strong>classes</strong>types<strong> in Pike. You can also create your own data types, or </strong>classes**. We have already seen some examples of this, for example the class <code class="language-pike">Query</code>, which is part of the module <code class="language-pike">Protocols.HTTP</code>, and which is used to contain the data we get when we retrieve a page from the World Wide Web.</p><p>We will examine each individual data type in some detail in a later chapter, but this chapter will give an introduction to data types in general.</p><h2>Different Kinds of Types</h2><p>The data types in Pike can be divided into three categories: the <strong>container types</strong>nt<code class="language-pike">,</code>float<code class="language-pike">, and</code>string<code class="language-pike">), the **container types** (</code>array<code class="language-pike">,</code>mapping<code class="language-pike">,</code>multiset<code class="language-pike">), and then the three types</code>program<code class="language-pike">,</code>object<code class="language-pike">and</code>function`. We will start by looking at the basic types.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Your Second Pike Program</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,48 +71,31 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Your Second Pike Program</h1>
-<p>Your first Pike program, which was examined above in this tutorial, was a program that printed &quot;Hello world!&quot; on the screen. Your second Pike program will be a World Wide Web browser, just like Firefox, Google Chrome, Safari or Internet Explorer.</p>
-<p>Well, perhaps not <em>just</em> like those; those are all very large programs, and our browser will be a very small one. We will just make it advanced enough to connect to a World Wide Web server, download a web page, and then display its markup on the screen.</p>
-<p>We start by creating a file, for example called <code>webbrowser.pike</code>:</p>
-<pre><code class="language-pike">// The Very Simple World Wide Web Browser
-
-int main()
-{
-  write("Welcome to the Very Simple WWW Browser!\n");
-  return 0;
-} // main</code></pre>
-<p>This is almost the same program as the &quot;hello world&quot; program. The only difference is that it prints something else, and that we have added some <strong>comments</strong>. Two &quot;slash&quot; characters (<code>//</code>) means that the rest of the line is a comment. Comments are ignored by Pike, and are intended for humans who read your program.</p>
-<p>Pike has another type of comments, which start with <code>/*</code> and end with <code>*/</code>. Such comments can span several lines:</p>
-<pre><code class="language-pike">/*
-This is also a comment.
-For example, you can "comment out" parts
-of your program with this type of comment,
-so Pike doesn't run those parts.
-*/</code></pre>
-<h2>Variables</h2>
-<p>The web browser must be told which web page it should download and display. As you may know, the &quot;addresses&quot; to web pages are called URLs (Uniform Resource Locators), and they look like <code>pike.lysator.liu.se</code> or <code>http://pike.lysator.liu.se/</code> (where the second form is correct, but the first one usually works too).</p>
-<p>We add some code that lets the user type a URL, stores that URL in a variable, and also prints it on the screen as confirmation. The new additions are commented with numbers, described further below:</p>
-<pre><code class="language-pike">// The Very Simple World Wide Web Browser
-
-int main()
-{
-  write("Welcome to the Very Simple WWW Browser!\n");
-  string url; // 1
-  write("Type the address of the web page:\n");
-  url = Stdio.stdin-&gt;gets(); // 2
-  write("URL: " + url + "\n"); // 3
-  return 0;
-} // main</code></pre>
-<p>There are four new things here:</p>
-<ol>
-<li>We create a <strong>define</strong><strong> with the name <code>url</code>. This is called to </strong>define** a variable. The variable has the type <code>string</code>, which means that we an use it to store strings in. A string is a sequence of characters.</li>
-<li><code>Stdio.stdin-&gt;gets()</code> is used to let the user type some text on the keyboard. When the user hits the return key, the text is returned as a string. (<code>Stdio.stdin-&gt;gets()</code> calls the method <code>gets</code> in the object <code>stdin</code> from the module <code>Stdio</code>, but you don't need to worry about that just yet.)
-<p>We take that string, and store it in the variable. This is called <strong>assign</strong>nt<strong>, or to </strong>assign** a value to the variable.</p></li>
-<li>In the last line with <code>write</code>, we add three strings together: <code>"URL: " + url + "\n"</code></li>
-</ol>
-<p>When we run the program, it may look something like this. The user's commands and input are shown after the <code>&gt;</code> prompts:</p>
-<pre><code>&gt; pike webbrowser.pike
+      <div class="container"><h1>Your Second Pike Program</h1><p>Your first Pike program, which was examined above in this tutorial, was a program that printed &quot;Hello world!&quot; on the screen. Your second Pike program will be a World Wide Web browser, just like Firefox, Google Chrome, Safari or Internet Explorer.</p><p>Well, perhaps not <em>just</em> like those; those are all very large programs, and our browser will be a very small one. We will just make it advanced enough to connect to a World Wide Web server, download a web page, and then display its markup on the screen.</p><p>We start by creating a file, for example called <code class="language-pike">webbrowser.pike</code>:</p><pre><code class="language-pike"><span style='color:#818A9E'>//&#160;The&#160;Very&#160;Simple&#160;World&#160;Wide&#160;Web&#160;Browser</span>&#160;
+&#160;&#160;
+<span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Welcome&#160;to&#160;the&#160;Very&#160;Simple&#160;WWW&#160;Browser!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;main</span>&#160;
+</code></pre><p>This is almost the same program as the &quot;hello world&quot; program. The only difference is that it prints something else, and that we have added some <strong>comments</strong>. Two &quot;slash&quot; characters (<code class="language-pike">//</code>) means that the rest of the line is a comment. Comments are ignored by Pike, and are intended for humans who read your program.</p><p>Pike has another type of comments, which start with <code class="language-pike">/*</code> and end with <code class="language-pike">*/</code>. Such comments can span several lines:</p><pre><code class="language-pike"><span style='color:#818A9E'>/*</span>&#160;
+<span style='color:#818A9E'>This&#160;is&#160;also&#160;a&#160;comment.</span>&#160;
+<span style='color:#818A9E'>For&#160;example,&#160;you&#160;can&#160;&#34;comment&#160;out&#34;&#160;parts</span>&#160;
+<span style='color:#818A9E'>of&#160;your&#160;program&#160;with&#160;this&#160;type&#160;of&#160;comment,</span>&#160;
+<span style='color:#818A9E'>so&#160;Pike&#160;doesn&#39;t&#160;run&#160;those&#160;parts.</span>&#160;
+<span style='color:#818A9E'>*/</span>&#160;
+</code></pre><h2>Variables</h2><p>The web browser must be told which web page it should download and display. As you may know, the &quot;addresses&quot; to web pages are called URLs (Uniform Resource Locators), and they look like <code class="language-pike">pike.lysator.liu.se</code> or <code class="language-pike">http://pike.lysator.liu.se/</code> (where the second form is correct, but the first one usually works too).</p><p>We add some code that lets the user type a URL, stores that URL in a variable, and also prints it on the screen as confirmation. The new additions are commented with numbers, described further below:</p><pre><code class="language-pike"><span style='color:#818A9E'>//&#160;The&#160;Very&#160;Simple&#160;World&#160;Wide&#160;Web&#160;Browser</span>&#160;
+&#160;&#160;
+<span style='color:#09F'><b>int</b></span>&#160;main<span style='color:#00C'>(</span><span style='color:#00C'>)</span>&#160;&#160;
+<span style='color:#00C'>{</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Welcome&#160;to&#160;the&#160;Very&#160;Simple&#160;WWW&#160;Browser!\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;<span style='color:#09F'><b>string</b></span>&#160;url<span style='color:#00C'>;</span>&#160;<span style='color:#818A9E'>//&#160;1</span>&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Type&#160;the&#160;address&#160;of&#160;the&#160;web&#160;page:\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+&#160;&#160;url&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#909'><b>Stdio</b></span><span style='color:#00C'>.</span>stdin<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>gets<span style='color:#00C'>(</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#818A9E'>//&#160;2</span>&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;URL:&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;url&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;<span style='color:#818A9E'>//&#160;3</span>&#160;
+&#160;&#160;<span style='color:#006'><b>return</b></span>&#160;<span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#00C'>}</span>&#160;<span style='color:#818A9E'>//&#160;main</span>&#160;
+</code></pre><p>There are four new things here:</p><ol><li>We create a <strong>define</strong><strong> with the name <code class="language-pike">url</code>. This is called to </strong>define** a variable. The variable has the type <code class="language-pike">string</code>, which means that we an use it to store strings in. A string is a sequence of characters.</li><li><code class="language-pike">Stdio.stdin-&gt;gets()</code> is used to let the user type some text on the keyboard. When the user hits the return key, the text is returned as a string. (<code class="language-pike">Stdio.stdin-&gt;gets()</code> calls the method <code class="language-pike">gets</code> in the object <code class="language-pike">stdin</code> from the module <code class="language-pike">Stdio</code>, but you don't need to worry about that just yet.)<p>We take that string, and store it in the variable. This is called <strong>assign</strong>nt<strong>, or to </strong>assign** a value to the variable.</p></li><li>In the last line with <code class="language-pike">write</code>, we add three strings together: <code class="language-pike">"URL: " + url + "\n"</code></li></ol><p>When we run the program, it may look something like this. The user's commands and input are shown after the <code class="language-pike">&gt;</code> prompts:</p><pre><code class="language-pike">&gt; pike webbrowser.pike
 Welcome to the Very Simple WWW Browser!
 Type the address of the web page:
 &gt; http://pike.ida.liu.se/
@@ -60,7 +103,7 @@ URL: http://pike.ida.liu.se/</code></pre></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

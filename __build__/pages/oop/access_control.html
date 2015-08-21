@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Access control</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,33 +71,14 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Access control</h1>
-<p>Do you remember about <strong>information hiding</strong>? In the examples above, everyone could access all the methods and member variables in all objects. For example, it is very easy to lose weight:</p>
-<pre><code class="language-pike">h-&gt;weight -= 10.0;</code></pre>
-<p>Oh? The hamster only weighed 0.12, and now it weighs <em>minus</em> 9.88?</p>
-<p>We would like to control the access to the member variable <code>weight</code>, so that other classes cannot touch it. For uses like this, there are a number of <strong>access modifiers</strong>, which are written before the data type in the definition of a method or member variable. For example, the weight of an animal is represented by the member variable <code>weight</code>, defined as:</p>
-<pre><code class="language-pike">float weight;</code></pre>
-<p>By changing that to</p>
-<pre><code class="language-pike">private float weight;</code></pre>
-<p>we only allow methods in the same class to access that variable.</p>
-<p>The following access modifiers exist:</p>
-<ul>
-<li><code>public</code>
-<p>This is the default, and means that any method can access the member variable, or call the method.</p></li>
-<li><code>private</code>
-<p>This means that the member variable or method is only available to methods in the same class.</p></li>
-<li><code>static</code>
-<p>This means that this member variable or method is only available to methods in the same class, and in subclasses (<code>static</code> in Pike does not at all mean the same thing as <code>static</code> in C++: instead, it is similar to <code>protected</code> in C++).</p></li>
-<li><code>local</code>
-<p>This means that even if this method is overridden by a method in a subclass, methods in this class will still use this method.</p></li>
-<li><code>final</code>
-<p>This prevents subclasses from re-defining this method.</p></li>
-</ul>
-<p>If a class has a constructor (that is, a method called <code>create</code>) it can be a good idea to declare it <code>static</code>. It is not supposed to be called except during the construction of the object, and if it is not <code>static</code> there may be some type incompatibilities in connection with inheritance.</p></div>
+      <div class="container"><h1>Access control</h1><p>Do you remember about <strong>information hiding</strong>? In the examples above, everyone could access all the methods and member variables in all objects. For example, it is very easy to lose weight:</p><pre><code class="language-pike">h<span style='color:#00C'>-</span><span style='color:#00C'>&#62;</span>weight&#160;<span style='color:#00C'>-</span><span style='color:#00C'>=</span>&#160;<span style='color:purple'>10</span><span style='color:#00C'>.</span><span style='color:purple'>0</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>Oh? The hamster only weighed 0.12, and now it weighs <em>minus</em> 9.88?</p><p>We would like to control the access to the member variable <code class="language-pike">weight</code>, so that other classes cannot touch it. For uses like this, there are a number of <strong>access modifiers</strong>, which are written before the data type in the definition of a method or member variable. For example, the weight of an animal is represented by the member variable <code class="language-pike">weight</code>, defined as:</p><pre><code class="language-pike"><span style='color:#09F'><b>float</b></span>&#160;weight<span style='color:#00C'>;</span>&#160;
+</code></pre><p>By changing that to</p><pre><code class="language-pike"><span style='color:#006'><b>private</b></span>&#160;<span style='color:#09F'><b>float</b></span>&#160;weight<span style='color:#00C'>;</span>&#160;
+</code></pre><p>we only allow methods in the same class to access that variable.</p><p>The following access modifiers exist:</p><ul><li><code class="language-pike">public</code><p>This is the default, and means that any method can access the member variable, or call the method.</p></li><li><code class="language-pike">private</code><p>This means that the member variable or method is only available to methods in the same class.</p></li><li><code class="language-pike">static</code><p>This means that this member variable or method is only available to methods in the same class, and in subclasses (<code class="language-pike">static</code> in Pike does not at all mean the same thing as <code class="language-pike">static</code> in C++: instead, it is similar to <code class="language-pike">protected</code> in C++).</p></li><li><code class="language-pike">local</code><p>This means that even if this method is overridden by a method in a subclass, methods in this class will still use this method.</p></li><li><code class="language-pike">final</code><p>This prevents subclasses from re-defining this method.</p></li></ul><p>If a class has a constructor (that is, a method called <code class="language-pike">create</code>) it can be a good idea to declare it <code class="language-pike">static</code>. It is not supposed to be called except during the construction of the object, and if it is not <code class="language-pike">static</code> there may be some type incompatibilities in connection with inheritance.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

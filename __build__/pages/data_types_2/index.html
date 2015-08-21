@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>More About Data Types</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,105 +71,37 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>More About Data Types</h1>
-<h1>The Basic Types</h1>
-<p>These are the <strong>basic types</strong> in Pike:</p>
-<ul>
-<li>integer (written <code>int</code> in Pike)</li>
-<li>floating-point number (written <code>float</code>)</li>
-<li>string (written <code>string</code>)</li>
-</ul>
-<p>They are basic in the sense that data items of these data types can't contain other data items. When a data item of a basic type is stored in a variable, it is the data item itself that is stored, and not just a reference to it, as explained earlier.</p>
-<h2>The Data Type <code>int</code></h2>
-<p>Integer values can be written in several ways:</p>
-<ul>
-<li>In decimal (that is, base 10) format, i e the normal way to write numbers, such as <code>78</code>.</li>
-<li>In octal (that is, base 8) format, with a leading <code>0</code>, such as <code>0116</code> (which is equal to <code>78</code> in decimal notation).</li>
-<li>In hexadecimal (that is, base 16) format, with a leading <code>0x</code>, such as <code>0x4e</code> (which is also equal to <code>78</code> in decimal notation).</li>
-<li>In binary (ones and zeroes) format, with aleading <code>0b</code>, such as <code>0b1001110</code> (which again is equal to <code>78</code> in decimal notation).</li>
-<li>As a character literal within single quotes, which will give the Unicode code point for that character. For example, <code>'N'</code> will give the code point for the character <strong>N</strong> (which is equal to <code>78</code>).</li>
-</ul>
-<p>You can use normal arithmetic operations, such as addition and multiplication, with integers, but you can also consider integers as sequences of bits and, apply bitwise operations on them.</p>
-<p>For example, the integer value <strong>1976</strong>is stored internally as the sequence of bits <strong>1976</strong>11<strong>, which is equal to </strong>hift it three positions with the expression <code>247 &lt;&lt; 3</code>, giving the bit pattern <strong>1976</strong>11000<strong>, which is equal to </strong>1976**.</p>
-<p>Integers in Pike can be very large. For small integers (usually less than 2 billion or so), Pike will use the computer's own, hardware-supported way of representing integers. For larger integers, Pike will use &quot;bignums&quot;. These are slower, but can be arbitrarily large. Just like the smaller integers, bignums are represented exactly, without any rounding errors.</p>
-<p>As a programmer, you will usually not need to worry about the difference between bignums and smaller integers. There may however be some operations, for example certain methods in certain C modules, that cannot handle bignums but work with smaller integers.</p>
-<p>Some operations that you can apply to integers:</p>
-<ul>
-<li><strong>Check if it is an integer</strong>
-<p><code>intp(*something*)</code> returns <strong>0</strong> if the value <em>something</em> is an integer, otherwise <strong>0</strong>. Example:</p>
-<pre><code class="language-pike">if (intp(u))
-write("The integer is " + u + ".\n");
-else
-write("It is not an integer.\n");</code></pre></li>
-<li><strong>Get a random number</strong>
-<p><code>random(*limit*)</code> returns a random value which is greater or equal to <strong>0</strong> and less than the integer <em>limit</em>.</p></li>
-<li><strong>Reverse the bits</strong>
-<p><code>reverse(*integer-value*)</code> returns an integer with the bits in the <em>integer-value</em> in reverse order.</p></li>
-</ul>
-<h2>The Data Type <code>float</code></h2>
-<p>Real numbers, which are numbers that can have a fractional part, such as <strong>floating-point numbers</strong>, are represented in the computer as <strong>floating-point numbers</strong>. Floating-point numbers can be used to represent very large numbers, but with limited precision. The number of significant digits is the same, no matter the magnitude of the value.</p>
-<p>You can write floating-point values in two ways, as usual with decimals, or in exponential form with an <code>e</code>:</p>
-<pre><code class="language-pike">3.1415926535
--123.0001
-12.0
-1e6 // 1 times 10 to the power of 6, i e one million
-2.0e-6 // 2.0 times 10 to the power of -6, i e two one-millionths
--1.0e-2 // Minus one hundredth</code></pre>
-<p>Some operations that you can apply to floating-point numbers:</p>
-<ul>
-<li><strong>Check if it is a floating-point number</strong>
-<p><code>floatp(*something*)</code> returns <strong>0</strong> if the value <em>something</em> is a floating-point number, otherwise <strong>0</strong>.</p></li>
-<li><strong>Round downwards</strong>
-<p><code>floor(*float-value*)</code> returns the largest integer that is less than or equal to <em>float-value</em>, but as a floating-point number. For example, <code>floor(7.3)</code> gives <strong>7</strong><strong>). If you do want the integer value, you can use an explicit type conversion: <code>(int)7.3</code> gives you the integer </strong>3` gives you the integer <strong>7</strong>.</p></li>
-<li><strong>Round upwards</strong>
-<p><code>ceil(*float-value*)</code> returns the smallest integer that is greater than or equal to <em>float-value</em>, as a floating-point number. For example, <code>ceil(7.3)</code> gives <strong>8</strong><strong> (and not the integer </strong>8**).</p></li>
-</ul>
-<h2>The Data Type <code>string</code></h2>
-<p>Strings are sequences of characters, and are written within double quotes (<code>"</code>) in Pike:</p>
-<pre><code class="language-pike">"scorch"
-"Hello world!"
-"Woe to you, oh Earth and Sea"
-""</code></pre>
-<p>The last one is the empty string. Special characters, such as the double quote character, need to be preceded by a backslash character (<code>\</code>):</p>
-<ul>
-<li><code>\"</code> to get a double quote (<code>"</code>) in the string</li>
-<li><code>\\</code> to get a backslash character (<code>\</code>)</li>
-<li><code>\n</code> to get a newline character</li>
-<li><code>\t</code> to get a tab character</li>
-<li><code>\r</code> to get a carriage return</li>
-<li><code>\0</code> to get a NUL character, i e the character with character code <strong>0</strong></li>
-</ul>
-<p>Here are some examples of strings:</p>
-<pre><code class="language-pike">"One line\nAnother line\nA third line"
-"Strings are written within \" characters."</code></pre>
-<p>You can use Unicode code points instead of the characters themselves. If you write <code>\d</code> followed by a decimal (that is, normal base 10) number, it will be replaced by the character with that Unicode code point. The same goes for <code>\x</code> followed by a hexadecimal (base 16) number, and a single <code>\</code> followed by an octal (that is, base 8) number. The <code>\0</code> is actually an example of this. These four strings are identical:</p>
-<pre><code class="language-pike">"Hello world"
-"Hello \d119orld"
-"Hello \x77orld"
-"Hello \167orld"
-"\d78""2OH" // "N2OH"</code></pre>
-<p>If the character following your code point number is also a number, follow your code point with <code>""</code>, to tell Pike that this was the end of your code point, and the following &quot;2&quot; is its own character, not another digit of the code point.</p>
-<p>Strings in Pike are what we call &quot;shared&quot;, which means that if two or more strings contain exactly the same characters, there will still be only one copy of it in memory.</p>
-<p>Some operations that you can apply to strings:</p>
-<ul>
-<li><strong>Check if it is a string</strong>
-<p><code>stringp(*something*)</code> returns <strong>0</strong> if the value <em>something</em> is a string, otherwise <strong>0</strong>.</p></li>
-<li><strong>Concatenation</strong>
-<p>Strings can be concatenated with the <code>+</code> operator:</p>
-<pre><code class="language-pike">string s1 = "Hello";
-string s2 = " ";
-string s3 = "world!";
-write(s1 + s2 + s3 + "\n");</code></pre></li>
-<li><strong>Concatenation of string literals</strong>
-<p><strong>String literals</strong>, who are strings within double quotes that are written in a program, can be concatenated by just putting them after each other:</p>
-<pre><code class="language-pike">write("Hello"  " "  "world!" + "\n");</code></pre>
-<p>(This is, incidentally, how the terminated numeric escapes above work under the hood.)</p></li>
-</ul>
-<p>Pike has many powerful built-in operations for working with strings. Read more about those in the chapter about string handling.</p></div>
+      <div class="container"><h1>More About Data Types</h1><h1>The Basic Types</h1><p>These are the <strong>basic types</strong> in Pike:</p><ul><li>integer (written <code class="language-pike">int</code> in Pike)</li><li>floating-point number (written <code class="language-pike">float</code>)</li><li>string (written <code class="language-pike">string</code>)</li></ul><p>They are basic in the sense that data items of these data types can't contain other data items. When a data item of a basic type is stored in a variable, it is the data item itself that is stored, and not just a reference to it, as explained earlier.</p><h2>The Data Type <code class="language-pike">int</code></h2><p>Integer values can be written in several ways:</p><ul><li>In decimal (that is, base 10) format, i e the normal way to write numbers, such as <code class="language-pike">78</code>.</li><li>In octal (that is, base 8) format, with a leading <code class="language-pike">0</code>, such as <code class="language-pike">0116</code> (which is equal to <code class="language-pike">78</code> in decimal notation).</li><li>In hexadecimal (that is, base 16) format, with a leading <code class="language-pike">0x</code>, such as <code class="language-pike">0x4e</code> (which is also equal to <code class="language-pike">78</code> in decimal notation).</li><li>In binary (ones and zeroes) format, with aleading <code class="language-pike">0b</code>, such as <code class="language-pike">0b1001110</code> (which again is equal to <code class="language-pike">78</code> in decimal notation).</li><li>As a character literal within single quotes, which will give the Unicode code point for that character. For example, <code class="language-pike">'N'</code> will give the code point for the character <strong>N</strong> (which is equal to <code class="language-pike">78</code>).</li></ul><p>You can use normal arithmetic operations, such as addition and multiplication, with integers, but you can also consider integers as sequences of bits and, apply bitwise operations on them.</p><p>For example, the integer value <strong>1976</strong>is stored internally as the sequence of bits <strong>1976</strong>11<strong>, which is equal to </strong>hift it three positions with the expression <code class="language-pike">247 &lt;&lt; 3</code>, giving the bit pattern <strong>1976</strong>11000<strong>, which is equal to </strong>1976**.</p><p>Integers in Pike can be very large. For small integers (usually less than 2 billion or so), Pike will use the computer's own, hardware-supported way of representing integers. For larger integers, Pike will use &quot;bignums&quot;. These are slower, but can be arbitrarily large. Just like the smaller integers, bignums are represented exactly, without any rounding errors.</p><p>As a programmer, you will usually not need to worry about the difference between bignums and smaller integers. There may however be some operations, for example certain methods in certain C modules, that cannot handle bignums but work with smaller integers.</p><p>Some operations that you can apply to integers:</p><ul><li><strong>Check if it is an integer</strong><p><code class="language-pike">intp(*something*)</code> returns <strong>0</strong> if the value <em>something</em> is an integer, otherwise <strong>0</strong>. Example:</p><pre><code class="language-pike"><span style='color:#006'><b>if</b></span>&#160;<span style='color:#00C'>(</span><span style='color:#C00'>intp</span><span style='color:#00C'>(</span>u<span style='color:#00C'>)</span><span style='color:#00C'>)</span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;The&#160;integer&#160;is&#160;&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;u&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#006'><b>else</b></span>&#160;&#160;
+&#160;&#160;<span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;It&#160;is&#160;not&#160;an&#160;integer.\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre></li><li><strong>Get a random number</strong><p><code class="language-pike">random(*limit*)</code> returns a random value which is greater or equal to <strong>0</strong> and less than the integer <em>limit</em>.</p></li><li><strong>Reverse the bits</strong><p><code class="language-pike">reverse(*integer-value*)</code> returns an integer with the bits in the <em>integer-value</em> in reverse order.</p></li></ul><h2>The Data Type <code class="language-pike">float</code></h2><p>Real numbers, which are numbers that can have a fractional part, such as <strong>floating-point numbers</strong>, are represented in the computer as <strong>floating-point numbers</strong>. Floating-point numbers can be used to represent very large numbers, but with limited precision. The number of significant digits is the same, no matter the magnitude of the value.</p><p>You can write floating-point values in two ways, as usual with decimals, or in exponential form with an <code class="language-pike">e</code>:</p><pre><code class="language-pike"><span style='color:purple'>3</span><span style='color:#00C'>.</span><span style='color:purple'>1415926535</span>&#160;&#160;
+<span style='color:#00C'>-</span><span style='color:purple'>123</span><span style='color:#00C'>.</span><span style='color:purple'>0001</span>&#160;&#160;
+<span style='color:purple'>12</span><span style='color:#00C'>.</span><span style='color:purple'>0</span>&#160;&#160;
+<span style='color:purple'>1e6</span>&#160;<span style='color:#818A9E'>//&#160;1&#160;times&#160;10&#160;to&#160;the&#160;power&#160;of&#160;6,&#160;i&#160;e&#160;one&#160;million</span>&#160;
+<span style='color:purple'>2</span><span style='color:#00C'>.</span>0e<span style='color:#00C'>-</span><span style='color:purple'>6</span>&#160;<span style='color:#818A9E'>//&#160;2.0&#160;times&#160;10&#160;to&#160;the&#160;power&#160;of&#160;-6,&#160;i&#160;e&#160;two&#160;one-millionths</span>&#160;
+<span style='color:#00C'>-</span><span style='color:purple'>1</span><span style='color:#00C'>.</span>0e<span style='color:#00C'>-</span><span style='color:purple'>2</span>&#160;<span style='color:#818A9E'>//&#160;Minus&#160;one&#160;hundredth</span>&#160;
+</code></pre><p>Some operations that you can apply to floating-point numbers:</p><ul><li><strong>Check if it is a floating-point number</strong><p><code class="language-pike">floatp(*something*)</code> returns <strong>0</strong> if the value <em>something</em> is a floating-point number, otherwise <strong>0</strong>.</p></li><li><strong>Round downwards</strong><p><code class="language-pike">floor(*float-value*)</code> returns the largest integer that is less than or equal to <em>float-value</em>, but as a floating-point number. For example, <code class="language-pike">floor(7.3)</code> gives <strong>7</strong><strong>). If you do want the integer value, you can use an explicit type conversion: <code class="language-pike">(int)7.3</code> gives you the integer </strong>3` gives you the integer <strong>7</strong>.</p></li><li><strong>Round upwards</strong><p><code class="language-pike">ceil(*float-value*)</code> returns the smallest integer that is greater than or equal to <em>float-value</em>, as a floating-point number. For example, <code class="language-pike">ceil(7.3)</code> gives <strong>8</strong><strong> (and not the integer </strong>8**).</p></li></ul><h2>The Data Type <code class="language-pike">string</code></h2><p>Strings are sequences of characters, and are written within double quotes (<code class="language-pike">"</code>) in Pike:</p><pre><code class="language-pike"><span style='color:#070'>&#34;scorch&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;Hello&#160;world!&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;Woe&#160;to&#160;you,&#160;oh&#160;Earth&#160;and&#160;Sea&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;&#34;</span>&#160;
+</code></pre><p>The last one is the empty string. Special characters, such as the double quote character, need to be preceded by a backslash character (<code class="language-pike">\</code>):</p><ul><li><code class="language-pike">\"</code> to get a double quote (<code class="language-pike">"</code>) in the string</li><li><code class="language-pike">\\</code> to get a backslash character (<code class="language-pike">\</code>)</li><li><code class="language-pike">\n</code> to get a newline character</li><li><code class="language-pike">\t</code> to get a tab character</li><li><code class="language-pike">\r</code> to get a carriage return</li><li><code class="language-pike">\0</code> to get a NUL character, i e the character with character code <strong>0</strong></li></ul><p>Here are some examples of strings:</p><pre><code class="language-pike"><span style='color:#070'>&#34;One&#160;line\nAnother&#160;line\nA&#160;third&#160;line&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;Strings&#160;are&#160;written&#160;within&#160;\&#34;&#160;characters.&#34;</span>&#160;
+</code></pre><p>You can use Unicode code points instead of the characters themselves. If you write <code class="language-pike">\d</code> followed by a decimal (that is, normal base 10) number, it will be replaced by the character with that Unicode code point. The same goes for <code class="language-pike">\x</code> followed by a hexadecimal (base 16) number, and a single <code class="language-pike">\</code> followed by an octal (that is, base 8) number. The <code class="language-pike">\0</code> is actually an example of this. These four strings are identical:</p><pre><code class="language-pike"><span style='color:#070'>&#34;Hello&#160;world&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;Hello&#160;\d119orld&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;Hello&#160;\x77orld&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;Hello&#160;\167orld&#34;</span>&#160;&#160;
+<span style='color:#070'>&#34;\d78&#34;</span><span style='color:#070'>&#34;2OH&#34;</span>&#160;<span style='color:#818A9E'>//&#160;&#34;N2OH&#34;</span>&#160;
+</code></pre><p>If the character following your code point number is also a number, follow your code point with <code class="language-pike">""</code>, to tell Pike that this was the end of your code point, and the following &quot;2&quot; is its own character, not another digit of the code point.</p><p>Strings in Pike are what we call &quot;shared&quot;, which means that if two or more strings contain exactly the same characters, there will still be only one copy of it in memory.</p><p>Some operations that you can apply to strings:</p><ul><li><strong>Check if it is a string</strong><p><code class="language-pike">stringp(*something*)</code> returns <strong>0</strong> if the value <em>something</em> is a string, otherwise <strong>0</strong>.</p></li><li><strong>Concatenation</strong><p>Strings can be concatenated with the <code class="language-pike">+</code> operator:</p><pre><code class="language-pike"><span style='color:#09F'><b>string</b></span>&#160;s1&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;Hello&#34;</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#09F'><b>string</b></span>&#160;s2&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;&#160;&#34;</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#09F'><b>string</b></span>&#160;s3&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#070'>&#34;world!&#34;</span><span style='color:#00C'>;</span>&#160;&#160;
+<span style='color:#C00'>write</span><span style='color:#00C'>(</span>s1&#160;<span style='color:#00C'>+</span>&#160;s2&#160;<span style='color:#00C'>+</span>&#160;s3&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre></li><li><strong>Concatenation of string literals</strong><p><strong>String literals</strong>, who are strings within double quotes that are written in a program, can be concatenated by just putting them after each other:</p><pre><code class="language-pike"><span style='color:#C00'>write</span><span style='color:#00C'>(</span><span style='color:#070'>&#34;Hello&#34;</span>&#160;&#160;<span style='color:#070'>&#34;&#160;&#34;</span>&#160;&#160;<span style='color:#070'>&#34;world!&#34;</span>&#160;<span style='color:#00C'>+</span>&#160;<span style='color:#070'>&#34;\n&#34;</span><span style='color:#00C'>)</span><span style='color:#00C'>;</span>&#160;
+</code></pre><p>(This is, incidentally, how the terminated numeric escapes above work under the hood.)</p></li></ul><p>Pike has many powerful built-in operations for working with strings. Read more about those in the chapter about string handling.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>

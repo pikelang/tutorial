@@ -3,6 +3,66 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>Basic Types</title>
+    <style>
+    body {
+      font: 16px/1.6 arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #066AB2;
+    }
+    header h1 {
+      color: white;
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    header .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    a { color: #066AB2; }
+    a:hover { color: #222; }
+
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 0; }
+    h1 + h2, h1 + h1, h2 + h2, h2 + h3 { margin-top: 0; }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+
+    .container > *:first-child {
+      margin-top: 0;
+    }
+
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    pre code {
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: block;
+      background: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    footer {
+      background: #222223;
+      color: #fff;
+    }
+    </style>
 	</head>
 	<body>
 	  <header>
@@ -11,22 +71,18 @@
       </div>
     </header>
     <section id="main">
-      <div class="container"><h1>Basic Types</h1>
-<p>We have already seen integers (<code>int</code>) and strings (<code>string</code>) being used in several examples, but the third basic type, <code>float</code>, is new. A <code>float</code>, also called a <strong>floating-point number</strong>oating-point number**, is different from an integer in that it can have a fraction part:</p>
-<pre><code class="language-pike">6.783   // This is a floating-point number
-17      // This is an integer
-17.0    // This is a floating-point number</code></pre>
-<p>Note that Pike differentiates between integer and floating-point numbers that happen to be equal to an integer. If you write <code>17</code> in a Pike program you get an integer, and if you write <code>17.0</code> you get a floating-point number. Inside the computer they look completely different.</p>
-<p>You can define variables like this:</p>
-<pre><code class="language-pike">int number_of_monkeys;  // An integer variable
-float z = -16.2;        // A floating-point variable
-string file_name;       // A string variable
-mixed x;                // A variable for anything</code></pre>
-<p>The data type <code>mixed</code> means &quot;any type of value&quot;.</p></div>
+      <div class="container"><h1>Basic Types</h1><p>We have already seen integers (<code class="language-pike">int</code>) and strings (<code class="language-pike">string</code>) being used in several examples, but the third basic type, <code class="language-pike">float</code>, is new. A <code class="language-pike">float</code>, also called a <strong>floating-point number</strong>oating-point number**, is different from an integer in that it can have a fraction part:</p><pre><code class="language-pike"><span style='color:purple'>6</span><span style='color:#00C'>.</span><span style='color:purple'>783</span>&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;This&#160;is&#160;a&#160;floating-point&#160;number</span>&#160;
+<span style='color:purple'>17</span>&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;This&#160;is&#160;an&#160;integer</span>&#160;
+<span style='color:purple'>17</span><span style='color:#00C'>.</span><span style='color:purple'>0</span>&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;This&#160;is&#160;a&#160;floating-point&#160;number</span>&#160;
+</code></pre><p>Note that Pike differentiates between integer and floating-point numbers that happen to be equal to an integer. If you write <code class="language-pike">17</code> in a Pike program you get an integer, and if you write <code class="language-pike">17.0</code> you get a floating-point number. Inside the computer they look completely different.</p><p>You can define variables like this:</p><pre><code class="language-pike"><span style='color:#09F'><b>int</b></span>&#160;number_of_monkeys<span style='color:#00C'>;</span>&#160;&#160;<span style='color:#818A9E'>//&#160;An&#160;integer&#160;variable</span>&#160;
+<span style='color:#09F'><b>float</b></span>&#160;z&#160;<span style='color:#00C'>=</span>&#160;<span style='color:#00C'>-</span><span style='color:purple'>16</span><span style='color:#00C'>.</span><span style='color:purple'>2</span><span style='color:#00C'>;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;A&#160;floating-point&#160;variable</span>&#160;
+<span style='color:#09F'><b>string</b></span>&#160;file_name<span style='color:#00C'>;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;A&#160;string&#160;variable</span>&#160;
+<span style='color:#09F'><b>mixed</b></span>&#160;x<span style='color:#00C'>;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style='color:#818A9E'>//&#160;A&#160;variable&#160;for&#160;anything</span>&#160;
+</code></pre><p>The data type <code class="language-pike">mixed</code> means &quot;any type of value&quot;.</p></div>
     </section>
     <footer>
       <div class="container">
-        2015-04-05 15:34
+        Generated: 2015-08-21 14:28
       </div>
     </footer>
 	</body>
