@@ -7,7 +7,7 @@ Just start Pike by giving the command `pike`,
 without any command line arguments.
 Then type a statement, for example:
 
-```
+```hilfe
 > pike
 Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
 > write("hello!\n");
@@ -16,7 +16,7 @@ Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
 Pike will then do what you told it to do,
 i e print "hello!" on a line:
 
-```
+```hilfe
 > pike
 Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
 > write("hello!\n");
@@ -27,7 +27,7 @@ Similar to `main`, the built-in function `write` returns a value,
 which happens to be the number of characters it has written.
 Interactive Pike will also show you this return value:
 
-```
+```hilfe
 > pike
 Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
 > write("hello!\n");
@@ -43,7 +43,7 @@ The one in parenthesis at the beginning of the line
 tells you that this is the first result in the session's history,
 if you want to refer to it in subsequent expressions.
 
-```
+```hilfe
 > pike
 Pike v8.0 release 28 running Hilfe v3.5 (Incremental Pike Frontend)
 > "hello";

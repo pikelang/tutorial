@@ -86,12 +86,12 @@ Some operations that you can apply to integers:
   otherwise **0**.
   Example:
 
-    ```pike
-    if (intp(u))
-      write("The integer is " + u + ".\n");
-    else
-      write("It is not an integer.\n");
-    ```
+  ```pike
+  if (intp(u))
+    write("The integer is " + u + ".\n");
+  else
+    write("It is not an integer.\n");
+  ```
 
 * **Get a random number**
 

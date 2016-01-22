@@ -57,7 +57,7 @@ Sometimes the term constant is used to include **literals** too.
 
 A literal is a value of some kind, written in the program.
 `"Hello"` is a string literal,
--678` is an integer literal,
+`-678` is an integer literal,
 and `({ 7, 8, 9 })` is an array literal.
 Sometimes the term **constant** is used to include literals too.
 
