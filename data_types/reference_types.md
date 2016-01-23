@@ -31,7 +31,7 @@ i1 = 5;
 If we could look inside the computer,
 this is what we would see:
 
-![referencesnot1](referencesnot1.gif)
+![referencesnot1](referencesnot1.png)
 
 *A non-reference variable*
 
@@ -46,7 +46,7 @@ i2 = i1;
 
 This is how it looks now:
 
-![referencesnot2](referencesnot2.gif)
+![referencesnot2](referencesnot2.png)
 
 *Two non-reference variables, before the change*
 
@@ -63,7 +63,7 @@ Well, again as expected,
 the value in the variable `i2` changes.
 The value in `i1` of course doesn't:
 
-![referencesnot3](referencesnot3.gif)
+![referencesnot3](referencesnot3.png)
 
 *Two non-reference variables, after the change*
 
@@ -89,7 +89,7 @@ a1 = ({ 19, 3, 5 });
 Inside the computer,
 it now looks like this:
 
-![references1](references1.gif)
+![references1](references1.png)
 
 *A reference variable*
 
@@ -125,7 +125,7 @@ Because of this,
 what gets stored in `a2` is a copy of the *reference*,
 not of the array:
 
-![references2](references2.gif)
+![references2](references2.png)
 
 *Two reference variables, before the change*
 
@@ -139,7 +139,7 @@ a2[2] = 17;
 
 what will change is the array pointed to by the reference in `a2`:
 
-![references3](references3.gif)
+![references3](references3.png)
 
 *Two reference variables, after the change*
 
@@ -162,7 +162,7 @@ a2 = copy_value(a1);
 This will create a copy of the array,
 and store a reference to that copy in `a2`:
 
-![references4](references4.gif)
+![references4](references4.png)
 
 *Two reference variables, pointing to different things*
 
