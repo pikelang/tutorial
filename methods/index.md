@@ -1,6 +1,6 @@
 # An Introduction
 
-# Methods
+## Methods
 
 Most programming languages allow you
 to divide your program into smaller parts.

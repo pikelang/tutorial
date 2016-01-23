@@ -1,6 +1,6 @@
 # Statements
 
-# Choosing between Alternatives
+## Choosing between Alternatives
 
 A program must sometimes make choices,
 choosing between different instructions to execute.
