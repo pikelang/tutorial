@@ -139,7 +139,7 @@ we could write a loop like this:
 
 ```pike
 string answer;
-write("Have you stopped beating your wife yet?\n");
+write("Do you like Pike programming?\n");
 do
 {
   write("Answer yes or no: ");
