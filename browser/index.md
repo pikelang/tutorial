@@ -82,7 +82,7 @@ There are four new things here:
 1. We create a **variable** with the name `url`.
    This is called to **define** a variable.
    The variable has the type `string`,
-   which means that we an use it to store strings in.
+   which means that we use it to store strings in.
    A string is a sequence of characters.
 
 2. `Stdio.stdin->gets()` is used to let the user
