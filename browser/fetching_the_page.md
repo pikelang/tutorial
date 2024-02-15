@@ -80,7 +80,7 @@ Some other things that might need to be explained in this example:
   we use the statement
 
   ```pike
-  return;`
+  return;
   ```
 
   to stop executing the method `handle_url`,
