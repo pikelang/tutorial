@@ -108,6 +108,6 @@ The user's commands and input are shown after the `>` prompts:
 > pike webbrowser.pike
 Welcome to the Very Simple WWW Browser!
 Type the address of the web page:
-> http://pike.ida.liu.se/
-URL: http://pike.ida.liu.se/
+> http://pike.lysator.liu.se/
+URL: http://pike.lysator.liu.se/
 ```

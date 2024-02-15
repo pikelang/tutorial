@@ -7,7 +7,7 @@ to let it take the URL as a **command-line argument**.
 That is, we want to start the program with the command
 
 ```
-> webbrowser.pike http://pike.ida.liu.se/
+> webbrowser.pike http://pike.lysator.liu.se/
 ```
 
 instead of letting the program ask for the URL.
