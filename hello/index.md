@@ -50,7 +50,7 @@ this text may pop up in a separate window.)
 If we start in the middle of this program, the line
 
 ```pike
-  write("Hello world!\n");
+write("Hello world!\n");
 ```
 
 is the central part of the program.

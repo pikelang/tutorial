@@ -13,7 +13,7 @@ Another difference is that
 there are many different C and C++ compilers,
 while there is only one implementation of Pike.
 
-## C#
+## C&num; <!-- It's a # -->
 
 Pike is very similar to C#.
 In fact, one could easily think that

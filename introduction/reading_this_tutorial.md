@@ -56,7 +56,7 @@ The following conventions for type faces are used:
   where user input is prefixed with a `> ` prompt.
   The rest of the session's text is program output:
 
-```
+```hilfe
 Hello, professor.
 I see you brought the keys to the ferarri.
 > run project 21

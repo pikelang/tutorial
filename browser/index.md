@@ -104,7 +104,7 @@ There are four new things here:
 When we run the program, it may look something like this.
 The user's commands and input are shown after the `>` prompts:
 
-```
+```hilfe
 > pike webbrowser.pike
 Welcome to the Very Simple WWW Browser!
 Type the address of the web page:

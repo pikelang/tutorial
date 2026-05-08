@@ -1,6 +1,6 @@
 # An Introduction to Data Types
 
-# What is a data type?
+## What is a data type?
 
 Pike works with **data items**,
 also called **values**,
