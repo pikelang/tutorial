@@ -1,3 +1,5 @@
+# Methods and Loops
+
 We will soon ad the web stuff,
 and actually download the web page.
 But the method `main` is getting a bit long now,
@@ -62,7 +64,7 @@ do
 {
   write("Type the address of the web page:\n");
   url = Stdio.stdin->gets();
-} while(sizeof(url) == 0);
+} while (sizeof(url) == 0);
 ```
 
 This is a **do-while loop**,
@@ -114,7 +116,7 @@ int main(int argc, array(string) argv)
     {
       write("Type the address of the web page:\n");
       url = Stdio.stdin->gets();
-    } while(sizeof(url) == 0);
+    } while (sizeof(url) == 0);
   }
   else if (argc == 2)
   {
