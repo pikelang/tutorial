@@ -38,9 +38,9 @@ d = c;
 You can access the elements in an array, either to just get the value or to replace it. This is usually called **indexing** the array. Indexing is done by writing the position number, or index, within square brackets after the array:
 
 ```pike
-write(a\[0\]);	// Writes 17
-b\[1\] = "bloo";	// Replaces "bar" with "bloo"
-c\[1\]\[0\] = b\[2\];	// Replaces "Holmes" with "fum"
+write(a[0]);	// Writes 17
+b[1] = "bloo";	// Replaces "bar" with "bloo"
+c[1][0] = b[2];	// Replaces "Holmes" with "fum"
 ```
 
 There are many useful operations that can be done with arrays. For example, you can add two arrays together:
