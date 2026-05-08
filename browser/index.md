@@ -80,7 +80,7 @@ int main()
 There are four new things here:
 
 1. We create a **variable** with the name `url`.
-   This is called to **define** a variable.
+   This is called to **declare** a variable.
    The variable has the type `string`,
    which means that we can use it to store strings in.
    A string is a sequence of characters.
