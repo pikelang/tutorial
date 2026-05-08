@@ -62,7 +62,7 @@ or read the reference manual if you feel up to it.
   * [Other Statement Types](statements/others.md)
 * [More About Data Types](data_types_2/index.md)
   * [The Basic Types](data_types_2/index.md)
-  * [_Container Types_](data_types_2/container_types.md)
+  * [Container Types](data_types_2/container_types.md)
   * [_The Other Reference Types_](data_types_2/other_types.md)
 * [_Working with Strings_](strings/index.md)
   * [_Operators on Strings_](strings/index.md)
