@@ -1,60 +1,91 @@
-<p>Do you remember about <b>information hiding</b>? In the examples
+# Access control
+
+Do you remember about **information hiding**? In the examples
 above, everyone could access all the methods and member variables in
-all objects. For example, it is very easy to lose weight:</p>
+all objects. For example, it is very easy to lose weight:
 
-<pi>h-&gt;weight -= 10.0;</pi>
+```pike
+h->weight -= 10.0;
+```
 
-<p>Oh? The hamster only weighed 0.12, and now it weighs <i>minus</i>
-9.88?</p>
+Oh? The hamster only weighed 0.12, and now it weighs *minus*
+9.88?
 
-<p>We would like to control the access to the member variable
-<tt>weight</tt>, so that other classes cannot touch it. For uses like
-this, there are a number of <b>access modifiers</b>, which are written
+We would like to control the access to the member variable
+`weight`, so that other classes cannot touch it. For uses like
+this, there are a number of **access modifiers**, which are written
 before the data type in the definition of a method or member variable.
 For example, the weight of an animal is represented by the member
-variable <tt>weight</tt>, defined as:</p>
+variable `weight`, defined as:
 
-<pi>float weight;</pi>
+```pike
+float weight;
+```
 
-<p>By changing that to</p>
+By changing that to
 
-<pi>private float weight;</pi>
+```pike
+private float weight;
+```
 
-<p>we only allow methods in the same class to access that
-variable.</p>
+we only allow methods in the same class to access that
+variable.
 
-<p>The following access modifiers exist:</p>
+The following access modifiers exist:
 
 <list type="dl">
 <item name="public">
-<p>This is the default, and means that any method can access the
-member variable, or call the method.</p>
+This is the default, and means that any method can access the
+member variable, or call the method.
 </item>
 
 <item name="private">
-<p>This means that the member variable or method is only available to
-methods in the same class.</p>
+This means that the member variable or method is only available to
+methods in the same class.
 </item>
 
 <item name="static">
-<p>This means that this member variable or method is only available to
-methods in the same class, and in subclasses (<pi>static</pi> in Pike
-does not at all mean the same thing as <pi>static</pi> in C++.
-Instead, it is similar to <pi>protected</pi> in C++.)</p>
+This means that this member variable or method is only available to
+methods in the same class, and in subclasses (
+```pike
+static
+
+``` in Pike
+does not at all mean the same thing as 
+```pike
+static
+
+``` in C++.
+Instead, it is similar to 
+```pike
+protected
+
+``` in C++.)
 </item>
 
 <item name="local">
-<p>This means that even if this method is overridden by a method in a
-subclass, methods in this class will still use this method.</p>
+This means that even if this method is overridden by a method in a
+subclass, methods in this class will still use this method.
 </item>
 
 <item name="final">
-<p>This prevents subclasses from re-defining this method.</p>
+This prevents subclasses from re-defining this method.
 </item>
 </list>
 
-<p>If a class has a constructor (that is, a method called
-<pi>create</pi>) it can be a good idea to declare it <pi>static</pi>.
+If a class has a constructor (that is, a method called
+```pike
+create
+
+```) it can be a good idea to declare it 
+```pike
+static
+
+```.
 It is not supposed to be called except during the construction of the
-object, and if it is not <pi>static</pi> there may be some type
-incompatibilities in connection with inheritance.</p>
+object, and if it is not 
+```pike
+static
+
+``` there may be some type
+incompatibilities in connection with inheritance.

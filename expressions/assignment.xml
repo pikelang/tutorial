@@ -1,67 +1,77 @@
-<p>Assignment is used to give a new value to a variable:</p>
+# Assignment
 
-<pi>
+Assignment is used to give a new value to a variable:
+
+```pike
 i = 16;
 i = i + 15;
-</pi>
+```
 
-<p>"Variable" is used in a general sense here. Assignment can give
+"Variable" is used in a general sense here. Assignment can give
 values not only to normal variables, but also to member variables in
 an object, and to positions within an array, a mapping or a
-multiset:</p>
+multiset:
 
-<pi>
-my_cat-&gt;name = "Falkenberg";
+```pike
+my_cat->name = "Falkenberg";
 a[7] = 8;
 english2german["four"] = "vier";
 set_of_winners["Tom"] = 0;
-</pi>
+```
 
-<p>An assignment, such as <tt>k = 3</tt>, is an expression, and its
+An assignment, such as `k = 3`, is an expression, and its
 value is the same value as was assigned to the variable. You can use
 an assignment expression within another expression, for example in a
 "chain" of assignments that assign the same value to several
-variables:</p>
+variables:
 
-<pi>i = j = k = 3;</pi>
+```pike
+i = j = k = 3;
+```
 
-<p>Assignments that follow the pattern</p>
+Assignments that follow the pattern
 
-<pi>
+```pike
 i = i + 3;
 k = k * 4;
 miles_traveled["Anne"] = miles_traveled["Anne"] + 5;
 debt[get_name()] = debt[get_name()] + 500;
-</pi>
+```
 
-<p>are very common in programming. That is, an assignment to a
+are very common in programming. That is, an assignment to a
 variable, where you use the old value of the variable to calculate the
 new one. To simplify such assignments, Pike has a number of extra
-assignment operators, looking like <i>operator</i><tt>=</tt>, for
-example:</p>
+assignment operators, looking like *operator*`=`, for
+example:
 
-<pi>
+```pike
 i += 3;
 k *= 4;
 miles_traveled["Anne"] += 5;
 debt[get_name()] += 500;
-</pi>
+```
 
-<p>In general, the expression</p>
+In general, the expression
 
-<pi><i>variable</i> <i>operator</i><tt>=</tt> <i>expression</i></pi>
+```pike
+*variable* *operator*`=` *expression*
+```
 
-<p>means the same as</p>
+means the same as
 
-<pi><i>variable</i> <tt>=</tt> <i>variable</i> <i>operator</i>
-<i>expression</i></pi>
+```pike
+*variable* `=` *variable* *operator*
+*expression*
+```
 
-<p>But note that the <i>variable</i> part is only calculated once. For
-example, in</p>
+But note that the *variable* part is only calculated once. For
+example, in
 
-<pi>debt[get_name()] += 500;</pi>
+```pike
+debt[get_name()] += 500;
+```
 
-<p>the function <tt>get_name</tt> is only called once.</p>
+the function `get_name` is only called once.
 
 <xtable>
 
@@ -71,73 +81,73 @@ example, in</p>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> += <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> + <i>expression</i></tt></p></c>
+<c>`*variable* += *expression*`</c>
+<c>`*variable* = *variable* + *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> -= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> - <i>expression</i></tt></p></c>
+<c>`*variable* -= *expression*`</c>
+<c>`*variable* = *variable* - *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> *= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> * <i>expression</i></tt></p></c>
+<c>`*variable* *= *expression*`</c>
+<c>`*variable* = *variable* * *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> /= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> / <i>expression</i></tt></p></c>
+<c>`*variable* /= *expression*`</c>
+<c>`*variable* = *variable* / *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> %= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> % <i>expression</i></tt></p></c>
+<c>`*variable* %= *expression*`</c>
+<c>`*variable* = *variable* % *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> &lt;&lt;= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> &lt;&lt; <i>expression</i></tt></p></c>
+<c>`*variable* <<= *expression*`</c>
+<c>`*variable* = *variable* << *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> &gt;&gt;= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> &gt;&gt; <i>expression</i></tt></p></c>
+<c>`*variable* >>= *expression*`</c>
+<c>`*variable* = *variable* >> *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> |= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> | <i>expression</i></tt></p></c>
+<c>`*variable* |= *expression*`</c>
+<c>`*variable* = *variable* | *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> &amp;= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> &amp; <i>expression</i></tt></p></c>
+<c>`*variable* &= *expression*`</c>
+<c>`*variable* = *variable* & *expression*`</c>
 </row>
 
 <row>
-<c><p><tt><i>variable</i> ^= <i>expression</i></tt></p></c>
-<c><p><tt><i>variable</i> = <i>variable</i> ^ <i>expression</i></tt></p></c>
+<c>`*variable* ^= *expression*`</c>
+<c>`*variable* = *variable* ^ *expression*`</c>
 </row>
 
 </xtable>
 
-<p>Note that the increment and decrement operators (<tt>i++</tt>,
-<tt>++i</tt>, <tt>i--</tt>, and <tt>--i</tt>)<comment>--</comment>
-also change the value of the variable they are used on.</p>
+Note that the increment and decrement operators (`i++`,
+`++i`, `i--`, and `--i`)<comment>--</comment>
+also change the value of the variable they are used on.
 
-<h1>Multi-Assignment</h1>
+## Multi-Assignment
 
-<p>In Pike, you can assign values to several variable at once, taking
-the values from an array:</p>
+In Pike, you can assign values to several variable at once, taking
+the values from an array:
 
-<pi>
+```pike
 int i;
 string s;
 float f1, f2;
 
 [ i, s, f1, f2 ] = ({ 3, "hi", 2.2, 3.14 });
-</pi>
+```
 
-<p>This syntax is very convenient when you deal with functions who
-always return a fixed-width array of data.</p>
+This syntax is very convenient when you deal with functions who
+always return a fixed-width array of data.

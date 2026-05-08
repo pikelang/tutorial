@@ -1,4 +1,6 @@
-<p>Pike lets you compare things to each other.</p>
+# Comparison
+
+Pike lets you compare things to each other.
 
 <xtable>
 
@@ -9,89 +11,93 @@
 </row>
 
 <row>
-<c><p>Same</p></c>
-<c><p>a == b</p></c>
-<c><p>1 if a is the same value as b, 0 otherwise</p></c>
+<c>Same</c>
+<c>a == b</c>
+<c>1 if a is the same value as b, 0 otherwise</c>
 </row>
 
 <row>
-<c><p>Not same</p></c>
-<c><p>a != b</p></c>
-<c><p>0 if a is the same value as b, 1 otherwise</p></c>
+<c>Not same</c>
+<c>a != b</c>
+<c>0 if a is the same value as b, 1 otherwise</c>
 </row>
 
 <row>
-<c><p>Greater than</p></c>
-<c><p>a &gt; b</p></c>
-<c><p>1 if a is greater than b, 0 otherwise</p></c>
+<c>Greater than</c>
+<c>a > b</c>
+<c>1 if a is greater than b, 0 otherwise</c>
 </row>
 
 <row>
-<c><p>Greater than or equal to</p></c>
-<c><p>a &gt;= b</p></c>
-<c><p>1 if a is greater to or equal to b, 0 otherwise</p></c>
+<c>Greater than or equal to</c>
+<c>a >= b</c>
+<c>1 if a is greater to or equal to b, 0 otherwise</c>
 </row>
 
 <row>
-<c><p>Lesser than</p></c>
-<c><p>a &lt; b</p></c>
-<c><p>1 if a is less than b, 0 otherwise</p></c>
+<c>Lesser than</c>
+<c>a < b</c>
+<c>1 if a is less than b, 0 otherwise</c>
 </row>
 
 <row>
-<c><p>Lesser than or equal to</p></c>
-<c><p>a &lt;= b</p></c>
-<c><p>1 if a is less than or equal to b, 0 otherwise</p></c>
+<c>Lesser than or equal to</c>
+<c>a <= b</c>
+<c>1 if a is less than or equal to b, 0 otherwise</c>
 </row>
 
 </xtable>
 
-<p>As you may remember, Pike interprets the value zero (<b>0</b>) as
-<b>false</b>, and everything else is interpreted as <b>true</b>. The
+As you may remember, Pike interprets the value zero (**0**) as
+**false**, and everything else is interpreted as **true**. The
 comparison operators give a truth value as result, and to simplify
-things they always return <b>0</b> for <b>false</b> and <b>1</b> for
-<b>true</b>.</p>
+things they always return **0** for **false** and **1** for
+**true**.
 
-<p>The operators <tt>==</tt> and <tt>!=</tt> can be used on any type.
-Note that these two operators check if two things are the <i>same</i>,
-not just if they are <i>equal</i>. For two things to be the same,
-first of all they have to have the same type. For example, <b>1</b>
-and <b>1.0</b> may be equal, but they are not the same.</p>
+The operators `==` and `!=` can be used on any type.
+Note that these two operators check if two things are the *same*,
+not just if they are *equal*. For two things to be the same,
+first of all they have to have the same type. For example, **1**
+and **1.0** may be equal, but they are not the same.
 
-<p>All values of the basic types (integers, floating-point values, and
+All values of the basic types (integers, floating-point values, and
 strings) that are of the same type and that are equal, are also the
-same. The expressions <tt>7 == 7</tt> and <tt>"hi" == "hi"</tt> will
-always be <b>true</b>. With the other types, the so-called reference
+same. The expressions `7 == 7` and `"hi" == "hi"` will
+always be **true**. With the other types, the so-called reference
 types, it is more difficult: Two arrays can have the same length and
 contain the same elements, but still be two separate arrays. For a
-comparison like <tt>a1 == a2</tt> to be true, where <tt>a1</tt> and
-<tt>a2</tt> are array variables, they must refer to the same array,
+comparison like `a1 == a2` to be true, where `a1` and
+`a2` are array variables, they must refer to the same array,
 not just two similar arrays. (See also the section "The difference
 between basic types and reference types" in the chapter about data
-types.)</p>
+types.)
 
-<p>To check if two things are similar, even if they are not
-necessarily the same, you can use the function <tt>equal</tt>. This
-comparison will be true:</p>
+To check if two things are similar, even if they are not
+necessarily the same, you can use the function `equal`. This
+comparison will be true:
 
-<pi>equal( ({ 7, 1, ({ 7 }) }), ({ 7, 1, ({ 7 }) }) )</pi>
+```pike
+equal( ({ 7, 1, ({ 7 }) }), ({ 7, 1, ({ 7 }) }) )
+```
 
-<p>but this one will be false:</p>
+but this one will be false:
 
-<pi>({ 7, 1, ({ 7 }) }) == ({ 7, 1, ({ 7 }) })</pi>
+```pike
+({ 7, 1, ({ 7 }) }) == ({ 7, 1, ({ 7 }) })
+```
 
-<p>The relational operators
-<tt>&gt;</tt>,
-<tt>&gt;=</tt>,
-<tt>&lt;</tt>, and
-<tt>&lt;=</tt>
+The relational operators
+`>`,
+`>=`,
+`<`, and
+`<=`
 can only be used with integers, floating-point values, and strings. If
 you compare an integer with a floating-point value, the integer will
-be converted to a floating-point value before the comparison.</p>
+be converted to a floating-point value before the comparison.
 
-<p>When comparing strings, lexical or "alphabetical" order is used.
+When comparing strings, lexical or "alphabetical" order is used.
 Different countries sort their alphabets in different order, and if
 your operating system supports this, Pike will too. For example, in
-Unix you can set the environment variables <tt>LC_CTYPE</tt> and
-<tt>LC_LANG</tt>, and Pike will use their values to determine the
-right sorting order.</p>
+Unix you can set the environment variables `LC_CTYPE` and
+`LC_LANG`, and Pike will use their values to determine the
+right sorting order.

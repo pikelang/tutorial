@@ -1,49 +1,51 @@
-<p>Operator precedence is why the expression <tt>5 + 3 * 2</tt> is
-calculated as <tt>5 + (3 * 2)</tt>, giving 11, and not as <tt>(5 + 3)
-* 2</tt>, giving 16.</p>
+# Operator Precedence and Associativity
 
-<p>We say that the multiplication operator (<tt>*</tt>) has higher
-"precedence" or "priority" than the addition operator (<tt>+</tt>), so
-the multiplication must be performed first.</p>
+Operator precedence is why the expression `5 + 3 * 2` is
+calculated as `5 + (3 * 2)`, giving 11, and not as `(5 + 3)
+* 2`, giving 16.
 
-<p>Operator associativity is why the expression <tt>8 - 3 - 2</tt> is
-calculated as <tt>(8 - 3) - 2</tt>, giving 3, and and not as <tt>8 -
-(3 - 2)</tt>, giving 7.</p>
+We say that the multiplication operator (`*`) has higher
+"precedence" or "priority" than the addition operator (`+`), so
+the multiplication must be performed first.
 
-<p>We say that the subtraction operator (<tt>-</tt>) is "left
+Operator associativity is why the expression `8 - 3 - 2` is
+calculated as `(8 - 3) - 2`, giving 3, and and not as `8 -
+(3 - 2)`, giving 7.
+
+We say that the subtraction operator (`-`) is "left
 associative", so the left multiplication must be performed first. When
 we can't decide by operator precedence alone in which order to
-calculate an expression, we must use associativity.</p>
+calculate an expression, we must use associativity.
 
-<p>Since the operators <tt>+</tt> and <tt>-</tt> have the same
+Since the operators `+` and `-` have the same
 precedence, and are left-associative, the following expressions are
-all equivalent:</p>
+all equivalent:
 
-<pi>
+```pike
 x + 3 - y + 5
 (x + 3) - y + 5
 ((x + 3) - y) + 5
 ((x + 3) - y + 5)
-</pi>
+```
 
-<p>Since the operators <tt>=</tt>, <tt>+=</tt> and <tt>-=</tt> have
+Since the operators `=`, `+=` and `-=` have
 the same precedence, and are right-associative, the following
-expressions are all equivalent:</p>
+expressions are all equivalent:
 
-<pi>
+```pike
 x = y += z -= 4
 x = y += (z -= 4)
 x = (y += (z -= 4))
 (x = y += (z -= 4))
-</pi>
+```
 
-<p>You can use parentheses to tell the compiler in which order to
+You can use parentheses to tell the compiler in which order to
 evaluate things. If you don't use parentheses, Pike will use the
 precedences and the associativities of the operators to decide in
-which order to perform them. Spaces have no effect.</p>
+which order to perform them. Spaces have no effect.
 
-<p>This table shows the priority and associativity of each operator in
-Pike, with the highest priority at the top:</p>
+This table shows the priority and associativity of each operator in
+Pike, with the highest priority at the top:
 
 <xtable>
 
@@ -53,110 +55,181 @@ Pike, with the highest priority at the top:</p>
 </row>
 
 <row>
-<c><p><pi>::a a::b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+::a a::b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a() a[b] a-&gt;b a[b..c] ({}) ([]) (&lt;&gt;)</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a() a[b] a->b a[b..c] ({}) ([]) (<>)
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a++ a--</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a++ a--
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>!a ~a (<i>type</i>)a ++a --a</pi><comment>--</comment></p></c>
-<c><p>right to left!</p></c>
+<c>
+```pike
+!a ~a (*type*)a ++a --a
+
+```<comment>--</comment></c>
+<c>right to left!</c>
 </row>
 
 <row>
-<c><p><pi>a*b a/b a%b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a*b a/b a%b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a+b a-b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a+b a-b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a&gt;&gt;b a&lt;&lt;b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a>>b a<<b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a&gt;b a&gt;=b a&lt;b a&lt;=b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a>b a>=b a<b a<=b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a==b a!=b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a==b a!=b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a&amp;b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a&b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a^b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a^b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a|b</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+a|b
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>&amp;&amp;</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+&&
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>||</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+||
+
+```</c>
+<c>left to right</c>
 </row>
 
 <row>
-<c><p><pi>a?b:c</pi></p></c>
-<c><p>right to left!</p></c>
+<c>
+```pike
+a?b:c
+
+```</c>
+<c>right to left!</c>
 </row>
 
 <row>
-<c><p><pi>
+<c>
+```pike
 =
 +=
 -=
 *=
 /=
 %=
-&lt;&lt;=
-&gt;&gt;=
-&amp;=
+<<=
+>>=
+&=
 |=
 ^=
-</pi></p></c>
-<c><p>right to left!</p></c>
+
+
+```</c>
+<c>right to left!</c>
 </row>
 
 <row>
-<c><p><pi>@a</pi></p></c>
-<c><p>right to left!</p></c>
+<c>
+```pike
+@a
+
+```</c>
+<c>right to left!</c>
 </row>
 
 <row>
-<c><p><pi>,</pi></p></c>
-<c><p>left to right</p></c>
+<c>
+```pike
+,
+
+```</c>
+<c>left to right</c>
 </row>
 
 </xtable>
 
-<p>Examples:</p>
+Examples:
 
 <xtable>
 
@@ -166,48 +239,120 @@ Pike, with the highest priority at the top:</p>
 </row>
 
 <row>
-<c><p><pi> 1+2*2 </pi></p></c>
-<c><p><pi> 1+(2*2) </pi></p></c>
+<c>
+```pike
+ 1+2*2 
+
+```</c>
+<c>
+```pike
+ 1+(2*2) 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> 1+2*2*4 </pi></p></c>
-<c><p><pi> 1+((2*2)*4) </pi></p></c>
+<c>
+```pike
+ 1+2*2*4 
+
+```</c>
+<c>
+```pike
+ 1+((2*2)*4) 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> (1+2)*2*4 </pi></p></c>
-<c><p><pi> ((1+2)*2)*4 </pi></p></c>
+<c>
+```pike
+ (1+2)*2*4 
+
+```</c>
+<c>
+```pike
+ ((1+2)*2)*4 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> 1+4,c=2|3+5 </pi></p></c>
-<c><p><pi> (1+4),(c=(2|(3+5))) </pi></p></c>
+<c>
+```pike
+ 1+4,c=2|3+5 
+
+```</c>
+<c>
+```pike
+ (1+4),(c=(2|(3+5))) 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> 1 + 5&amp;4 == 3 </pi></p></c>
-<c><p><pi> (1 + 5) &amp; (4 == 3) </pi></p></c>
+<c>
+```pike
+ 1 + 5&4 == 3 
+
+```</c>
+<c>
+```pike
+ (1 + 5) & (4 == 3) 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> c=1,99 </pi></p></c>
-<c><p><pi> (c=1),99 </pi></p></c>
+<c>
+```pike
+ c=1,99 
+
+```</c>
+<c>
+```pike
+ (c=1),99 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> !a++ + ~f() </pi></p></c>
-<c><p><pi> (!(a++)) + (~(f())) </pi></p></c>
+<c>
+```pike
+ !a++ + ~f() 
+
+```</c>
+<c>
+```pike
+ (!(a++)) + (~(f())) 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> s == "klas" || i &lt; 9 </pi></p></c>
-<c><p><pi> (s == "klas") || (i &lt; 9) </pi></p></c>
+<c>
+```pike
+ s == "klas" || i < 9 
+
+```</c>
+<c>
+```pike
+ (s == "klas") || (i < 9) 
+
+```</c>
 </row>
 
 <row>
-<c><p><pi> r = s == "sten" </pi></p></c>
-<c><p><pi> r = (s == "sten") </pi></p></c>
+<c>
+```pike
+ r = s == "sten" 
+
+```</c>
+<c>
+```pike
+ r = (s == "sten") 
+
+```</c>
 </row>
 
 </xtable>

@@ -1,93 +1,174 @@
-<p>The functions <tt>sprintf</tt> and <tt>sscanf</tt> will be
-presented in their own sections, below.</p>
+# Built-in Functions for Strings
+
+The functions `sprintf` and `sscanf` will be
+presented in their own sections, below.
 
 <list type="ul">
 <item name="Check if it is a string">
-<pi>stringp(<i>something</i>)</pi>
+```pike
+stringp(*something*)
+```
 
-<p>The function <tt>stringp</tt> returns <b>1</b> if the value
-<i>something</i> is a string, otherwise <b>0</b>.</p>
+The function `stringp` returns **1** if the value
+*something* is a string, otherwise **0**.
 </item>
 
 <item name="Finding the size">
-<p>
-<pi>sizeof(<i>string</i>)</pi> or
-<pi>strlen(<i>string</i>)</pi>
-</p>
 
-<p>Returns the length (that is, the number of characters) in the
-string <i>string</i>.</p>
+```pike
+sizeof(*string*)
 
-<p>
-<pi>sizeof("hi ho")</pi> gives the result <pi>5</pi>.
-<pi>sizeof("")</pi> gives the result <pi>0</pi>.
-</p>
+``` or
+```pike
+strlen(*string*)
+```
 
-<p>The function <tt>strlen</tt> is a synonym for <pi>sizeof</pi>.</p>
+
+Returns the length (that is, the number of characters) in the
+string *string*.
+
+
+```pike
+sizeof("hi ho")
+
+``` gives the result 
+```pike
+5
+
+```.
+```pike
+sizeof("")
+
+``` gives the result 
+```pike
+0
+
+```.
+
+
+The function `strlen` is a synonym for 
+```pike
+sizeof
+
+```.
 </item>
 
 <item name="Reversing a string">
-<p><pi>reverse(<i>string</i>)</pi> returns a new string with the
-characters in reverse order.</p>
+```pike
+reverse(*string*)
 
-<p>
-<pi>reverse("foo")</pi> gives the result <pi>"oof"</pi>.
-</p>
+``` returns a new string with the
+characters in reverse order.
+
+
+```pike
+reverse("foo")
+
+``` gives the result 
+```pike
+"oof"
+
+```.
+
 </item>
 
 <item name="Replacing parts in a string">
-<p><pi>replace(<i>string</i>, <i>old</i>, <i>new</i>)</pi> returns a
-new string where all occurrences of the string <i>old</i> have been
-replaced with the string <i>new</i>:</p>
+```pike
+replace(*string*, *old*, *new*)
 
-<p>
-<pi>replace("fooFOOfoo", "foo", "fum")</pi> gives the result
-<pi>"fumFOOfum"</pi>.
-</p>
+``` returns a
+new string where all occurrences of the string *old* have been
+replaced with the string *new*:
+
+
+```pike
+replace("fooFOOfoo", "foo", "fum")
+
+``` gives the result
+```pike
+"fumFOOfum"
+
+```.
+
 </item>
 
 <item name="Converting to lower case">
-<p><pi>lower_case(<i>string</i>)</pi> returns a new string where all
-upper-case characters in the string <i>string</i> have been turned to
-lower case:</p>
+```pike
+lower_case(*string*)
 
-<p>
-<pi>lower_case("A Foo IS!")</pi> gives the result
-<pi>"a foo is!"</pi>.
-</p>
+``` returns a new string where all
+upper-case characters in the string *string* have been turned to
+lower case:
+
+
+```pike
+lower_case("A Foo IS!")
+
+``` gives the result
+```pike
+"a foo is!"
+
+```.
+
 </item>
 
 <item name="Converting to upper case">
-<p><pi>upper_case(<i>string</i>)</pi> returns a new string where all
-lower-case characters in the string <i>string</i> have been turned to
-upper case:</p>
+```pike
+upper_case(*string*)
 
-<p>
-<pi>upper_case("A Foo IS!")</pi> gives the result
-<pi>"A FOO IS!"</pi>.
-</p>
+``` returns a new string where all
+lower-case characters in the string *string* have been turned to
+upper case:
+
+
+```pike
+upper_case("A Foo IS!")
+
+``` gives the result
+```pike
+"A FOO IS!"
+
+```.
+
 </item>
 
 <item name="Capitalizing">
-<pi>String.capitalize(<i>string</i>)</pi>
+```pike
+String.capitalize(*string*)
+```
 
-<p>If the first character in the string <i>string</i> is a lower-case
-character, it is converted to upper case:</p>
+If the first character in the string *string* is a lower-case
+character, it is converted to upper case:
 
-<p>
-<pi>String.capitalize("xyz-Foo")</pi>
+
+```pike
+String.capitalize("xyz-Foo")
+```
 gives the result
-<pi>"Xyz-Foo"</pi>.
-</p>
+```pike
+"Xyz-Foo"
+
+```.
+
 </item>
 
 <item name="Finding a substring in a string">
-<p><pi>search(<i>haystack</i>, <i>needle</i>)</pi> returns the index
-of the start of the first occurrence of the string <i>needle</i> in
-the string <i>haystack</i>:</p>
+```pike
+search(*haystack*, *needle*)
 
-<p>
-<pi>search("sortohum", "orto")</pi> gives the result <pi>1</pi>.
-</p>
+``` returns the index
+of the start of the first occurrence of the string *needle* in
+the string *haystack*:
+
+
+```pike
+search("sortohum", "orto")
+
+``` gives the result 
+```pike
+1
+
+```.
+
 </item>
 </list>

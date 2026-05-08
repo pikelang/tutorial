@@ -1,57 +1,59 @@
-<p>Pike can do all the usual arithmetic operations: addition (which is
-expressed with the operator <tt>+</tt>), subtraction (<tt>-</tt>),
-division (<tt>/</tt>), multiplication (<tt>*</tt>), and also modulo
-(<tt>%</tt>). The modulo operation, sometimes called "remainder" or
+# Arithmetical Operations
+
+Pike can do all the usual arithmetic operations: addition (which is
+expressed with the operator `+`), subtraction (`-`),
+division (`/`), multiplication (`*`), and also modulo
+(`%`). The modulo operation, sometimes called "remainder" or
 "rest", gives the remainder from a division. For example, if you
 divide 7 by 3, 3 goes in 7 two times. But there is a remainder of 1,
-and that is the result of the modulo operation.</p>
+and that is the result of the modulo operation.
 
-<p>Here is a table of the arithmetic operations:</p>
+Here is a table of the arithmetic operations:
 
 <xtable>
 <row><h>Operation</h>  <h>Syntax</h> <h>Result</h></row>
-<row><c><p>Addition</p></c>   <c><p>a + b</p></c>  <c><p>the sum of a and b</p></c></row>
-<row><c><p>Subtraction</p></c><c><p>a - b</p></c>  <c><p>b subtracted from a</p></c></row>
-<row><c><p>Negation</p></c>   <c><p>- a</p></c>    <c><p>minus a</p></c></row>
-<row><c><p>Multiplication</p></c><c><p>a * b</p></c> <c><p>a multiplied by b</p></c></row>
-<row><c><p>Division</p></c>   <c><p>a / b</p></c>  <c><p>a divided by b</p></c></row>
-<row><c><p>Modulo</p></c>     <c><p>a % b</p></c>
-<c><p>the remainder of a division between a and b</p></c></row>
+<row><c>Addition</c>   <c>a + b</c>  <c>the sum of a and b</c></row>
+<row><c>Subtraction</c><c>a - b</c>  <c>b subtracted from a</c></row>
+<row><c>Negation</c>   <c>- a</c>    <c>minus a</c></row>
+<row><c>Multiplication</c><c>a * b</c> <c>a multiplied by b</c></row>
+<row><c>Division</c>   <c>a / b</c>  <c>a divided by b</c></row>
+<row><c>Modulo</c>     <c>a % b</c>
+<c>the remainder of a division between a and b</c></row>
 </xtable>
 
-<p>Remember that pike makes a difference between numerical values that
-are integers (the type <tt>int</tt>), and numerical values that are
-real or "floating-point" numbers (the type <tt>float</tt>). This has
+Remember that pike makes a difference between numerical values that
+are integers (the type `int`), and numerical values that are
+real or "floating-point" numbers (the type `float`). This has
 some importance for how expressions with arithmetic operations are
 calculated by Pike. If at least one of the operands is a
-<tt>float</tt>, we use the floating-point versions of the operation.
+`float`, we use the floating-point versions of the operation.
 In if both operands are integers, we use a special integer-only
 version of the operation. For most of the operations, the only
-difference is that the type of the result will be different: <tt>2 +
-2</tt> will give the integer value <b>4</b>, while <tt>2 + 2.0</tt>
-will give the floating-point value <b>4.0</b>. But with division is
-more important.</p>
+difference is that the type of the result will be different: `2 +
+2` will give the integer value **4**, while `2 + 2.0`
+will give the floating-point value **4.0**. But with division is
+more important.
 
-<p>With <b>floating-point division</b>, such as in <tt>9.0 / 4.0</tt>,
-the result is a floating-point value, in this case <b>2.25</b>. But
-with <b>integer division</b>, such as in <tt>9 / 4</tt>, the result is
-only the integer part, in this case <b>2</b>.</p>
+With **floating-point division**, such as in `9.0 / 4.0`,
+the result is a floating-point value, in this case **2.25**. But
+with **integer division**, such as in `9 / 4`, the result is
+only the integer part, in this case **2**.
 
-<p>The fact that integer division only gives the integer part can be
+The fact that integer division only gives the integer part can be
 treacherous: If 73 out of 92 people payed their income tax on time,
-don't try to calculate the percentage with the expression <tt>73 / 92
-* 100</tt>. That would give the result <b>0</b>.</p>
+don't try to calculate the percentage with the expression `73 / 92
+* 100`. That would give the result **0**.
 
-<p>It is very common in programs to increment or decrement a variable
-with one, such as in the statements</p>
+It is very common in programs to increment or decrement a variable
+with one, such as in the statements
 
-<pi>
+```pike
 i = i + 1;
 p = p - 1;
-</pi>
+```
 
-<p>To simplify such programs, Pike has these extra operators, which
-you can use if you want to:</p>
+To simplify such programs, Pike has these extra operators, which
+you can use if you want to:
 
 <xtable>
 
@@ -62,35 +64,35 @@ you can use if you want to:</p>
 </row>
 
 <row>
-<c><p>Increment</p></c>
-<c><p>++ a</p></c>
-<c><p>increments a and returns the new value for a</p></c>
+<c>Increment</c>
+<c>++ a</c>
+<c>increments a and returns the new value for a</c>
 </row>
 
 <row>
-<c><p>Decrement</p></c>
-<c><p>-- a</p></c>
-<c><p>decrements a and returns the new value for a</p></c>
+<c>Decrement</c>
+<c>-- a</c>
+<c>decrements a and returns the new value for a</c>
 </row>
 
 <row>
-<c><p>Post increment</p></c>
-<c><p>a ++</p></c>
-<c><p>increments a and returns the old value for a</p></c>
+<c>Post increment</c>
+<c>a ++</c>
+<c>increments a and returns the old value for a</c>
 </row>
 
 <row>
-<c><p>Post decrement</p></c>
-<c><p>a --</p></c>
-<c><p>decrements a and returns the old value for a</p></c>
+<c>Post decrement</c>
+<c>a --</c>
+<c>decrements a and returns the old value for a</c>
 </row>
 
 </xtable>
 
-<p>The two versions of increment, <tt>++i</tt> and <tt>i++</tt>, both
-increment the value in the variable <tt>i</tt> with 1. The difference
+The two versions of increment, `++i` and `i++`, both
+increment the value in the variable `i` with 1. The difference
 is if we want to use them as parts of a larger expression. In that
-case, <tt>++i</tt> gives the new, incremented, contents of <tt>i</tt>
-as value, while <tt>i++</tt> gives the old contents of <tt>i</tt> as
-value. The same difference applies to <tt>--i</tt> and
-<tt>i--</tt>.</p>
+case, `++i` gives the new, incremented, contents of `i`
+as value, while `i++` gives the old contents of `i` as
+value. The same difference applies to `--i` and
+`i--`.

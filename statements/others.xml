@@ -1,97 +1,103 @@
-<h1>The Empty Statement</h1>
+# Other Statement Types
 
-<p>Sometimes you may need a statement that does nothing. The <b>empty
-statement</b> can be used for this. It just consists of a single
+## The Empty Statement
+
+Sometimes you may need a statement that does nothing. The **empty
+statement** can be used for this. It just consists of a single
 semi-colon. For example, sometimes you may want the body of a loop to
-do nothing:</p>
+do nothing:
 
-<pi>
+```pike
 // Keep checking if it is finished, until it is
-while(! finished())
+while (! finished())
   ;
-</pi>
+```
 
-<h1>The Block, or Compound Statement</h1>
+## The Block, or Compound Statement
 
-<p>As we have seen above, you can enclose several statements in curly
-brackets, "{" and "}". The result is called a <b>block</b> or
-<b>compound statement</b>, and can be used as a single statement. Here
-is one example:</p>
+As we have seen above, you can enclose several statements in curly
+brackets, "{" and "}". The result is called a **block** or
+**compound statement**, and can be used as a single statement. Here
+is one example:
 
-<pi>
+```pike
 {
   write("Hello ");
   write("world!\n");
 }
-</pi>
+```
 
-<p>Do not put a semi-colon (";") after the final bracket ("}").</p>
+Do not put a semi-colon (";") after the final bracket ("}").
 
-<p>You can define variables inside the block. Such a variable is local
+You can define variables inside the block. Such a variable is local
 in that block, and is available only to the program code written
-inside the block:</p>
+inside the block:
 
-<pi>
+```pike
 {
   write("What is your name?\n");
   string name;
-  name = Stdio.stdin-&gt;gets();
+  name = Stdio.stdin->gets();
   write("Your name is " + name + ".\n");
 }
-</pi>
+```
 
-<p>A block can be empty:</p>
+A block can be empty:
 
-<pi>{ }</pi>
+```pike
+{ }
+```
 
-<h1>The Expression Statement</h1>
+## The Expression Statement
 
-<p>The <b>expression statement</b> follows this template:</p>
+The **expression statement** follows this template:
 
-<pi><i>expression</i> ;</pi>
+```pike
+*expression* ;
+```
 
-<p>That is, you just take an expression and put a semi-colon
-(<tt>;</tt>) at the end. Typical expression statements are:</p>
+That is, you just take an expression and put a semi-colon
+(`;`) at the end. Typical expression statements are:
 
-<pi>
+```pike
 write("Hello world!\n");
 i = 7;
 ++i;
-</pi>
+```
 
-<p>All of these are expressions with a semi-colon appended. Since the
+All of these are expressions with a semi-colon appended. Since the
 expression statement doesn't do anything with the value of the
 expression, it is the so-called "side-effects" of the expressions that
-we are interested in. For example, the expression "<tt>i = 7</tt>" has
-the value <b>7</b>, but what is interesting is of course that it has
-the side-effect of setting the variable <tt>i</tt> to <b>7</b>.</p>
+we are interested in. For example, the expression "`i = 7`" has
+the value **7**, but what is interesting is of course that it has
+the side-effect of setting the variable `i` to **7**.
 
-<p>Since you can take any expression and add a semi-colon, these
-strange-looking (and rather useless) statements are also allowed:</p>
+Since you can take any expression and add a semi-colon, these
+strange-looking (and rather useless) statements are also allowed:
 
-<pi>
+```pike
 2 + 2;
 3;
-</pi>
+```
 
-<h1>Other Statements: <tt>return</tt> and <tt>catch</tt></h1>
+## Other Statements: `return` and `catch`
 
-<p>The <tt>return</tt> statement is used to leave a method, and
-sometimes also to return a value from that method:</p>
+The `return` statement is used to leave a method, and
+sometimes also to return a value from that method:
 
-<pi>
+```pike
 return;
 return x + 3;
-</pi>
+```
 
-<p>You can read more about the <tt>return</tt> statement in the
-chapter about methods.</p>
+You can read more about the `return` statement in the
+chapter about methods.
 
-<p>The <tt>catch</tt> statement is used to try to execute some Pike
+The `catch` statement is used to try to execute some Pike
 code, letting the programmer control what happens if there is an
-error:</p>
+error:
 
-<pi>
+```pike
   mixed result = catch
   {
     i = klooble() + 2;
@@ -99,11 +105,11 @@ error:</p>
     j = 1/i;
   };
 
-  if(result == 0)
+  if (result == 0)
     write("Everything was ok.\n");
   else
     write("Oops. There was an error.\n");
-</pi>
+```
 
-<p>You can read more about the <tt>catch</tt> statement in the chapter
-about error handling.</p>
+You can read more about the `catch` statement in the chapter
+about error handling.

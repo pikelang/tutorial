@@ -1,27 +1,31 @@
-<p>First of all, some useful terms:</p>
+# Expressions
+
+# Some Terminology
+
+First of all, some useful terms:
 
 <list type="ul">
 <item>
-<p>An <b>operation</b> is something Pike does, such as the operation
-"addition".</p>
+An **operation** is something Pike does, such as the operation
+"addition".
 </item>
 
 <item>
-<p>An <b>operator</b> is the symbol we use in a program to write the
-operation, such as the operator <tt>+</tt>.</p>
+An **operator** is the symbol we use in a program to write the
+operation, such as the operator `+`.
 </item>
 
 <item>
-<p>An <b>operand</b> is a thing that an operation is applied to. For
-example, in the expression <tt>7 + a</tt> there are two operands:
-<tt>7</tt> and <tt>a</tt>.</p>
+An **operand** is a thing that an operation is applied to. For
+example, in the expression `7 + a` there are two operands:
+`7` and `a`.
 </item>
 
 <item>
-<p>An <b>expression</b> is what you get when you combine operators and
-operands according to the grammar rules of the language.</p>
+An **expression** is what you get when you combine operators and
+operands according to the grammar rules of the language.
 </item>
 </list>
 
-<p>In this chapter we will examine how we write expressions in Pike.
-We will look at all the operations that have their own operators.</p>
+In this chapter we will examine how we write expressions in Pike.
+We will look at all the operations that have their own operators.

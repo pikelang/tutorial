@@ -1,126 +1,152 @@
-<p>This section about "other reference types" covers these types:</p>
+# The Other Reference Types
+
+This section about "other reference types" covers these types:
 
 <list type="ul">
-<item><p>program or "class" (written <tt>program</tt> in Pike)</p></item>
-<item><p>mapping or "dictionary" (written <tt>mapping</tt>)</p></item>
-<item><p>multiset or "bag" (written <tt>multiset</tt>)</p></item>
+<item>program or "class" (written `program` in Pike)</item>
+<item>mapping or "dictionary" (written `mapping`)</item>
+<item>multiset or "bag" (written `multiset`)</item>
 </list>
 
-<p>Just like the container types, these types are
-<b>reference types</b>: When a data item of a basic type is stored in
+Just like the container types, these types are
+**reference types**: When a data item of a basic type is stored in
 a variable, it is not the data item itself that is stored, but a
-reference to it.</p>
+reference to it.
 
-<h1>The Data Type <tt>program</tt></h1>
+## The Data Type `program`
 
-<p>The data type <tt>program</tt> in Pike is used to contain class
-definitions. Not the <b>source code</b>, i. e. the program text, but
+The data type `program` in Pike is used to contain class
+definitions. Not the **source code**, i e the program text, but
 the internal representation that Pike generates when it has read the
-source code.</p>
+source code.
 
-<p>As described above in the chapter about object-oriented
+As described above in the chapter about object-oriented
 programming, programs and classes are the same in Pike. Both an
-explicit class definition (that is, with the keyword <tt>class</tt>)
-and a source code file can be used to define a program/class.</p>
+explicit class definition (that is, with the keyword `class`)
+and a source code file can be used to define a program/class.
 
-<p>Here are some useful things that you can do with programs:</p>
+Here are some useful things that you can do with programs:
 
 <list type="ul">
 <item name="Check if it is a program">
-<pi>programp(<i>something</i>)</pi>
+```pike
+programp(*something*)
+```
 
-<p>The function <tt>programp</tt> returns <b>1</b> if the value
-<i>something</i> is a program, otherwise <b>0</b>.</p>
+The function `programp` returns **1** if the value
+*something* is a program, otherwise **0**.
 </item>
 
 <item name="Cloning">
-<p>
-<pi><i>program-name</i>()</pi> or <pi><i>program-name</i>(<i>arguments</i>)</pi>
-</p>
 
-<p>This creates a new object of the type <i>program-name</i>. If
-arguments are given, they are sent to the method <tt>create</tt> in
-this program.</p>
+```pike
+*program-name*()
+
+``` or 
+```pike
+*program-name*(*arguments*)
+```
+
+
+This creates a new object of the type *program-name*. If
+arguments are given, they are sent to the method `create` in
+this program.
 </item>
 
 <item name="Defining variables">
-<pi><i>program-name</i> <i>variable-name</i>;</pi>
+```pike
+*program-name* *variable-name*;
+```
 
-<p>This creates a new variable of the type <i>program-name</i>.</p>
+This creates a new variable of the type *program-name*.
 </item>
 </list>
 
-<p>Read more about classes and objects in the chapter about
-object-oriented programming.</p>
+Read more about classes and objects in the chapter about
+object-oriented programming.
 
-<h1>The Data Type <tt>object</tt></h1>
+## The Data Type `object`
 
-<p>In object-oriented programming, the data items that are instances
-(also called <b>clones</b>) of a class are called objects. The data
-type <tt>object</tt> is used to store such objects.</p>
+In object-oriented programming, the data items that are instances
+(also called **clones**) of a class are called objects. The data
+type `object` is used to store such objects.
 
-<p>An <tt>object</tt> is an instance of any class. Usually you use the
-more specific data type <tt>object(<i>classname</i>)</tt>, which means
-an object that is an instance of the class <i>classname</i>. You can
-also write just <tt><i>classname</i></tt> instead of
-<tt>object(<i>classname</i>)</tt>, and this is the recommended
-form.</p>
+An `object` is an instance of any class. Usually you use the
+more specific data type `object(*classname*)`, which means
+an object that is an instance of the class *classname*. You can
+also write just `*classname*` instead of
+`object(*classname*)`, and this is the recommended
+form.
 
-<p>Here are some useful things that you can do with objects:</p>
+Here are some useful things that you can do with objects:
 
 <list type="ul">
 <item name="Check if it is an object">
-<pi>objectp(<i>something</i>)</pi>
+```pike
+objectp(*something*)
+```
 
-<p>The function <tt>objectp</tt> returns <b>1</b> if the value
-<i>something</i> is a object, otherwise <b>0</b>.</p>
+The function `objectp` returns **1** if the value
+*something* is a object, otherwise **0**.
 </item>
 
 <item name="Create an object">
-<pi><i>program-name</i>()</pi> <p>or</p> <pi><i>program-name</i>(<i>arguments</i>)</pi>
+```pike
+*program-name*()
 
-<p>This creates a new object of the type <i>program-name</i>. If
-arguments are given, they are sent to the method <tt>create</tt> in
-the program.</p>
+``` or 
+```pike
+*program-name*(*arguments*)
+```
+
+This creates a new object of the type *program-name*. If
+arguments are given, they are sent to the method `create` in
+the program.
 </item>
 
 <item name="Destroy an object">
-<pi>destruct(<i>object</i>)</pi>
+```pike
+destruct(*object*)
+```
 
-<p>This destroys the object <i>object</i>. All variables that contain
-references to this object will be set to <b>0</b>. If there is a
-method called <tt>destroy</tt> in the object, that method will first
-be called.</p>
+This destroys the object *object*. All variables that contain
+references to this object will be set to **0**. If there is a
+method called `destroy` in the object, that method will first
+be called.
 
-<p>Note that usually you don't need to explicitly destroy objects.
+Note that usually you don't need to explicitly destroy objects.
 Pike has automatic garbage collection, and when an object is no longer
 referenced from anywhere, which means that it can never be used again,
-it is destroyed automatically.</p>
+it is destroyed automatically.
 </item>
 
 <item name="Accessing a member">
-<pi><i>object</i> -&gt; <i>member-name</i></pi>
+```pike
+*object* -> *member-name*
+```
 
-<p>This is used to access the method or member variable called
-<i>member-name</i> in the object <i>object</i>. Example:</p>
+This is used to access the method or member variable called
+*member-name* in the object *object*. Example:
 
-<pi>web_page-&gt;data()</pi>
+```pike
+web_page->data()
+```
 </item>
 </list>
 
-<p>Read more about classes and objects in the chapter about
-object-oriented programming.</p>
+Read more about classes and objects in the chapter about
+object-oriented programming.
 
-<h1>The Data Type <tt>function</tt></h1>
+## The Data Type `function`
 
-<p>Something else that may surprise you is that there is a data type
-for <b>methods</b>. Sometimes you want to refer to "any method". Take
-for example the built-in method <tt>map</tt>, which is used to apply
-an operation to all the elements in an array. You call <tt>map</tt>
+Something else that may surprise you is that there is a data type
+for **methods**. Sometimes you want to refer to "any method". Take
+for example the built-in method `map`, which is used to apply
+an operation to all the elements in an array. You call `map`
 with (at least) two arguments: the array to go through, and the method
-to call for each element:</p>
+to call for each element:
 
-<pi>
+```pike
 void write_one(int x)
 {
   write("Number: " + x + "\n");
@@ -132,39 +158,50 @@ int main()
   map(all_of_them, write_one);
   return 0;
 }
-</pi>
+```
 
-<p>The first argument to <tt>map</tt> is an array, and the second
-argument is of the type <tt>function</tt>. As you can see, you get a
-method reference of the type <tt>function</tt> by just typing the
-method name, without the parentheses used in method calls.</p>
+The first argument to `map` is an array, and the second
+argument is of the type `function`. As you can see, you get a
+method reference of the type `function` by just typing the
+method name, without the parentheses used in method calls.
 
-<p>A method stored in a variable can be called just like a normal
-method:</p>
+A method stored in a variable can be called just like a normal
+method:
 
-<pi>
+```pike
 function w = write;
 w("Hello!\n");
-</pi>
+```
 
-<p>Here are some useful things that you can do with method
-references:</p>
+Here are some useful things that you can do with method
+references:
 
 <list type="ul">
 <item name="Check if it is a method reference">
-<pi>functionp(<i>something</i>)</pi>
+```pike
+functionp(*something*)
+```
 
-<p>The function <tt>functionp</tt> returns <b>1</b> if the value
-<i>something</i> is a method reference, otherwise <b>0</b>.</p>
+The function `functionp` returns **1** if the value
+*something* is a method reference, otherwise **0**.
 </item>
 
 <item name="Find the name of a function">
-<p><pi>function_name(<i>function</i>)</pi> returns a string with the name of the function <i>function</i>.
-Example:</p>
+```pike
+function_name(*function*)
 
-<p>
-<pi>function_name(write)</pi> gives the result
-<pi>"write"</pi>.
-</p>
+``` returns a string with the name of the function *function*.
+Example:
+
+
+```pike
+function_name(write)
+
+``` gives the result
+```pike
+"write"
+
+```.
+
 </item>
 </list>

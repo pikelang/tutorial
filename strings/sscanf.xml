@@ -1,32 +1,34 @@
-<p>The counterpart or "opposite" of <tt>sprintf</tt> is
-<tt>sscanf</tt>. It looks at a string, and extracts values from it
+# Analyzing Strings with sscanf
+
+The counterpart or "opposite" of `sprintf` is
+`sscanf`. It looks at a string, and extracts values from it
 according to another string with format specifiers. It then places the
 values it has extracted in its arguments. The arguments must be
 variables, or other things that you can assign values to. For example,
-after the following code segment, the variable <tt>f</tt> will contain
-<b>-3.6</b>, and the variable <tt>i</tt> will contain <b>17</b>:</p>
+after the following code segment, the variable `f` will contain
+**-3.6**, and the variable `i` will contain **17**:
 
-<pi>
+```pike
 float f;
 int i;
 string the_string = "foo -3.6 fum dum 17";
 sscanf(the_string, "foo %f fum dum %d", f, i);
-</pi>
+```
 
-<p>Note that <tt>sscanf</tt> isn't an ordinary method or built-in
+Note that `sscanf` isn't an ordinary method or built-in
 function, but a very special construction in Pike. The reason is that
-<tt>sscanf</tt> has to change its arguments, and since Pike uses
+`sscanf` has to change its arguments, and since Pike uses
 call-by-value, no ordinary method or built-in function can do
-that.</p>
+that.
 
-<p>The format string consists of characters, that should match the
+The format string consists of characters, that should match the
 contents of the first string exactly. Blanks are significant. For
-example, the part <tt>fum dum</tt> in the format string must match a
-part of the analyzed string (<tt>the_string</tt>) exactly. The format
+example, the part `fum dum` in the format string must match a
+part of the analyzed string (`the_string`) exactly. The format
 string can also contain "percent specifiers", which match various
-things. For example, <tt>%d</tt> us used to match an integer.</p>
+things. For example, `%d` us used to match an integer.
 
-<p>Here is a list of format specifiers:</p>
+Here is a list of format specifiers:
 
 <xtable>
 
@@ -36,154 +38,173 @@ things. For example, <tt>%d</tt> us used to match an integer.</p>
 </row>
 
 <row>
-<c><p> %d </p></c>
-<c><p>An integer in normal decimal (that is, base-10) notation.</p></c>
+<c> %d </c>
+<c>An integer in normal decimal (that is, base-10) notation.</c>
 </row>
 
 <row>
-<c><p> %o </p></c>
-<c><p>An integer in octal (base-8) notation.</p></c>
+<c> %o </c>
+<c>An integer in octal (base-8) notation.</c>
 </row>
 
 <row>
-<c><p> %x </p></c>
-<c><p>An integer in hexadecimal (base-16) notation.</p></c>
+<c> %x </c>
+<c>An integer in hexadecimal (base-16) notation.</c>
 </row>
 
 <row>
-<c><p> %D </p></c>
-<c><p>An integer in decimal, or (if it starts with <tt>0</tt>) octal, or
-(if it starts with <tt>0x</tt>) hexadecimal notation. Hence,
-<pi>sscanf("12", "%D", i)</pi>, <pi>sscanf("014", "%D", i)</pi> and
-<pi>sscanf("0xC", "%D", i)</pi> all yield the value 12 in i.</p></c>
+<c> %D </c>
+<c>An integer in decimal, or (if it starts with `0`) octal, or
+(if it starts with `0x`) hexadecimal notation. Hence,
+```pike
+sscanf("12", "%D", i)
+
+```, 
+```pike
+sscanf("014", "%D", i)
+
+``` and
+```pike
+sscanf("0xC", "%D", i)
+
+``` all yield the value 12 in i.</c>
 </row>
 
 <row>
-<c><p> %f </p></c>
-<c><p>A floating-point number.</p></c>
+<c> %f </c>
+<c>A floating-point number.</c>
 </row>
 
 <row>
-<c><p> %c </p></c>
-<c><p>The character code of a single character.</p></c>
+<c> %c </c>
+<c>The character code of a single character.</c>
 </row>
 
 <row>
-<c><p> %s </p></c>
-<c><p>A string. If <tt>%s</tt> is followed by <tt>%d</tt>, <tt>%s</tt>
-will read any non-numerical characters. If followed by <tt>%[]</tt>,
-<tt>%s</tt> will read any characters not present in the set in the
-<tt>%[]</tt>. If followed by normal text, <tt>%s</tt> will match all
+<c> %s </c>
+<c>A string. If `%s` is followed by `%d`, `%s`
+will read any non-numerical characters. If followed by `%[]`,
+`%s` will read any characters not present in the set in the
+`%[]`. If followed by normal text, `%s` will match all
 characters up to, but not including, the first occurrence of that
-text.</p></c>
+text.</c>
 </row>
 
 <row>
-<c><p> %<i>N</i>s </p></c>
-<c><p>As above, but a string of exactly <i>N</i> characters</p></c>
+<c> %*N*s </c>
+<c>As above, but a string of exactly *N* characters</c>
 </row>
 
 <row>
-<c><p> %[<i>characters</i>] </p></c>
+<c> %[*characters*] </c>
 
-<c><p>A string containing any of the characters in the list
-<tt><i>characters</i></tt>.</p>
+<c>A string containing any of the characters in the list
+`*characters*`.
 
-<p>A minus sign can be used to give a range of values, so e. g.
-<tt>%[a-d]</tt> means a string consisting of any of the characters
-<tt>a</tt>, <tt>b</tt> and <tt>c</tt>.</p>
+A minus sign can be used to give a range of values, so e. g.
+`%[a-d]` means a string consisting of any of the characters
+`a`, `b` and `c`.
 
-<p>A <tt>^</tt> sign means "not", so e. g. <tt>%[^abc]</tt> means any
-character except <tt>a</tt>, <tt>b</tt> and <tt>c</tt>.</p>
+A `^` sign means "not", so e. g. `%[^abc]` means any
+character except `a`, `b` and `c`.
 
-<p>They can be combined, so <tt>%[a-cf]</tt> means <tt>a</tt>,
-<tt>b</tt>, <tt>c</tt>, and <tt>f</tt>.</p></c>
+They can be combined, so `%[a-cf]` means `a`,
+`b`, `c`, and `f`.</c>
 </row>
 
 <row>
-<c><p> %{<i>format</i>%} </p></c>
-<c><p>Repeatedly matches the format specifier <i>format</i> as many times
+<c> %{*format*%} </c>
+<c>Repeatedly matches the format specifier *format* as many times
 as possible, and gives an array of arrays with the results. Example:
-<tt>%{%d%}</tt> matches zero or more integers.</p></c>
+`%{%d%}` matches zero or more integers.</c>
 </row>
 
 <row>
-<c><p> %% </p></c>
-<c><p>A single percent (<tt>%</tt>) character</p></c>
+<c> %% </c>
+<c>A single percent (`%`) character</c>
 </row>
 
 </xtable>
 
-<p>If an asterisk (<tt>*</tt>) is put between the percent and the
-operator, e. g. <tt>%*d</tt>, the operator will only match its
-argument, and not assign any variables.</p>
+If an asterisk (`*`) is put between the percent and the
+operator, e. g. `%*d`, the operator will only match its
+argument, and not assign any variables.
 
-<p><tt>sscanf</tt> returns the number of percent specifiers that were
-successfully matched.</p>
+`sscanf` returns the number of percent specifiers that were
+successfully matched.
 
-<p>The matching done by <tt>sscanf</tt> is rather simple-minded. It
-looks at the format string up to the next <tt>%</tt>, and tries to
+The matching done by `sscanf` is rather simple-minded. It
+looks at the format string up to the next `%`, and tries to
 match that with the analyzed string. If successful, it then goes on to
 the next part of the format string. If a part of the format string
-does not match, <tt>sscanf</tt> immediately returns (with the number
+does not match, `sscanf` immediately returns (with the number
 of percent specifiers that were successfully matched). Variables in
 the argument list that correspond to percent specifiers that were not
-successfully matched will not be changed.</p>
+successfully matched will not be changed.
 
-<p>Some examples of <tt>sscanf</tt>:</p>
+Some examples of `sscanf`:
 
 <list type="ul">
 <item>
-<p>This call to <tt>sscanf</tt> will return <b>1</b>, and the variable
-<tt>a</tt> will be given the value <tt>"oo"</tt>:</p>
+This call to `sscanf` will return **1**, and the variable
+`a` will be given the value `"oo"`:
 
-<pi>sscanf("foo", "f%s", a);</pi>
+```pike
+sscanf("foo", "f%s", a);
+```
 </item>
 
 <item>
-<p>The return value from <tt>sscanf</tt> will be <b>2</b>.
-<tt>a</tt> will be given the value <b>4711</b>.
-<tt>b</tt> will be given the value <tt>"bar"</tt>.</p>
+The return value from `sscanf` will be **2**.
+`a` will be given the value **4711**.
+`b` will be given the value `"bar"`.
 
-<pi>sscanf("4711bar", "%d%s", a, b);</pi>
+```pike
+sscanf("4711bar", "%d%s", a, b);
+```
 </item>
 
 <item>
-<p>The return value from <tt>sscanf</tt> will be <b>1</b>, <tt>a</tt>
-will be given the value <tt>"test"</tt>:</p>
+The return value from `sscanf` will be **1**, `a`
+will be given the value `"test"`:
 
-<pi>sscanf(" \t test", "%*[ \t]%s", a)</pi>
+```pike
+sscanf(" \t test", "%*[ \t]%s", a)
+```
 </item>
 
 <item>
-<p>This removes <tt>"the "</tt> from the beginning of the string in
-<tt>str</tt>. If <tt>str</tt> does not begin with <tt>"the "</tt>, it
-will not be changed</p>
+This removes `"the "` from the beginning of the string in
+`str`. If `str` does not begin with `"the "`, it
+will not be changed
 
-<pi>sscanf(str, "the %s", str);</pi>
+```pike
+sscanf(str, "the %s", str);
+```
 </item>
 
 <item>
-<p>This assigns <tt>"foo"</tt> to <tt>s1</tt> and <tt>"fum"</tt> to
-<tt>s2</tt>, and the array <tt>({ ({ 1 }), ({ 2 }), ({ 3 }) })</tt> to
-<tt>a</tt>. The return value will be <b>3</b>.</p>
+This assigns `"foo"` to `s1` and `"fum"` to
+`s2`, and the array `({ ({ 1 }), ({ 2 }), ({ 3 }) })` to
+`a`. The return value will be **3**.
 
-<pi>
+```pike
 sscanf("foo % 1 2 3 fum",
        "%s %% %{%d%} %s", s1, a, s2);
-</pi>
+
+```
 </item>
 </list>
 
-<p>A feature with <tt>sscanf</tt> is that you can define variables
-inside it:</p>
+A feature with `sscanf` is that you can define variables
+inside it:
 
-<pi>
+```pike
 sscanf("foo % 1 2 3 fum",
        "%s %% %{%d%} %s",
        string s1, array(string) a, string s2);
-</pi>
+```
 
-<p>In contrast to variables defined in a <tt>for</tt> statement, these
+In contrast to variables defined in a `for` statement, these
 variables are available in the rest of the block, and not just inside
-the <tt>sscanf</tt>.</p>
+the `sscanf`.

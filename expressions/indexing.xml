@@ -1,6 +1,8 @@
-<p>The data items of some of the data types in Pike can contain other
+# Indexing
+
+The data items of some of the data types in Pike can contain other
 data items. The indexing and range operators are used to retrieve
-information from inside those complex data items.</p>
+information from inside those complex data items.
 
 <xtable>
 
@@ -11,50 +13,50 @@ information from inside those complex data items.</p>
 </row>
 
 <row>
-<c><p>Indexing</p></c>
-<c><p>a [ b ]</p></c>
-<c><p>The value at index or position b in a</p></c>
+<c>Indexing</c>
+<c>a [ b ]</c>
+<c>The value at index or position b in a</c>
 </row>
 
 <row>
-<c><p>Assign at index</p></c>
-<c><p>a [ b ] = c</p></c>
-<c><p>Sets the value at index or position b in a to c</p></c>
+<c>Assign at index</c>
+<c>a [ b ] = c</c>
+<c>Sets the value at index or position b in a to c</c>
 </row>
 
 <row>
-<c><p>Range</p></c>
-<c><p>a [ b .. c]</p></c>
-<c><p>Returns a slice of a, i. e. the elements in a starting at the index
-b and ending at c</p></c>
+<c>Range</c>
+<c>a [ b .. c]</c>
+<c>Returns a slice of a, i e the elements in a starting at the index
+b and ending at c</c>
 </row>
 
 <row>
-<c><p>Range</p></c>
-<c><p>a [ .. c]</p></c>
-<c><p>Returns a slice of a, starting at the beginning of a and ending at
-c</p></c>
+<c>Range</c>
+<c>a [ .. c]</c>
+<c>Returns a slice of a, starting at the beginning of a and ending at
+c</c>
 </row>
 
 <row>
-<c><p>Range</p></c>
-<c><p>a [ b .. ]</p></c>
-<c><p>Returns a slice of a, from the index b to the end of a</p></c>
+<c>Range</c>
+<c>a [ b .. ]</c>
+<c>Returns a slice of a, from the index b to the end of a</c>
 </row>
 
 </xtable>
 
-<p>Note that the indices in an array start with 0, so the last index
-value in an array is equal to the length of the array minus one.</p>
+Note that the indices in an array start with 0, so the last index
+value in an array is equal to the length of the array minus one.
 
-<p>You may remember the syntax for accessing methods and member
-variables in an object, using the operator <tt>-&gt;</tt>. This is
-actually a form of indexing, and the <tt>-&gt;</tt> operator is just a
+You may remember the syntax for accessing methods and member
+variables in an object, using the operator `->`. This is
+actually a form of indexing, and the `->` operator is just a
 different way of writing the indexing operator. If you turn the
-<i>identifier</i> in the expression
-<i>something</i><tt>-&gt;</tt><i>identifier</i> into a string by
-putting double quotes around it, you can use the <tt>[]</tt> indexing
-operators, like this:</p>
+*identifier* in the expression
+*something*`->`*identifier* into a string by
+putting double quotes around it, you can use the `[]` indexing
+operators, like this:
 
 <xtable>
 
@@ -65,22 +67,22 @@ operators, like this:</p>
 </row>
 
 <row>
-<c><p>Indexing</p></c>
-<c><p>a -&gt;<i>identifier</i></p></c>
-<c><p>Equivalent to a["<i>identifier</i>"]</p></c>
+<c>Indexing</c>
+<c>a ->*identifier*</c>
+<c>Equivalent to a["*identifier*"]</c>
 </row>
 
 <row>
-<c><p>Assign at index</p></c>
-<c><p>a -&gt;<i>identifier</i> = c</p></c>
-<c><p>Equivalent to a["<i>identifier</i>"] = c</p></c>
+<c>Assign at index</c>
+<c>a ->*identifier* = c</c>
+<c>Equivalent to a["*identifier*"] = c</c>
 </row>
 
 </xtable>
 
-<p>You can index strings, arrays, mapping, multisets and objects. Some
+You can index strings, arrays, mapping, multisets and objects. Some
 of these can only be indexed with certain types of index values, as
-shown in this list:</p>
+shown in this list:
 
 <xtable>
 
@@ -90,94 +92,94 @@ shown in this list:</p>
 </row>
 
 <row>
-<c><p><tt><i>string</i>[<i>int</i>]</tt></p></c>
-<c><p>Returns the numerical value of a character in the string. The
+<c>`*string*[*int*]`</c>
+<c>Returns the numerical value of a character in the string. The
 result is not a character or a string, but just the integer used
 internally to represent the character. Note that the first character
-has index number 0, and so on.</p></c>
+has index number 0, and so on.</c>
 </row>
 
 <row>
-<c><p><tt><i>array</i>[<i>int</i>]</tt></p></c>
-<c><p>Returns an element in the array</p></c>
+<c>`*array*[*int*]`</c>
+<c>Returns an element in the array</c>
 </row>
 
 <row>
-<c><p><tt><i>array</i>[<i>int</i>]=<i>mixed</i></tt></p></c>
-<c><p>Sets an element in the array to the <i>mixed</i> value.</p></c>
+<c>`*array*[*int*]=*mixed*`</c>
+<c>Sets an element in the array to the *mixed* value.</c>
 </row>
 
 <row>
-<c><p><tt><i>multiset</i>[<i>mixed</i>]<br/>
-<i>multiset</i>-&gt;<i>identifier</i> </tt></p></c>
-<c><p>Returns <b>1</b> if the index (the value between the brackets) is a
-member in the multiset, 0 otherwise.</p></c>
+<c>`*multiset*[*mixed*]<br/>
+*multiset*->*identifier* `</c>
+<c>Returns **1** if the index (the value between the brackets) is a
+member in the multiset, 0 otherwise.</c>
 </row>
 
 <row>
-<c><p><tt>
-<i>multiset</i>[<i>mixed</i>]=<i>mixed</i><br/>
-<i>multiset</i>-&gt;<i>identifier=<i>mixed</i></i>
-</tt></p></c>
-<c><p>If the rightmost <i>mixed</i> value is <b>true</b>, the index value
+<c>`
+*multiset*[*mixed*]=*mixed*<br/>
+*multiset*->*identifier=*mixed**
+`</c>
+<c>If the rightmost *mixed* value is **true**, the index value
 is added as a member to the multiset. Otherwise it is removed from the
-multiset.</p></c>
+multiset.</c>
 </row>
 
 <row>
-<c><p><tt>
-<i>mapping</i>[<i>mixed</i>]<br/>
-<i>mapping</i>-&gt;<i>identifier</i>
-</tt></p></c>
-<c><p>Returns the value associated with the index, or 0 if it is not
-found.</p></c>
+<c>`
+*mapping*[*mixed*]<br/>
+*mapping*->*identifier*
+`</c>
+<c>Returns the value associated with the index, or 0 if it is not
+found.</c>
 </row>
 
 <row>
-<c><p><tt>
-<i>mapping</i>[<i>mixed</i>]=<i>mixed</i><br/>
-<i>mapping</i>-&gt;<i>identifier</i>=<i>mixed</i>
-</tt></p></c>
-<c><p>Associate the second <i>mixed</i> value with the first <i>mixed</i>
-value.</p></c>
+<c>`
+*mapping*[*mixed*]=*mixed*<br/>
+*mapping*->*identifier*=*mixed*
+`</c>
+<c>Associate the second *mixed* value with the first *mixed*
+value.</c>
 </row>
 
 <row>
-<c><p><tt>
-<i>object</i>[<i>string</i>]<br/>
-<i>object</i>-&gt;<i>identifier</i><br/>
-</tt></p></c>
-<c><p>Returns the value of the variable that is named by the identifier
-in the object.</p></c>
+<c>`
+*object*[*string*]<br/>
+*object*->*identifier*<br/>
+`</c>
+<c>Returns the value of the variable that is named by the identifier
+in the object.</c>
 </row>
 
 <row>
-<c><p><tt><i>object</i>[<i>string</i>]=<i>mixed</i><br/>
-<i>object</i>-&gt;<i>identifier</i>=<i>mixed</i><br/>
-</tt></p></c>
-<c><p>Set the given identifier in the object to the <i>mixed</i> value.
-Only works if the identifier references a variable in the object.</p></c>
+<c>`*object*[*string*]=*mixed*<br/>
+*object*->*identifier*=*mixed*<br/>
+`</c>
+<c>Set the given identifier in the object to the *mixed* value.
+Only works if the identifier references a variable in the object.</c>
 </row>
 
 <row>
-<c><p><tt><i>string</i>[<i>int</i>..<i>int</i>]</tt></p></c>
-<c><p>Returns a piece of the string.</p></c>
+<c>`*string*[*int*..*int*]`</c>
+<c>Returns a piece of the string.</c>
 </row>
 
 <row>
-<c><p><tt><i>array</i>[<i>int</i>..<i>int</i>]</tt></p></c>
-<c><p>Returns a slice of the array.</p></c>
+<c>`*array*[*int*..*int*]`</c>
+<c>Returns a slice of the array.</c>
 </row>
 
 </xtable>
 
-<p>When indexing an array or string, it is sometimes convenient to
+When indexing an array or string, it is sometimes convenient to
 start counting from the end instead of from the beginning. You can do
 this with negative indices. The last element in the array can be
 accessed with index -1, the second-to-last element with index -2, and
-so on. In general, <tt>arr[-i]</tt> is equivalent to
-<tt>arr[sizeof(arr)-i]</tt>.</p>
+so on. In general, `arr[-i]` is equivalent to
+`arr[sizeof(arr)-i]`.
 
-<p>Negative indices do not work with the range operator. The range
+Negative indices do not work with the range operator. The range
 operator will try to convert negative or too-large index values to
-something legal.</p>
+something legal.

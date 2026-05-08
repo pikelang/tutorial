@@ -1,28 +1,32 @@
-<p>C programmers are familiar with the functions <tt>sprintf</tt> and
-<tt>sscanf</tt>, which are used to respectively create and analyze
+# Composing Strings with sprintf
+
+C programmers are familiar with the functions `sprintf` and
+`sscanf`, which are used to respectively create and analyze
 strings according to format specifiers. Pike had its own
-<tt>sprintf</tt> and <tt>sscanf</tt>, which are not entirely unlike
-those in C.</p>
+`sprintf` and `sscanf`, which are not entirely unlike
+those in C.
 
-<p>If we start with <tt>sprintf</tt>, it builds a string according to
+If we start with `sprintf`, it builds a string according to
 a string with format specifiers, and a number of arguments. For
-example, if the variables <tt>x</tt> and <tt>y</tt> both contain the
-floating-point number 2.0, the expression</p>
+example, if the variables `x` and `y` both contain the
+floating-point number 2.0, the expression
 
-<pi>sprintf("They are %.2f and %10.3f.", x, y);</pi>
+```pike
+sprintf("They are %.2f and %10.3f.", x, y);
+```
 
-<p>would give the result</p>
+would give the result
 
 <out>
 "They are 2.00 and      2.000."
 </out>
 
-<p>The format string consists of characters, that will be copied to
+The format string consists of characters, that will be copied to
 the result. The format string can also contain "percent specifiers",
-which will be replaced by its arguments. For example, <tt>%d</tt> is
-used to mark an integer.</p>
+which will be replaced by its arguments. For example, `%d` is
+used to mark an integer.
 
-<p>Here is a list of some of the more common format specifiers:</p>
+Here is a list of some of the more common format specifiers:
 
 <xtable>
 
@@ -32,46 +36,46 @@ used to mark an integer.</p>
 </row>
 
 <row>
-<c><p> %d </p></c>
-<c><p>An integer in normal decimal (that is, base-10) notation</p></c>
+<c> %d </c>
+<c>An integer in normal decimal (that is, base-10) notation</c>
 </row>
 
 <row>
-<c><p> %o </p></c>
-<c><p>An integer in octal (base-8) notation</p></c>
+<c> %o </c>
+<c>An integer in octal (base-8) notation</c>
 </row>
 
 <row>
-<c><p> %x </p></c>
-<c><p>An integer in lower-case hexadecimal (base-16) notation</p></c>
+<c> %x </c>
+<c>An integer in lower-case hexadecimal (base-16) notation</c>
 </row>
 
 <row>
-<c><p> %X </p></c>
-<c><p>An integer in upper-case hexadecimal notation</p></c>
+<c> %X </c>
+<c>An integer in upper-case hexadecimal notation</c>
 </row>
 
 <row>
-<c><p> %c </p></c>
-<c><p>The character corresponding to a certain character code</p></c>
+<c> %c </c>
+<c>The character corresponding to a certain character code</c>
 </row>
 
 <row>
-<c><p> %f </p></c>
-<c><p>A floating-point number</p></c>
+<c> %f </c>
+<c>A floating-point number</c>
 </row>
 
 <row>
-<c><p> %s </p></c>
-<c><p>A string</p></c>
+<c> %s </c>
+<c>A string</c>
 </row>
 
 </xtable>
 
-<p>There is a large number of <b>modifiers</b> that you can use to
+There is a large number of **modifiers** that you can use to
 control the format of the output. You insert these modifiers between
 the percent sign and the format character. Here are some examples of
-the most useful ones:</p>
+the most useful ones:
 
 <xtable>
 
@@ -81,48 +85,48 @@ the most useful ones:</p>
 </row>
 
 <row>
-<c><p> %<i>N</i>d </p></c>
-<c><p>An integer right-justified in a field at least <i>N</i> characters
-wide</p></c>
+<c> %*N*d </c>
+<c>An integer right-justified in a field at least *N* characters
+wide</c>
 </row>
 
 <row>
-<c><p> %-<i>N</i>d </p></c>
-<c><p>An integer left-justified in a field at least <i>N</i> characters
-wide</p></c>
+<c> %-*N*d </c>
+<c>An integer left-justified in a field at least *N* characters
+wide</c>
 </row>
 
 <row>
-<c><p> %.<i>N</i>f </p></c>
-<c><p>A floating-point number printed with <i>N</i> decimals</p></c>
+<c> %.*N*f </c>
+<c>A floating-point number printed with *N* decimals</c>
 </row>
 
 <row>
-<c><p> %<i>N</i>f </p></c>
-<c><p>A floating-point number right-justified in a field at least
-<i>N</i> characters wide</p></c>
+<c> %*N*f </c>
+<c>A floating-point number right-justified in a field at least
+*N* characters wide</c>
 </row>
 
 <row>
-<c><p> %-<i>N</i>.<i>M</i>f </p></c>
-<c><p>A floating-point number with <i>M</i> decimals, left-justified in a
-field at least <i>N</i> characters wide</p></c>
+<c> %-*N*.*M*f </c>
+<c>A floating-point number with *M* decimals, left-justified in a
+field at least *N* characters wide</c>
 </row>
 
 <row>
-<c><p> %-<i>N</i>s </p></c>
-<c><p>A string left-justified in a field at least <i>N</i> characters
-wide</p></c>
+<c> %-*N*s </c>
+<c>A string left-justified in a field at least *N* characters
+wide</c>
 </row>
 
 <row>
-<c><p> %<i>.M</i>s </p></c>
-<c><p>A string, but at most <i>M</i> characters of that string are
-printed</p></c>
+<c> %*.M*s </c>
+<c>A string, but at most *M* characters of that string are
+printed</c>
 </row>
 
 </xtable>
 
-<p>C programmers should note that a difference from the
-<tt>sprintf</tt> you have in C is that Pike's <tt>sprintf</tt> returns
-the string as the value of the call.</p>
+C programmers should note that a difference from the
+`sprintf` you have in C is that Pike's `sprintf` returns
+the string as the value of the call.

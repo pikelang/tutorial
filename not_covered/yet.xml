@@ -1,18 +1,50 @@
-<p>Here are some of the things not covered:</p>
+Here are some of the things not covered:
 
 <list type="ul">
 <item>
-<p>Many details, for example all the format specifiers to
-<pi>sprintf</pi></p>
+Many details, for example all the format specifiers to
+```pike
+sprintf
+```
 </item>
-<item><p>Unnamed functions, with <pi>lambda</pi></p></item>
-<item><p>Operator functions, such as <pi>'+</pi></p></item>
-<item><p>Operator overloading in classes</p></item>
-<item><pi>void my_function(mixed ... args)</pi></item>
-<item><pi>at_exit()</pi></item>
+<item>Unnamed functions, with 
+```pike
+lambda
+
+```</item>
+<item>Operator functions, such as 
+```pike
+'+
+
+```</item>
+<item>Operator overloading in classes</item>
 <item>
-<p>Type information with <pi>typeof</pi>, <pi>_typeof</pi> and
-<pi>sprintf("%t", ...)</pi></p>
+```pike
+void my_function(mixed ... args)
+
+```</item>
+<item>
+```pike
+at_exit()
+
+```</item>
+<item>
+Type information with 
+```pike
+typeof
+
+```, 
+```pike
+_typeof
+
+``` and
+```pike
+sprintf("%t", ...)
+```
 </item>
-<item><p>Time measurement with <pi>gauge</pi></p></item>
+<item>Time measurement with 
+```pike
+gauge
+
+```</item>
 </list>

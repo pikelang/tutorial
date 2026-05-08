@@ -1,11 +1,13 @@
-<p>Sometimes we want to inherit from two or more classes. This works
+# Multiple Inheritance
+
+Sometimes we want to inherit from two or more classes. This works
 in Pike (and in C++, but not in Java). You just write several
-inherits.</p>
+inherits.
 
-<p>Lets say we have a class <tt>friend</tt>, that represents a
-friend:</p>
+Lets say we have a class `friend`, that represents a
+friend:
 
-<pi>
+```pike
 class friend
 {
   void cuddle()
@@ -13,12 +15,12 @@ class friend
     write("Cuddle, cuddle, cuddle!\n");
   }
 }
-</pi>
+```
 
-<p>A hamster, as we all know, is both an animal and a friend, and it
-can also dance:</p>
+A hamster, as we all know, is both an animal and a friend, and it
+can also dance:
 
-<pi>
+```pike
 class hamster
 {
   inherit animal;
@@ -29,13 +31,14 @@ class hamster
     write(name + " dances.\n");
   }
 }
-</pi>
+```
 
-<p>So, try it out:</p>
+So, try it out:
 
-<pi>
+```pike
 hamster h = hamster("Blue Lightning", 0.12);
-h-&gt;cuddle();      // Cuddle as a friend
-h-&gt;eat("grain");  // Eat as an animal
-h-&gt;dance();       // Dance as a hamster
-</pi>
+h->cuddle();      // Cuddle as a friend
+h->eat("grain");  // Eat as an animal
+h->dance();       // Dance as a hamster
+
+```

@@ -1,7 +1,9 @@
-<p>Some of the operators that are used for bitwise operations
-(<tt>|</tt>, <tt>&amp;</tt> and <tt>^</tt>) can also be used for
+# Operations on Sets
+
+Some of the operators that are used for bitwise operations
+(`|`, `&` and `^`) can also be used for
 operations on sets, such as union and intersection. They can be
-applied to multisets, but also to arrays and mappings.</p>
+applied to multisets, but also to arrays and mappings.
 
 <xtable>
 
@@ -12,27 +14,27 @@ applied to multisets, but also to arrays and mappings.</p>
 </row>
 
 <row>
-<c><p>Intersection (and)</p></c>
-<c><p>a &amp; b</p></c>
-<c><p>All elements present in both a and b.</p></c>
+<c>Intersection (and)</c>
+<c>a & b</c>
+<c>All elements present in both a and b.</c>
 </row>
 
 <row>
-<c><p>Union (or)</p></c>
-<c><p>a | b</p></c>
-<c><p>All elements present in at least one of a and b.</p></c>
+<c>Union (or)</c>
+<c>a | b</c>
+<c>All elements present in at least one of a and b.</c>
 </row>
 
 <row>
-<c><p>Symmetric difference (exclusive or)</p></c>
-<c><p>a ^ b</p></c>
-<c><p>All elements present in a or b, but not present in both.</p></c>
+<c>Symmetric difference (exclusive or)</c>
+<c>a ^ b</c>
+<c>All elements present in a or b, but not present in both.</c>
 </row>
 
 </xtable>
 
-<p>Two calculate the difference between two multisets, arrays or
-mappings, you use the <tt>-</tt> operator:</p>
+Two calculate the difference between two multisets, arrays or
+mappings, you use the `-` operator:
 
 <xtable>
 
@@ -43,24 +45,24 @@ mappings, you use the <tt>-</tt> operator:</p>
 </row>
 
 <row>
-<c><p>difference</p></c>
-<c><p>a - b</p></c>
-<c><p>All elements present in a, but not in b.</p></c>
+<c>difference</c>
+<c>a - b</c>
+<c>All elements present in a, but not in b.</c>
 </row>
 
 </xtable>
 
-<p>When using mappings in set operations, we only consider the
+When using mappings in set operations, we only consider the
 indices. The values are copied along with the indices. If an index is
 present in both mappings in a union or intersection, the one from the
-right-side mapping will be used.</p>
+right-side mapping will be used.
 
-<p>Some examples:</p>
+Some examples:
 
-<p><pi>
+```pike
 mapping m1 = ([ 1:"one", 2:"two" ]),
         m2 = ([ 2:"TWO", 3:"THREE" ]);
-</pi></p>
+```
 
 <xtable>
 
@@ -70,38 +72,78 @@ mapping m1 = ([ 1:"one", 2:"two" ]),
 </row>
 
 <row>
-<c><p><pi>m1 &amp; m2</pi></p></c>
-<c><p><pi>([ 2:"TWO" ])</pi></p></c>
+<c>
+```pike
+m1 & m2
+
+```</c>
+<c>
+```pike
+([ 2:"TWO" ])
+
+```</c>
 </row>
 
 <row>
-<c><p><pi>m1 | m2</pi></p></c>
-<c><p><pi>([ 1:"one", 2:"TWO", 3:"THREE" ])</pi></p></c>
+<c>
+```pike
+m1 | m2
+
+```</c>
+<c>
+```pike
+([ 1:"one", 2:"TWO", 3:"THREE" ])
+
+```</c>
 </row>
 
 <row>
-<c><p><pi>m1 + m2</pi></p></c>
-<c><p><pi>([ 1:"one", 2:"TWO", 3:"THREE" ])</pi></p></c>
+<c>
+```pike
+m1 + m2
+
+```</c>
+<c>
+```pike
+([ 1:"one", 2:"TWO", 3:"THREE" ])
+
+```</c>
 </row>
 
 <row>
-<c><p><pi>m1 ^ m2</pi></p></c>
-<c><p><pi>([ 1:"one", 3:"THREE" ])</pi></p></c>
+<c>
+```pike
+m1 ^ m2
+
+```</c>
+<c>
+```pike
+([ 1:"one", 3:"THREE" ])
+
+```</c>
 </row>
 
 <row>
-<c><p><pi>m1 - m2</pi></p></c>
-<c><p><pi>([ 1:"one" ])</pi></p></c>
+<c>
+```pike
+m1 - m2
+
+```</c>
+<c>
+```pike
+([ 1:"one" ])
+
+```</c>
 </row>
 
 </xtable>
 
 
-<p>You can also use the operator <tt>+</tt> on multisets, arrays and
+You can also use the operator `+` on multisets, arrays and
 mappings. For multisets and mappings, it calculates the union, i e the
-same as the <tt>|</tt> operator. For arrays, it gives a different
+same as the `|` operator. For arrays, it gives a different
 result: it just concatenates the arrays, instead of calculating the
-union:</p>
+union:
 
 <xtable>
 
@@ -111,13 +153,29 @@ union:</p>
 </row>
 
 <row>
-<c><p><pi>({ 1, 2, 4 }) | ({ 3, 4 })</pi></p></c>
-<c><p><pi>({ 1, 2, 3, 4 })</pi></p></c>
+<c>
+```pike
+({ 1, 2, 4 }) | ({ 3, 4 })
+
+```</c>
+<c>
+```pike
+({ 1, 2, 3, 4 })
+
+```</c>
 </row>
 
 <row>
-<c><p><pi>({ 1, 2, 4 }) + ({ 3, 4 })</pi></p></c>
-<c><p><pi>({ 1, 2, 4, 3, 4 })</pi></p></c>
+<c>
+```pike
+({ 1, 2, 4 }) + ({ 3, 4 })
+
+```</c>
+<c>
+```pike
+({ 1, 2, 4, 3, 4 })
+
+```</c>
 </row>
 
 </xtable>
