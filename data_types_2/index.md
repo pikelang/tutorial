@@ -1,6 +1,6 @@
 # More About Data Types
 
-# The Basic Types
+## The Basic Types
 
 These are the **basic types** in Pike:
 
