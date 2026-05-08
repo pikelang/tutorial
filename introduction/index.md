@@ -1,4 +1,6 @@
-# What is Pike?
+# Introduction
+
+## What is Pike?
 
 Pike is an interpreted, object-oriented programming language.
 It looks a bit like C and C++,
