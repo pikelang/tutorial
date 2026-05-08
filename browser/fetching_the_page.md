@@ -4,7 +4,7 @@ Now it's time to start surfing the web!
 Perhaps you know that web pages are written
 in something called HTML (HyperText Markup Language),
 and that the `http` you see in web addresses
-like `http://pike.ida.liu.se/`
+like `http://pike.lysator.liu.se/`
 means HyperText Transfer Protocol.
 The HyperText Transfer Protocol is a description
 of how web browsers communicate with web servers.
@@ -108,7 +108,7 @@ When we run this version of the web browser, it may look something
 like this. The user's command is shown in *italics*:
 
 ```
-> webbrowser.pike pike.ida.liu.se
+> webbrowser.pike pike.lysator.liu.se
 Welcome to the Very Simple WWW Browser!
 Fetching URL 'pike.lysator.liu.se'... Done.
 ```
