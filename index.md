@@ -63,7 +63,7 @@ or read the reference manual if you feel up to it.
 * [More About Data Types](data_types_2/index.md)
   * [The Basic Types](data_types_2/index.md)
   * [Container Types](data_types_2/container_types.md)
-  * [_The Other Reference Types_](data_types_2/other_types.md)
+  * [The Other Reference Types](data_types_2/other_types.md)
 * [_Working with Strings_](strings/index.md)
   * [_Operators on Strings_](strings/index.md)
   * [_Built-in Functions for Strings_](strings/builtins.md)
