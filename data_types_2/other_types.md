@@ -2,11 +2,9 @@
 
 This section about "other reference types" covers these types:
 
-<list type="ul">
-<item>program or "class" (written `program` in Pike)</item>
-<item>mapping or "dictionary" (written `mapping`)</item>
-<item>multiset or "bag" (written `multiset`)</item>
-</list>
+* program or "class" (written `program` in Pike)
+* mapping or "dictionary" (written `mapping`)
+* multiset or "bag" (written `multiset`)
 
 Just like the container types, these types are
 **reference types**: When a data item of a basic type is stored in
@@ -27,40 +25,35 @@ and a source code file can be used to define a program/class.
 
 Here are some useful things that you can do with programs:
 
-<list type="ul">
-<item name="Check if it is a program">
-```pike
-programp(*something*)
-```
+* Check if it is a program
+  ```pike
+  programp(*something*)
+  ```
 
-The function `programp` returns **1** if the value
-*something* is a program, otherwise **0**.
-</item>
+  The function `programp` returns **1** if the value
+  *something* is a program, otherwise **0**.
 
-<item name="Cloning">
+* Cloning
 
-```pike
-*program-name*()
+  ```pike
+  *program-name*()
 
-``` or 
-```pike
-*program-name*(*arguments*)
-```
+  ``` or
+  ```pike
+  *program-name*(*arguments*)
+  ```
 
 
-This creates a new object of the type *program-name*. If
-arguments are given, they are sent to the method `create` in
-this program.
-</item>
+  This creates a new object of the type *program-name*. If
+  arguments are given, they are sent to the method `create` in
+  this program.
 
-<item name="Defining variables">
-```pike
-*program-name* *variable-name*;
-```
+* Defining variables
+  ```pike
+  *program-name* *variable-name*;
+  ```
 
-This creates a new variable of the type *program-name*.
-</item>
-</list>
+  This creates a new variable of the type *program-name*.
 
 Read more about classes and objects in the chapter about
 object-oriented programming.
@@ -80,59 +73,53 @@ form.
 
 Here are some useful things that you can do with objects:
 
-<list type="ul">
-<item name="Check if it is an object">
-```pike
-objectp(*something*)
-```
+* Check if it is an object
+  ```pike
+  objectp(*something*)
+  ```
 
-The function `objectp` returns **1** if the value
-*something* is a object, otherwise **0**.
-</item>
+  The function `objectp` returns **1** if the value
+  *something* is a object, otherwise **0**.
 
-<item name="Create an object">
-```pike
-*program-name*()
+* Create an object
+  ```pike
+  *program-name*()
 
-``` or 
-```pike
-*program-name*(*arguments*)
-```
+  ``` or
+  ```pike
+  *program-name*(*arguments*)
+  ```
 
-This creates a new object of the type *program-name*. If
-arguments are given, they are sent to the method `create` in
-the program.
-</item>
+  This creates a new object of the type *program-name*. If
+  arguments are given, they are sent to the method `create` in
+  the program.
 
-<item name="Destroy an object">
-```pike
-destruct(*object*)
-```
+* Destroy an object
+  ```pike
+  destruct(*object*)
+  ```
 
-This destroys the object *object*. All variables that contain
-references to this object will be set to **0**. If there is a
-method called `destroy` in the object, that method will first
-be called.
+  This destroys the object *object*. All variables that contain
+  references to this object will be set to **0**. If there is a
+  method called `destroy` in the object, that method will first
+  be called.
 
-Note that usually you don't need to explicitly destroy objects.
-Pike has automatic garbage collection, and when an object is no longer
-referenced from anywhere, which means that it can never be used again,
-it is destroyed automatically.
-</item>
+  Note that usually you don't need to explicitly destroy objects.
+  Pike has automatic garbage collection, and when an object is no longer
+  referenced from anywhere, which means that it can never be used again,
+  it is destroyed automatically.
 
-<item name="Accessing a member">
-```pike
-*object* -> *member-name*
-```
+* Accessing a member
+  ```pike
+  *object* -> *member-name*
+  ```
 
-This is used to access the method or member variable called
-*member-name* in the object *object*. Example:
+  This is used to access the method or member variable called
+  *member-name* in the object *object*. Example:
 
-```pike
-web_page->data()
-```
-</item>
-</list>
+  ```pike
+  web_page->data()
+  ```
 
 Read more about classes and objects in the chapter about
 object-oriented programming.
@@ -176,32 +163,27 @@ w("Hello!\n");
 Here are some useful things that you can do with method
 references:
 
-<list type="ul">
-<item name="Check if it is a method reference">
-```pike
-functionp(*something*)
-```
+* Check if it is a method reference
+  ```pike
+  functionp(*something*)
+  ```
 
-The function `functionp` returns **1** if the value
-*something* is a method reference, otherwise **0**.
-</item>
+  The function `functionp` returns **1** if the value
+  *something* is a method reference, otherwise **0**.
 
-<item name="Find the name of a function">
-```pike
-function_name(*function*)
+* Find the name of a function
+  ```pike
+  function_name(*function*)
 
-``` returns a string with the name of the function *function*.
-Example:
+  ``` returns a string with the name of the function *function*.
+  Example:
 
 
-```pike
-function_name(write)
+  ```pike
+  function_name(write)
 
-``` gives the result
-```pike
-"write"
+  ``` gives the result
+  ```pike
+  "write"
 
-```.
-
-</item>
-</list>
+  ```.
