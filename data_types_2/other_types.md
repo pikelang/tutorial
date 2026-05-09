@@ -38,7 +38,8 @@ Here are some useful things that you can do with programs:
   ```pike
   *program-name*()
 
-  ``` or
+  ```
+  or
   ```pike
   *program-name*(*arguments*)
   ```
@@ -85,7 +86,8 @@ Here are some useful things that you can do with objects:
   ```pike
   *program-name*()
 
-  ``` or
+  ```
+  or
   ```pike
   *program-name*(*arguments*)
   ```
@@ -175,14 +177,16 @@ references:
   ```pike
   function_name(*function*)
 
-  ``` returns a string with the name of the function *function*.
+  ```
+  returns a string with the name of the function *function*.
   Example:
 
 
   ```pike
   function_name(write)
 
-  ``` gives the result
+  ```
+  gives the result
   ```pike
   "write"
 
