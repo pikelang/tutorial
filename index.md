@@ -22,7 +22,7 @@ or read the reference manual if you feel up to it.
   * [Reading this Tutorial](introduction/reading_this_tutorial.md)
 * [First Steps](hello/index.md)
   * [Hello World](hello/index.md)
-  * [~~I Want My Greeting in a Window!~~](hello/window.md)
+  * [I Want My Greeting in a Window!](hello/window.md)
   * [Interactive Pike](hello/interactive.md)
 * [Fundamental Concepts](fundamentals/index.md)
   * [Terminology / Glossary](fundamentals/index.md)
