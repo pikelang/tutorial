@@ -130,6 +130,8 @@ void got_activate(Gtk.Application app)
 }
 ```
 
+![alertwindow](alertwindow-gtk4.png)
+
 The window will now stay around until the *Close* button is pressed.
 Now however we have a different issue in that `app->run()` does not
 terminate when the window is closed.
