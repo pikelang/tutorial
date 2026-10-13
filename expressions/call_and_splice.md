@@ -9,7 +9,7 @@ use of the method-call operator. It is written with a pair of
 parentheses according to this template:
 
 ```pike
-*method-expression* ( *argument-list* )
+method-expression ( argument-list )
 ```
 
 First the *method-expression* is calculated, to find out which

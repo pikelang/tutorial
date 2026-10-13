@@ -69,43 +69,43 @@ If it cannot find the web page, it returns zero (**0**) instead.
 Some other things that might need to be explained in this example:
 
 * We can use single quotes (') inside a string.
-  If we want to put a double quote (") in a string,
-  we can do so by prefixing the double quote with a backslash:
+    If we want to put a double quote (") in a string,
+    we can do so by prefixing the double quote with a backslash:
 
-  ```pike
-  "This string contains a \"."
-  ```
+    ```pike
+    "This string contains a \"."
+    ```
 
 * If the web page couldn't be found,
-  we use the statement
+    we use the statement
 
-  ```pike
-  return;
-  ```
+    ```pike
+    return;
+    ```
 
-  to stop executing the method `handle_url`,
-  and instead return to where it was called.
-  This is the same as the
+    to stop executing the method `handle_url`,
+    and instead return to where it was called.
+    This is the same as the
 
-  ```pike
-  return 0;
-  ```
+    ```pike
+    return 0;
+    ```
 
-  we have seen in `main`,
-  except that `handle_url` doesn't return a value.
+    we have seen in `main`,
+    except that `handle_url` doesn't return a value.
 
 * `return` just returns from the method we are in.
-  If we want to terminate the program,
-  we can use the built-in function `exit`:
+    If we want to terminate the program,
+    we can use the built-in function `exit`:
 
-  ```pike
-  exit(0);
-  ```
+    ```pike
+    exit(0);
+    ```
 
-  This has the same effect as returning **0** from `main`.
+    This has the same effect as returning **0** from `main`.
 
 When we run this version of the web browser, it may look something
-like this. The user's command is shown in *italics*:
+like this. The user's command is prefixed with a `> ` prompt:
 
 ```
 > webbrowser.pike pike.lysator.liu.se

@@ -17,15 +17,15 @@ the module `smorglemod`). This is done even before
 is read from disk, and the things in the module are made accessible to
 your program.
 
-When Pike loads a module with the name `*module-name*`,
+When Pike loads a module with the name `module-name`,
 Pike will look for a module with that name in the following
 directories, in this order:
 
-1. If the `*module-name*` was prefixed with a dot, in the
+1. If the `module-name` was prefixed with a dot, in the
    same directory as the program that used the module
 
 2. In directories that have been imported with `import
-   "*directory-name*"`
+   "directory-name"`
 
 3. In directories added with `add_module_path`
 
@@ -41,24 +41,24 @@ directories, in this order:
 In each of those directories, Pike will look for files or
 subdirectories, in this order:
 
-1. If there is a file called `*module-name*.pmod`, Pike
+1. If there is a file called `module-name.pmod`, Pike
    will load that file as a Pike program, clone it, and use the
    newly-cloned object as a module.
 
-2. If there is a directory called `*module-name*.pmod`,
+2. If there is a directory called `module-name.pmod`,
    Pike will create a module that has all the modules in that directory
    as members. If there is a module called `module` (that is, with
    the file name `module.pmod`, `module.pmod.pike`, or
    `module.pmod.so`) in the directory
-   `*module-name*.pmod`, the members from that module will be
+   `module-name.pmod`, the members from that module will be
    used instead of the modules actually present in the directory.
 
-3. If there is a file called `*module-name*.pmod.pike`,
+3. If there is a file called `module-name.pmod.pike`,
    Pike will load that file as a Pike program, clone it, and use the
    newly-cloned object as a module.
 
 4. If there is a file called
-   `*module-name*.so` Pike will load that file with
+   `module-name.so` Pike will load that file with
    `load_module`, clone it, and use the newly-cloned object as a
    module. The file should be a dynamically linkable library of compiled
    C or C++ code.

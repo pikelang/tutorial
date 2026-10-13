@@ -18,8 +18,8 @@ with a **method definition**.
 A method definition follows this template:
 
 ```pike
-*access-modifiers* *type* *method-name*( *parameter-list* )
-*method-body*
+access-modifiers type method-name( parameter-list )
+method-body
 ```
 
 Here is a description of the various parts in the definition template:
@@ -110,7 +110,7 @@ The `return` statement is used to send a value from a method
 back to the point from where it was called:
 
 ```
-return *expression*;
+return expression;
 ```
 
 The `return` statement will also cause Pike to leave the method,

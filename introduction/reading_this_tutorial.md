@@ -51,6 +51,10 @@ The following conventions for type faces are used:
   where you replace *name* with the name of the variable,
   and *datatype* with its type.
 
+  Inside code blocks and inline code, placeholders use plain text,
+  such as `datatype name;`. Their meaning is explained in the surrounding
+  text; replace them with the appropriate type, name, or expression.
+
 * A bordered section of fixed-size text
   represents an interactive session,
   where user input is prefixed with a `> ` prompt.

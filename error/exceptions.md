@@ -62,8 +62,8 @@ itself, or in one of the methods called from the catch block, or in
 one of the methods called from those methods, and so on, then
 execution of the catch block will terminate, and the return value of
 the catch block will be the argument that was given to `throw`,
-in our case the string `"Failed to open the file called '*some
-file-name*'\n"`.
+in our case the string `"Failed to open the file called 'some
+file-name'\n"`.
 
 A good thing with exceptions is that they can be thrown "through" a
 method. Even if that method doesn't do any error checking at all, the

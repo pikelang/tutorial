@@ -72,8 +72,8 @@ and such a loop follows the pattern
 
 ```pike
 do
-  *something*
-while ( *condition* );
+  something
+while ( condition );
 ```
 
 The do-while loop will do the *something* at least once,

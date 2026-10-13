@@ -36,7 +36,7 @@ Here is a list of some useful casts:
 | string | program | If the string contains a filename, compile the file and return the program. The results are cached. |
 | string | object | First casts the string to a program as above, and then clones the result. The results are cached. |
 | array | array(*type*) | This recursively casts all values in the array to *type*. |
-| multiset | array | The same as doing `indices(*multiset*)`. |
+| multiset | array | The same as doing `indices(multiset)`. |
 
 Sometimes you know more than what Pike does about data types, and
 another use for casts is to tell Pike what you know. For

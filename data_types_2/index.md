@@ -21,26 +21,26 @@ as explained earlier.
 Integer values can be written in several ways:
 
 * In decimal (that is, base 10) format,
-  i e the normal way to write numbers,
-  such as `78`.
+    i e the normal way to write numbers,
+    such as `78`.
 
 * In octal (that is, base 8) format,
-  with a leading `0`, such as `0116`
-  (which is equal to `78` in decimal notation).
+    with a leading `0`, such as `0116`
+    (which is equal to `78` in decimal notation).
 
 * In hexadecimal (that is, base 16) format,
-  with a leading `0x`, such as `0x4e`
-  (which is also equal to `78` in decimal notation).
+    with a leading `0x`, such as `0x4e`
+    (which is also equal to `78` in decimal notation).
 
 * In binary (ones and zeroes) format,
-  with aleading `0b`, such as `0b1001110`
-  (which again is equal to `78` in decimal notation).
+    with aleading `0b`, such as `0b1001110`
+    (which again is equal to `78` in decimal notation).
 
 * As a character literal within single quotes,
-  which will give the Unicode code point for that character.
-  For example,
-  `'N'` will give the code point for the character **N**
-  (which is equal to `78`).
+    which will give the Unicode code point for that character.
+    For example,
+    `'N'` will give the code point for the character **N**
+    (which is equal to `78`).
 
 You can use normal arithmetic operations,
 such as addition and multiplication, with integers,
@@ -81,29 +81,29 @@ Some operations that you can apply to integers:
 
 * **Check if it is an integer**
 
-  `intp(*something*)` returns **1**
-  if the value *something* is an integer,
-  otherwise **0**.
-  Example:
+    `intp(something)` returns **1**
+    if the value *something* is an integer,
+    otherwise **0**.
+    Example:
 
-  ```pike
-  if (intp(u))
-    write("The integer is " + u + ".\n");
-  else
-    write("It is not an integer.\n");
-  ```
+    ```pike
+    if (intp(u))
+      write("The integer is " + u + ".\n");
+    else
+      write("It is not an integer.\n");
+    ```
 
 * **Get a random number**
 
-  `random(*limit*)` returns a random value
-  which is greater or equal to **0**
-  and less than the integer *limit*.
+    `random(limit)` returns a random value
+    which is greater or equal to **0**
+    and less than the integer *limit*.
 
 * **Reverse the bits**
 
-  `reverse(*integer-value*)` returns an integer
-   with the bits in the *integer-value*
-   in reverse order.
+    `reverse(integer-value)` returns an integer
+     with the bits in the *integer-value*
+     in reverse order.
 
 ## The Data Type `float`
 
@@ -134,30 +134,30 @@ Some operations that you can apply to floating-point numbers:
 
 * **Check if it is a floating-point number**
 
-  `floatp(*something*)` returns **1**
-  if the value *something* is a floating-point number,
-  otherwise **0**.
+    `floatp(something)` returns **1**
+    if the value *something* is a floating-point number,
+    otherwise **0**.
 
 * **Round downwards**
 
-  `floor(*float-value*)` returns the largest integer
-  that is less than or equal to *float-value*,
-  but as a floating-point number.
-  For example,
-  `floor(7.3)` gives **7.0**
-  (and not the integer **7**).
-  If you do want the integer value,
-  you can use an explicit type conversion:
-  `(int)7.3` gives you the integer **7**.
+    `floor(float-value)` returns the largest integer
+    that is less than or equal to *float-value*,
+    but as a floating-point number.
+    For example,
+    `floor(7.3)` gives **7.0**
+    (and not the integer **7**).
+    If you do want the integer value,
+    you can use an explicit type conversion:
+    `(int)7.3` gives you the integer **7**.
 
 * **Round upwards**
 
-  `ceil(*float-value*)` returns the smallest integer
-  that is greater than or equal to *float-value*,
-  as a floating-point number.
-  For example,
-  `ceil(7.3)` gives **8.0**
-  (and not the integer **8**).
+    `ceil(float-value)` returns the smallest integer
+    that is greater than or equal to *float-value*,
+    as a floating-point number.
+    For example,
+    `ceil(7.3)` gives **8.0**
+    (and not the integer **8**).
 
 ## The Data Type `string`
 
@@ -183,7 +183,7 @@ need to be preceded by a backslash character (`\`):
 * `\t` to get a tab character
 * `\r` to get a carriage return
 * `\0` to get a NUL character,
-  i e the character with character code **0**
+    i e the character with character code **0**
 
 Here are some examples of strings:
 
@@ -228,35 +228,35 @@ Some operations that you can apply to strings:
 
 * **Check if it is a string**
 
-  `stringp(*something*)` returns **1**
-  if the value *something* is a string,
-  otherwise **0**.
+    `stringp(something)` returns **1**
+    if the value *something* is a string,
+    otherwise **0**.
 
 * **Concatenation**
 
-  Strings can be concatenated with the `+` operator:
+    Strings can be concatenated with the `+` operator:
 
-  ```pike
-  string s1 = "Hello";
-  string s2 = " ";
-  string s3 = "world!";
-  write(s1 + s2 + s3 + "\n");
-  ```
+    ```pike
+    string s1 = "Hello";
+    string s2 = " ";
+    string s3 = "world!";
+    write(s1 + s2 + s3 + "\n");
+    ```
 
 * **Concatenation of string literals**
 
-  **String literals**,
-  who are strings within double quotes
-  that are written in a program,
-  can be concatenated by just putting them after each other:
+    **String literals**,
+    who are strings within double quotes
+    that are written in a program,
+    can be concatenated by just putting them after each other:
 
-  ```pike
-  write("Hello"  " "  "world!" + "\n");
-  ```
+    ```pike
+    write("Hello"  " "  "world!" + "\n");
+    ```
 
-  (This is, incidentally,
-  how the terminated numeric escapes above
-  work under the hood.)
+    (This is, incidentally,
+    how the terminated numeric escapes above
+    work under the hood.)
 
 Pike has many powerful built-in operations
 for working with strings.
