@@ -21,22 +21,16 @@ as parameters.
 
 Some notes about the method-call operator:
 
-<list type="ul">
-<item>
-If the value of the *method-expression* is an **array**,
-Pike assumes that each element in the array is a method that can be
-called. Pike will call each method in that array, with the given
-arguments, and the result of all this is an array with the return
-values from the calls.
-</item>
+* If the value of the *method-expression* is an **array**,
+  Pike assumes that each element in the array is a method that can be
+  called. Pike will call each method in that array, with the given
+  arguments, and the result of all this is an array with the return
+  values from the calls.
 
-<item>
-If the value of the *method-expression* is a **program**
-(that is, a **class**), Pike will create (or **clone**) a new
-object from that class, and then call the method `create` in
-that object, with the given arguments.
-</item>
-</list>
+* If the value of the *method-expression* is a **program**
+  (that is, a **class**), Pike will create (or **clone**) a new
+  object from that class, and then call the method `create` in
+  that object, with the given arguments.
 
 The **splice** operator, written with a commercial-at sign
 (`@`), lets us use an array as an argument list. For

@@ -73,67 +73,21 @@ debt[get_name()] += 500;
 
 the function `get_name` is only called once.
 
-<xtable>
-
-<row>
-<h>Syntax</h>
-<h>Equivalent to</h>
-</row>
-
-<row>
-<c>`*variable* += *expression*`</c>
-<c>`*variable* = *variable* + *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* -= *expression*`</c>
-<c>`*variable* = *variable* - *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* *= *expression*`</c>
-<c>`*variable* = *variable* * *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* /= *expression*`</c>
-<c>`*variable* = *variable* / *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* %= *expression*`</c>
-<c>`*variable* = *variable* % *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* <<= *expression*`</c>
-<c>`*variable* = *variable* << *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* >>= *expression*`</c>
-<c>`*variable* = *variable* >> *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* |= *expression*`</c>
-<c>`*variable* = *variable* | *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* &= *expression*`</c>
-<c>`*variable* = *variable* & *expression*`</c>
-</row>
-
-<row>
-<c>`*variable* ^= *expression*`</c>
-<c>`*variable* = *variable* ^ *expression*`</c>
-</row>
-
-</xtable>
+| Syntax | Equivalent to |
+| --- | --- |
+| `*variable* += *expression*` | `*variable* = *variable* + *expression*` |
+| `*variable* -= *expression*` | `*variable* = *variable* - *expression*` |
+| `*variable* *= *expression*` | `*variable* = *variable* * *expression*` |
+| `*variable* /= *expression*` | `*variable* = *variable* / *expression*` |
+| `*variable* %= *expression*` | `*variable* = *variable* % *expression*` |
+| `*variable* <<= *expression*` | `*variable* = *variable* << *expression*` |
+| `*variable* >>= *expression*` | `*variable* = *variable* >> *expression*` |
+| `*variable* \|= *expression*` | `*variable* = *variable* \| *expression*` |
+| `*variable* &= *expression*` | `*variable* = *variable* & *expression*` |
+| `*variable* ^= *expression*` | `*variable* = *variable* ^ *expression*` |
 
 Note that the increment and decrement operators (`i++`,
-`++i`, `i--`, and `--i`)<comment>--</comment>
+`++i`, `i--`, and `--i`)
 also change the value of the variable they are used on.
 
 ## Multi-Assignment

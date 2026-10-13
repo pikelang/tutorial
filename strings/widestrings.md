@@ -27,31 +27,25 @@ strings.
 Here are some functions that can be used to examine wide
 strings:
 
-<list type="ul">
-<item name="String.width(string data)">
+* **String.width(string data)**
 
-This gives the width of the string *data*. This width of a
-string is the number of bits that is used to store each character in
-the string. Normal strings are 8 bits wide, but strings can also be 16
-or 32 bits wide. For each string, Pike will use as few bits as
-possible. For example, `"foo"` will be 8 bits wide,
-`"foo\d255"` is also 8 bits wide, `"foo\d256"` is 16
-bits wide, and `"foo\d70000"` is 32 bits wide.
-</item>
+  This gives the width of the string *data*. This width of a
+  string is the number of bits that is used to store each character in
+  the string. Normal strings are 8 bits wide, but strings can also be 16
+  or 32 bits wide. For each string, Pike will use as few bits as
+  possible. For example, `"foo"` will be 8 bits wide,
+  `"foo\d255"` is also 8 bits wide, `"foo\d256"` is 16
+  bits wide, and `"foo\d70000"` is 32 bits wide.
 
-<item name="string_to_utf8(string data)">
+* **string_to_utf8(string data)**
 
-This translates the string *data*, which can be a wide string,
-to a string in the format UTF8. UTF8 is a format that encodes wide
-characters in an 8-bit string.
-</item>
+  This translates the string *data*, which can be a wide string,
+  to a string in the format UTF8. UTF8 is a format that encodes wide
+  characters in an 8-bit string.
 
-<item name="utf8_to_string(string utf8_encoded_data)">
+* **utf8_to_string(string utf8_encoded_data)**
 
-This translates an UTF8-encoded string *utf8_encoded_data*
-(which, by implication of the nature of the coding, can not be a wide
-string, since the UTF8 encoding is 8-bit by definition), to a pike
-string.
-</item>
-
-</list>
+  This translates an UTF8-encoded string *utf8_encoded_data*
+  (which, by implication of the nature of the coding, can not be a wide
+  string, since the UTF8 encoding is 8-bit by definition), to a pike
+  string.

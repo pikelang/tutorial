@@ -1,16 +1,6 @@
-<metadata>
- <datum name=__removed valuen=1>
- <datum name=author value="0">
- <datum name=description value="">
- <datum name=external_use value="">
- <datum name=http-content-type value="text/xml">
- <datum name=keywords value="">
- <datum name=stationery value="">
- <datum name=stationery_md_flags value="">
- <datum name=template value="tutorial.xsl">
- <datum name=title value="Error Messages from Pike">
-</metadata>
-<manual>
+# Errors and Error Handling
+
+# Error Messages from Pike
 
 When Pike encounters an error that it can't handle, or finds
 something suspicious in a program, you may get an **error message**
@@ -45,17 +35,17 @@ there is a possible problem. For example, what would happen if
 
 Warning messages follow the pattern
 
-<out>
+```text
 *filename*:*line-number*: Warning: *description*
-</out>
+```
 
 so the warning message that is printed will look something like
 this:
 
-<out>
+```text
 ex3.pike:17: Warning: An expression type mixed
 cannot be assigned to a variable of type int.
-</out>
+```
 
 Warnings and error messages are not printed on the standard output,
 but on the standard error output. Even if you re-direct the output
@@ -71,13 +61,13 @@ i = s;
 
 The error message looks something like this:
 
-<out>
+```text
 ex3.pike:21:Bad type in assignment.
 ex3.pike:21:Expected: int
 ex3.pike:21:Got     : string
 Pike: Failed to compile script:
 Compilation failed.
-</out>
+```
 
 Error messages are always printed, and will cause the program to
 terminate. By default, warnings are *not* printed. They are
@@ -91,15 +81,12 @@ line
 ```
 
 to that file. An alternative is to give the command-line argument
-`-rt` to Pike, or `-rt` to turn on warnings for all
-files, even those that are used from your program.
+`-rT` to Pike, which turns on warnings for all
+files, even those that are used from your program. An example:
 
-You must also give the argument `-w` to Pike, for Pike to
-actually print the warnings. An example:
-
-<interactive>
-<in>pike -w -rT myprogram.pike</in>
-</interactive>
+```sh
+pike -rT myprogram.pike
+```
 
 This will print all warnings that Pike is able to generate for the
 file `myprogram.pike`, and for all other files (such as
@@ -108,5 +95,3 @@ modules) that it uses.
 It is usually a very good idea to turn on warnings, at least during
 program development. Why would you *not* let the computer help
 you find the bugs in your program?
-
-</manual>

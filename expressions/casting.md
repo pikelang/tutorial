@@ -25,81 +25,18 @@ written as a data type between parentheses:
 
 Here is a list of some useful casts:
 
-<xtable>
-
-<row>
-<h>Casting from</h>
-<h>to</h>
-<h>gives the result</h>
-</row>
-
-<row>
-<c>int</c>
-<c>float</c>
-<c>The floating-point number with the same value as the integer</c>
-</row>
-
-<row>
-<c>float</c>
-<c>int</c>
-<c>An integer, with the fractional part ("the decimals") just
-skipped</c>
-</row>
-
-<row>
-<c>int</c>
-<c>string</c>
-<c>Converts the integer to a string with a number in normal base-10
-notation</c>
-</row>
-
-<row>
-<c>float</c>
-<c>string</c>
-<c>Converts the floating-point number to a string</c>
-</row>
-
-<row>
-<c>string</c>
-<c>int</c>
-<c>Converts the first number in the string to an integer. The number
-should be an integer written in normal base-10 notation.</c>
-</row>
-
-<row>
-<c>string</c>
-<c>float</c>
-<c>Converts the first number, with or without decimals, in the string
-to a floating-point number</c>
-</row>
-
-<row>
-<c>string</c>
-<c>program</c>
-<c>If the string contains a filename, compile the file and return the
-program. The results are cached.</c>
-</row>
-
-<row>
-<c>string</c>
-<c>object</c>
-<c>First casts the string to a program as above, and then clones the
-result. The results are cached.</c>
-</row>
-
-<row>
-<c>array</c>
-<c>array(*type*)</c>
-<c>This recursively casts all values in the array to *type*.</c>
-</row>
-
-<row>
-<c>multiset</c>
-<c>array</c>
-<c>The same as doing `indices(*multiset*)`.</c>
-</row>
-
-</xtable>
+| Casting from | to | gives the result |
+| --- | --- | --- |
+| int | float | The floating-point number with the same value as the integer |
+| float | int | An integer, with the fractional part ("the decimals") just skipped |
+| int | string | Converts the integer to a string with a number in normal base-10 notation |
+| float | string | Converts the floating-point number to a string |
+| string | int | Converts the first number in the string to an integer. The number should be an integer written in normal base-10 notation. |
+| string | float | Converts the first number, with or without decimals, in the string to a floating-point number |
+| string | program | If the string contains a filename, compile the file and return the program. The results are cached. |
+| string | object | First casts the string to a program as above, and then clones the result. The results are cached. |
+| array | array(*type*) | This recursively casts all values in the array to *type*. |
+| multiset | array | The same as doing `indices(*multiset*)`. |
 
 Sometimes you know more than what Pike does about data types, and
 another use for casts is to tell Pike what you know. For

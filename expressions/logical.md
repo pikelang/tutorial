@@ -4,34 +4,11 @@ We often want to express conditions such as "if this is true,
 *and* that is true, then we do something". Such calculations with
 truth values are done with the **logical operators** in Pike:
 
-<xtable>
-<row>
-<h>Operation</h>
-<h>Syntax</h>
-<h>Result</h>
-</row>
-
-<row>
-<c>Logical and</c>
-<c>a && b</c>
-<c>If a is false, a is returned and b is not calculated. Otherwise, b
-is returned.</c>
-</row>
-
-<row>
-<c>Logical or</c>
-<c>a || b</c>
-<c>If a is true, a is returned and b is not calculated. Otherwise, b
-is returned.</c>
-</row>
-
-<row>
-<c>Logical not</c>
-<c>! a</c>
-<c>Returns 0 if a is true, 1 otherwise.</c>
-</row>
-
-</xtable>
+| Operation | Syntax | Result |
+| --- | --- | --- |
+| Logical and | `a && b` | If a is false, a is returned and b is not calculated. Otherwise, b is returned. |
+| Logical or | `a \|\| b` | If a is true, a is returned and b is not calculated. Otherwise, b is returned. |
+| Logical not | `! a` | Returns 0 if a is true, 1 otherwise. |
 
 For example, if the temperature is below 100 degrees, and we still
 have some fuel, we want to burn some more:

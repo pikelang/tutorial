@@ -10,16 +10,14 @@ and that is the result of the modulo operation.
 
 Here is a table of the arithmetic operations:
 
-<xtable>
-<row><h>Operation</h>  <h>Syntax</h> <h>Result</h></row>
-<row><c>Addition</c>   <c>a + b</c>  <c>the sum of a and b</c></row>
-<row><c>Subtraction</c><c>a - b</c>  <c>b subtracted from a</c></row>
-<row><c>Negation</c>   <c>- a</c>    <c>minus a</c></row>
-<row><c>Multiplication</c><c>a * b</c> <c>a multiplied by b</c></row>
-<row><c>Division</c>   <c>a / b</c>  <c>a divided by b</c></row>
-<row><c>Modulo</c>     <c>a % b</c>
-<c>the remainder of a division between a and b</c></row>
-</xtable>
+| Operation | Syntax | Result |
+| --- | --- | --- |
+| Addition | `a + b` | the sum of a and b |
+| Subtraction | `a - b` | b subtracted from a |
+| Negation | `- a` | minus a |
+| Multiplication | `a * b` | a multiplied by b |
+| Division | `a / b` | a divided by b |
+| Modulo | `a % b` | the remainder of a division between a and b |
 
 Remember that pike makes a difference between numerical values that
 are integers (the type `int`), and numerical values that are
@@ -55,39 +53,12 @@ p = p - 1;
 To simplify such programs, Pike has these extra operators, which
 you can use if you want to:
 
-<xtable>
-
-<row>
-<h>Operation</h>
-<h>Syntax</h>
-<h>Result</h>
-</row>
-
-<row>
-<c>Increment</c>
-<c>++ a</c>
-<c>increments a and returns the new value for a</c>
-</row>
-
-<row>
-<c>Decrement</c>
-<c>-- a</c>
-<c>decrements a and returns the new value for a</c>
-</row>
-
-<row>
-<c>Post increment</c>
-<c>a ++</c>
-<c>increments a and returns the old value for a</c>
-</row>
-
-<row>
-<c>Post decrement</c>
-<c>a --</c>
-<c>decrements a and returns the old value for a</c>
-</row>
-
-</xtable>
+| Operation | Syntax | Result |
+| --- | --- | --- |
+| Increment | `++ a` | increments a and returns the new value for a |
+| Decrement | `-- a` | decrements a and returns the new value for a |
+| Post increment | `a ++` | increments a and returns the old value for a |
+| Post decrement | `a --` | decrements a and returns the old value for a |
 
 The two versions of increment, `++i` and `i++`, both
 increment the value in the variable `i` with 1. The difference

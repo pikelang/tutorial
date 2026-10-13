@@ -27,9 +27,9 @@ normal **standard output** (`Stdio.stdout`). This has a
 higher chance of being seen by the user, since if you re-direct the
 output from a program, like this:
 
-<interactive>
-<in>webbrowser.pike cod.ida.liu.se > output.txt</in>
-</interactive>
+```sh
+webbrowser.pike cod.ida.liu.se > output.txt
+```
 
 then the standard output will be printed to the file
 `output.txt`, but the standard error output will still be

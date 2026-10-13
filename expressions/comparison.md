@@ -2,51 +2,14 @@
 
 Pike lets you compare things to each other.
 
-<xtable>
-
-<row>
-<h>Operation</h>
-<h>Syntax</h>
-<h>Result</h>
-</row>
-
-<row>
-<c>Same</c>
-<c>a == b</c>
-<c>1 if a is the same value as b, 0 otherwise</c>
-</row>
-
-<row>
-<c>Not same</c>
-<c>a != b</c>
-<c>0 if a is the same value as b, 1 otherwise</c>
-</row>
-
-<row>
-<c>Greater than</c>
-<c>a > b</c>
-<c>1 if a is greater than b, 0 otherwise</c>
-</row>
-
-<row>
-<c>Greater than or equal to</c>
-<c>a >= b</c>
-<c>1 if a is greater to or equal to b, 0 otherwise</c>
-</row>
-
-<row>
-<c>Lesser than</c>
-<c>a < b</c>
-<c>1 if a is less than b, 0 otherwise</c>
-</row>
-
-<row>
-<c>Lesser than or equal to</c>
-<c>a <= b</c>
-<c>1 if a is less than or equal to b, 0 otherwise</c>
-</row>
-
-</xtable>
+| Operation | Syntax | Result |
+| --- | --- | --- |
+| Same | `a == b` | 1 if a is the same value as b, 0 otherwise |
+| Not same | `a != b` | 0 if a is the same value as b, 1 otherwise |
+| Greater than | `a > b` | 1 if a is greater than b, 0 otherwise |
+| Greater than or equal to | `a >= b` | 1 if a is greater to or equal to b, 0 otherwise |
+| Lesser than | `a < b` | 1 if a is less than b, 0 otherwise |
+| Lesser than or equal to | `a <= b` | 1 if a is less than or equal to b, 0 otherwise |
 
 As you may remember, Pike interprets the value zero (**0**) as
 **false**, and everything else is interpreted as **true**. The

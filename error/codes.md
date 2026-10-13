@@ -20,50 +20,40 @@ if (!localfile->open(file_name, "r"))
 
 Some comments about this:
 
-<list type="ul">
-<item>
-```pike
-Stdio.File
+* ```pike
+  Stdio.File
+  ```
 
-``` is a stream that can be used to read from a
-file on fisk. It is similar to the data type `FILE` in C, and
-the classes `ifstream` and `ofstream` in C++.
-</item>
+   is a stream that can be used to read from a
+  file on fisk. It is similar to the data type `FILE` in C, and
+  the classes `ifstream` and `ofstream` in C++.
 
-<item>
+* ```pike
+  !localfile->open(file_name, "r")
+  ```
 
-```pike
-!localfile->open(file_name, "r")
+   means exactly the same
+  thing as
 
-``` means exactly the same
-thing as 
-```pike
-localfile->open(file_name, "r") == 0
+  ```pike
+  localfile->open(file_name, "r") == 0
+  ```.
 
-```.
+  It is common to use the **logical not** operator (`!`) to
+  check if something is 0.
 
+* `errno` is a method in the class `Stdio.File`, and
+  can be used io check what kind of error has occurred in a particular
+  stream. It returns an error code. `errno` is not a global
+  variable, as in C.
 
-It is common to use the **logical not** operator (`!`) to
-check if something is 0.
-</item>
-
-<item>
-`errno` is a method in the class `Stdio.File`, and
-can be used io check what kind of error has occurred in a particular
-stream. It returns an error code. `errno` is not a global
-variable, as in C.
-</item>
-
-<item>
-`strerror` returns a string that describes the error number
-given as an argument.
-</item>
-</list>
+* `strerror` returns a string that describes the error number
+  given as an argument.
 
 If the file couldn't be opened, the program's output will look
 something like this:
 
-<out>
+```text
 Couldn't open 'foobar.txt'.
 No such file or directory (errno = 2).
-</out>
+```

@@ -104,13 +104,13 @@ line the keyword was found. `__DATE__` will be expanded to a
 ```pike
 "Mon day Year"
 
-``` string constant, e g 
+``` string constant, e g
 ```pike
 "May 2 2000"
 ```
 with the date when the file was compiled (or, more to the point, when
 the preprocessor replaced the entity). Similarly, `__TIME__`
-turns into a 24-hour 
+turns into a 24-hour
 ```pike
 "HH:MM:SS"
 

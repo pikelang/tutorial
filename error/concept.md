@@ -7,21 +7,13 @@ browser from the example earlier in this tutorial, which hardly
 qualifies as a real-world program, we had to handle no less than three
 possible errors:
 
-<list type="ul">
-<item>
-An incorrect number of command-line arguments to the program.
-</item>
+* An incorrect number of command-line arguments to the program.
 
-<item>
-The user didn't write a web address, and just pressed the return
-key instead.
-</item>
+* The user didn't write a web address, and just pressed the return
+  key instead.
 
-<item>
-The browser couldn't download the web page from the given
-address.
-</item>
-</list>
+* The browser couldn't download the web page from the given
+  address.
 
 Error handling usually consists of two parts:
 **detecting** the error, and **handling** it.
