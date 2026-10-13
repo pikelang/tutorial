@@ -59,7 +59,7 @@ A block can be empty:
 The **expression statement** follows this template:
 
 ```pike
-*expression* ;
+expression ;
 ```
 
 That is,

@@ -54,14 +54,13 @@ debt[get_name()] += 500;
 In general, the expression
 
 ```pike
-*variable* *operator*`=` *expression*
+variable operator = expression
 ```
 
 means the same as
 
 ```pike
-*variable* `=` *variable* *operator*
-*expression*
+variable = variable operator expression
 ```
 
 But note that the *variable* part is only calculated once. For
@@ -75,16 +74,16 @@ the function `get_name` is only called once.
 
 | Syntax | Equivalent to |
 | --- | --- |
-| `*variable* += *expression*` | `*variable* = *variable* + *expression*` |
-| `*variable* -= *expression*` | `*variable* = *variable* - *expression*` |
-| `*variable* *= *expression*` | `*variable* = *variable* * *expression*` |
-| `*variable* /= *expression*` | `*variable* = *variable* / *expression*` |
-| `*variable* %= *expression*` | `*variable* = *variable* % *expression*` |
-| `*variable* <<= *expression*` | `*variable* = *variable* << *expression*` |
-| `*variable* >>= *expression*` | `*variable* = *variable* >> *expression*` |
-| `*variable* \|= *expression*` | `*variable* = *variable* \| *expression*` |
-| `*variable* &= *expression*` | `*variable* = *variable* & *expression*` |
-| `*variable* ^= *expression*` | `*variable* = *variable* ^ *expression*` |
+| `variable += expression` | `variable = variable + expression` |
+| `variable -= expression` | `variable = variable - expression` |
+| `variable *= expression` | `variable = variable * expression` |
+| `variable /= expression` | `variable = variable / expression` |
+| `variable %= expression` | `variable = variable % expression` |
+| `variable <<= expression` | `variable = variable << expression` |
+| `variable >>= expression` | `variable = variable >> expression` |
+| `variable \|= expression` | `variable = variable \| expression` |
+| `variable &= expression` | `variable = variable & expression` |
+| `variable ^= expression` | `variable = variable ^ expression` |
 
 Note that the increment and decrement operators (`i++`,
 `++i`, `i--`, and `--i`)

@@ -36,7 +36,7 @@ there is a possible problem. For example, what would happen if
 Warning messages follow the pattern
 
 ```text
-*filename*:*line-number*: Warning: *description*
+filename:line-number: Warning: description
 ```
 
 so the warning message that is printed will look something like

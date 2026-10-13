@@ -52,7 +52,7 @@ Pike, with the highest priority at the top:
 | `::a a::b` | left to right |
 | `a() a[b] a->b a[b..c] ({}) ([]) (<>)` | left to right |
 | `a++ a--` | left to right |
-| `!a ~a (*type*)a ++a --a` | right to left! |
+| `!a ~a (type)a ++a --a` | right to left! |
 | `a*b a/b a%b` | left to right |
 | `a+b a-b` | left to right |
 | `a>>b a<<b` | left to right |

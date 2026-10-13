@@ -40,7 +40,7 @@ Here is a list of format specifiers:
 | %c | The character code of a single character. |
 | %s | A string. If `%s` is followed by `%d`, `%s` will read any non-numerical characters. If followed by `%[]`, `%s` will read any characters not present in the set in the `%[]`. If followed by normal text, `%s` will match all characters up to, but not including, the first occurrence of that text. |
 | %*N*s | As above, but a string of exactly *N* characters |
-| %[*characters*] | A string containing any of the characters in the list `*characters*`. A minus sign can be used to give a range of values, so e. g. `%[a-d]` means a string consisting of any of the characters `a`, `b` and `c`. A `^` sign means "not", so e. g. `%[^abc]` means any character except `a`, `b` and `c`. They can be combined, so `%[a-cf]` means `a`, `b`, `c`, and `f`. |
+| %[*characters*] | A string containing any of the characters in the list `characters`. A minus sign can be used to give a range of values, so e. g. `%[a-d]` means a string consisting of any of the characters `a`, `b` and `c`. A `^` sign means "not", so e. g. `%[^abc]` means any character except `a`, `b` and `c`. They can be combined, so `%[a-cf]` means `a`, `b`, `c`, and `f`. |
 | %{*format*%} | Repeatedly matches the format specifier *format* as many times as possible, and gives an array of arrays with the results. Example: `%{%d%}` matches zero or more integers. |
 | %% | A single percent (`%`) character |
 
@@ -63,43 +63,43 @@ successfully matched will not be changed.
 Some examples of `sscanf`:
 
 * This call to `sscanf` will return **1**, and the variable
-  `a` will be given the value `"oo"`:
+    `a` will be given the value `"oo"`:
 
-  ```pike
-  sscanf("foo", "f%s", a);
-  ```
+    ```pike
+    sscanf("foo", "f%s", a);
+    ```
 
 * The return value from `sscanf` will be **2**.
-  `a` will be given the value **4711**.
-  `b` will be given the value `"bar"`.
+    `a` will be given the value **4711**.
+    `b` will be given the value `"bar"`.
 
-  ```pike
-  sscanf("4711bar", "%d%s", a, b);
-  ```
+    ```pike
+    sscanf("4711bar", "%d%s", a, b);
+    ```
 
 * The return value from `sscanf` will be **1**, `a`
-  will be given the value `"test"`:
+    will be given the value `"test"`:
 
-  ```pike
-  sscanf(" \t test", "%*[ \t]%s", a)
-  ```
+    ```pike
+    sscanf(" \t test", "%*[ \t]%s", a)
+    ```
 
 * This removes `"the "` from the beginning of the string in
-  `str`. If `str` does not begin with `"the "`, it
-  will not be changed
+    `str`. If `str` does not begin with `"the "`, it
+    will not be changed
 
-  ```pike
-  sscanf(str, "the %s", str);
-  ```
+    ```pike
+    sscanf(str, "the %s", str);
+    ```
 
 * This assigns `"foo"` to `s1` and `"fum"` to
-  `s2`, and the array `({ ({ 1 }), ({ 2 }), ({ 3 }) })` to
-  `a`. The return value will be **3**.
+    `s2`, and the array `({ ({ 1 }), ({ 2 }), ({ 3 }) })` to
+    `a`. The return value will be **3**.
 
-  ```pike
-  sscanf("foo % 1 2 3 fum",
-         "%s %% %{%d%} %s", s1, a, s2);
-  ```
+    ```pike
+    sscanf("foo % 1 2 3 fum",
+           "%s %% %{%d%} %s", s1, a, s2);
+    ```
 
 A feature with `sscanf` is that you can define variables
 inside it:

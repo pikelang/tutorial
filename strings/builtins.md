@@ -4,177 +4,169 @@ The functions `sprintf` and `sscanf` will be
 presented in their own sections, below.
 
 * Check if it is a string
-  ```pike
-  stringp(*something*)
-  ```
 
-  The function `stringp` returns **1** if the value
-  *something* is a string, otherwise **0**.
+    ```pike
+    stringp(something)
+    ```
+
+    The function `stringp` returns **1** if the value
+    *something* is a string, otherwise **0**.
 
 * Finding the size
 
-  ```pike
-  sizeof(*string*)
+    ```pike
+    sizeof(string)
+    ```
 
-  ```
-  or
-  ```pike
-  strlen(*string*)
-  ```
+    or
 
+    ```pike
+    strlen(string)
+    ```
 
-  Returns the length (that is, the number of characters) in the
-  string *string*.
+    Returns the length (that is, the number of characters) in the
+    string *string*.
 
+    ```pike
+    sizeof("hi ho")
+    ```
 
-  ```pike
-  sizeof("hi ho")
+    gives the result:
 
-  ```
-  gives the result
-  ```pike
-  5
+    ```pike
+    5
+    ```
 
-  ```
-  .
-  ```pike
-  sizeof("")
+    ```pike
+    sizeof("")
+    ```
 
-  ```
-  gives the result
-  ```pike
-  0
+    gives the result:
 
-  ```
-  .
+    ```pike
+    0
+    ```
 
+    The function `strlen` is a synonym for
 
-  The function `strlen` is a synonym for
-  ```pike
-  sizeof
-
-  ```
-  .
+    ```pike
+    sizeof
+    ```
 
 * Reversing a string
-  ```pike
-  reverse(*string*)
 
-  ```
-  returns a new string with the
-  characters in reverse order.
+    ```pike
+    reverse(string)
+    ```
 
+    returns a new string with the
+    characters in reverse order.
 
-  ```pike
-  reverse("foo")
+    ```pike
+    reverse("foo")
+    ```
 
-  ```
-  gives the result
-  ```pike
-  "oof"
+    gives the result:
 
-  ```
-  .
+    ```pike
+    "oof"
+    ```
 
 * Replacing parts in a string
-  ```pike
-  replace(*string*, *old*, *new*)
 
-  ```
-  returns a
-  new string where all occurrences of the string *old* have been
-  replaced with the string *new*:
+    ```pike
+    replace(string, old, new)
+    ```
 
+    returns a
+    new string where all occurrences of the string *old* have been
+    replaced with the string *new*:
 
-  ```pike
-  replace("fooFOOfoo", "foo", "fum")
+    ```pike
+    replace("fooFOOfoo", "foo", "fum")
+    ```
 
-  ```
-  gives the result
-  ```pike
-  "fumFOOfum"
+    gives the result:
 
-  ```
-  .
+    ```pike
+    "fumFOOfum"
+    ```
 
 * Converting to lower case
-  ```pike
-  lower_case(*string*)
 
-  ```
-  returns a new string where all
-  upper-case characters in the string *string* have been turned to
-  lower case:
+    ```pike
+    lower_case(string)
+    ```
 
+    returns a new string where all
+    upper-case characters in the string *string* have been turned to
+    lower case:
 
-  ```pike
-  lower_case("A Foo IS!")
+    ```pike
+    lower_case("A Foo IS!")
+    ```
 
-  ```
-  gives the result
-  ```pike
-  "a foo is!"
+    gives the result:
 
-  ```
-  .
+    ```pike
+    "a foo is!"
+    ```
 
 * Converting to upper case
-  ```pike
-  upper_case(*string*)
 
-  ```
-  returns a new string where all
-  lower-case characters in the string *string* have been turned to
-  upper case:
+    ```pike
+    upper_case(string)
+    ```
 
+    returns a new string where all
+    lower-case characters in the string *string* have been turned to
+    upper case:
 
-  ```pike
-  upper_case("A Foo IS!")
+    ```pike
+    upper_case("A Foo IS!")
+    ```
 
-  ```
-  gives the result
-  ```pike
-  "A FOO IS!"
+    gives the result:
 
-  ```
-  .
+    ```pike
+    "A FOO IS!"
+    ```
 
 * Capitalizing
-  ```pike
-  String.capitalize(*string*)
-  ```
 
-  If the first character in the string *string* is a lower-case
-  character, it is converted to upper case:
+    ```pike
+    String.capitalize(string)
+    ```
 
+    If the first character in the string *string* is a lower-case
+    character, it is converted to upper case:
 
-  ```pike
-  String.capitalize("xyz-Foo")
-  ```
-  gives the result
-  ```pike
-  "Xyz-Foo"
+    ```pike
+    String.capitalize("xyz-Foo")
+    ```
 
-  ```
-  .
+    gives the result:
+
+    ```pike
+    "Xyz-Foo"
+    ```
 
 * Finding a substring in a string
-  ```pike
-  search(*haystack*, *needle*)
 
-  ```
-  returns the index
-  of the start of the first occurrence of the string *needle* in
-  the string *haystack*:
+    ```pike
+    search(haystack, needle)
+    ```
 
+    returns the index
+    of the start of the first occurrence of the string *needle* in
+    the string *haystack*:
 
-  ```pike
-  search("sortohum", "orto")
+    ```pike
+    search("sortohum", "orto")
+    ```
 
-  ```
-  gives the result
-  ```pike
-  1
+    gives the result:
 
-  ```
-  .
+    ```pike
+    1
+    ```

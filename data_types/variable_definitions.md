@@ -12,10 +12,10 @@ it starts with the value **0**.
 Some effects of this may be surprising to C programmers:
 
 ```pike
-float f;  // Now, f contains the **integer** value 0.
-f = f + 1;// Now, f contains the **integer** value 1.
-f = 0;    // Now, f contains the **integer** value 0 again!
-f = 0.0;  // Now, f contains the **real** value 0.0.
+float f;  // Now, f contains the integer value 0.
+f = f + 1;// Now, f contains the integer value 1.
+f = 0;    // Now, f contains the integer value 0 again!
+f = 0.0;  // Now, f contains the real value 0.0.
 ```
 
 It's important to note that

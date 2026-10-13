@@ -23,7 +23,7 @@ constant PI = 3.1415926535;
 
 Now that the module file exists, we can use it. If we use it from a
 program that is stored in the same directory as `trig.pmod`, we
-can use the `.*module-name*` notation, so the program will
+can use the `.module-name` notation, so the program will
 look like this:
 
 ```pike

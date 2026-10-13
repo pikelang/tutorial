@@ -21,16 +21,13 @@ The `if` statement comes in two flavors.
 The first and simplest one follows this pattern or template:
 
 ```pike
-if ( *expression* )
-  *statement*
+if ( expression )
+  statement
 ```
 
-As usual in this tutorial,
-words in a `fixed-width font`
-are supposed to be written verbatim in the program,
-while words in *italics*
-are supposed to be replaced by something else.
-This means that the word `if` and the parentheses should be kept,
+In this template, `expression` and `statement` are placeholders
+for parts of your program.
+The word `if` and the parentheses should be kept,
 but you replace *expression* with some expression,
 and *statement* with some statement.
 An example,
@@ -56,10 +53,10 @@ and program execution will continue after the `if` statement.
 An `if` statement can also follow this template:
 
 ```pike
-if ( *expression* )
-  *statement1*
+if ( expression )
+  statement1
 else
-  *statement2*
+  statement2
 ```
 
 Example:
@@ -175,7 +172,7 @@ but returns a value.
 Expressions that use the operator `? :` follow this template:
 
 ```pike
-*condition* ? *then-expression* : *else-expression*
+condition ? then-expression : else-expression
 ```
 
 *Condition*, *then-expression* and *else-expression*

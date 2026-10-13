@@ -43,8 +43,8 @@ Preprocessor macros can have arguments:
 ```
 
 This directive will cause Pike to replace every occurrence of
-"`square(*expression*)`" with "`*expression* *
-*expression*`". But note that this is just a textual
+"`square(expression)`" with "`expression *
+expression`". But note that this is just a textual
 transformation! As an example of what this means, the statement
 
 ```pike
@@ -88,7 +88,7 @@ One thing that you can use the preprocessor for is to tell Pike
 which character set you are using in the Pike source code:
 
 ```pike
-#charset <*charset-name*>
+#charset <charset-name>
 ```
 
 The default character set is `iso8859-1`, which is the right
@@ -101,21 +101,27 @@ The preprocessor also expands a few specific keywords to pike
 constants (C programmers will feel right at home); a `__LINE__`
 in your code will be translated to an integer pointing out at which
 line the keyword was found. `__DATE__` will be expanded to a
+
 ```pike
 "Mon day Year"
+```
 
-``` string constant, e g
+string constant, e g
+
 ```pike
 "May 2 2000"
 ```
+
 with the date when the file was compiled (or, more to the point, when
 the preprocessor replaced the entity). Similarly, `__TIME__`
 turns into a 24-hour
+
 ```pike
 "HH:MM:SS"
+```
 
-``` time string constant, e g
+time string constant, e g
+
 ```pike
 "19:17:21"
-
-```.
+```

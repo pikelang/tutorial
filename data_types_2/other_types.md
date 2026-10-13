@@ -26,35 +26,37 @@ and a source code file can be used to define a program/class.
 Here are some useful things that you can do with programs:
 
 * Check if it is a program
-  ```pike
-  programp(*something*)
-  ```
 
-  The function `programp` returns **1** if the value
-  *something* is a program, otherwise **0**.
+    ```pike
+    programp(something)
+    ```
+
+    The function `programp` returns **1** if the value
+    *something* is a program, otherwise **0**.
 
 * Cloning
 
-  ```pike
-  *program-name*()
+    ```pike
+    program-name()
+    ```
 
-  ```
-  or
-  ```pike
-  *program-name*(*arguments*)
-  ```
+    or
 
+    ```pike
+    program-name(arguments)
+    ```
 
-  This creates a new object of the type *program-name*. If
-  arguments are given, they are sent to the method `create` in
-  this program.
+    This creates a new object of the type *program-name*. If
+    arguments are given, they are sent to the method `create` in
+    this program.
 
 * Defining variables
-  ```pike
-  *program-name* *variable-name*;
-  ```
 
-  This creates a new variable of the type *program-name*.
+    ```pike
+    program-name variable-name;
+    ```
+
+    This creates a new variable of the type *program-name*.
 
 Read more about classes and objects in the chapter about
 object-oriented programming.
@@ -66,62 +68,67 @@ In object-oriented programming, the data items that are instances
 type `object` is used to store such objects.
 
 An `object` is an instance of any class. Usually you use the
-more specific data type `object(*classname*)`, which means
+more specific data type `object(classname)`, which means
 an object that is an instance of the class *classname*. You can
-also write just `*classname*` instead of
-`object(*classname*)`, and this is the recommended
+also write just `classname` instead of
+`object(classname)`, and this is the recommended
 form.
 
 Here are some useful things that you can do with objects:
 
 * Check if it is an object
-  ```pike
-  objectp(*something*)
-  ```
 
-  The function `objectp` returns **1** if the value
-  *something* is a object, otherwise **0**.
+    ```pike
+    objectp(something)
+    ```
+
+    The function `objectp` returns **1** if the value
+    *something* is a object, otherwise **0**.
 
 * Create an object
-  ```pike
-  *program-name*()
 
-  ```
-  or
-  ```pike
-  *program-name*(*arguments*)
-  ```
+    ```pike
+    program-name()
+    ```
 
-  This creates a new object of the type *program-name*. If
-  arguments are given, they are sent to the method `create` in
-  the program.
+    or
+
+    ```pike
+    program-name(arguments)
+    ```
+
+    This creates a new object of the type *program-name*. If
+    arguments are given, they are sent to the method `create` in
+    the program.
 
 * Destroy an object
-  ```pike
-  destruct(*object*)
-  ```
 
-  This destroys the object *object*. All variables that contain
-  references to this object will be set to **0**. If there is a
-  method called `destroy` in the object, that method will first
-  be called.
+    ```pike
+    destruct(object)
+    ```
 
-  Note that usually you don't need to explicitly destroy objects.
-  Pike has automatic garbage collection, and when an object is no longer
-  referenced from anywhere, which means that it can never be used again,
-  it is destroyed automatically.
+    This destroys the object *object*. All variables that contain
+    references to this object will be set to **0**. If there is a
+    method called `destroy` in the object, that method will first
+    be called.
+
+    Note that usually you don't need to explicitly destroy objects.
+    Pike has automatic garbage collection, and when an object is no longer
+    referenced from anywhere, which means that it can never be used again,
+    it is destroyed automatically.
 
 * Accessing a member
-  ```pike
-  *object* -> *member-name*
-  ```
 
-  This is used to access the method or member variable called
-  *member-name* in the object *object*. Example:
+    ```pike
+    object -> member-name
+    ```
 
-  ```pike
-  web_page->data()
-  ```
+    This is used to access the method or member variable called
+    *member-name* in the object *object*. Example:
+
+    ```pike
+    web_page->data()
+    ```
 
 Read more about classes and objects in the chapter about
 object-oriented programming.
@@ -166,28 +173,29 @@ Here are some useful things that you can do with method
 references:
 
 * Check if it is a method reference
-  ```pike
-  functionp(*something*)
-  ```
 
-  The function `functionp` returns **1** if the value
-  *something* is a method reference, otherwise **0**.
+    ```pike
+    functionp(something)
+    ```
+
+    The function `functionp` returns **1** if the value
+    *something* is a method reference, otherwise **0**.
 
 * Find the name of a function
-  ```pike
-  function_name(*function*)
 
-  ```
-  returns a string with the name of the function *function*.
-  Example:
+    ```pike
+    function_name(function)
+    ```
 
+    returns a string with the name of the function *function*.
+    Example:
 
-  ```pike
-  function_name(write)
+    ```pike
+    function_name(write)
+    ```
 
-  ```
-  gives the result
-  ```pike
-  "write"
+    gives the result:
 
-  ```.
+    ```pike
+    "write"
+    ```

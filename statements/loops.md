@@ -13,8 +13,8 @@ as long as a condition is true.
 It follows this template:
 
 ```pike
-while ( *expression* )
-  *statement*
+while ( expression )
+  statement
 ```
 
 Pike calculates the value of *expression*.
@@ -68,19 +68,19 @@ for an expression that is run immediately after the statement in the loop.
 The `for` loop follows this template:
 
 ```pike
-for ( *init-expression* ; *condition-expression* ; *change-expression* )
-  *statement*
+for ( init-expression ; condition-expression ; change-expression )
+  statement
 ```
 
 This is (almost exactly)
 equivalent to this **while** loop:
 
 ```pike
-*init-expression*;
-while ( *condition-expression* )
+init-expression;
+while ( condition-expression )
 {
-  *statement*
-  *change-expression*;
+  statement
+  change-expression;
 }
 ```
 
@@ -119,8 +119,8 @@ follows this template:
 
 ```pike
 do
-  *statement*
-while ( *expression* );
+  statement
+while ( expression );
 ```
 
 Pike starts by executing *statement*.
@@ -155,8 +155,8 @@ doing something with each element.
 It follows this template:
 
 ```pike
-foreach( *container* , *loop-variable* )
-  *statement*
+foreach( container , loop-variable )
+  statement
 ```
 
 *Container* should be an expression with an array as value,

@@ -7,7 +7,7 @@ Remember that the class is also a **data type**.
 We can also create some animals
 to put in those variables.
 To create an animal,
-we use the syntax `*classname*()`,
+we use the syntax `classname()`,
 i e the name of the class
 followed by a pair of parentheses.
 
@@ -18,7 +18,7 @@ animal my_dog = animal();
 ```
 
 To access a member variable in an object,
-we use the syntax `*object-expression*->*variable-name*`,
+we use the syntax `object-expression->variable-name`,
 i e the object followed by the operator `->`
 followed by the name of the variable.
 
