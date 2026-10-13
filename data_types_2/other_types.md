@@ -37,26 +37,26 @@ Here are some useful things that you can do with programs:
 * Cloning
 
     ```pike
-    program-name()
+    program_name()
     ```
 
     or
 
     ```pike
-    program-name(arguments)
+    program_name(arguments)
     ```
 
-    This creates a new object of the type *program-name*. If
+    This creates a new object of the type *program_name*. If
     arguments are given, they are sent to the method `create` in
     this program.
 
 * Defining variables
 
     ```pike
-    program-name variable-name;
+    program_name variable-name;
     ```
 
-    This creates a new variable of the type *program-name*.
+    This creates a new variable of the type *program_name*.
 
 Read more about classes and objects in the chapter about
 object-oriented programming.
@@ -88,16 +88,16 @@ Here are some useful things that you can do with objects:
 * Create an object
 
     ```pike
-    program-name()
+    program_name()
     ```
 
     or
 
     ```pike
-    program-name(arguments)
+    program_name(arguments)
     ```
 
-    This creates a new object of the type *program-name*. If
+    This creates a new object of the type *program_name*. If
     arguments are given, they are sent to the method `create` in
     the program.
 
